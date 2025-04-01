@@ -40,12 +40,12 @@ const ParallaxBackground = ({ children }: { children: React.ReactNode }) => {
       ref={parallaxRef} 
       className="parallax-container"
       style={{ 
-        backgroundImage: `linear-gradient(135deg, rgba(36, 30, 70, 0.85), rgba(0, 131, 127, 0.85)), url('/images/hero-bg.svg')`,
+        backgroundImage: `linear-gradient(135deg, rgba(255, 255, 255, 0.97), rgba(230, 245, 240, 0.97)), url('/images/hero-bg.svg')`,
         backgroundPosition: `center ${-offset}px`,
         width: '100%',
         maxWidth: '100%',
         margin: 0,
-        padding: '6rem 0 2rem' // Отступы только сверху и снизу
+        padding: '6rem 0 2rem'
       }}
     >
       {children}
