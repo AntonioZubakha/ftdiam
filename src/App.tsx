@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-import './App.css'
 import './styles.css'
 import ContactForm from './ContactForm'
 
+// Main App component
 function App() {
   const [activeSection, setActiveSection] = useState('home')
   const [scrolled, setScrolled] = useState(false)
@@ -89,6 +89,7 @@ function App() {
             </div>
           </div>
         </section>
+        <div className="section-divider" />
 
         <section id="about" className="section about-section">
           <div className="content-wrapper">
@@ -149,6 +150,7 @@ function App() {
             </div>
           </div>
         </section>
+        <div className="section-divider" />
 
         <section id="technology" className="section technology-section">
           <div className="content-wrapper">
@@ -203,6 +205,7 @@ function App() {
             </div>
           </div>
         </section>
+        <div className="section-divider" />
 
         <section id="products" className="section products-section">
           <div className="content-wrapper">
@@ -245,6 +248,7 @@ function App() {
             </div>
           </div>
         </section>
+        <div className="section-divider" />
 
         <section id="quality" className="section quality-section">
           <div className="content-wrapper">
@@ -275,6 +279,7 @@ function App() {
             </div>
           </div>
         </section>
+        <div className="section-divider" />
 
         <section id="market" className="section market-section">
           <div className="content-wrapper">
@@ -310,6 +315,7 @@ function App() {
             </div>
           </div>
         </section>
+        <div className="section-divider" />
 
         <section id="contacts" className="section contacts-section">
           <div className="content-wrapper">
