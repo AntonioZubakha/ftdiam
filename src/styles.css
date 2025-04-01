@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
 
 :root {
   /* Brand colors */
@@ -20,9 +20,9 @@
   --element-spacing: 2rem;
   
   /* Typography */
-  --font-primary: 'Raleway', sans-serif;
-  --font-secondary: 'Raleway', sans-serif;
-  --font-mono: 'Raleway', monospace;
+  --font-primary: "Raleway", sans-serif;
+  --font-secondary: "Raleway", sans-serif;
+  --font-mono: "Raleway", monospace;
   
   /* Transitions */
   --transition-fast: 0.3s ease;
@@ -43,7 +43,16 @@ body {
   color: var(--dark-gray);
   font-weight: 300;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--primary-dark-blue);
 }
 
 html {
@@ -108,9 +117,10 @@ nav li {
   font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  font-weight: 300;
+  font-weight: 400;
   transition: all 0.3s ease;
   padding: 0.5rem 0;
+  font-family: var(--font-primary);
 }
 
 nav li:hover, nav li.active {
@@ -155,7 +165,7 @@ nav li:hover::after, nav li.active::after {
   font-size: clamp(2rem, 5vw, 2.8rem);
   color: var(--primary-dark-blue);
   margin-bottom: var(--element-spacing);
-  font-weight: 200;
+  font-weight: 600;
   text-align: center;
   letter-spacing: 1px;
   position: relative;
@@ -166,7 +176,7 @@ nav li:hover::after, nav li.active::after {
   position: absolute;
   bottom: -0.5rem;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%);
   width: 60px;
   height: 2px;
   background: var(--primary-teal);
