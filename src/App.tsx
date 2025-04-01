@@ -19,31 +19,36 @@ const LoadingScreen = () => {
 }
 
 // Parallax background component
-const ParallaxBackground = () => {
+const ParallaxBackground = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        backgroundColor: 'var(--white)',
-        opacity: 0.15,
-        zIndex: 1,
-      }}
-    >
-      <img
-        src="/images/hero-bg.svg"
-        alt="Crystal Grid"
+    <div className="parallax-container">
+      <div
         style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
           width: '100%',
           height: '100%',
-          objectFit: 'cover',
+          backgroundColor: 'var(--white)',
           opacity: 0.15,
+          zIndex: 1,
         }}
-        className="crystal-grid"
-      />
+      >
+        <img
+          src="/images/hero-bg.svg"
+          alt="Crystal Grid"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            opacity: 0.15,
+          }}
+          className="crystal-grid"
+        />
+      </div>
+      <div className="parallax-content" style={{ position: 'relative', zIndex: 2 }}>
+        {children}
+      </div>
     </div>
   );
 };
@@ -136,12 +141,9 @@ function App() {
             <CrystalGrid />
             <div className="content-container">
               <div className="hero">
-                <h1>Revolutionizing Diamond Technology</h1>
-                <h2>Advanced Solutions for Modern Industry</h2>
-                <p>
-                  Pioneering the future of diamond technology with innovative solutions
-                  for industrial applications.
-                </p>
+                <h1>Flawless Technical Diamonds</h1>
+                <h2>Single Crystal Diamond Substrates with Unmatched Characteristics</h2>
+                <p>Advanced HPHT technology delivering superior diamond substrates for cutting-edge applications.</p>
               </div>
               
               <div className="key-advantages">
@@ -154,16 +156,16 @@ function App() {
               
               <div className="tech-specs">
                 <div className="spec-item">
-                  <span className="spec-label">Precision</span>
-                  <span className="spec-value">±0.001mm</span>
-                </div>
-                <div className="spec-item">
-                  <span className="spec-label">Hardness</span>
-                  <span className="spec-value">9.5-10 Mohs</span>
-                </div>
-                <div className="spec-item">
                   <span className="spec-label">Purity</span>
-                  <span className="spec-value">99.9%</span>
+                  <span className="spec-value">≤5 ppb N, ≤20 ppb B</span>
+                </div>
+                <div className="spec-item">
+                  <span className="spec-label">Dislocations</span>
+                  <span className="spec-value">10¹ cm⁻²</span>
+                </div>
+                <div className="spec-item">
+                  <span className="spec-label">Size</span>
+                  <span className="spec-value">up to 15x15 mm</span>
                 </div>
               </div>
             </div>
