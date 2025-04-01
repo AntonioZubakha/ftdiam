@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from 'react'
+import React from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import './LoadingScreen.css'
 import './styles.css'
@@ -10,45 +11,39 @@ const LoadingScreen = () => {
   return (
     <div className="loading-screen">
       <div className="loading-content">
-        <img src="/images/Logo.png" alt="FTDiam Logo" className="loading-logo" />
-        <div className="diamond-shape"></div>
-        <h2>INITIALIZING FTDIAM</h2>
+        <img src="/images/logo.png" alt="FTDiam Logo" className="loading-logo" />
+        <h2>Loading...</h2>
       </div>
     </div>
   )
 }
 
 // Parallax background component
-const ParallaxBackground = ({ children }: { children: React.ReactNode }) => {
-  const [offset, setOffset] = useState(0);
-  const parallaxRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (parallaxRef.current) {
-        const scrollTop = window.scrollY;
-        setOffset(scrollTop * 0.5); // Adjust the multiplier for parallax intensity
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
+const ParallaxBackground = () => {
   return (
-    <div 
-      ref={parallaxRef} 
-      className="parallax-container"
-      style={{ 
-        backgroundImage: `linear-gradient(135deg, rgba(255, 255, 255, 0.97), rgba(230, 245, 240, 0.97)), url('/images/hero-bg.svg')`,
-        backgroundPosition: `center ${-offset}px`,
+    <div
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
         width: '100%',
-        maxWidth: '100%',
-        margin: 0,
-        padding: '6rem 0 2rem'
+        height: '100%',
+        backgroundColor: 'var(--white)',
+        opacity: 0.15,
+        zIndex: 1,
       }}
     >
-      {children}
+      <img
+        src="/images/hero-bg.svg"
+        alt="Crystal Grid"
+        style={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          opacity: 0.15,
+        }}
+        className="crystal-grid"
+      />
     </div>
   );
 };
@@ -62,7 +57,7 @@ function App() {
     // Simulate loading time
     const timer = setTimeout(() => {
       setLoading(false)
-    }, 2500)
+    }, 2000)
 
     return () => clearTimeout(timer)
   }, [])
@@ -141,9 +136,12 @@ function App() {
             <CrystalGrid />
             <div className="content-container">
               <div className="hero">
-                <h1>Flawless Technical Diamonds</h1>
-                <h2>Single Crystal Diamond Substrates with Unmatched Characteristics. The Best Technical Diamonds on the Market.</h2>
-                <p>Advanced HPHT technology delivering superior diamond substrates for cutting-edge applications.</p>
+                <h1>Revolutionizing Diamond Technology</h1>
+                <h2>Advanced Solutions for Modern Industry</h2>
+                <p>
+                  Pioneering the future of diamond technology with innovative solutions
+                  for industrial applications.
+                </p>
               </div>
               
               <div className="key-advantages">
@@ -154,21 +152,18 @@ function App() {
                 ))}
               </div>
               
-              <div className="hero-image">
-                <img src="/images/crystal-3d.svg" alt="Diamond Crystal" />
-                <div className="tech-specs">
-                  <div className="spec-item">
-                    <span className="spec-label">Purity</span>
-                    <span className="spec-value">≤5 ppb N, ≤20 ppb B</span>
-                  </div>
-                  <div className="spec-item">
-                    <span className="spec-label">Dislocations</span>
-                    <span className="spec-value">10<sup>1</sup> cm<sup>-2</sup></span>
-                  </div>
-                  <div className="spec-item">
-                    <span className="spec-label">Size</span>
-                    <span className="spec-value">up to 15x15 mm</span>
-                  </div>
+              <div className="tech-specs">
+                <div className="spec-item">
+                  <span className="spec-label">Precision</span>
+                  <span className="spec-value">±0.001mm</span>
+                </div>
+                <div className="spec-item">
+                  <span className="spec-label">Hardness</span>
+                  <span className="spec-value">9.5-10 Mohs</span>
+                </div>
+                <div className="spec-item">
+                  <span className="spec-label">Purity</span>
+                  <span className="spec-value">99.9%</span>
                 </div>
               </div>
             </div>
