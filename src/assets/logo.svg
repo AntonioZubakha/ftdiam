@@ -1,0 +1,22 @@
+<svg width="240" height="80" viewBox="0 0 240 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Diamond molecule icon -->
+  <g transform="translate(10, 40) scale(0.8)">
+    <circle cx="10" cy="10" r="6" fill="#1D2636"/>
+    <circle cx="30" cy="0" r="6" fill="#1D2636"/>
+    <circle cx="30" cy="20" r="6" fill="#006B71"/>
+    <circle cx="45" cy="10" r="6" fill="#006B71"/>
+    
+    <!-- Connecting lines -->
+    <line x1="10" y1="10" x2="30" y2="0" stroke="#1D2636" stroke-width="2"/>
+    <line x1="10" y1="10" x2="30" y2="20" stroke="#006B71" stroke-width="2"/>
+    <line x1="30" y1="0" x2="45" y2="10" stroke="#006B71" stroke-width="2"/>
+    <line x1="30" y1="20" x2="45" y2="10" stroke="#006B71" stroke-width="2"/>
+  </g>
+  
+  <!-- FTD Text -->
+  <g transform="translate(65, 48)">
+    <path d="M0 0H40V8H8V20H30V28H8V50H0V0Z" fill="#1D2636"/>
+    <path d="M45 0H85V8H65V50H57V8H45V0Z" fill="#006B71"/>
+    <path d="M90 0H130V8H98V20H120V28H98V42H130V50H90V0Z" fill="#1D2636"/>
+  </g>
+</svg> 
