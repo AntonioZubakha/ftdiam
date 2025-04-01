@@ -50,7 +50,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-primary);
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.2;
   color: var(--primary-dark-blue);
 }
@@ -165,7 +165,7 @@ nav li:hover::after, nav li.active::after {
   font-size: clamp(2rem, 5vw, 2.8rem);
   color: var(--primary-dark-blue);
   margin-bottom: var(--element-spacing);
-  font-weight: 600;
+  font-weight: 400;
   text-align: center;
   letter-spacing: 1px;
   position: relative;
@@ -579,6 +579,7 @@ h3 {
   color: var(--primary-dark-blue);
   margin-bottom: 1rem;
   text-align: left;
+  font-weight: 300;
 }
 
 .contact-info-block p {
@@ -648,7 +649,7 @@ footer {
 .footer-nav-column h4 {
   color: var(--white);
   font-size: 1.1rem;
-  font-weight: 400;
+  font-weight: 300;
   margin-bottom: 1.5rem;
   position: relative;
 }
