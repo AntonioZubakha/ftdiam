@@ -28,7 +28,7 @@ function App() {
       }
       
       // Update active section on scroll
-      const sections = ['home', 'about', 'technology', 'products', 'quality', 'market', 'contacts']
+      const sections = ['home', 'about', 'technology', 'products', 'quality', 'contacts']
       
       for (const section of sections) {
         const element = document.getElementById(section)
@@ -58,7 +58,6 @@ function App() {
             <li className={activeSection === 'technology' ? 'active' : ''} onClick={() => scrollToSection('technology')}>Technology</li>
             <li className={activeSection === 'products' ? 'active' : ''} onClick={() => scrollToSection('products')}>Products</li>
             <li className={activeSection === 'quality' ? 'active' : ''} onClick={() => scrollToSection('quality')}>Quality Analysis</li>
-            <li className={activeSection === 'market' ? 'active' : ''} onClick={() => scrollToSection('market')}>Market</li>
             <li className={activeSection === 'contacts' ? 'active' : ''} onClick={() => scrollToSection('contacts')}>Contacts</li>
           </ul>
         </nav>
@@ -101,18 +100,28 @@ function App() {
 
         <section id="intro" className="section intro-section">
           <div className="content-wrapper">
+            <div className="intro-content">
+              <h2 className="intro-headline">Premium Diamond Specifications</h2>
+              <p className="intro-tagline">Setting the industry standard with exceptional quality</p>
+            </div>
             <div className="specs-grid">
               <div className="spec-block">
-                <h3>Purity</h3>
-                <p>≤5 ppb N, ≤20 ppb B</p>
-              </div>
-              <div className="spec-block">
+                <div className="spec-icon">💎</div>
                 <h3>Dislocations</h3>
                 <p>10¹ cm⁻²</p>
+                <div className="spec-detail">Industry-leading purity</div>
               </div>
               <div className="spec-block">
+                <div className="spec-icon">📏</div>
                 <h3>Size</h3>
                 <p>up to 15x15 mm</p>
+                <div className="spec-detail">Perfect for all applications</div>
+              </div>
+              <div className="spec-block">
+                <div className="spec-icon">⚛️</div>
+                <h3>Purity</h3>
+                <p>≤5 ppb N</p>
+                <div className="spec-detail">Ultra-low nitrogen content</div>
               </div>
             </div>
           </div>
@@ -196,10 +205,12 @@ function App() {
             <h2 className="headline">Founders</h2>
             <div className="founders">
               <div className="founder">
+                <img src="/images/Dmitri.jpg" alt="Dmitry Semchenko" className="founder-photo" />
                 <h3>Dmitry Semchenko, CTO</h3>
                 <p>Serial entrepreneur with over 8 years in high-quality diamond material. Holder of AHPHT technology.</p>
               </div>
               <div className="founder">
+                <img src="/images/Dan.jpg" alt="Daniil Kurganov" className="founder-photo" />
                 <h3>Daniil Kurganov, CEO</h3>
                 <p>15+ years in management, technical sales and business development worldwide.</p>
               </div>
@@ -363,83 +374,6 @@ function App() {
               <div className="method">
                 <h4>X-Ray Diffraction</h4>
                 <p>Dislocation density &lt;50 cm⁻²</p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <div className="section-divider" />
-
-        <section id="market" className="section market-section">
-          <div className="content-wrapper">
-            <h2 className="headline">Pioneering the Future</h2>
-            <p className="section-description">The demand for high-quality diamond substrates is set to soar as industries transition from R&D to mass production.</p>
-            
-            <div className="key-areas">
-              <div className="area">
-                <h4>Quantum Technology</h4>
-                <p>NV centers for sensing and computing ($0.5B-$72B by 2035, McKinsey)</p>
-                <div className="market-growth">
-                  <div className="growth-bar" style={{ width: '85%' }}></div>
-                  <span>Projected Growth: High</span>
-                </div>
-              </div>
-              <div className="area">
-                <h4>Semiconductors</h4>
-                <p>Power electronics and 6G/7G ($70M-$365M by 2031, Verified Market)</p>
-                <div className="market-growth">
-                  <div className="growth-bar" style={{ width: '70%' }}></div>
-                  <span>Projected Growth: Medium-High</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="clients">
-              <h3>Our Clients</h3>
-              <div className="client-logos">
-                <div className="logo-placeholder">Harvard</div>
-                <div className="logo-placeholder">ESRF</div>
-                <div className="logo-placeholder">Quantum Transistors</div>
-              </div>
-            </div>
-
-            <div className="market-trends">
-              <div className="trend-card">
-                <div className="trend-header">
-                  <h4>Market Size 2025</h4>
-                  <div className="trend-value">$72B</div>
-                </div>
-                <div className="trend-chart">
-                  <div className="chart-line">
-                    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-                      <path d="M0,80 L33,60 L66,30 L100,10" />
-                    </svg>
-                  </div>
-                  <div className="chart-point" style={{ left: '0%', bottom: '20%' }} data-year="2020">2020</div>
-                  <div className="chart-point" style={{ left: '33%', bottom: '40%' }} data-year="2025">2025</div>
-                  <div className="chart-point" style={{ left: '66%', bottom: '70%' }} data-year="2030">2030</div>
-                  <div className="chart-point" style={{ left: '100%', bottom: '90%' }} data-year="2035">2035</div>
-                </div>
-              </div>
-              
-              <div className="market-segments">
-                <div className="segment-card">
-                  <div className="segment-icon">⚛️</div>
-                  <h4>Quantum Computing</h4>
-                  <div className="segment-share">45%</div>
-                  <p>Largest market share by 2025</p>
-                </div>
-                <div className="segment-card">
-                  <div className="segment-icon">💻</div>
-                  <h4>Electronics</h4>
-                  <div className="segment-share">30%</div>
-                  <p>Fastest growing segment</p>
-                </div>
-                <div className="segment-card">
-                  <div className="segment-icon">🔬</div>
-                  <h4>Research</h4>
-                  <div className="segment-share">25%</div>
-                  <p>Stable growth segment</p>
-                </div>
               </div>
             </div>
           </div>
