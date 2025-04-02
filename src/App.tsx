@@ -99,7 +99,7 @@ function App() {
           </div>
         </section>
 
-        <section id="intro" className="section intro-section" style={{ background: 'var(--white)' }}>
+        <section id="intro" className="section intro-section">
           <div className="content-wrapper">
             <div className="specs-grid">
               <div className="spec-block">

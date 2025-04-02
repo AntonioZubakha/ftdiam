@@ -1235,6 +1235,20 @@ footer {
   position: relative;
   z-index: 2;
   width: 100%;
+}
+
+/* About, technology and other sections */
+.about-section .content-wrapper,
+.technology-section .content-wrapper, 
+.products-section .content-wrapper,
+.quality-section .content-wrapper,
+.market-section .content-wrapper,
+.contacts-section .content-wrapper {
+  display: block;
+}
+
+/* Only home section needs flex center */
+.home-section .content-wrapper {
   display: flex;
   justify-content: center;
 }
@@ -1283,7 +1297,7 @@ footer {
 .intro-section {
   background: var(--white);
   color: var(--dark-gray);
-  padding: 3rem 2rem;
+  padding: 5rem 2rem;
 }
 
 .intro-headline {
@@ -1308,18 +1322,19 @@ footer {
 .specs-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
+  gap: 2rem;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 3rem auto;
 }
 
 .spec-block {
   text-align: center;
-  padding: 2rem;
-  background: var(--light-bg);
+  padding: 2.5rem;
+  background: rgba(230, 245, 240, 0.8);
   border-radius: 10px;
   transition: all 0.3s ease;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 131, 127, 0.1);
 }
 
 .spec-block:hover {
@@ -1331,12 +1346,12 @@ footer {
 .spec-block h3 {
   font-size: 1.4rem;
   font-weight: 400;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   color: var(--primary-dark-blue);
 }
 
 .spec-block p {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 300;
   color: var(--primary-teal);
   opacity: 1;
