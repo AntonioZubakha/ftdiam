@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import './styles.css'
 import ContactForm from './ContactForm'
-import CrystalLatticePreloader from './CrystalLatticePreloader'
 
 // Main App component
 function App() {
@@ -47,11 +46,85 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Добавляем эффект для создания декоративных элементов
+  useEffect(() => {
+    // Функция для создания геометрических элементов
+    const createGeometricElements = () => {
+      const sections = document.querySelectorAll('.section:not(.home-section)');
+      
+      // Удаляем существующие дополнительные элементы
+      document.querySelectorAll('.additional-element').forEach(el => el.remove());
+      
+      // Паттерны SVG для различных типов геометрических фигур
+      const svgPatterns = [
+        // Круги
+        "data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23241e46' stroke-width='1.5'%3E%3Ccircle cx='20' cy='20' r='15' /%3E%3C/g%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2300837f' stroke-width='1.5'%3E%3Ccircle cx='20' cy='20' r='10' /%3E%3Ccircle cx='20' cy='20' r='5' /%3E%3C/g%3E%3C/svg%3E",
+        // Квадраты
+        "data:image/svg+xml,%3Csvg width='90' height='90' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23241e46' stroke-width='1.5'%3E%3Crect x='5' y='5' width='20' height='20' /%3E%3C/g%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg width='110' height='110' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2300837f' stroke-width='1.5'%3E%3Crect x='10' y='10' width='20' height='20' /%3E%3Crect x='15' y='15' width='10' height='10' /%3E%3C/g%3E%3C/svg%3E",
+        // Ромбы
+        "data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23241e46' stroke-width='1.5'%3E%3Cpath d='M20,5 L35,20 L20,35 L5,20 Z' /%3E%3C/g%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg width='130' height='130' viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2300837f' stroke-width='1.5'%3E%3Cpath d='M25,10 L40,25 L25,40 L10,25 Z' /%3E%3Cpath d='M25,15 L35,25 L25,35 L15,25 Z' /%3E%3C/g%3E%3C/svg%3E",
+        // Треугольники
+        "data:image/svg+xml,%3Csvg width='90' height='90' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23241e46' stroke-width='1.5'%3E%3Cpath d='M15,5 L25,25 L5,25 Z' /%3E%3C/g%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg width='110' height='110' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2300837f' stroke-width='1.5'%3E%3Cpath d='M20,10 L30,30 L10,30 Z' /%3E%3C/g%3E%3C/svg%3E",
+        // Шестиугольники
+        "data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23241e46' stroke-width='1.5'%3E%3Cpath d='M30,20 L25,32 L15,32 L10,20 L15,8 L25,8 Z' /%3E%3C/g%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2300837f' stroke-width='1.5'%3E%3Cpath d='M30,20 L25,32 L15,32 L10,20 L15,8 L25,8 Z' /%3E%3Cpath d='M25,20 L22.5,26 L17.5,26 L15,20 L17.5,14 L22.5,14 Z' /%3E%3C/g%3E%3C/svg%3E",
+        // Сетки
+        "data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23241e46' stroke-width='1.5'%3E%3Cpath d='M5,5 L25,5 M5,15 L25,15 M5,25 L25,25' /%3E%3Cpath d='M5,5 L5,25 M15,5 L15,25 M25,5 L25,25' /%3E%3C/g%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2300837f' stroke-width='1.5'%3E%3Cpath d='M10,10 L30,10 M10,20 L30,20 M10,30 L30,30' /%3E%3Cpath d='M10,10 L10,30 M20,10 L20,30 M30,10 L30,30' /%3E%3C/g%3E%3C/svg%3E"
+      ];
+      
+      sections.forEach(section => {
+        // Создаем 12 элементов в каждой секции
+        for (let i = 0; i < 12; i++) {
+          const element = document.createElement('div');
+          element.classList.add('additional-element');
+          element.style.position = 'absolute';
+          
+          // Определяем размеры элемента (от 60px до 170px)
+          const size = Math.floor(Math.random() * 110 + 60);
+          element.style.width = size + 'px';
+          element.style.height = size + 'px';
+          
+          // Случайное положение элемента внутри секции
+          element.style.top = Math.floor(Math.random() * 100) + '%';
+          element.style.left = Math.floor(Math.random() * 100) + '%';
+          element.style.transform = 'translate(-50%, -50%) rotate(' + Math.floor(Math.random() * 360) + 'deg)';
+          
+          // Случайная непрозрачность (от 0.06 до 0.12)
+          element.style.opacity = (Math.random() * 0.06 + 0.06).toFixed(2);
+          
+          // Выбираем случайный SVG паттерн
+          const patternIndex = Math.floor(Math.random() * svgPatterns.length);
+          element.style.backgroundImage = 'url("' + svgPatterns[patternIndex] + '")';
+          element.style.backgroundRepeat = 'no-repeat';
+          element.style.backgroundSize = 'contain';
+          element.style.pointerEvents = 'none';
+          element.style.zIndex = '1';
+          
+          section.appendChild(element);
+        }
+      });
+    };
+
+    // Вызываем функцию создания элементов сразу после монтирования компонента
+    createGeometricElements();
+
+    // Добавляем обработчик на изменение размера окна, чтобы элементы не терялись при ресайзе
+    window.addEventListener('resize', createGeometricElements);
+    
+    // Очистка при размонтировании компонента
+    return () => {
+      window.removeEventListener('resize', createGeometricElements);
+      document.querySelectorAll('.additional-element').forEach(el => el.remove());
+    };
+  }, []);
+
   return (
     <div className="app">
-      {/* Предзагрузчик кристаллических решеток */}
-      <CrystalLatticePreloader />
-      
       <header className={scrolled ? 'scrolled' : ''}>
         <button className="menu-button" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           <span className="menu-icon"></span>
@@ -70,25 +143,8 @@ function App() {
       <main>
         <section id="home" className="section home-section">
           <div className="video-container">
-            <video className="background-video" autoPlay muted playsInline onEnded={(e) => {
-              const nextVideo = e.currentTarget.parentElement?.querySelector('.background-video:nth-child(2)') as HTMLVideoElement;
-              if (nextVideo) {
-                nextVideo.play();
-                e.currentTarget.style.opacity = '0';
-                nextVideo.style.opacity = '0.4';
-              }
-            }}>
-              <source src="/video/section1.mp4" type="video/mp4" />
-            </video>
-            <video className="background-video" muted playsInline style={{ opacity: 0 }} onEnded={(e) => {
-              const firstVideo = e.currentTarget.parentElement?.querySelector('.background-video:first-child') as HTMLVideoElement;
-              if (firstVideo) {
-                firstVideo.play();
-                e.currentTarget.style.opacity = '0';
-                firstVideo.style.opacity = '0.4';
-              }
-            }}>
-              <source src="/video/section2.mp4" type="video/mp4" />
+            <video className="background-video" autoPlay muted playsInline loop>
+              <source src="/video/video.mp4" type="video/mp4" />
             </video>
           </div>
           <div className="content-wrapper">
@@ -110,19 +166,25 @@ function App() {
             </div>
             <div className="specs-grid">
               <div className="spec-block">
-                <div className="spec-icon">💎</div>
+                <div className="spec-icon">
+                  <img src="/images/CrystalLatticeIcon.png" alt="Dislocations" />
+                </div>
                 <h3>Dislocations</h3>
                 <p>10¹ cm⁻²</p>
                 <div className="spec-detail">Industry-leading purity</div>
               </div>
               <div className="spec-block">
-                <div className="spec-icon">📏</div>
+                <div className="spec-icon">
+                  <img src="/images/DiamondSizeIcon.png" alt="Size" />
+                </div>
                 <h3>Size</h3>
                 <p>up to 15x15 mm</p>
                 <div className="spec-detail">Perfect for all applications</div>
               </div>
               <div className="spec-block">
-                <div className="spec-icon">⚛️</div>
+                <div className="spec-icon">
+                  <img src="/images/DiamondPurityIcon.png" alt="Purity" />
+                </div>
                 <h3>Purity</h3>
                 <p>≤5 ppb N</p>
                 <div className="spec-detail">Ultra-low nitrogen content</div>
@@ -132,7 +194,7 @@ function App() {
         </section>
         <div className="section-divider" />
 
-        <section id="about" className="section about-section crystal-lattice-bg">
+        <section id="about" className="section about-section">
           <div className="content-wrapper">
             <h2 className="headline">Who We Are</h2>
             <p className="section-description">FTDiam is a US-based deep-tech start-up in advanced materials sector. We are revolutionizing the industry with the unique Advanced HPHT (AHPHT) technology. Since our inception, we've been dedicated to producing the highest-quality single-crystal diamond substrates for advanced applications.</p>
@@ -227,7 +289,7 @@ function App() {
         </section>
         <div className="section-divider" />
 
-        <section id="technology" className="section technology-section crystal-lattice-bg">
+        <section id="technology" className="section technology-section">
           <div className="content-wrapper">
             <h2 className="headline">Advanced HPHT Technology</h2>
             <h3>The Future of Diamond Synthesis</h3>
@@ -279,7 +341,7 @@ function App() {
         </section>
         <div className="section-divider" />
 
-        <section id="products" className="section products-section crystal-lattice-bg">
+        <section id="products" className="section products-section">
           <div className="content-wrapper">
             <h2 className="headline">High-Quality Diamond Products</h2>
             <h3>Tailored Solutions for Cutting-Edge Applications</h3>
@@ -322,7 +384,7 @@ function App() {
         </section>
         <div className="section-divider" />
 
-        <section id="quality" className="section quality-section crystal-lattice-bg">
+        <section id="quality" className="section quality-section">
           <div className="content-wrapper">
             <h2 className="headline">Unmatched Quality, Proven by Science</h2>
             <p className="section-description">Our diamonds undergo rigorous testing to ensure they meet the highest standards. See the evidence of our flawless quality below.</p>
