@@ -1,8 +1,19 @@
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;700&family=Mulish:wght@400;600&family=Arsenal:wght@400;700&display=swap');
+/* Оптимизированные шрифты для бренда */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
 
 :root {
-  font-family: 'Urbanist', 'Arial', sans-serif;
+  /* Брендовые цвета согласно брендбуку */
+  --primary-dark-blue: #241e46;  /* CMYK: 100 100 40 40 | RGB: 36, 30, 70 | Pantone: 275 C */
+  --primary-teal: #00837f;       /* CMYK: 85 25 50 10 | RGB: 0, 131, 127 | Pantone: 7717 C */
+  --dark-gray: #545352;          /* CMYK: 60 50 50 45 | RGB: 84, 83, 82 | Pantone: P 179-13 C */
+  
+  /* Supporting Colors */
+  --white: #ffffff;
+  --light-bg: #f7f7f9;
+  --light-gray: #e0e0e0;
+  --black: #000000;
+  
+  font-family: 'Raleway', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -25,70 +36,62 @@ body {
   min-height: 100vh;
   margin: 0;
   overflow-x: hidden;
-  /* Удаляем кастомный курсор */
-  /* cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Ccircle cx='11' cy='11' r='9' fill='none' stroke='%23006B71' stroke-width='1'/%3E%3Ccircle cx='11' cy='11' r='1' fill='%23006B71'/%3E%3C/svg%3E") 11 11, auto; */
+  color: var(--dark-gray);
+  background-color: var(--white);
 }
 
 h1, h2 {
-  font-family: 'Urbanist', sans-serif;
-  font-weight: 700;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
   line-height: 1.2;
+  color: var(--primary-dark-blue);
 }
 
 h3, h4 {
-  font-family: 'Arsenal', sans-serif;
-  font-weight: 700;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  color: var(--primary-dark-blue);
 }
 
 p, li, a, button, input, textarea {
-  font-family: 'Mulish', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 .headline {
-  font-family: 'Urbanist', sans-serif;
-  font-weight: 700;
-  color: #006B71;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  color: var(--primary-dark-blue);
+  position: relative;
 }
 
-.details {
-  font-family: 'Arsenal', sans-serif;
-  font-weight: 700;
-  color: #006B71;
+/* Плавное появление кристаллических решеток */
+.crystal-patterns-ready .crystal-lattice-bg {
+  animation: fadeIn 0.5s ease-out forwards;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  cursor: pointer;
-  transition: border-color 0.25s;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-button:hover {
-  border-color: #006B71;
-}
-
+/* Улучшенная доступность и фокус */
+a:focus,
 button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--primary-teal);
+  outline-offset: 2px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #1D2636;
-    background-color: #ffffff;
-  }
-  button {
-    background-color: #f9f9f9;
+/* Оптимизация для пользователей с предпочтением уменьшенного движения */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
-
-/* Удаляем кастомный курсор */
-/* 
-a, button, [role="button"], input, select, textarea, label, .nav-item, .logo {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Ccircle cx='11' cy='11' r='9' fill='none' stroke='%23006B71' stroke-width='1'/%3E%3Ccircle cx='11' cy='11' r='4' fill='%23006B71' fill-opacity='0.3'/%3E%3C/svg%3E") 11 11, pointer;
-}
-*/

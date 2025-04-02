@@ -17,7 +17,7 @@
 
 .contact-form-container {
   background-color: var(--white);
-  border-radius: 18px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(0, 131, 127, 0.15);
@@ -33,14 +33,14 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 5px;
+  height: 4px;
   background: linear-gradient(90deg, var(--primary-dark-blue), var(--primary-teal));
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .contact-form-container:hover {
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
-  transform: translateY(-10px);
+  transform: translateY(-8px);
   border-color: rgba(0, 131, 127, 0.3);
 }
 
@@ -106,9 +106,9 @@
   width: 100%;
   padding: 1rem 1.2rem;
   border: 1px solid rgba(0, 131, 127, 0.2);
-  border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.8);
-  font-family: var(--font-secondary);
+  border-radius: var(--radius-sm);
+  background-color: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-primary);
   font-size: 1rem;
   color: var(--dark-gray);
   transition: all 0.3s ease;
@@ -139,19 +139,19 @@
 }
 
 .submit-button {
-  background: linear-gradient(135deg, var(--primary-teal), rgba(0, 131, 127, 0.8));
+  background: linear-gradient(135deg, var(--primary-teal), rgba(0, 131, 127, 0.9));
   color: white;
   border: none;
   padding: 1rem 2rem;
   font-size: 1rem;
   font-weight: 500;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all 0.4s ease;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   width: 100%;
-  box-shadow: 0 5px 15px rgba(0, 131, 127, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 131, 127, 0.2);
   position: relative;
   overflow: hidden;
 }
@@ -175,7 +175,7 @@
 .submit-button:hover {
   background: linear-gradient(135deg, var(--primary-dark-blue), var(--primary-teal));
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 131, 127, 0.4);
+  box-shadow: 0 8px 25px rgba(0, 131, 127, 0.3);
 }
 
 .submit-button:hover::before {
@@ -185,7 +185,7 @@
 
 .submit-button:active {
   transform: translateY(0);
-  box-shadow: 0 3px 10px rgba(0, 131, 127, 0.3);
+  box-shadow: 0 3px 10px rgba(0, 131, 127, 0.2);
 }
 
 /* Декоративные элементы */
@@ -259,7 +259,7 @@
   animation: formFocus 1.5s ease-in-out;
 }
 
-/* Адаптив для мобильных устройств */
+/* Медиа-запрос для оптимизации на мобильных устройствах */
 @media (max-width: 768px) {
   .contact-container {
     flex-direction: column;

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './styles.css'
 import ContactForm from './ContactForm'
+import CrystalLatticePreloader from './CrystalLatticePreloader'
 
 // Main App component
 function App() {
@@ -48,6 +49,9 @@ function App() {
 
   return (
     <div className="app">
+      {/* Предзагрузчик кристаллических решеток */}
+      <CrystalLatticePreloader />
+      
       <header className={scrolled ? 'scrolled' : ''}>
         <button className="menu-button" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           <span className="menu-icon"></span>
@@ -89,7 +93,7 @@ function App() {
           </div>
           <div className="content-wrapper">
             <div className="hero-content">
-              <img src="/images/Logo.png" alt="FTDiam Logo" className="hero-logo" />
+              <img src="/images/Logo_white.png" alt="FTDiam Logo" className="hero-logo" />
               <div className="hero-text">
                 <h2 className="hero-subheadline">Single Crystal Diamond Substrates</h2>
                 <p className="hero-description">Advanced HPHT technology for cutting-edge applications</p>
@@ -128,7 +132,7 @@ function App() {
         </section>
         <div className="section-divider" />
 
-        <section id="about" className="section about-section">
+        <section id="about" className="section about-section crystal-lattice-bg">
           <div className="content-wrapper">
             <h2 className="headline">Who We Are</h2>
             <p className="section-description">FTDiam is a US-based deep-tech start-up in advanced materials sector. We are revolutionizing the industry with the unique Advanced HPHT (AHPHT) technology. Since our inception, we've been dedicated to producing the highest-quality single-crystal diamond substrates for advanced applications.</p>
@@ -205,12 +209,16 @@ function App() {
             <h2 className="headline">Founders</h2>
             <div className="founders">
               <div className="founder">
-                <img src="/images/Dmitri.jpg" alt="Dmitry Semchenko" className="founder-photo" />
+                <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '1.5rem' }}>
+                  <img src="/images/Dmitri.jpg" alt="Dmitry Semchenko" className="founder-photo" />
+                </div>
                 <h3>Dmitry Semchenko, CTO</h3>
                 <p>Serial entrepreneur with over 8 years in high-quality diamond material. Holder of AHPHT technology.</p>
               </div>
               <div className="founder">
-                <img src="/images/Dan.jpg" alt="Daniil Kurganov" className="founder-photo" />
+                <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '1.5rem' }}>
+                  <img src="/images/Dan.jpg" alt="Daniil Kurganov" className="founder-photo" />
+                </div>
                 <h3>Daniil Kurganov, CEO</h3>
                 <p>15+ years in management, technical sales and business development worldwide.</p>
               </div>
@@ -219,63 +227,28 @@ function App() {
         </section>
         <div className="section-divider" />
 
-        <section id="technology" className="section technology-section">
+        <section id="technology" className="section technology-section crystal-lattice-bg">
           <div className="content-wrapper">
             <h2 className="headline">Advanced HPHT Technology</h2>
             <h3>The Future of Diamond Synthesis</h3>
-            <p className="section-description">Our proprietary Advanced HPHT (AHPHT) technology sets us apart by delivering Type IIa single-crystal diamonds with unmatched quality. With precise control over synthesis parameters, we achieve exceptional results in every dimension.</p>
+            <p className="section-description">
+              • An added technological setup that allows for controlling and adjusting parameters to achieve the optimal synthesis conditions.<br/>
+              • Specialized software for monitoring synthesis parameters.<br/>
+              • Unique know-how in the composition and preparation methods of the synthesis cell for crystal growth.
+            </p>
             
             <div className="features">
               <div className="feature">
-                <h4>Unique setup and software for optimal synthesis conditions</h4>
+                <h4>Ultra low dislocations number (10¹ cm⁻²)</h4>
               </div>
               <div className="feature">
-                <h4>Capable of producing large crystals ({'>'}100 carats)</h4>
+                <h4>Record-size high-quality substrates</h4>
               </div>
               <div className="feature">
-                <h4>Precise control over crystal growth parameters</h4>
+                <h4>Very low strain and zero-Nitrogen level</h4>
               </div>
             </div>
 
-            <h3>Technology Comparison</h3>
-            <div className="comparison-chart">
-              <div className="tech-column">
-                <div className="chart-bar" style={{ height: '200px' }}>
-                  <div className="chart-bar-fill" style={{ height: '60%' }}></div>
-                  <div className="chart-value">60%</div>
-                  <div className="chart-label">CVD</div>
-                </div>
-                <div className="tech-description">
-                  <h4>CVD</h4>
-                  <p>Scalable, but with high dislocations (10⁴-10¹⁰)</p>
-                </div>
-              </div>
-
-              <div className="tech-column">
-                <div className="chart-bar" style={{ height: '200px' }}>
-                  <div className="chart-bar-fill" style={{ height: '75%' }}></div>
-                  <div className="chart-value">75%</div>
-                  <div className="chart-label">HPHT</div>
-                </div>
-                <div className="tech-description">
-                  <h4>HPHT</h4>
-                  <p>Better quality, limited to smaller sizes (up to 9x9 mm)</p>
-                </div>
-              </div>
-
-              <div className="tech-column">
-                <div className="chart-bar" style={{ height: '200px' }}>
-                  <div className="chart-bar-fill" style={{ height: '95%' }}></div>
-                  <div className="chart-value">95%</div>
-                  <div className="chart-label">AHPHT</div>
-                </div>
-                <div className="tech-description">
-                  <h4>AHPHT</h4>
-                  <p>Revolutionary combination of ultra-low dislocations, large sizes, and premium quality</p>
-                </div>
-              </div>
-            </div>
-            
             <div className="tech-highlights">
               <div className="highlight-card">
                 <div className="highlight-icon">💎</div>
@@ -306,7 +279,7 @@ function App() {
         </section>
         <div className="section-divider" />
 
-        <section id="products" className="section products-section">
+        <section id="products" className="section products-section crystal-lattice-bg">
           <div className="content-wrapper">
             <h2 className="headline">High-Quality Diamond Products</h2>
             <h3>Tailored Solutions for Cutting-Edge Applications</h3>
@@ -349,7 +322,7 @@ function App() {
         </section>
         <div className="section-divider" />
 
-        <section id="quality" className="section quality-section">
+        <section id="quality" className="section quality-section crystal-lattice-bg">
           <div className="content-wrapper">
             <h2 className="headline">Unmatched Quality, Proven by Science</h2>
             <p className="section-description">Our diamonds undergo rigorous testing to ensure they meet the highest standards. See the evidence of our flawless quality below.</p>
@@ -453,7 +426,7 @@ function App() {
           </div>
         </div>
       </footer>
-      </div>
+    </div>
   )
 }
 
