@@ -53,12 +53,11 @@ function App() {
         </div>
         <nav>
           <ul>
-            <li className={activeSection === 'home' ? 'active' : ''} onClick={() => scrollToSection('home')}>Home</li>
-            <li className={activeSection === 'about' ? 'active' : ''} onClick={() => scrollToSection('about')}>About Us</li>
+            <li className={activeSection === 'about' ? 'active' : ''} onClick={() => scrollToSection('about')}>About</li>
             <li className={activeSection === 'technology' ? 'active' : ''} onClick={() => scrollToSection('technology')}>Technology</li>
             <li className={activeSection === 'products' ? 'active' : ''} onClick={() => scrollToSection('products')}>Products</li>
             <li className={activeSection === 'quality' ? 'active' : ''} onClick={() => scrollToSection('quality')}>Quality Analysis</li>
-            <li className={activeSection === 'market' ? 'active' : ''} onClick={() => scrollToSection('market')}>Market Opportunity</li>
+            <li className={activeSection === 'market' ? 'active' : ''} onClick={() => scrollToSection('market')}>Market</li>
             <li className={activeSection === 'contacts' ? 'active' : ''} onClick={() => scrollToSection('contacts')}>Contacts</li>
           </ul>
         </nav>
@@ -66,10 +65,13 @@ function App() {
 
       <main>
         <section id="home" className="section home-section">
+          <video className="background-video" autoPlay muted loop playsInline>
+            <source src="/video/section1.mp4" type="video/mp4" />
+          </video>
           <div className="content-wrapper">
-            <h2 className="headline">Flawless Technical Diamonds</h2>
-            <h3>Single Crystal Diamond Substrates with Unmatched Characteristics</h3>
-            <p className="section-description">Advanced HPHT technology delivering superior diamond substrates for cutting-edge applications.</p>
+            <h1 className="hero-headline">Flawless Technical Diamonds</h1>
+            <h2 className="hero-subheadline">Single Crystal Diamond Substrates with Unmatched Characteristics</h2>
+            <p className="hero-description">Advanced HPHT technology delivering superior diamond substrates for cutting-edge applications.</p>
             
             <div className="tech-specs-container">
               <div className="tech-specs">
@@ -98,24 +100,52 @@ function App() {
             
             <div className="infographic">
               <div className="stat-card">
+                <div className="stat-icon">🌟</div>
                 <div className="stat-number">8+</div>
                 <div className="stat-label">Years of Experience</div>
+                <div className="stat-detail">Pioneering diamond synthesis since 2015</div>
               </div>
               <div className="stat-card">
+                <div className="stat-icon">🌍</div>
                 <div className="stat-number">15+</div>
                 <div className="stat-label">Global Partners</div>
+                <div className="stat-detail">Trusted by leading research institutions</div>
               </div>
               <div className="stat-card">
+                <div className="stat-icon">✨</div>
                 <div className="stat-number">100%</div>
                 <div className="stat-label">Quality Control</div>
+                <div className="stat-detail">Every crystal rigorously tested</div>
+              </div>
+              <div className="stat-card">
+                <div className="stat-icon">📈</div>
+                <div className="stat-number">2x</div>
+                <div className="stat-label">Annual Growth</div>
+                <div className="stat-detail">Rapid market expansion</div>
               </div>
             </div>
 
             <div className="applications">
-              <span className="app-icon">Quantum technology</span>
-              <span className="app-icon">Semiconductors</span>
-              <span className="app-icon">Power electronics</span>
-              <span className="app-icon">Advanced optics</span>
+              <div className="app-card">
+                <span className="app-icon">⚛️</span>
+                <span className="app-title">Quantum Technology</span>
+                <span className="app-detail">NV centers and quantum computing</span>
+              </div>
+              <div className="app-card">
+                <span className="app-icon">💻</span>
+                <span className="app-title">Semiconductors</span>
+                <span className="app-detail">Next-gen power electronics</span>
+              </div>
+              <div className="app-card">
+                <span className="app-icon">⚡</span>
+                <span className="app-title">Power Electronics</span>
+                <span className="app-detail">High-efficiency devices</span>
+              </div>
+              <div className="app-card">
+                <span className="app-icon">🔭</span>
+                <span className="app-title">Advanced Optics</span>
+                <span className="app-detail">Precision optical components</span>
+              </div>
             </div>
 
             <h2 className="headline">Mission</h2>
@@ -172,35 +202,67 @@ function App() {
 
             <h3>Technology Comparison</h3>
             <div className="comparison-chart">
-              <div className="chart-bar" style={{ height: '200px' }}>
-                <div className="chart-bar-fill" style={{ height: '60%' }}></div>
-                <div className="chart-value">60%</div>
-                <div className="chart-label">CVD</div>
+              <div className="tech-column">
+                <div className="chart-bar" style={{ height: '200px' }}>
+                  <div className="chart-bar-fill" style={{ height: '60%' }}></div>
+                  <div className="chart-value">60%</div>
+                  <div className="chart-label">CVD</div>
+                </div>
+                <div className="tech-description">
+                  <h4>CVD</h4>
+                  <p>Scalable, but with high dislocations (10⁴-10¹⁰)</p>
+                </div>
               </div>
-              <div className="chart-bar" style={{ height: '200px' }}>
-                <div className="chart-bar-fill" style={{ height: '75%' }}></div>
-                <div className="chart-value">75%</div>
-                <div className="chart-label">HPHT</div>
+
+              <div className="tech-column">
+                <div className="chart-bar" style={{ height: '200px' }}>
+                  <div className="chart-bar-fill" style={{ height: '75%' }}></div>
+                  <div className="chart-value">75%</div>
+                  <div className="chart-label">HPHT</div>
+                </div>
+                <div className="tech-description">
+                  <h4>HPHT</h4>
+                  <p>Better quality, limited to smaller sizes (up to 9x9 mm)</p>
+                </div>
               </div>
-              <div className="chart-bar" style={{ height: '200px' }}>
-                <div className="chart-bar-fill" style={{ height: '95%' }}></div>
-                <div className="chart-value">95%</div>
-                <div className="chart-label">AHPHT</div>
+
+              <div className="tech-column">
+                <div className="chart-bar" style={{ height: '200px' }}>
+                  <div className="chart-bar-fill" style={{ height: '95%' }}></div>
+                  <div className="chart-value">95%</div>
+                  <div className="chart-label">AHPHT</div>
+                </div>
+                <div className="tech-description">
+                  <h4>AHPHT</h4>
+                  <p>Revolutionary combination of ultra-low dislocations, large sizes, and premium quality</p>
+                </div>
               </div>
             </div>
             
-            <div className="comparison-details">
-              <div className="comparison-item">
-                <h4>CVD</h4>
-                <p>Scalable, but with high dislocations (10⁴-10¹⁰)</p>
+            <div className="tech-highlights">
+              <div className="highlight-card">
+                <div className="highlight-icon">💎</div>
+                <h4>Crystal Perfection</h4>
+                <p>Dislocation density as low as 10¹ cm⁻²</p>
+                <div className="highlight-meter">
+                  <div className="meter-fill" style={{ width: '95%' }}></div>
+                </div>
               </div>
-              <div className="comparison-item">
-                <h4>HPHT</h4>
-                <p>Better quality, limited to smaller sizes (up to 9x9 mm)</p>
+              <div className="highlight-card">
+                <div className="highlight-icon">⚡</div>
+                <h4>Energy Efficiency</h4>
+                <p>30% less energy consumption</p>
+                <div className="highlight-meter">
+                  <div className="meter-fill" style={{ width: '85%' }}></div>
+                </div>
               </div>
-              <div className="comparison-item">
-                <h4>AHPHT</h4>
-                <p>Revolutionary combination of ultra-low dislocations, large sizes, and premium quality</p>
+              <div className="highlight-card">
+                <div className="highlight-icon">📏</div>
+                <h4>Size Control</h4>
+                <p>Precise dimensional control</p>
+                <div className="highlight-meter">
+                  <div className="meter-fill" style={{ width: '90%' }}></div>
+                </div>
               </div>
             </div>
           </div>
@@ -311,6 +373,47 @@ function App() {
                 <div className="logo-placeholder">Harvard</div>
                 <div className="logo-placeholder">ESRF</div>
                 <div className="logo-placeholder">Quantum Transistors</div>
+              </div>
+            </div>
+
+            <div className="market-trends">
+              <div className="trend-card">
+                <div className="trend-header">
+                  <h4>Market Size 2025</h4>
+                  <div className="trend-value">$72B</div>
+                </div>
+                <div className="trend-chart">
+                  <div className="chart-line">
+                    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+                      <path d="M0,80 L33,60 L66,30 L100,10" />
+                    </svg>
+                  </div>
+                  <div className="chart-point" style={{ left: '0%', bottom: '20%' }} data-year="2020">2020</div>
+                  <div className="chart-point" style={{ left: '33%', bottom: '40%' }} data-year="2025">2025</div>
+                  <div className="chart-point" style={{ left: '66%', bottom: '70%' }} data-year="2030">2030</div>
+                  <div className="chart-point" style={{ left: '100%', bottom: '90%' }} data-year="2035">2035</div>
+                </div>
+              </div>
+              
+              <div className="market-segments">
+                <div className="segment-card">
+                  <div className="segment-icon">⚛️</div>
+                  <h4>Quantum Computing</h4>
+                  <div className="segment-share">45%</div>
+                  <p>Largest market share by 2025</p>
+                </div>
+                <div className="segment-card">
+                  <div className="segment-icon">💻</div>
+                  <h4>Electronics</h4>
+                  <div className="segment-share">30%</div>
+                  <p>Fastest growing segment</p>
+                </div>
+                <div className="segment-card">
+                  <div className="segment-icon">🔬</div>
+                  <h4>Research</h4>
+                  <div className="segment-share">25%</div>
+                  <p>Stable growth segment</p>
+                </div>
               </div>
             </div>
           </div>
