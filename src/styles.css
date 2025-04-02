@@ -1403,4 +1403,163 @@ h3 {
   text-align: center;
   font-weight: 300;
   line-height: 1.6;
+}
+
+/* Geometric background patterns */
+.about-section,
+.intro-section,
+.technology-section,
+.products-section,
+.quality-section,
+.market-section,
+.contacts-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 3D Cube pattern */
+.about-section::before {
+  content: '';
+  position: absolute;
+  top: 5%;
+  right: 10%;
+  width: 70%;
+  height: 70%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 800 800'%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.15)' stroke-width='2' d='M300,200 L500,200 L500,400 L300,400 Z'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.15)' stroke-width='2' d='M400,100 L600,100 L600,300 L400,300 Z'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.15)' stroke-width='2' d='M300,200 L400,100'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.15)' stroke-width='2' d='M500,200 L600,100'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.15)' stroke-width='2' d='M500,400 L600,300'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.15)' stroke-width='2' d='M300,400 L400,300'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 1;
+  opacity: 1;
+  pointer-events: none;
+  transform: rotate(5deg);
+}
+
+/* Octagon pattern */
+.technology-section::before {
+  content: '';
+  position: absolute;
+  top: 5%;
+  right: 10%;
+  width: 70%;
+  height: 70%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 800 800'%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.15)' stroke-width='2' d='M300,150 L200,250 L200,450 L300,550 L500,550 L600,450 L600,250 L500,150 Z'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M350,200 L250,300 L250,400 L350,500 L450,500 L550,400 L550,300 L450,200 Z'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M300,150 L350,200'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M500,150 L450,200'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M600,250 L550,300'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M600,450 L550,400'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M500,550 L450,500'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M300,550 L350,500'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M200,450 L250,400'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M200,250 L250,300'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 1;
+  opacity: 1;
+  pointer-events: none;
+  transform: rotate(-3deg);
+}
+
+/* 3D Tetrahedron pattern */
+.quality-section::before,
+.market-section::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: 0%;
+  width: 50%;
+  height: 80%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.15)' stroke-width='2' d='M300,100 L100,400 L500,400 Z'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.15)' stroke-width='2' d='M300,100 L300,400'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M300,100 L400,400'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M300,100 L200,400'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 1;
+  opacity: 1;
+  pointer-events: none;
+  transform: rotate(-3deg);
+}
+
+/* Dodecahedron (12-sided polyhedron) pattern */
+.intro-section::before,
+.contacts-section::before {
+  content: '';
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  width: 50%;
+  height: 60%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.12)' stroke-width='2' d='M250,120 L350,120 L450,200 L450,300 L350,380 L250,380 L150,300 L150,200 Z'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M250,120 L150,200'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M350,120 L450,200'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M250,380 L150,300'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M350,380 L450,300'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M300,170 L300,330'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M200,250 L400,250'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 1;
+  opacity: 1;
+  pointer-events: none;
+  transform: rotate(5deg);
+}
+
+/* 3D Icosahedron (20-sided polyhedron) pattern */
+.products-section::before {
+  content: '';
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  width: 45%;
+  height: 70%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.12)' stroke-width='2' d='M300,100 L400,150 L500,200 L450,300 L400,400 L300,450 L200,400 L150,300 L200,200 Z'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M300,100 L200,200'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M300,100 L400,150'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M300,100 L500,200'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M300,450 L200,200'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M300,450 L500,200'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M300,270 L350,220'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 1;
+  opacity: 1;
+  pointer-events: none;
+  transform: rotate(0deg);
+}
+
+/* 3D Pyramid pattern */
+.about-section::after,
+.products-section::after {
+  content: '';
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  width: 35%;
+  height: 35%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.15)' stroke-width='2' d='M200,50 L100,300 L300,300 Z'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.12)' stroke-width='1.5' d='M200,50 L200,300'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M150,175 L250,175'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 1;
+  opacity: 1;
+  pointer-events: none;
+  transform: rotate(10deg);
+}
+
+/* 3D Octahedron (8-sided polyhedron) pattern */
+.technology-section::after,
+.market-section::after {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
+  width: 35%;
+  height: 35%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500' viewBox='0 0 500 500'%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.15)' stroke-width='2' d='M250,100 L100,250 L250,400 L400,250 Z'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.12)' stroke-width='1.5' d='M250,100 L400,250'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.12)' stroke-width='1.5' d='M250,100 L100,250'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.12)' stroke-width='1.5' d='M250,400 L400,250'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.12)' stroke-width='1.5' d='M250,400 L100,250'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.12)' stroke-width='1.5' d='M250,100 L250,400'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.12)' stroke-width='1.5' d='M100,250 L400,250'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 1;
+  opacity: 1;
+  pointer-events: none;
+  transform: rotate(-8deg);
+}
+
+/* Truncated octahedron (14-sided polyhedron) pattern */
+.quality-section::after,
+.contacts-section::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  right: 5%;
+  width: 30%;
+  height: 30%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.12)' stroke-width='2' d='M200,150 L150,250 L200,350 L300,350 L350,250 L300,150 Z'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M200,150 L300,150'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M150,250 L350,250'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M200,350 L300,350'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M200,150 L150,250 L200,350'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M300,150 L350,250 L300,350'/%3E%3Cpath fill='none' stroke='rgba(0, 131, 127, 0.1)' stroke-width='1.5' d='M250,200 L250,300'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 1;
+  opacity: 1;
+  pointer-events: none;
+  transform: rotate(5deg);
+}
+
+/* Make sure content is above background patterns */
+.section .content-wrapper {
+  position: relative;
+  z-index: 2;
 } 
