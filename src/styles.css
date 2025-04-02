@@ -426,7 +426,6 @@ nav li:hover, nav li.active {
   backdrop-filter: blur(10px);
   border-radius: 4px;
   padding: 2rem 4rem;
-  border-left: 3px solid var(--primary-teal);
   max-width: 800px;
   animation: slideUp 1s ease-out;
 }
