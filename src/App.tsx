@@ -6,6 +6,7 @@ import ContactForm from './ContactForm'
 function App() {
   const [activeSection, setActiveSection] = useState('home')
   const [scrolled, setScrolled] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const scrollToSection = (section: string) => {
     setActiveSection(section)
@@ -48,10 +49,10 @@ function App() {
   return (
     <div className="app">
       <header className={scrolled ? 'scrolled' : ''}>
-        <div className="logo-container">
-          <img src="/images/Logo.png" alt="FTDiam Logo" className="logo-img" />
-        </div>
-        <nav>
+        <button className="menu-button" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <span className="menu-icon"></span>
+        </button>
+        <nav className={isMenuOpen ? 'open' : ''}>
           <ul>
             <li className={activeSection === 'about' ? 'active' : ''} onClick={() => scrollToSection('about')}>About</li>
             <li className={activeSection === 'technology' ? 'active' : ''} onClick={() => scrollToSection('technology')}>Technology</li>
@@ -65,28 +66,53 @@ function App() {
 
       <main>
         <section id="home" className="section home-section">
-          <video className="background-video" autoPlay muted loop playsInline>
-            <source src="/video/section1.mp4" type="video/mp4" />
-          </video>
+          <div className="video-container">
+            <video className="background-video" autoPlay muted playsInline onEnded={(e) => {
+              const nextVideo = e.currentTarget.parentElement?.querySelector('.background-video:nth-child(2)') as HTMLVideoElement;
+              if (nextVideo) {
+                nextVideo.play();
+                e.currentTarget.style.opacity = '0';
+                nextVideo.style.opacity = '0.4';
+              }
+            }}>
+              <source src="/video/section1.mp4" type="video/mp4" />
+            </video>
+            <video className="background-video" muted playsInline style={{ opacity: 0 }} onEnded={(e) => {
+              const firstVideo = e.currentTarget.parentElement?.querySelector('.background-video:first-child') as HTMLVideoElement;
+              if (firstVideo) {
+                firstVideo.play();
+                e.currentTarget.style.opacity = '0';
+                firstVideo.style.opacity = '0.4';
+              }
+            }}>
+              <source src="/video/section2.mp4" type="video/mp4" />
+            </video>
+          </div>
           <div className="content-wrapper">
-            <h1 className="hero-headline">Flawless Technical Diamonds</h1>
-            <h2 className="hero-subheadline">Single Crystal Diamond Substrates with Unmatched Characteristics</h2>
-            <p className="hero-description">Advanced HPHT technology delivering superior diamond substrates for cutting-edge applications.</p>
-            
-            <div className="tech-specs-container">
-              <div className="tech-specs">
-                <div className="spec-item">
-                  <span className="spec-label">Purity</span>
-                  <span className="spec-value">≤5 ppb N, ≤20 ppb B</span>
-                </div>
-                <div className="spec-item">
-                  <span className="spec-label">Dislocations</span>
-                  <span className="spec-value">10¹ cm⁻²</span>
-                </div>
-                <div className="spec-item">
-                  <span className="spec-label">Size</span>
-                  <span className="spec-value">up to 15x15 mm</span>
-                </div>
+            <div className="hero-content">
+              <img src="/images/Logo.png" alt="FTDiam Logo" className="hero-logo" />
+              <div className="hero-text">
+                <h2 className="hero-subheadline">Single Crystal Diamond Substrates</h2>
+                <p className="hero-description">Advanced HPHT technology for cutting-edge applications</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="intro" className="section intro-section" style={{ background: 'var(--white)' }}>
+          <div className="content-wrapper">
+            <div className="specs-grid">
+              <div className="spec-block">
+                <h3>Purity</h3>
+                <p>≤5 ppb N, ≤20 ppb B</p>
+              </div>
+              <div className="spec-block">
+                <h3>Dislocations</h3>
+                <p>10¹ cm⁻²</p>
+              </div>
+              <div className="spec-block">
+                <h3>Size</h3>
+                <p>up to 15x15 mm</p>
               </div>
             </div>
           </div>
