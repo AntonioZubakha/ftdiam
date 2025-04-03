@@ -67,14 +67,6 @@ const Header = ({ activeSection, scrollToSection }: HeaderProps) => {
 
   return (
     <header className={scrolled ? 'scrolled' : ''} onClick={() => handleSectionClick('home', window.event as any)}>
-      <button 
-        className={`menu-button ${isMenuOpen ? 'active' : ''}`} 
-        onClick={toggleMenu}
-        aria-label="Toggle menu"
-      >
-        <span className="menu-icon"></span>
-      </button>
-
       <nav className={isMenuOpen ? 'open' : ''} onClick={(e) => e.stopPropagation()}>
         <div className="close-button" onClick={closeMenu}>
           <span className="close-icon">×</span>
@@ -112,6 +104,14 @@ const Header = ({ activeSection, scrollToSection }: HeaderProps) => {
           </li>
         </ul>
       </nav>
+      
+      <button 
+        className={`menu-button ${isMenuOpen ? 'active' : ''}`} 
+        onClick={toggleMenu}
+        aria-label="Toggle menu"
+      >
+        <span className="menu-icon"></span>
+      </button>
 
       <div 
         className={`menu-overlay ${isMenuOpen ? 'active' : ''}`} 

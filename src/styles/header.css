@@ -93,6 +93,11 @@ header.scrolled {
   background-color: #241e46;
 }
 
+/* При открытом меню скрываем бургер-кнопку на ВСЕХ размерах экрана */
+nav.open + .menu-button {
+  display: none !important;
+}
+
 /* Стили для навигации */
 nav {
   position: fixed;
