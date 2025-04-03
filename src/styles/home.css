@@ -10,7 +10,7 @@
   overflow: hidden;
 }
 
-.content-wrapper {
+.home-section .content-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
