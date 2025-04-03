@@ -1,0 +1,420 @@
+/* Секция Technology */
+
+.technology-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.technology-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(36, 30, 70, 0.9), rgba(0, 131, 127, 0.9));
+  mix-blend-mode: multiply;
+  z-index: 0;
+}
+
+.technology-tabs {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  gap: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.tab-button {
+  padding: 0.8rem 1.8rem;
+  background: rgba(36, 30, 70, 0.7);
+  border: 2px solid rgba(0, 131, 127, 0.5);
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  color: white;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.tab-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #241e46, #00837f);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tab-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.3);
+  border-color: #00837f;
+}
+
+.tab-button:hover::before {
+  opacity: 1;
+}
+
+.tab-button.active {
+  background: transparent;
+  color: white;
+  border-color: #00837f;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 131, 127, 0.5);
+}
+
+.tab-button.active::before {
+  opacity: 1;
+}
+
+.tab-content {
+  margin-top: 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Процесс-контент */
+.process-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.process-overview {
+  background: rgba(36, 30, 70, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 2.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 131, 127, 0.3);
+  margin-bottom: 2.5rem;
+  color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transform: translateZ(0);
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.8rem;
+}
+
+.step {
+  display: flex;
+  gap: 1.5rem;
+  background: rgba(36, 30, 70, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 12px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(0, 131, 127, 0.3);
+  align-items: flex-start;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.step::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #241e46, #00837f);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.step:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+  border-color: rgba(0, 131, 127, 0.7);
+}
+
+.step:hover::after {
+  transform: scaleX(1);
+}
+
+.step-number {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #241e46, #00837f);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.step-details h3 {
+  margin: 0 0 0.8rem 0;
+  font-size: 1.3rem;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  position: relative;
+  display: inline-block;
+}
+
+.step-details h3::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: #00837f;
+  transition: width 0.3s ease;
+}
+
+.step:hover .step-details h3::after {
+  width: 60px;
+}
+
+.step-details p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  line-height: 1.6;
+}
+
+/* Преимущества */
+.advantage-content {
+  padding: 1.5rem 0;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.advantages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 2rem;
+}
+
+.advantage-card {
+  background: rgba(36, 30, 70, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 2.5rem;
+  border-radius: 12px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-align: center;
+  border: 1px solid rgba(0, 131, 127, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.advantage-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 131, 127, 0.3), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+}
+
+.advantage-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+  border-color: rgba(0, 131, 127, 0.7);
+}
+
+.advantage-card:hover::before {
+  opacity: 1;
+}
+
+.advantage-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: #00837f;
+  text-shadow: 0 0 15px rgba(0, 131, 127, 0.7);
+  transition: transform 0.5s ease, color 0.3s ease;
+}
+
+.advantage-card:hover .advantage-icon {
+  transform: rotate(10deg) scale(1.1);
+  color: #00e6de;
+}
+
+.advantage-card h3 {
+  font-size: 1.4rem;
+  margin: 0.8rem 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  position: relative;
+  display: inline-block;
+}
+
+.advantage-card h3::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: #00837f;
+  transition: width 0.3s ease;
+}
+
+.advantage-card:hover h3::after {
+  width: 80px;
+}
+
+.advantage-card p {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1rem;
+  margin: 1rem 0 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  line-height: 1.6;
+}
+
+/* Сравнение */
+.comparison-content {
+  background: rgba(36, 30, 70, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 2.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 131, 127, 0.3);
+  overflow-x: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.5s ease-out;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 600px;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 1.2rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 131, 127, 0.2);
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.comparison-table th {
+  font-weight: 600;
+  background: rgba(36, 30, 70, 0.5);
+  position: relative;
+}
+
+.comparison-table th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.comparison-table th:last-child {
+  border-top-right-radius: 8px;
+}
+
+.comparison-table tr:last-child td {
+  border-bottom: none;
+}
+
+.comparison-table tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+
+.comparison-table tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
+}
+
+.comparison-table tr:nth-child(even) {
+  background: rgba(0, 131, 127, 0.1);
+}
+
+.comparison-table tr:hover {
+  background: rgba(0, 131, 127, 0.2);
+}
+
+.comparison-highlight {
+  color: #00e6de;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(0, 230, 222, 0.5);
+  position: relative;
+}
+
+.comparison-highlight::after {
+  content: '★';
+  margin-left: 5px;
+  font-size: 0.8em;
+  vertical-align: super;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Медиа-запросы */
+@media (max-width: 768px) {
+  .technology-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .tab-button {
+    padding: 0.7rem 1.4rem;
+    font-size: 0.9rem;
+  }
+  
+  .process-steps {
+    grid-template-columns: 1fr;
+  }
+  
+  .comparison-content {
+    padding: 1.5rem;
+  }
+  
+  .step {
+    padding: 1.5rem;
+  }
+  
+  .advantage-card {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .advantages-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .step {
+    padding: 1.3rem;
+    gap: 1rem;
+  }
+  
+  .step-number {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+  
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.9rem;
+    font-size: 0.9rem;
+  }
+} 

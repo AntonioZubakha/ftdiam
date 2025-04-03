@@ -1,0 +1,212 @@
+/* Стили для секции контактов */
+.contacts-section {
+  background: linear-gradient(160deg, #f8f9fa, #f0f2f5);
+  padding: 100px 0;
+}
+
+.contacts-section .headline {
+  margin-bottom: 2rem;
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 40px auto 0;
+}
+
+/* Информационные карточки */
+.contact-info {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 25px;
+}
+
+.contact-method {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 25px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.contact-method:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 131, 127, 0.2);
+}
+
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #241e46 0%, #00837f 100%);
+  color: white;
+}
+
+.contact-method h3 {
+  font-size: 1.2rem;
+  color: var(--primary-dark-blue);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.contact-method p {
+  color: #545352;
+  margin: 0;
+}
+
+.contact-method a {
+  color: #00837f;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-method a:hover {
+  color: #241e46;
+  text-decoration: underline;
+}
+
+/* Форма обратной связи */
+.contact-form-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  padding: 35px;
+}
+
+.contact-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #241e46;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #00837f;
+  box-shadow: 0 0 0 3px rgba(0, 131, 127, 0.1);
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #241e46 0%, #00837f 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 14px 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: auto;
+  justify-self: start;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.form-status {
+  grid-column: span 2;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-status.success {
+  background-color: rgba(0, 212, 160, 0.1);
+  color: #00d4a0;
+  border: 1px solid rgba(0, 212, 160, 0.3);
+}
+
+.form-status.error {
+  background-color: rgba(231, 76, 60, 0.1);
+  color: #e74c3c;
+  border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+/* Медиа-запросы */
+@media (max-width: 992px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-info {
+    margin-bottom: 40px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .contacts-section {
+    padding: 70px 0;
+  }
+  
+  .contact-info {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .contact-form {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-group.full-width {
+    grid-column: span 1;
+  }
+  
+  .submit-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-info {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-method {
+    padding: 20px 15px;
+  }
+  
+  .contact-form-container {
+    padding: 25px 20px;
+  }
+} 

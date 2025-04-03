@@ -1,0 +1,115 @@
+:root {
+  /* Брендовые цвета согласно брендбуку */
+  --primary-dark-blue: #241e46;  /* CMYK: 100 100 40 40 | RGB: 36, 30, 70 | Pantone: 275 C */
+  --primary-teal: #00837f;       /* CMYK: 85 25 50 10 | RGB: 0, 131, 127 | Pantone: 7717 C */
+  --dark-gray: #545352;          /* CMYK: 60 50 50 45 | RGB: 84, 83, 82 | Pantone: P 179-13 C */
+  
+  /* Цветовая схема */
+  --primary-color: var(--primary-dark-blue);
+  --secondary-color: #009fe3;
+  --accent-color: var(--primary-teal);
+  --light-color: #ffffff;
+  --dark-color: #0a1223;
+  --gray-color: #f0f4f8;
+  --light-gray: #e0e0e0;
+  --error-color: #e74c3c;
+  --success-color: #00d4a0;
+  --white: #ffffff;
+  --black: #000000;
+  --text-color: #333333;
+  
+  /* Glass UI */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  
+  /* Шрифты */
+  --primary-font: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --heading-font: 'Montserrat', sans-serif;
+  
+  /* Размеры шрифтов */
+  --text-xs: 0.75rem;   /* 12px */
+  --text-sm: 0.875rem;  /* 14px */
+  --text-base: 1rem;    /* 16px */
+  --text-lg: 1.125rem;  /* 18px */
+  --text-xl: 1.25rem;   /* 20px */
+  --text-2xl: 1.5rem;   /* 24px */
+  --text-3xl: 1.875rem; /* 30px */
+  --text-4xl: 2.25rem;  /* 36px */
+  --text-5xl: 3rem;     /* 48px */
+  
+  /* Spacing */
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+  --spacing-32: 8rem;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  
+  /* Вес шрифтов */
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Тени */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Размеры и отступы */
+  --container-max-width: 1200px;
+  --header-height: 80px;
+  --sidebar-width: 280px;
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-round: 50%;
+  --border-radius-sm: 0.125rem;
+  --border-radius: 0.25rem;
+  --border-radius-md: 0.375rem;
+  --border-radius-lg: 0.5rem;
+  --border-radius-xl: 1rem;
+  --border-width: 1px;
+  
+  /* Временные параметры для анимаций */
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  --transition-normal: 0.3s ease;
+  
+  /* Z-index */
+  --z-back: -1;
+  --z-normal: 1;
+  --z-menu: 90;
+  --z-fixed: 100;
+  --z-modal: 1000;
+  --z-popover: 2000;
+  --z-tooltip: 3000;
+  
+  /* Animations */
+  --float-animation: float 5s infinite ease-in-out;
+  --pulse-animation: pulse 3s infinite ease-in-out;
+} 

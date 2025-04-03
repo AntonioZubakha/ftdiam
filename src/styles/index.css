@@ -1,0 +1,26 @@
+/* Главный файл стилей */
+
+/* Импортируем все модули */
+@import './variables.css';
+@import './animations.css';
+@import './base.css';
+@import './layout.css';
+@import './header.css';
+@import './home.css';
+@import './cards.css';
+@import './about.css';
+@import './technology.css';
+@import './products.css';
+@import './quality.css';
+@import './footer.css';
+@import './contacts.css'; 
+
+/* Правила для устранения разрывов между секциями */
+section {
+  margin: 0;
+  padding: 0;
+}
+
+section:not(:first-child) {
+  margin-top: -2px !important;
+} 
