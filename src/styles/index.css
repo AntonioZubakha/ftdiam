@@ -7,10 +7,12 @@
 @import './layout.css';
 @import './header.css';
 @import './home.css';
+@import './intro.css';
 @import './cards.css';
 @import './about.css';
 @import './technology.css';
 @import './products.css';
+@import './video.css';
 @import './quality.css';
 @import './footer.css';
 @import './contacts.css'; 

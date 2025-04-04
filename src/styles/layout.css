@@ -187,7 +187,6 @@ main {
     rgba(36, 30, 70, 1),
     rgba(0, 131, 127, 1),
     rgba(36, 30, 70, 1),
-    rgba(36, 30, 70, 0.3)
   );
   z-index: 10;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
@@ -211,12 +210,11 @@ main {
   height: 100vh;
   padding: 0;
   position: relative;
-  background-color: #1a1333;
   margin-bottom: 0;
 }
 
 .about-section {
-  background: linear-gradient(rgba(36, 30, 70, 0.85), rgba(36, 30, 70, 0.7)), url('/images/444.png');
+  background: linear-gradient(rgba(36, 30, 70, 0.85), rgba(36, 30, 70, 0.7)), url('/images/background.svg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -256,7 +254,7 @@ main {
 }
 
 .products-section {
-  background: linear-gradient(rgba(84, 83, 82, 0.8), rgba(84, 83, 82, 0.6)), url('/images/513.jpg');
+  background: linear-gradient(rgba(84, 83, 82, 0.8), rgba(84, 83, 82, 0.6)), url('/images/background.svg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -276,7 +274,7 @@ main {
 }
 
 .quality-section {
-  background: linear-gradient(135deg, rgba(36, 30, 70, 0.8), rgba(0, 131, 127, 0.7)), url('/images/333.png');
+  background: linear-gradient(135deg, rgba(36, 30, 70, 0.8), rgba(0, 131, 127, 0.7)), url('/images/background.svg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

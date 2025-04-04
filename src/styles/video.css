@@ -1,0 +1,103 @@
+/* Video Section Styles */
+
+.video-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 500px;
+  max-height: 800px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.video-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.video-wrapper {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.left-video {
+  border-right: 3px solid var(--primary-teal);
+  border-right-color: rgba(0, 131, 127, 0.5);
+}
+
+.right-video {
+  border-left: 3px solid var(--primary-teal);
+  border-left-color: rgba(0, 131, 127, 0.5);
+}
+
+.fullscreen-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Gradient overlay for better text visibility if needed */
+.video-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0) 30%,
+    rgba(0, 0, 0, 0) 70%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  pointer-events: none;
+}
+
+/* Media queries for responsive layout */
+@media (max-width: 992px) {
+  .video-section {
+    height: 70vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .video-container {
+    flex-direction: column;
+  }
+  
+  .video-section {
+    height: auto;
+    max-height: none;
+  }
+  
+  .video-wrapper {
+    height: 50vh;
+    min-height: 300px;
+  }
+  
+  .left-video {
+    border-right: none;
+    border-bottom: 3px solid var(--primary-teal);
+    border-bottom-color: rgba(0, 131, 127, 0.5);
+  }
+  
+  .right-video {
+    border-left: none;
+    border-top: 3px solid var(--primary-teal);
+    border-top-color: rgba(0, 131, 127, 0.5);
+  }
+}
+
+/* Video animation for loading state */
+.video-loading {
+  animation: pulse 2s infinite;
+  background-color: rgba(0, 0, 0, 0.1);
+} 

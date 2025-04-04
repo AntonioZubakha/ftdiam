@@ -209,7 +209,7 @@
 
 /* Стили для секции About */
 .about-section {
-  background: linear-gradient(rgba(36, 30, 70, 0.85), rgba(36, 30, 70, 0.7)), url('/images/444.png');
+  background: linear-gradient(rgba(36, 30, 70, 0.85), rgba(36, 30, 70, 0.7)), url('/images/background.svg');
   background-size: cover;
   background-position: center;
   position: relative;

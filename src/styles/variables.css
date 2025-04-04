@@ -6,8 +6,8 @@
   
   /* Цветовая схема */
   --primary-color: var(--primary-dark-blue);
-  --secondary-color: #009fe3;
-  --accent-color: var(--primary-teal);
+  --secondary-color: var(--primary-teal);
+  --accent-color: #009fe3;
   --light-color: #ffffff;
   --dark-color: #0a1223;
   --gray-color: #f0f4f8;
@@ -23,8 +23,8 @@
   --glass-border: rgba(255, 255, 255, 0.2);
   
   /* Шрифты */
-  --primary-font: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  --heading-font: 'Montserrat', sans-serif;
+  --primary-font: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --heading-font: 'Raleway', sans-serif;
   
   /* Размеры шрифтов */
   --text-xs: 0.75rem;   /* 12px */
@@ -58,12 +58,7 @@
   --spacing-lg: 2rem;
   --spacing-xl: 3rem;
   
-  /* Вес шрифтов */
-  --font-light: 300;
-  --font-normal: 400;
-  --font-medium: 500;
-  --font-semibold: 600;
-  --font-bold: 700;
+  /* Вес шрифтов - унифицировано */
   --font-weight-light: 300;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
@@ -82,23 +77,17 @@
   --header-height: 80px;
   --sidebar-width: 280px;
   
-  /* Border Radius */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  /* Border Radius - унифицировано */
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 1rem;
   --radius-round: 50%;
-  --border-radius-sm: 0.125rem;
-  --border-radius: 0.25rem;
-  --border-radius-md: 0.375rem;
-  --border-radius-lg: 0.5rem;
-  --border-radius-xl: 1rem;
-  --border-width: 1px;
   
-  /* Временные параметры для анимаций */
+  /* Временные параметры для анимаций - унифицировано */
   --transition-fast: 0.2s ease;
-  --transition-medium: 0.3s ease;
-  --transition-slow: 0.5s ease;
   --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
   
   /* Z-index */
   --z-back: -1;
@@ -112,4 +101,6 @@
   /* Animations */
   --float-animation: float 5s infinite ease-in-out;
   --pulse-animation: pulse 3s infinite ease-in-out;
+  --fade-animation: fadeIn 0.5s ease-in-out;
+  --slide-animation: slideIn 0.5s ease-in-out;
 } 

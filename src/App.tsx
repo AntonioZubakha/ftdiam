@@ -6,6 +6,7 @@ import IntroSection from './components/sections/IntroSection'
 import AboutSection from './components/sections/AboutSection'
 import TechnologySection from './components/sections/TechnologySection'
 import ProductsSection from './components/sections/ProductsSection'
+import VideoSection from './components/sections/VideoSection'
 import QualitySection from './components/sections/QualitySection'
 import ContactsSection from './components/sections/ContactsSection'
 import './styles/index.css'
@@ -20,6 +21,7 @@ function App() {
     about: null,
     technology: null,
     products: null,
+    video: null,
     quality: null,
     contacts: null,
   })
@@ -83,6 +85,7 @@ function App() {
       about: document.getElementById('about'),
       technology: document.getElementById('technology'),
       products: document.getElementById('products'),
+      video: document.getElementById('video-section'),
       quality: document.getElementById('quality'),
       contacts: document.getElementById('contacts'),
     };
@@ -98,6 +101,7 @@ function App() {
         <AboutSection />
         <TechnologySection />
         <ProductsSection />
+        <VideoSection />
         <QualitySection />
         <ContactsSection />
       </main>
