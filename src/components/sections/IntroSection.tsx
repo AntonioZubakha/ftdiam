@@ -1,9 +1,9 @@
-import backgroundImage from '../../assets/images/111.png';
+import React from 'react';
 
 const IntroSection = () => {
   // Определяем стиль с фоновым изображением
   const backgroundStyle = {
-    backgroundImage: `url(${backgroundImage})`,
+    backgroundImage: `url(/images/intro-bg.svg)`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     position: 'absolute' as const,
@@ -11,7 +11,7 @@ const IntroSection = () => {
     left: 0,
     right: 0,
     bottom: 0,
-    opacity: 0.25,
+    opacity: 1,
     zIndex: 0
   };
 
@@ -19,34 +19,34 @@ const IntroSection = () => {
     <section id="intro" className="section intro-section">
       <div style={backgroundStyle}></div>
       <div className="content-wrapper">
-        <div className="intro-content">
-          <h2 className="intro-headline animate-fade delay-1">Premium Diamond Specifications</h2>
-          <p className="intro-tagline animate-fade delay-2">Setting the industry standard with exceptional quality</p>
+        <h2 className="headline">Synthetic Diamonds Redefined</h2>
+        <div className="intro-text">
+          <p>FTDiam utilizes a revolutionary Advanced HPHT technology to produce ultra-high-quality single-crystal diamond substrates with unprecedented purity and structural perfection. Our substrates are distinguished by exceptionally low defect concentrations, making them ideal for the most demanding quantum and semiconductor applications.</p>
         </div>
-        <div className="specs-grid">
-          <div className="spec-block animate-fade-up delay-1">
-            <div className="spec-icon">
-              <img src="/images/CrystalLatticeIcon.png" alt="Dislocations" />
+
+        <div className="key-features">
+          <div className="feature">
+            <div className="feature-icon">
+              <i className="fas fa-gem"></i>
             </div>
-            <h3>Dislocations</h3>
-            <p className="spec-value">10<sup>1</sup> cm<sup>-2</sup></p>
-            <div className="spec-detail">Industry-leading purity</div>
+            <h3>Superior Quality</h3>
+            <p>Nitrogen content as low as 5 ppb and dislocation density of 10¹ cm⁻²</p>
           </div>
-          <div className="spec-block animate-fade-up delay-2">
-            <div className="spec-icon">
-              <img src="/images/DiamondSizeIcon.png" alt="Size" />
+          
+          <div className="feature">
+            <div className="feature-icon">
+              <i className="fas fa-expand-arrows-alt"></i>
             </div>
-            <h3>Size</h3>
-            <p className="spec-value">up to 15×15 mm</p>
-            <div className="spec-detail">Perfect for all applications</div>
+            <h3>Customizable Sizes</h3>
+            <p>Available in sizes from 3×3 mm to 15×15 mm with varying thicknesses</p>
           </div>
-          <div className="spec-block animate-fade-up delay-3">
-            <div className="spec-icon">
-              <img src="/images/DiamondPurityIcon.png" alt="Purity" />
+          
+          <div className="feature">
+            <div className="feature-icon">
+              <i className="fas fa-atom"></i>
             </div>
-            <h3>Purity</h3>
-            <p className="spec-value">≤5 ppb N</p>
-            <div className="spec-detail">Ultra-low nitrogen content</div>
+            <h3>Quantum-Ready</h3>
+            <p>Ideal for NV centers, quantum sensing, and quantum computing applications</p>
           </div>
         </div>
       </div>
