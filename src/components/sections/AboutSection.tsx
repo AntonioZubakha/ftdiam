@@ -1,11 +1,28 @@
-const AboutSection = () => {
+import React from 'react';
+
+const AboutUsSection = () => {
+  // Определяем стиль с фоновым изображением
+  const backgroundStyle = {
+    backgroundImage: `url(/images/about-elegant-bg.svg)`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    position: 'absolute' as const,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    opacity: 1,
+    zIndex: 0
+  };
+
   return (
     <section id="about" className="section about-section">
+      <div style={backgroundStyle}></div>
       <div className="content-wrapper">
         <h2 className="headline">About Us</h2>
         <p className="section-description">FTDiam is a US-based deep-tech start-up in advanced materials sector. We are revolutionizing the industry with the unique Advanced HPHT (AHPHT) technology. Since our inception, we've been dedicated to producing the highest-quality single-crystal diamond substrates for advanced applications.</p>
         
-        <div className="infographic">
+        <div className="stats-grid">
           <div className="stat-card">
             <div className="stat-icon">
               <i className="fas fa-star"></i>
@@ -40,7 +57,8 @@ const AboutSection = () => {
           </div>
         </div>
 
-        <div className="infographic">
+        <h3 className="section-subtitle">Application Areas</h3>
+        <div className="applications-grid">
           <div className="stat-card">
             <div className="stat-icon">
               <i className="fas fa-atom"></i>
@@ -74,11 +92,33 @@ const AboutSection = () => {
             <div className="stat-detail">Precision optical components</div>
           </div>
         </div>
+      </div>
+    </section>
+  );
+};
 
-        <h2 className="headline">Mission</h2>
-        <p className="section-description">Our mission is to provide flawless technical diamonds that drive innovation across industries, from next-generation electronics to life-changing quantum solutions.</p>
-        
+const HistorySection = () => {
+  // Определяем стиль с фоновым изображением
+  const backgroundStyle = {
+    backgroundImage: `url(/images/history-bg.svg)`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    position: 'absolute' as const,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    opacity: 1,
+    zIndex: 0
+  };
+
+  return (
+    <section id="history" className="section history-section">
+      <div style={backgroundStyle}></div>
+      <div className="content-wrapper">
         <h2 className="headline">History</h2>
+        <p className="section-description">Since our founding, FTDiam has been on a mission to transform the diamond industry with breakthrough technology and exceptional quality.</p>
+        
         <div className="timeline">
           <div className="timeline-item">
             <div className="timeline-year">2022</div>
@@ -93,27 +133,9 @@ const AboutSection = () => {
             <div className="timeline-content">Planned establishment of own AHPHT production facility.</div>
           </div>
         </div>
-
-        <h2 className="headline">Founders</h2>
-        <div className="founders">
-          <div className="founder">
-            <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '1.5rem' }}>
-              <img src="/images/Dmitri.jpg" alt="Dmitry Semchenko" className="founder-photo" />
-            </div>
-            <h3>Dmitry Semchenko, CTO</h3>
-            <p>Serial entrepreneur with over 8 years in high-quality diamond material. Holder of AHPHT technology.</p>
-          </div>
-          <div className="founder">
-            <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '1.5rem' }}>
-              <img src="/images/Dan.jpg" alt="Daniil Kurganov" className="founder-photo" />
-            </div>
-            <h3>Daniil Kurganov, CEO</h3>
-            <p>15+ years in management, technical sales and business development worldwide.</p>
-          </div>
-        </div>
       </div>
     </section>
   );
 };
 
-export default AboutSection; 
+export { AboutUsSection, HistorySection }; 

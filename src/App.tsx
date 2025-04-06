@@ -1,24 +1,48 @@
-import { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import HomeSection from './components/sections/HomeSection'
 import IntroSection from './components/sections/IntroSection'
-import AboutSection from './components/sections/AboutSection'
+import { AboutUsSection, HistorySection } from './components/sections/AboutSection'
+import FoundersSection from './components/sections/FoundersSection'
 import TechnologySection from './components/sections/TechnologySection'
 import ProductsSection from './components/sections/ProductsSection'
 import VideoSection from './components/sections/VideoSection'
+import MissionSection from './components/sections/MissionSection'
 import QualitySection from './components/sections/QualitySection'
 import ContactsSection from './components/sections/ContactsSection'
 import './styles/index.css'
+import './styles/base.css'
+import './styles/layout.css'
+import './styles/header.css'
+import './styles/responsive.css'
+import './styles/intro.css'
+import './styles/technology.css'
+import './styles/products.css'
+import './styles/quality.css'
+import './styles/video.css'
+import './styles/about.css'
+import './styles/mission.css'
+import './styles/founders.css'
+import './styles/contacts.css'
+import './styles/footer.css'
+import './styles/home.css'
+import './styles/cards.css'
+import './styles/backgrounds.css'
 
 // Main App component
 function App() {
   const [activeSection, setActiveSection] = useState('home')
   const [scrolled, setScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const sectionsRef = useRef<{ [key: string]: HTMLElement | null }>({
     home: null,
+    mission: null,
+    intro: null,
     about: null,
+    history: null,
+    founders: null,
     technology: null,
     products: null,
     video: null,
@@ -82,7 +106,11 @@ function App() {
   useEffect(() => {
     sectionsRef.current = {
       home: document.getElementById('home'),
+      mission: document.getElementById('mission'),
+      intro: document.getElementById('intro'),
       about: document.getElementById('about'),
+      history: document.getElementById('history'),
+      founders: document.getElementById('founders'),
       technology: document.getElementById('technology'),
       products: document.getElementById('products'),
       video: document.getElementById('video-section'),
@@ -91,22 +119,45 @@ function App() {
     };
   }, [])
 
+  useEffect(() => {
+    // Имитация загрузки для плавной анимации
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="app">
-      <Header activeSection={activeSection} scrollToSection={scrollToSection} />
+    <div className={`app ${isLoading ? 'app-loading' : 'app-loaded'}`}>
+      {isLoading ? (
+        <div className="loader">
+          <div className="loader-content">
+            <img src="/images/Logo.png" alt="FTDiam Logo" className="loader-logo" />
+            <div className="loader-spinner"></div>
+          </div>
+        </div>
+      ) : (
+        <>
+          <Header activeSection={activeSection} scrollToSection={scrollToSection} />
 
-      <main className="no-gap-container">
-        <HomeSection />
-        <IntroSection />
-        <AboutSection />
-        <TechnologySection />
-        <ProductsSection />
-        <VideoSection />
-        <QualitySection />
-        <ContactsSection />
-      </main>
+          <main className="no-gap-container">
+            <HomeSection />
+            <MissionSection />
+            <IntroSection />
+            <AboutUsSection />
+            <HistorySection />
+            <FoundersSection />
+            <TechnologySection />
+            <ProductsSection />
+            <VideoSection />
+            <QualitySection />
+            <ContactsSection />
+          </main>
 
-      <Footer />
+          <Footer />
+        </>
+      )}
     </div>
   )
 }
