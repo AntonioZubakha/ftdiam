@@ -1,0 +1,136 @@
+/* Общие стили для фонов секций */
+
+/* Базовые стили для фонов */
+.section > div:first-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0; /* Фон должен быть под контентом */
+  pointer-events: none; /* Чтобы фон не блокировал взаимодействие */
+}
+
+/* Особое исключение для домашней секции, т.к. видео должно быть видно */
+.home-section > div:first-child {
+  z-index: 0;
+}
+
+/* Явно задаем порядок наложения секций */
+.home-section {
+  z-index: 3;
+  height: 100vh;
+  padding: 0;
+  position: relative;
+  margin-bottom: 0;
+}
+
+.home-section .content-wrapper {
+  padding-top: 0;
+  height: 100%;
+  justify-content: center;
+}
+
+.mission-section {
+  z-index: 4;
+  background-color: #fff;
+}
+
+.intro-section {
+  z-index: 5;
+}
+
+.about-section {
+  z-index: 6;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.about-section .section-description {
+  color: #545352;
+}
+
+.technology-section {
+  z-index: 7;
+  background-color: #fff;
+  color: #333;
+}
+
+.technology-section .section-description {
+  color: #545352;
+}
+
+.products-section {
+  z-index: 8;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.products-section .section-description {
+  color: #545352;
+}
+
+.video-section {
+  z-index: 9;
+}
+
+.quality-section {
+  z-index: 10;
+  background-color: #fff;
+  color: #333;
+}
+
+.quality-section .section-description {
+  color: #545352;
+}
+
+.contacts-section {
+  z-index: 11;
+  background-color: #f8f9fa;
+}
+
+/* Фоны секций с отступами */
+.about-section .content-wrapper,
+.technology-section .content-wrapper,
+.products-section .content-wrapper,
+.quality-section .content-wrapper {
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .about-section .content-wrapper,
+  .technology-section .content-wrapper,
+  .products-section .content-wrapper,
+  .quality-section .content-wrapper {
+    padding: 1.5rem;
+  }
+  
+  .about-section,
+  .technology-section,
+  .products-section,
+  .quality-section {
+    background-attachment: scroll;
+  }
+}
+
+/* Белый фон */
+.white-background {
+  background-color: #ffffff;
+}
+
+/* Светло-голубой фон */
+.light-blue-background {
+  background-color: #f8f9fa;
+}
+
+/* Фоны с узорами */
+.pattern-background {
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+}
+
+/* Фон с градиентом */
+.gradient-background {
+  background: linear-gradient(135deg, #f8f9fa, #e9f7fe);
+} 

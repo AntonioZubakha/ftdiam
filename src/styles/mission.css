@@ -1,0 +1,170 @@
+/* Стили для секции с миссией */
+.mission-section {
+  background-color: #fff;
+  padding: 100px 0;
+  overflow: hidden;
+  position: relative;
+  min-height: 60vh;
+  margin-bottom: 0;
+}
+
+.mission-section .headline {
+  color: var(--primary-dark-blue);
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.mission-section .headline::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--primary-teal), transparent);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.mission-section .headline:hover::after {
+  width: 120px;
+}
+
+.mission-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  gap: 20px;
+}
+
+.mission-logo-container {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.mission-logo {
+  max-width: 100%;
+  height: auto;
+  max-height: 220px;
+  object-fit: contain;
+  margin-bottom: 0;
+  margin-top: 35px;
+}
+
+.mission-tagline {
+  color: var(--primary-dark-blue);
+  font-size: 1.3rem;
+  margin-top: 15px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.mission-content {
+  width: 60%;
+  padding: 0 20px;
+  position: relative;
+  text-align: left;
+  margin-left: 50px;
+}
+
+/* Стили для большой кавычки */
+.quote-mark {
+  position: absolute;
+  top: -15px;
+  left: 0;
+  font-size: 60px;
+  font-family: Georgia, serif;
+  color: #00837f; /* Фирменный цвет */
+  opacity: 0.9;
+  line-height: 0.5;
+  pointer-events: none;
+}
+
+.mission-content .section-description {
+  color: var(--dark-gray);
+  font-size: 1.3rem;
+  line-height: 1.8;
+  font-weight: 400;
+  text-align: left;
+  max-width: 100%;
+  margin-left: 0;
+  padding-top: 15px;
+  position: relative;
+  margin-bottom: 0;
+  padding-left: 25px;
+}
+
+/* Адаптивный дизайн */
+@media (max-width: 992px) {
+  .mission-container {
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+  }
+  
+  .mission-logo-container {
+    width: 100%;
+    max-width: 280px;
+    margin-bottom: 10px;
+    justify-content: center;
+  }
+  
+  .mission-content {
+    width: 100%;
+    padding: 0 20px;
+    text-align: center;
+    margin-left: 0;
+  }
+  
+  .quote-mark {
+    left: 50%;
+    transform: translateX(-130%);
+    font-size: 65px;
+    top: -15px;
+  }
+  
+  .mission-content .section-description {
+    padding-top: 20px;
+    padding-left: 0;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .mission-section {
+    padding: 70px 0;
+  }
+  
+  .mission-section .headline {
+    font-size: 2rem;
+  }
+  
+  .mission-logo-container {
+    max-width: 250px;
+  }
+  
+  .mission-content .section-description {
+    font-size: 1.1rem;
+    padding-top: 20px;
+  }
+  
+  .quote-mark {
+    font-size: 60px;
+    top: -10px;
+  }
+} 

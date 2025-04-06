@@ -1,0 +1,93 @@
+/* Адаптивные стили для всего приложения */
+
+/* Большие экраны (десктопы) */
+@media (min-width: 1200px) {
+  .content-wrapper {
+    max-width: 1140px;
+  }
+}
+
+/* Средние экраны (ноутбуки) */
+@media (max-width: 1199px) and (min-width: 992px) {
+  .content-wrapper {
+    max-width: 960px;
+  }
+  
+  .headline {
+    font-size: 2.3rem;
+  }
+}
+
+/* Планшеты */
+@media (max-width: 991px) and (min-width: 768px) {
+  .content-wrapper {
+    max-width: 720px;
+  }
+  
+  .headline {
+    font-size: 2.1rem;
+  }
+  
+  .section-description {
+    font-size: 1rem;
+  }
+  
+  .section {
+    padding: 70px 0;
+  }
+}
+
+/* Мобильные устройства (ландшафтный режим) */
+@media (max-width: 767px) and (min-width: 576px) {
+  .content-wrapper {
+    max-width: 540px;
+  }
+  
+  .headline {
+    font-size: 2.0rem;
+  }
+  
+  .section-description {
+    font-size: 0.95rem;
+  }
+  
+  .section {
+    padding: 60px 0;
+  }
+  
+  .grid-2-cols,
+  .grid-3-cols,
+  .grid-4-cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Мобильные устройства (портретный режим) */
+@media (max-width: 575px) {
+  .content-wrapper {
+    padding: 0 1.5rem;
+  }
+  
+  .headline {
+    font-size: 1.8rem;
+  }
+  
+  .section-description {
+    font-size: 0.9rem;
+  }
+  
+  .section {
+    padding: 50px 0;
+  }
+}
+
+/* Специфические адаптивные стили для навигации */
+@media (max-width: 768px) {
+  .header nav {
+    padding: 0 1rem;
+  }
+  
+  .header .logo {
+    margin-left: 1rem;
+  }
+} 

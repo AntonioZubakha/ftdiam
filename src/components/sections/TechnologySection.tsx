@@ -1,30 +1,16 @@
 import React from 'react';
 
 const TechnologySection = () => {
-  // Определяем стиль с фоновым изображением
-  const backgroundStyle = {
-    backgroundImage: `url(/images/intro-background.svg)`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    position: 'absolute' as const,
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    opacity: 1,
-    zIndex: 0
-  };
-
   return (
     <section id="technology" className="section technology-section">
-      <div style={backgroundStyle}></div>
+      <div className="background"></div>
       <div className="content-wrapper">
-        <h2 className="headline">Advanced HPHT Technology</h2>
+        <h2 className="headline">Our Technology (Advanced HPHT)</h2>
         <p className="section-description">
-        An added technological setup that allows for controlling and adjusting parameters to achieve the optimal synthesis conditions.
-Specialized software for monitoring synthesis parameters.
-Unique know-how in the composition 
-and preparation methods of the synthesis cell for crystal growth.
+          An added technological setup that allows for controlling and adjusting parameters to achieve the optimal synthesis conditions.
+          Specialized software for monitoring synthesis parameters.
+          Unique know-how in the composition 
+          and preparation methods of the synthesis cell for crystal growth.
         </p>
         
         <div className="technology-content">

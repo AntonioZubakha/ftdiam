@@ -20,14 +20,15 @@
   z-index: 2;
 }
 
-.video-container {
+/* Уникальный класс видео-контейнера для домашней секции */
+.home-video-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  z-index: 0;
+  z-index: 1;
 }
 
 .background-video {
@@ -39,7 +40,7 @@
   object-fit: cover;
 }
 
-.video-container::after {
+.home-video-container::after {
   content: '';
   position: absolute;
   top: 0;

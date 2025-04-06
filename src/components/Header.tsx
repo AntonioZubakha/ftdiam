@@ -79,10 +79,28 @@ const Header = ({ activeSection, scrollToSection }: HeaderProps) => {
             <span>About Us</span>
           </li>
           <li 
+            className={activeSection === 'history' ? 'active' : ''}
+            onClick={(e) => handleSectionClick('history', e)}
+          >
+            <span>History</span>
+          </li>
+          <li 
+            className={activeSection === 'founders' ? 'active' : ''}
+            onClick={(e) => handleSectionClick('founders', e)}
+          >
+            <span>Founders</span>
+          </li>
+          <li 
             className={activeSection === 'technology' ? 'active' : ''}
             onClick={(e) => handleSectionClick('technology', e)}
           >
             <span>Our Technology</span>
+          </li>
+          <li 
+            className={activeSection === 'mission' ? 'active' : ''}
+            onClick={(e) => handleSectionClick('mission', e)}
+          >
+            <span>Our Mission</span>
           </li>
           <li 
             className={activeSection === 'products' ? 'active' : ''}

@@ -40,8 +40,23 @@ const VideoSection: React.FC = () => {
     };
   }, []);
 
+  // Фоновый стиль для совместимости с другими секциями
+  const backgroundStyle = {
+    position: 'absolute' as const,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 0
+  };
+
   return (
     <section id="video-section" className="section video-section">
+      <div style={backgroundStyle}></div>
+      <div className="content-wrapper">
+        <h2 className="headline">Diamond in Action</h2>
+        <p className="section-description">Experience the brilliance and beauty of our diamond manufacturing process</p>
+      </div>
       <div className="video-container">
         <div className="video-wrapper left-video animate-fade-left delay-1">
           <video

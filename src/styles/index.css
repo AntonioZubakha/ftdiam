@@ -13,9 +13,12 @@
 @import './technology.css';
 @import './products.css';
 @import './video.css';
+@import './mission.css';
 @import './quality.css';
 @import './footer.css';
-@import './contacts.css'; 
+@import './contacts.css';
+@import './backgrounds.css';
+@import './responsive.css';
 
 /* Правила для устранения разрывов между секциями */
 section {

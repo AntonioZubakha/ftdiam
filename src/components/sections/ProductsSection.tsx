@@ -2,6 +2,20 @@ import { useState } from 'react';
 
 const ProductsSection = () => {
   const [activeProduct, setActiveProduct] = useState(1);
+  
+  // Определяем стиль с фоновым изображением
+  const backgroundStyle = {
+    backgroundImage: `url(/images/background-products.svg)`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    position: 'absolute' as const,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    opacity: 1,
+    zIndex: 0
+  };
 
   const products = [
     {
@@ -64,6 +78,7 @@ const ProductsSection = () => {
 
   return (
     <section id="products" className="section products-section">
+      <div style={backgroundStyle}></div>
       <div className="content-wrapper">
         <h2 className="headline">Our Products</h2>
         <p className="section-description">FTDiam offers a range of high-quality single-crystal diamond substrates optimized for different applications.</p>
@@ -75,7 +90,8 @@ const ProductsSection = () => {
               className={`product-nav-btn ${activeProduct === product.id ? 'active' : ''}`}
               onClick={() => setActiveProduct(product.id)}
             >
-              {product.name}
+              <i className={`${product.icon} product-nav-icon`}></i>
+              <span className="product-nav-title">{product.name}</span>
               <span className="product-short-desc">{product.shortDesc}</span>
             </button>
           ))}
@@ -85,7 +101,8 @@ const ProductsSection = () => {
           product.id === activeProduct && (
             <div key={product.id} className="product-info">
               <div className="product-image">
-                <i className={product.icon}></i>
+                <div className="product-image-overlay"></div>
+                <img src="/images/555.png" alt={product.name} className="product-crystal-image" />
               </div>
               <div className="product-content">
                 <h3 className="product-name">{product.name}</h3>

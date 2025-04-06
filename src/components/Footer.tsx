@@ -29,8 +29,6 @@ const Footer = () => {
               <ul>
                 <li><a href="#products">Products Overview</a></li>
                 <li><a href="#quality">Quality Analysis</a></li>
-                <li><a href="#products">Specifications</a></li>
-                <li><a href="#products">Applications</a></li>
               </ul>
             </div>
             
@@ -39,8 +37,7 @@ const Footer = () => {
               <ul>
                 <li><a href="mailto:info@ftdiam.com">info@ftdiam.com</a></li>
                 <li><a href="tel:+16172752599">+1 617 275 2599</a></li>
-                <li><a href="#contacts">Contact Form</a></li>
-                <li><a href="#contacts">Request Information</a></li>
+                <li><a href="https://www.linkedin.com/company/ftdiam" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
               </ul>
             </div>
           </div>

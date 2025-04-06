@@ -1,0 +1,62 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1440" height="900" fill="#fafafa"/>
+  
+  <!-- Diamond lattice pattern -->
+  <g opacity="0.05">
+    <!-- Horizontal lines -->
+    <line x1="0" y1="150" x2="1440" y2="150" stroke="#241e46" stroke-width="1"/>
+    <line x1="0" y1="300" x2="1440" y2="300" stroke="#241e46" stroke-width="1"/>
+    <line x1="0" y1="450" x2="1440" y2="450" stroke="#241e46" stroke-width="1"/>
+    <line x1="0" y1="600" x2="1440" y2="600" stroke="#241e46" stroke-width="1"/>
+    <line x1="0" y1="750" x2="1440" y2="750" stroke="#241e46" stroke-width="1"/>
+    
+    <!-- Diagonal lines going ↗ -->
+    <line x1="0" y1="0" x2="1440" y2="900" stroke="#00837f" stroke-width="1"/>
+    <line x1="-240" y1="0" x2="1200" y2="900" stroke="#00837f" stroke-width="1"/>
+    <line x1="-480" y1="0" x2="960" y2="900" stroke="#00837f" stroke-width="1"/>
+    <line x1="-720" y1="0" x2="720" y2="900" stroke="#00837f" stroke-width="1"/>
+    <line x1="-960" y1="0" x2="480" y2="900" stroke="#00837f" stroke-width="1"/>
+    <line x1="-1200" y1="0" x2="240" y2="900" stroke="#00837f" stroke-width="1"/>
+    <line x1="-1440" y1="0" x2="0" y2="900" stroke="#00837f" stroke-width="1"/>
+    <line x1="240" y1="0" x2="1680" y2="900" stroke="#00837f" stroke-width="1"/>
+    <line x1="480" y1="0" x2="1920" y2="900" stroke="#00837f" stroke-width="1"/>
+    <line x1="720" y1="0" x2="2160" y2="900" stroke="#00837f" stroke-width="1"/>
+    <line x1="960" y1="0" x2="2400" y2="900" stroke="#00837f" stroke-width="1"/>
+    <line x1="1200" y1="0" x2="2640" y2="900" stroke="#00837f" stroke-width="1"/>
+    
+    <!-- Diagonal lines going ↖ -->
+    <line x1="0" y1="900" x2="1440" y2="0" stroke="#241e46" stroke-width="1"/>
+    <line x1="-240" y1="900" x2="1200" y2="0" stroke="#241e46" stroke-width="1"/>
+    <line x1="-480" y1="900" x2="960" y2="0" stroke="#241e46" stroke-width="1"/>
+    <line x1="-720" y1="900" x2="720" y2="0" stroke="#241e46" stroke-width="1"/>
+    <line x1="-960" y1="900" x2="480" y2="0" stroke="#241e46" stroke-width="1"/>
+    <line x1="-1200" y1="900" x2="240" y2="0" stroke="#241e46" stroke-width="1"/>
+    <line x1="-1440" y1="900" x2="0" y2="0" stroke="#241e46" stroke-width="1"/>
+    <line x1="240" y1="900" x2="1680" y2="0" stroke="#241e46" stroke-width="1"/>
+    <line x1="480" y1="900" x2="1920" y2="0" stroke="#241e46" stroke-width="1"/>
+    <line x1="720" y1="900" x2="2160" y2="0" stroke="#241e46" stroke-width="1"/>
+    <line x1="960" y1="900" x2="2400" y2="0" stroke="#241e46" stroke-width="1"/>
+    <line x1="1200" y1="900" x2="2640" y2="0" stroke="#241e46" stroke-width="1"/>
+  </g>
+  
+  <!-- Accent points at key intersections -->
+  <g opacity="0.1">
+    <circle cx="240" cy="150" r="3" fill="#00837f"/>
+    <circle cx="720" cy="150" r="3" fill="#00837f"/>
+    <circle cx="1200" cy="150" r="3" fill="#00837f"/>
+    
+    <circle cx="480" cy="300" r="3" fill="#00837f"/>
+    <circle cx="960" cy="300" r="3" fill="#00837f"/>
+    
+    <circle cx="240" cy="450" r="3" fill="#00837f"/>
+    <circle cx="720" cy="450" r="3" fill="#00837f"/>
+    <circle cx="1200" cy="450" r="3" fill="#00837f"/>
+    
+    <circle cx="480" cy="600" r="3" fill="#00837f"/>
+    <circle cx="960" cy="600" r="3" fill="#00837f"/>
+    
+    <circle cx="240" cy="750" r="3" fill="#00837f"/>
+    <circle cx="720" cy="750" r="3" fill="#00837f"/>
+    <circle cx="1200" cy="750" r="3" fill="#00837f"/>
+  </g>
+</svg> 

@@ -32,7 +32,8 @@ header.scrolled {
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  position: relative;
+  position: absolute;
+  right: 2rem;
   z-index: 1000;
   transition: background-color 0.2s;
 }
@@ -103,8 +104,10 @@ nav {
   position: fixed;
   top: 0;
   right: -100%;
+  left: auto;
   width: 300px;
   height: 100vh;
+  margin: 0;
   background: #241e46;
   background: linear-gradient(135deg, #241e46 0%, #00837f 100%);
   box-shadow: -5px 0 20px rgba(0, 0, 0, 0.4);
@@ -112,10 +115,12 @@ nav {
   transition: right 0.3s ease;
   z-index: 950;
   overflow-y: auto;
+  transform: none;
 }
 
 nav.open {
   right: 0;
+  transform: none;
 }
 
 /* Добавление лого в мобильное меню */
@@ -123,7 +128,8 @@ nav::before {
   content: '';
   position: absolute;
   top: 20px;
-  left: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100px;
   height: 40px;
   background-image: url('/images/Logo_white.png');
@@ -139,6 +145,7 @@ nav ul {
   display: flex;
   flex-direction: column;
   gap: 25px;
+  text-align: center;
 }
 
 nav ul li {
@@ -147,6 +154,7 @@ nav ul li {
   cursor: pointer;
   padding: 0.5rem 0;
   transition: transform 0.2s;
+  text-align: center;
 }
 
 nav ul li:hover {
@@ -158,6 +166,7 @@ nav ul li span {
   font-size: 20px;
   font-weight: 700;
   display: block;
+  text-align: center;
 }
 
 nav ul li.active span {
@@ -169,7 +178,8 @@ nav ul li::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 0;
   height: 2px;
   background-color: #ffffff;
@@ -177,11 +187,11 @@ nav ul li::after {
 }
 
 nav ul li.active::after {
-  width: 100%;
+  width: 80%;
 }
 
 nav ul li:hover::after {
-  width: 100%;
+  width: 80%;
 }
 
 /* Overlay для закрытия меню при клике вне его */
@@ -239,6 +249,10 @@ nav ul li:hover::after {
   header {
     padding: 0 1.5rem;
   }
+  
+  .menu-button {
+    right: 1.5rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -249,10 +263,11 @@ nav ul li:hover::after {
   .menu-button {
     width: 35px;
     height: 35px;
+    right: 0.75rem;
   }
   
   nav {
     width: 80%;
-    right: -80%;
+    right: -80%; /* Возвращаем исходное значение */
   }
 } 

@@ -1,6 +1,6 @@
 /* Стили для футера */
 footer {
-  background: linear-gradient(135deg, #241e46, #00837f);
+  background: #241e46;
   color: var(--white);
   padding: 2rem 2rem;
   position: relative;
@@ -90,7 +90,7 @@ footer {
   color: var(--white);
   text-decoration: none;
   opacity: 0.8;
-  transition: all var(--transition-fast);
+  transition: all 0.3s ease;
   font-size: 0.75rem;
 }
 

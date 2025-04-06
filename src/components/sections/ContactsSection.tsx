@@ -6,7 +6,6 @@ const ContactsSection = () => {
     email: '',
     company: '',
     phone: '',
-    subject: '',
     message: ''
   });
   
@@ -14,6 +13,20 @@ const ContactsSection = () => {
     success?: boolean;
     message?: string;
   } | null>(null);
+
+  // Определяем стиль с фоновым изображением
+  const backgroundStyle = {
+    backgroundImage: `url(/images/background-dots.svg)`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    position: 'absolute' as const,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    opacity: 1,
+    zIndex: 0
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -39,7 +52,7 @@ const ContactsSection = () => {
     setTimeout(() => {
       setFormStatus({
         success: true,
-        message: 'Thank you for your message. We will contact you shortly!'
+        message: 'Thank you! We will contact you shortly.'
       });
       
       // Reset form after successful submission
@@ -48,7 +61,6 @@ const ContactsSection = () => {
         email: '',
         company: '',
         phone: '',
-        subject: '',
         message: ''
       });
       
@@ -61,6 +73,7 @@ const ContactsSection = () => {
 
   return (
     <section id="contacts" className="section contacts-section">
+      <div style={backgroundStyle}></div>
       <div className="content-wrapper">
         <h2 className="headline">Contact Us</h2>
         <p className="section-description">Have questions about our products or want to request a quote? Our team is ready to assist you.</p>
@@ -90,6 +103,14 @@ const ContactsSection = () => {
               <h3>Address</h3>
               <p>220 Park Ave PMB 83131<br />New York, NY 10003, USA</p>
             </div>
+
+            <div className="contact-method">
+              <div className="contact-icon">
+                <i className="fab fa-linkedin"></i>
+              </div>
+              <h3>LinkedIn</h3>
+              <p><a href="https://www.linkedin.com/company/ftdiam" target="_blank" rel="noopener noreferrer">Follow us</a></p>
+            </div>
           </div>
           
           <div className="contact-form-container">
@@ -109,6 +130,7 @@ const ContactsSection = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required 
+                  placeholder="Your name"
                 />
               </div>
               
@@ -121,6 +143,7 @@ const ContactsSection = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required 
+                  placeholder="Your email"
                 />
               </div>
               
@@ -132,6 +155,7 @@ const ContactsSection = () => {
                   name="company" 
                   value={formData.company}
                   onChange={handleChange}
+                  placeholder="Your company"
                 />
               </div>
               
@@ -143,24 +167,8 @@ const ContactsSection = () => {
                   name="phone" 
                   value={formData.phone}
                   onChange={handleChange}
+                  placeholder="Your phone"
                 />
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="subject">Subject</label>
-                <select 
-                  id="subject" 
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                >
-                  <option value="">Please select</option>
-                  <option value="General Inquiry">General Inquiry</option>
-                  <option value="Product Information">Product Information</option>
-                  <option value="Quote Request">Quote Request</option>
-                  <option value="Partnership">Partnership Opportunity</option>
-                  <option value="Technical Support">Technical Support</option>
-                </select>
               </div>
               
               <div className="form-group full-width">
@@ -168,10 +176,11 @@ const ContactsSection = () => {
                 <textarea 
                   id="message" 
                   name="message" 
-                  rows={5}
+                  rows={4}
                   value={formData.message}
                   onChange={handleChange}
                   required
+                  placeholder="Your message"
                 ></textarea>
               </div>
               

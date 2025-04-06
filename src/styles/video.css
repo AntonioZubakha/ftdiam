@@ -3,17 +3,45 @@
 .video-section {
   position: relative;
   width: 100%;
-  height: 100vh;
-  min-height: 500px;
-  max-height: 800px;
+  height: auto;
+  min-height: 600px;
+  max-height: 900px;
   overflow: hidden;
   z-index: 1;
+  padding-top: 80px;
+}
+
+.video-section .content-wrapper {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.video-section .headline {
+  color: var(--primary-dark-blue);
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.video-section .section-description {
+  color: var(--dark-gray);
+  margin-bottom: 2rem;
+  max-width: 800px;
+  text-align: center;
 }
 
 .video-container {
   display: flex;
   width: 100%;
-  height: 100%;
+  height: 500px;
+  position: relative;
+  z-index: 1;
 }
 
 .video-wrapper {
@@ -25,13 +53,11 @@
 }
 
 .left-video {
-  border-right: 3px solid var(--primary-teal);
-  border-right-color: rgba(0, 131, 127, 0.5);
+  /* Удалена граница справа */
 }
 
 .right-video {
-  border-left: 3px solid var(--primary-teal);
-  border-left-color: rgba(0, 131, 127, 0.5);
+  /* Удалена граница слева */
 }
 
 .fullscreen-video {
@@ -64,35 +90,45 @@
 /* Media queries for responsive layout */
 @media (max-width: 992px) {
   .video-section {
-    height: 70vh;
+    height: auto;
+  }
+  
+  .video-container {
+    height: 400px;
   }
 }
 
 @media (max-width: 768px) {
   .video-container {
     flex-direction: column;
+    height: auto;
   }
   
   .video-section {
     height: auto;
     max-height: none;
+    padding-top: 60px;
   }
   
   .video-wrapper {
-    height: 50vh;
-    min-height: 300px;
+    height: 300px;
+    min-height: 250px;
   }
   
   .left-video {
     border-right: none;
-    border-bottom: 3px solid var(--primary-teal);
-    border-bottom-color: rgba(0, 131, 127, 0.5);
+    /* Удалена нижняя граница */
   }
   
   .right-video {
     border-left: none;
-    border-top: 3px solid var(--primary-teal);
-    border-top-color: rgba(0, 131, 127, 0.5);
+    /* Удалена верхняя граница */
+  }
+}
+
+@media (max-width: 576px) {
+  .video-wrapper {
+    height: 250px;
   }
 }
 

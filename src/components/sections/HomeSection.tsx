@@ -13,7 +13,7 @@ const HomeSection = () => {
 
   return (
     <section id="home" className="section home-section">
-      <div className="video-container">
+      <div className="home-video-container">
         <video 
           ref={videoRef}
           className="background-video" 
