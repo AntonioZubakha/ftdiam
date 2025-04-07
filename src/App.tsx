@@ -139,13 +139,13 @@ function App() {
           <main className="no-gap-container">
             <HomeSection />
             <MissionSection />
+            <FoundersSection />
+            <HistorySection />
             <IntroSection />
             <AboutUsSection />
             <TechnologySection />
             <ProductsSection />
             <QualitySection />
-            <FoundersSection />
-            <HistorySection />
             <ContactsSection />
           </main>
 
