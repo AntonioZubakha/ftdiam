@@ -3,14 +3,13 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import HomeSection from './components/sections/HomeSection'
 import IntroSection from './components/sections/IntroSection'
-import { AboutUsSection, HistorySection } from './components/sections/AboutSection'
-import FoundersSection from './components/sections/FoundersSection'
 import TechnologySection from './components/sections/TechnologySection'
 import ProductsSection from './components/sections/ProductsSection'
-import VideoSection from './components/sections/VideoSection'
-import MissionSection from './components/sections/MissionSection'
 import QualitySection from './components/sections/QualitySection'
 import ContactsSection from './components/sections/ContactsSection'
+import MissionSection from './components/sections/MissionSection'
+import { AboutUsSection, HistorySection } from './components/sections/AboutSection'
+import FoundersSection from './components/sections/FoundersSection'
 import './styles/index.css'
 import './styles/base.css'
 import './styles/layout.css'
@@ -18,9 +17,7 @@ import './styles/header.css'
 import './styles/responsive.css'
 import './styles/intro.css'
 import './styles/technology.css'
-import './styles/products.css'
 import './styles/quality.css'
-import './styles/video.css'
 import './styles/about.css'
 import './styles/mission.css'
 import './styles/founders.css'
@@ -45,7 +42,6 @@ function App() {
     founders: null,
     technology: null,
     products: null,
-    video: null,
     quality: null,
     contacts: null,
   })
@@ -100,7 +96,7 @@ function App() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [])
+  }, []);
 
   // Присваиваем ссылки на DOM-элементы при монтировании компонентов
   useEffect(() => {
@@ -113,7 +109,6 @@ function App() {
       founders: document.getElementById('founders'),
       technology: document.getElementById('technology'),
       products: document.getElementById('products'),
-      video: document.getElementById('video-section'),
       quality: document.getElementById('quality'),
       contacts: document.getElementById('contacts'),
     };
@@ -146,12 +141,11 @@ function App() {
             <MissionSection />
             <IntroSection />
             <AboutUsSection />
-            <HistorySection />
-            <FoundersSection />
             <TechnologySection />
             <ProductsSection />
-            <VideoSection />
             <QualitySection />
+            <FoundersSection />
+            <HistorySection />
             <ContactsSection />
           </main>
 

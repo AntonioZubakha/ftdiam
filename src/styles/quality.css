@@ -1,226 +1,270 @@
 /* Секция Quality Analysis */
-
-.quality-features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin: 2.5rem 0;
+.quality-section {
+  position: relative;
+  overflow: hidden;
+  background-color: #fcfcfc;
 }
 
-.quality-feature {
+.quality-section .headline {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.quality-section .quality-subheadline {
+  text-align: center;
+  color: var(--primary-teal);
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.quality-section .section-description {
+  max-width: 850px;
+  margin: 0 auto 3rem;
+  text-align: center;
+  color: var(--dark-gray);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Методы качественного анализа */
+.quality-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.quality-method {
   background: #fff;
-  padding: 2rem;
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+  position: relative;
+  border: 1px solid rgba(0, 131, 127, 0.05);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
 
-.quality-feature:hover {
-  transform: translateY(-5px);
-  border-color: rgba(0, 131, 127, 0.3);
+.quality-method:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 131, 127, 0.2);
 }
 
-.quality-icon {
-  width: 80px;
-  height: 80px;
+.quality-method-image {
+  width: 100%;
+  height: 200px;
   margin-bottom: 1.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
 }
 
-.quality-icon i {
-  font-size: 3rem;
-  color: #00b3ac;
+.quality-method-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.quality-feature:hover .quality-icon i {
-  transform: scale(1.1);
-  color: #00e6de;
+.quality-method:hover .quality-method-image img {
+  transform: scale(1.05);
 }
 
-.quality-feature h3 {
-  font-size: 1.3rem;
-  margin: 0 0 1rem 0;
+.quality-method h3 {
+  font-size: 1.4rem;
   color: var(--primary-dark-blue);
+  margin: 0 0 1.2rem;
+  position: relative;
+  padding-bottom: 1rem;
 }
 
-.quality-feature p {
+.quality-method h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(to right, #00837f, #241e46);
+  transition: width 0.3s ease;
+}
+
+.quality-method:hover h3::after {
+  width: 70px;
+}
+
+.quality-method p {
   color: var(--dark-gray);
   margin: 0;
-  line-height: 1.6;
+  line-height: 1.7;
+  font-size: 1rem;
 }
 
-.equipment-gallery {
-  margin: 2.5rem 0;
+/* Стандарты качества */
+.quality-standards {
+  margin-top: 4rem;
+  padding: 3rem;
+  background: linear-gradient(to right, rgba(0, 131, 127, 0.03), rgba(36, 30, 70, 0.03));
+  border-radius: 10px;
 }
 
-.equipment-tabs {
-  display: flex;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  margin-bottom: 1.5rem;
-  overflow-x: auto;
-  padding-bottom: 1px;
-}
-
-.equipment-tab {
-  padding: 0.8rem 1.5rem;
-  background: transparent;
-  border: none;
-  color: var(--dark-gray);
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.equipment-tab:hover {
+.quality-standards h3 {
+  text-align: center;
+  font-size: 1.8rem;
   color: var(--primary-dark-blue);
+  margin-bottom: 2.5rem;
+  position: relative;
+  padding-bottom: 1rem;
 }
 
-.equipment-tab.active {
-  color: var(--primary-dark-blue);
-  border-bottom: 3px solid #00837f;
-}
-
-.equipment-content {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.equipment-item {
-  display: grid;
-  grid-template-columns: 250px 1fr;
-  gap: 2rem;
-}
-
-.equipment-image {
-  width: 100%;
-  height: 250px;
-  border-radius: 4px;
-  overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  background: #241e46;
-}
-
-.equipment-image i {
-  font-size: 4.5rem;
-  color: #fff;
-}
-
-.equipment-details h3 {
-  font-size: 1.5rem;
-  margin: 0 0 1rem 0;
-  color: var(--primary-dark-blue);
-}
-
-.equipment-description {
-  color: var(--dark-gray);
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-}
-
-.equipment-specs {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.5rem 1.5rem;
-}
-
-.equipment-specs dt {
-  font-weight: 600;
-  color: var(--primary-dark-blue);
-}
-
-.equipment-specs dd {
-  margin: 0;
-  color: var(--dark-gray);
-}
-
-.standards-section {
-  margin: 3rem 0;
+.quality-standards h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, #00837f, #241e46);
 }
 
 .standards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
 }
 
 .standard-item {
   background: #fff;
-  padding: 1.5rem;
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
+  padding: 1.8rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(0, 131, 127, 0.05);
 }
 
 .standard-item:hover {
   transform: translateY(-5px);
-  border-color: rgba(0, 131, 127, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 131, 127, 0.2);
 }
 
-.standard-item h3 {
-  margin: 0 0 1rem 0;
-  font-size: 1.2rem;
-  color: var(--primary-dark-blue);
+.standard-icon {
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(0, 131, 127, 0.1), rgba(36, 30, 70, 0.1));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.standard-icon i {
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, #00837f, #241e46);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.standard-item:hover .standard-icon {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, rgba(0, 131, 127, 0.15), rgba(36, 30, 70, 0.15));
 }
 
 .standard-item p {
-  color: var(--dark-gray);
   margin: 0;
-  line-height: 1.6;
+  color: var(--dark-gray);
+  line-height: 1.5;
+  font-size: 1rem;
 }
 
+.standard-item p strong {
+  color: var(--primary-dark-blue);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+/* Медиа-запросы */
 @media (max-width: 992px) {
-  .equipment-item {
-    grid-template-columns: 1fr;
+  .quality-methods {
+    gap: 2rem;
   }
   
-  .equipment-image {
-    max-width: 350px;
-    margin: 0 auto 1.5rem;
+  .quality-section .quality-subheadline {
+    font-size: 1.6rem;
   }
 }
 
 @media (max-width: 768px) {
-  .quality-features {
+  .quality-methods {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
   }
   
-  .equipment-content {
-    padding: 1.5rem;
+  .quality-method {
+    padding: 2rem;
   }
   
-  .equipment-tabs {
-    padding-bottom: 0.5rem;
+  .quality-section .quality-subheadline {
+    font-size: 1.4rem;
   }
   
-  .equipment-tab {
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
+  .quality-method-image {
+    height: 180px;
+  }
+  
+  .quality-section .section-description {
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  .quality-feature {
+  .quality-section .section-description {
+    font-size: 1rem;
+  }
+  
+  .quality-section .quality-subheadline {
+    font-size: 1.3rem;
+  }
+  
+  .quality-method {
+    padding: 1.8rem;
+  }
+  
+  .quality-method-image {
+    height: 160px;
+  }
+  
+  .standard-item {
     padding: 1.5rem;
   }
   
-  .quality-icon {
-    width: 60px;
-    height: 60px;
+  .standard-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 1rem;
   }
   
-  .standards-grid {
-    grid-template-columns: 1fr;
+  .standard-icon i {
+    font-size: 1.2rem;
+  }
+  
+  .quality-standards {
+    padding: 1.5rem;
   }
 } 

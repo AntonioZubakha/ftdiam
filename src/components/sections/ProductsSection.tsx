@@ -1,130 +1,280 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-const ProductsSection = () => {
-  const [activeProduct, setActiveProduct] = useState(1);
-  
-  // Определяем стиль с фоновым изображением
-  const backgroundStyle = {
-    backgroundImage: `url(/images/background-products.svg)`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    position: 'absolute' as const,
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    opacity: 1,
-    zIndex: 0
-  };
+const ProductsSection: React.FC = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const products = [
     {
-      id: 1,
-      name: "Quantum-Grade Substrates",
-      shortDesc: "Ultra-pure substrates for quantum applications",
-      description: "Our highest purity diamond substrates with nitrogen content below 5 ppb, ideal for quantum sensing, quantum computing, and NV center applications. These substrates feature ultra-low dislocation density of 10¹ cm⁻².",
+      name: "Diamond Substrates",
+      image: "/images/photo1.1.jpg",
       specs: [
-        { name: "Nitrogen Content", value: "≤5 ppb" },
-        { name: "Dislocation Density", value: "10¹ cm⁻²" },
-        { name: "Size Options", value: "3x3 mm to 15x15 mm" },
-        { name: "Thickness", value: "0.3 mm to 1.0 mm" },
-        { name: "Surface Polish", value: "Double sided, Ra < 1 nm" }
-      ],
-      icon: "fas fa-atom"
+        "Type IIa single-crystal plates.",
+        "Sizes: 3x3 mm to 15x15 mm; Thickness: 0.1-10 mm.",
+        "Purity: ≤5 ppb Nitrogen.",
+        "Dislocations: As low as 10¹ cm⁻².",
+        "Surface: Polished up to 0.5 nm Ra.",
+        "Customizable: Shapes, orientations ((100), (111), (110), etc.), miscut."
+      ]
     },
     {
-      id: 2,
-      name: "Electronics-Grade Substrates",
-      shortDesc: "Optimized for power electronics",
-      description: "High-performance substrates designed for power electronics and semiconductor applications. These substrates provide excellent thermal conductivity and electrical insulation properties.",
+      name: "Diamond Anvils",
+      image: "/images/photo1.2.jpg",
       specs: [
-        { name: "Nitrogen Content", value: "5-50 ppb" },
-        { name: "Dislocation Density", value: "10²-10³ cm⁻²" },
-        { name: "Size Options", value: "3x3 mm to 12x12 mm" },
-        { name: "Thickness", value: "0.3 mm to 1.0 mm" },
-        { name: "Surface Polish", value: "Single or double sided, Ra < 5 nm" }
-      ],
-      icon: "fas fa-microchip"
+        "Diameters: 2.5-4 mm.",
+        "Designs: Smooth or faceted.",
+        "Table orientation: (100) standard, custom available.",
+        "Quality: No inclusions and defects at 50x magnification, low birefringence."
+      ]
     },
     {
-      id: 3,
-      name: "Optical-Grade Substrates",
-      shortDesc: "Superior clarity for optical applications",
-      description: "Diamond substrates with exceptional optical properties for beam windows, thermal sensors, and advanced optical devices.",
+      name: "Custom Products",
+      image: "/images/photo1.3.jpg",
       specs: [
-        { name: "Nitrogen Content", value: "≤50 ppb" },
-        { name: "Dislocation Density", value: "10²-10³ cm⁻²" },
-        { name: "Size Options", value: "3x3 mm to 10x10 mm" },
-        { name: "Thickness", value: "0.2 mm to 0.5 mm" },
-        { name: "Surface Polish", value: "Double sided, Ra < 1 nm" }
-      ],
-      icon: "fas fa-eye"
-    },
-    {
-      id: 4,
-      name: "Custom Solutions",
-      shortDesc: "Tailored to your specific requirements",
-      description: "We provide custom-designed diamond substrates to meet your specific research or industrial application needs, with optimized properties for your particular use case.",
-      specs: [
-        { name: "Nitrogen Content", value: "Customizable" },
-        { name: "Dislocation Density", value: "Customizable" },
-        { name: "Size Options", value: "Customizable" },
-        { name: "Thickness", value: "Customizable" },
-        { name: "Surface Polish", value: "According to specifications" }
-      ],
-      icon: "fas fa-cogs"
+        "Lenses, optical windows and any shape per client specs."
+      ]
     }
   ];
 
+  const handlePrevClick = () => {
+    setActiveIndex((prevIndex) => 
+      prevIndex === 0 ? products.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleNextClick = () => {
+    setActiveIndex((prevIndex) => 
+      prevIndex === products.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const currentProduct = products[activeIndex];
+
   return (
-    <section id="products" className="section products-section">
-      <div style={backgroundStyle}></div>
-      <div className="content-wrapper">
-        <h2 className="headline">Our Products</h2>
-        <p className="section-description">FTDiam offers a range of high-quality single-crystal diamond substrates optimized for different applications.</p>
+    <section 
+      id="products" 
+      style={{
+        padding: '5rem 0',
+        background: 'white'
+      }}
+    >
+      <div style={{
+        maxWidth: '1300px',
+        margin: '0 auto',
+        padding: '0 2rem'
+      }}>
+        <h2 style={{
+          textAlign: 'center',
+          fontSize: '2.5rem',
+          marginBottom: '3rem'
+        }}>
+          High-Quality Diamond Products
+        </h2>
         
-        <div className="products-navigation">
-          {products.map(product => (
-            <button 
-              key={product.id}
-              className={`product-nav-btn ${activeProduct === product.id ? 'active' : ''}`}
-              onClick={() => setActiveProduct(product.id)}
-            >
-              <i className={`${product.icon} product-nav-icon`}></i>
-              <span className="product-nav-title">{product.name}</span>
-              <span className="product-short-desc">{product.shortDesc}</span>
-            </button>
-          ))}
-        </div>
-        
-        {products.map(product => (
-          product.id === activeProduct && (
-            <div key={product.id} className="product-info">
-              <div className="product-image">
-                <div className="product-image-overlay"></div>
-                <img src="/images/555.png" alt={product.name} className="product-crystal-image" />
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1.1fr 1fr',
+          gap: '3rem',
+          alignItems: 'flex-start'
+        }}>
+          <div style={{
+            position: 'relative',
+            width: '95%',
+            height: '750px',
+            overflow: 'hidden',
+            boxShadow: 'none',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            background: 'transparent',
+            margin: '0 auto',
+            borderRadius: '0px'
+          }}>
+            <video 
+              src="/video/2.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{
+                maxHeight: '98%',
+                width: 'auto',
+                height: 'auto',
+                maxWidth: '98%',
+                objectFit: 'contain',
+                borderRadius: '0px'
+              }}
+            />
+          </div>
+          
+          <div style={{
+            padding: '2rem',
+            borderRadius: '8px',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
+            background: 'white',
+            display: 'flex',
+            flexDirection: 'column',
+            height: '750px',
+            position: 'relative'
+          }}>
+            <h3 style={{
+              textAlign: 'center',
+              fontSize: '1.8rem',
+              marginBottom: '2rem'
+            }}>
+              Tailored Solutions for Cutting-Edge Applications
+            </h3>
+            
+            <div style={{
+              flex: '1',
+              display: 'flex',
+              flexDirection: 'column'
+            }}>
+              <div style={{ 
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: '1rem',
+                marginBottom: '1.5rem',
+                height: '40px'
+              }}>
+                <button 
+                  onClick={handlePrevClick}
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    border: 'none',
+                    background: '#00837f',
+                    color: 'white',
+                    fontSize: '1.2rem',
+                    cursor: 'pointer'
+                  }}
+                >
+                  &#9664;
+                </button>
+                
+                <div style={{ 
+                  fontWeight: 'bold',
+                  width: '40px',
+                  textAlign: 'center'
+                }}>
+                  {activeIndex + 1} / {products.length}
+                </div>
+                
+                <button 
+                  onClick={handleNextClick}
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    border: 'none',
+                    background: '#00837f',
+                    color: 'white',
+                    fontSize: '1.2rem',
+                    cursor: 'pointer'
+                  }}
+                >
+                  &#9654;
+                </button>
               </div>
-              <div className="product-content">
-                <h3 className="product-name">{product.name}</h3>
-                <p className="product-description">{product.description}</p>
-                <div className="product-specs">
-                  <h4>Specifications:</h4>
-                  <ul>
-                    {product.specs.map((spec, index) => (
-                      <li key={index}>
-                        <span className="spec-name">{spec.name}:</span> 
-                        <span className="spec-value">{spec.value}</span>
+              
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'minmax(150px, 200px) 1fr',
+                gap: '1.5rem',
+                padding: '1rem',
+                borderRadius: '8px',
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
+                minHeight: '400px',
+                overflow: 'hidden'
+              }}>
+                <div style={{
+                  height: '200px',
+                  width: '200px',
+                  borderRadius: '8px',
+                  overflow: 'hidden',
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+                }}>
+                  <img 
+                    src={currentProduct.image} 
+                    alt={currentProduct.name}
+                    style={{
+                      width: '100%', 
+                      height: '100%',
+                      objectFit: 'cover'
+                    }}
+                  />
+                </div>
+                
+                <div style={{
+                  overflowY: 'auto'
+                }}>
+                  <h4 style={{
+                    fontSize: '1.4rem',
+                    marginBottom: '1rem',
+                    height: '30px'
+                  }}>
+                    {currentProduct.name}
+                  </h4>
+                  
+                  <ul style={{
+                    listStyle: 'none',
+                    padding: 0,
+                    margin: 0
+                  }}>
+                    {currentProduct.specs.map((spec, index) => (
+                      <li 
+                        key={index}
+                        style={{
+                          marginBottom: '0.8rem',
+                          paddingLeft: '1.5rem',
+                          position: 'relative',
+                          lineHeight: '1.5'
+                        }}
+                      >
+                        <span style={{
+                          position: 'absolute',
+                          left: 0,
+                          color: '#00837f'
+                        }}>•</span>
+                        {spec}
                       </li>
                     ))}
                   </ul>
                 </div>
-                <div className="product-cta">
-                  <a href="#contacts" className="cta-button">Request Quote</a>
-                </div>
               </div>
             </div>
-          )
-        ))}
+            
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '0.5rem',
+              height: '20px',
+              position: 'absolute',
+              bottom: '2rem',
+              left: 0,
+              right: 0
+            }}>
+              {products.map((_, index) => (
+                <button 
+                  key={index}
+                  onClick={() => setActiveIndex(index)}
+                  style={{
+                    width: '10px',
+                    height: '10px',
+                    borderRadius: '50%',
+                    border: 'none',
+                    background: index === activeIndex ? '#00837f' : '#e0e0e0',
+                    padding: 0,
+                    cursor: 'pointer',
+                    transform: index === activeIndex ? 'scale(1.2)' : 'scale(1)'
+                  }}
+                  aria-label={`Go to product ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

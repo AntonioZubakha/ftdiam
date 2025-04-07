@@ -11,7 +11,7 @@ const QualitySection = () => {
     left: 0,
     right: 0,
     bottom: 0,
-    opacity: 1,
+    opacity: 0.8,
     zIndex: 0
   };
 
@@ -20,72 +20,50 @@ const QualitySection = () => {
       <div style={backgroundStyle}></div>
       <div className="content-wrapper">
         <h2 className="headline">Quality Analysis</h2>
-        <p className="section-description">We employ advanced diagnostic methods to ensure the highest quality of our diamond substrates. Each crystal undergoes rigorous testing and characterization.</p>
+        <h3 className="quality-subheadline">Tested. Proven. Exceptional.</h3>
+        <p className="section-description">
+          Our diamonds undergo rigorous testing to ensure they meet the highest standards. See the evidence of our flawless quality below.
+        </p>
         
         <div className="quality-methods">
           <div className="quality-method">
-            <div className="quality-method-icon">
-              <i className="fas fa-microscope"></i>
+            <div className="quality-method-image">
+              <img src="/images/photo1.jpg" alt="Diamond View" />
             </div>
-            <h3>Optical Characterization</h3>
-            <p>High-resolution optical microscopy with cross-polarized light for defect and strain analysis. Our inspection process can identify imperfections down to 1μm in size.</p>
+            <h3>Diamond View</h3>
+            <p>Shows no inclusions, no defects, dislocations &lt;10¹ cm⁻².</p>
           </div>
           
           <div className="quality-method">
-            <div className="quality-method-icon">
-              <i className="fas fa-atom"></i>
+            <div className="quality-method-image">
+              <img src="/images/photo2.jpg" alt="Polarized Light Microscopy" />
             </div>
-            <h3>Spectroscopic Analysis</h3>
-            <p>Photoluminescence and FTIR spectroscopy for precise measurement of nitrogen and other impurity concentrations with sensitivity below 1 ppb.</p>
+            <h3>Polarized Light Microscopy</h3>
+            <p>Very low strain.</p>
           </div>
           
           <div className="quality-method">
-            <div className="quality-method-icon">
-              <i className="fas fa-chart-line"></i>
+            <div className="quality-method-image">
+              <img src="/images/photo3.jpg" alt="FTIR" />
             </div>
-            <h3>X-Ray Topography</h3>
-            <p>Identification of crystal structure, orientation, and dislocation density. Allows precise mapping of crystalline defects and growth sectors.</p>
+            <h3>FTIR</h3>
+            <p>Ultra-pure crystals.</p>
           </div>
           
           <div className="quality-method">
-            <div className="quality-method-icon">
-              <i className="fas fa-ruler-combined"></i>
+            <div className="quality-method-image">
+              <img src="/images/photo4.jpg" alt="UV-Vis" />
             </div>
-            <h3>Surface Profilometry</h3>
-            <p>Atomic Force Microscopy (AFM) for surface roughness characterization with sub-nanometer precision, ensuring specification compliance.</p>
+            <h3>UV-Vis</h3>
+            <p>Low absorbance, premium quality.</p>
           </div>
-        </div>
-        
-        <div className="quality-standards">
-          <h3>Our Quality Standards</h3>
-          <div className="standards-grid">
-            <div className="standard-item">
-              <div className="standard-icon">
-                <i className="fas fa-check-circle"></i>
-              </div>
-              <p><strong>100% Inspection:</strong> Every single crystal undergoes all quality tests</p>
+          
+          <div className="quality-method">
+            <div className="quality-method-image">
+              <img src="/images/photo5.jpg" alt="X-Ray Diffraction Imaging" />
             </div>
-            
-            <div className="standard-item">
-              <div className="standard-icon">
-                <i className="fas fa-certificate"></i>
-              </div>
-              <p><strong>Certification:</strong> Detailed quality report provided with each substrate</p>
-            </div>
-            
-            <div className="standard-item">
-              <div className="standard-icon">
-                <i className="fas fa-sync-alt"></i>
-              </div>
-              <p><strong>Traceability:</strong> Unique ID and complete growth and processing history</p>
-            </div>
-            
-            <div className="standard-item">
-              <div className="standard-icon">
-                <i className="fas fa-thumbs-up"></i>
-              </div>
-              <p><strong>Satisfaction Guarantee:</strong> Immediate replacement for any non-conforming product</p>
-            </div>
+            <h3>X-Ray Diffraction Imaging</h3>
+            <p>Dislocation density &lt;50 cm⁻².</p>
           </div>
         </div>
       </div>
