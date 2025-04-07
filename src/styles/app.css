@@ -1,0 +1,68 @@
+/* Стили для App компонента */
+
+/* Состояния приложения */
+.app-loading {
+  overflow: hidden;
+}
+
+.app-loaded {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Стили экрана загрузки */
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-logo {
+  max-width: 300px;
+  margin-bottom: 2rem;
+}
+
+.loader-spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid rgba(0, 131, 127, 0.2);
+  border-radius: 50%;
+  border-top-color: #00837f;
+  animation: loading 1s ease-in-out infinite;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+  .loader-logo {
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .loader-logo {
+    max-width: 200px;
+  }
+} 

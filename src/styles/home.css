@@ -17,7 +17,7 @@
   height: 100%;
   width: 100%;
   position: relative;
-  z-index: 2;
+  z-index: 5;
 }
 
 /* Уникальный класс видео-контейнера для домашней секции */
@@ -29,6 +29,23 @@
   height: 100%;
   overflow: hidden;
   z-index: 1;
+}
+
+/* Стили для разделенного экрана */
+.split-screen {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.split-screen-left,
+.split-screen-right {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
 }
 
 .background-video {
@@ -48,7 +65,7 @@
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.3);
-  z-index: 1;
+  z-index: 3;
 }
 
 .hero-content {
@@ -59,7 +76,7 @@
   text-align: center;
   color: var(--white);
   position: relative;
-  z-index: 2;
+  z-index: 6;
   padding: 2rem;
   max-width: 800px;
   width: 100%;
@@ -72,7 +89,7 @@
   margin-bottom: 2rem;
   filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
   animation: var(--float-animation);
-  z-index: 3;
+  z-index: 7;
   display: block;
 }
 
@@ -139,6 +156,17 @@
 }
 
 @media (max-width: 768px) {
+  /* На мобильных устройствах видео размещаем друг над другом */
+  .split-screen {
+    flex-direction: column;
+  }
+  
+  .split-screen-left,
+  .split-screen-right {
+    width: 100%;
+    height: 50%;
+  }
+  
   .hero-logo {
     width: 180px;
     margin-bottom: 1.5rem;

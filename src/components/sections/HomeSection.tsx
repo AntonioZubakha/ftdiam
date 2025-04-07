@@ -1,30 +1,56 @@
 import { useRef, useEffect } from 'react';
 
 const HomeSection = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const leftVideoRef = useRef<HTMLVideoElement>(null);
+  const rightVideoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    // Set playback rate to 0.5 for video
-    const video = videoRef.current;
-    if (video) {
-      video.playbackRate = 0.5;
+    // Set normal playback rate (1.0) for videos
+    const leftVideo = leftVideoRef.current;
+    const rightVideo = rightVideoRef.current;
+    
+    if (leftVideo) {
+      leftVideo.playbackRate = 1.0;
+    }
+    
+    if (rightVideo) {
+      rightVideo.playbackRate = 1.0;
     }
   }, []);
 
   return (
     <section id="home" className="section home-section">
       <div className="home-video-container">
-        <video 
-          ref={videoRef}
-          className="background-video" 
-          autoPlay 
-          muted 
-          playsInline 
-          loop
-        >
-          <source src="/video/video.mp4" type="video/mp4" />
-        </video>
+        <div className="split-screen">
+          <div className="split-screen-left">
+            <video 
+              ref={leftVideoRef}
+              className="background-video" 
+              autoPlay 
+              muted 
+              playsInline 
+              loop
+              style={{ objectFit: 'cover' }}
+            >
+              <source src="/video/nature.mp4" type="video/mp4" />
+            </video>
+          </div>
+          
+          <div className="split-screen-right">
+            <video 
+              ref={rightVideoRef}
+              className="background-video" 
+              autoPlay 
+              muted 
+              playsInline 
+              loop
+            >
+              <source src="/video/tech.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
       </div>
+      
       <div className="content-wrapper">
         <div className="hero-content">
           <img src="/images/Logo_white.png" alt="FTDiam Logo" className="hero-logo" />
