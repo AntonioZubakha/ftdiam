@@ -8,8 +8,7 @@ import ProductsSection from './components/sections/ProductsSection'
 import QualitySection from './components/sections/QualitySection'
 import ContactsSection from './components/sections/ContactsSection'
 import MissionSection from './components/sections/MissionSection'
-import { AboutUsSection, HistorySection } from './components/sections/AboutSection'
-import FoundersSection from './components/sections/FoundersSection'
+import { WhoWeAreSection, HistorySection } from './components/sections/AboutSection'
 import './styles/index.css'
 import './styles/base.css'
 import './styles/layout.css'
@@ -38,8 +37,6 @@ function App() {
     mission: null,
     intro: null,
     about: null,
-    history: null,
-    founders: null,
     technology: null,
     products: null,
     quality: null,
@@ -105,8 +102,6 @@ function App() {
       mission: document.getElementById('mission'),
       intro: document.getElementById('intro'),
       about: document.getElementById('about'),
-      history: document.getElementById('history'),
-      founders: document.getElementById('founders'),
       technology: document.getElementById('technology'),
       products: document.getElementById('products'),
       quality: document.getElementById('quality'),
@@ -139,10 +134,8 @@ function App() {
           <main className="no-gap-container">
             <HomeSection />
             <MissionSection />
-            <AboutUsSection />
-            <FoundersSection />
-            <HistorySection />
             <IntroSection />
+            <WhoWeAreSection />
             <TechnologySection />
             <ProductsSection />
             <QualitySection />

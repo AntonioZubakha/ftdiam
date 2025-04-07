@@ -80,6 +80,22 @@ a.contact-value:hover {
   color: #00837f;
 }
 
+/* Стиль для социальных ссылок */
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.social-link i {
+  font-size: 1.2rem;
+  color: #0077B5; /* LinkedIn brand color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Стили для формы */
 .contact-form-wrapper {
   background: white;

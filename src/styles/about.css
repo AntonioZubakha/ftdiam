@@ -708,4 +708,198 @@
   .section-subtitle {
     font-size: 1.6rem;
   }
+}
+
+/* Переработанные стили для WhoWeAreSection */
+.who-we-are-section {
+  position: relative;
+  padding: 5rem 0;
+  background-color: #fff;
+  overflow: visible;
+  z-index: 1;
+}
+
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+  gap: 2rem;
+}
+
+.about-half {
+  flex: 1;
+  min-width: 300px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.about-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-title {
+  color: var(--primary-dark-blue);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.about-divider {
+  width: 50px;
+  height: 3px;
+  background-color: var(--primary-teal);
+  margin-bottom: 1.5rem;
+}
+
+.about-description {
+  color: var(--dark-gray);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.history-timeline {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0 0;
+  position: relative;
+}
+
+.history-timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: rgba(0, 131, 127, 0.2);
+}
+
+.timeline-entry {
+  position: relative;
+  padding-left: 50px;
+  margin-bottom: 1.5rem;
+}
+
+.timeline-entry:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-entry::before {
+  content: '';
+  position: absolute;
+  left: 14px;
+  top: 5px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--primary-teal);
+  z-index: 1;
+}
+
+.timeline-entry .year {
+  font-weight: 600;
+  color: var(--primary-dark-blue);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-entry p {
+  margin: 0;
+  color: var(--dark-gray);
+}
+
+.founders-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.founder-profile {
+  flex: 1;
+  min-width: 250px;
+  max-width: 350px;
+  text-align: center;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.founder-profile:hover {
+  transform: translateY(-5px);
+}
+
+.founder-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 1.5rem;
+  border: 3px solid white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.founder-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.founder-name {
+  font-size: 1.3rem;
+  margin: 0 0 1rem;
+  color: var(--primary-dark-blue);
+}
+
+.founder-bio {
+  color: var(--dark-gray);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Медиа-запросы */
+@media (max-width: 992px) {
+  .founder-image {
+    width: 130px;
+    height: 130px;
+  }
+  
+  .founder-name {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .who-we-are-section {
+    padding: 4rem 0;
+  }
+  
+  .about-container {
+    flex-direction: column;
+  }
+  
+  .founder-profile {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-half {
+    padding: 1.5rem;
+  }
+  
+  .founder-image {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .founder-profile {
+    padding: 1.5rem;
+  }
 } 

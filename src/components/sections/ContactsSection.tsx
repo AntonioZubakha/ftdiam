@@ -93,9 +93,12 @@ const ContactsSection = () => {
                 <span className="contact-value">220 Park Ave PMB 83131<br />New York, NY 10003, USA</span>
               </div>
               
-              <div className="contact-info-item">
+              <div className="contact-info-item" style={{ alignItems: 'center' }}>
                 <span className="contact-label">Follow Us</span>
-                <a href="https://www.linkedin.com/company/ftdiam" target="_blank" rel="noopener noreferrer" className="contact-value">LinkedIn</a>
+                <a href="https://www.linkedin.com/company/ftdiam" target="_blank" rel="noopener noreferrer" className="contact-value social-link">
+                  <i className="fab fa-linkedin"></i>
+                  LinkedIn
+                </a>
               </div>
             </div>
           </div>
