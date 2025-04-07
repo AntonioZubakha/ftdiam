@@ -1,220 +1,219 @@
-/* Стили для секции контактов */
+/* Минималистичные стили для секции контактов */
 .contacts-section {
-  background: transparent;
-  padding: 60px 0;
+  position: relative;
+  padding: 80px 0;
+  color: #333;
+  overflow: hidden;
 }
 
-.contacts-section .headline {
-  margin-bottom: 1rem;
-}
-
-.contact-container {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 25px;
-  max-width: 1000px;
-  margin: 20px auto 0;
-}
-
-/* Информационные карточки */
-.contact-info {
+.contacts-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  gap: 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
-/* Специфичные стили для контактов */
-.contacts-section .contact-method {
-  padding: 10px;
-}
-
-.contacts-section .contact-method .contact-icon {
-  width: 40px;
-  height: 40px;
-  margin: 0 auto 10px;
+/* Стили для контактной информации */
+.contact-details {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  border-radius: 50%;
-  background: #00837f;
-  color: white;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.contacts-section .contact-method h3 {
-  font-size: 1.1rem;
-  color: var(--primary-dark-blue);
-  margin-bottom: 5px;
+.contact-headline {
+  font-size: 2.5rem;
+  color: #00837f;
+  margin-bottom: 10px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.contact-tagline {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 30px;
+  font-weight: 300;
+}
+
+.contact-separator {
+  width: 60px;
+  height: 3px;
+  background: #00837f;
+  margin-bottom: 40px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+
+.contact-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contact-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #888;
   font-weight: 600;
 }
 
-.contacts-section .contact-method p {
-  color: var(--dark-gray);
-  margin: 0;
-  font-size: 0.95rem;
-}
-
-.contacts-section .contact-method a {
-  color: #00837f;
+.contact-value {
+  font-size: 1.1rem;
+  color: #333;
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.2s ease;
 }
 
-.contacts-section .contact-method a:hover {
-  color: #241e46;
-  text-decoration: underline;
+a.contact-value:hover {
+  color: #00837f;
 }
 
-/* Форма обратной связи */
-.contact-form-container {
-  background: transparent;
-  border-radius: 4px;
-  padding: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+/* Стили для формы */
+.contact-form-wrapper {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+  padding: 40px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.contact-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
+.contact-form-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
 }
 
-.form-group {
-  margin-bottom: 0;
+.contact-form-minimal {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.form-group.full-width {
-  grid-column: span 2;
+.form-field {
+  position: relative;
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 4px;
-  font-weight: 500;
-  color: var(--primary-dark-blue);
-  font-size: 0.9rem;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
+.minimal-input,
+.minimal-textarea {
   width: 100%;
-  padding: 8px 12px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  border: none;
   border-radius: 4px;
-  font-size: 0.95rem;
-  transition: border-color 0.3s ease;
-  background: rgba(255, 255, 255, 0.7);
+  background: #f9f9f9;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  color: #333;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
+.minimal-textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.minimal-input:focus,
+.minimal-textarea:focus {
   outline: none;
-  border-color: #00837f;
-  background: rgba(255, 255, 255, 0.9);
+  background: #f2f2f2;
+  box-shadow: 0 0 0 2px rgba(0, 131, 127, 0.2);
 }
 
-.form-group textarea {
-  height: 100px;
-}
-
-.submit-btn {
+.minimal-button {
   background: #00837f;
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 10px 20px;
-  font-size: 0.95rem;
+  padding: 15px 25px;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.2s, background-color 0.2s;
-  width: auto;
-  justify-self: start;
-  margin-top: 5px;
+  transition: all 0.2s ease;
+  align-self: flex-end;
 }
 
-.submit-btn:hover {
+.minimal-button:hover {
+  background: #006a66;
   transform: translateY(-2px);
-  background-color: #006a66;
 }
 
-.form-status {
-  grid-column: span 2;
-  padding: 10px;
+.form-status-minimal {
+  padding: 12px;
   border-radius: 4px;
-  margin-bottom: 15px;
   text-align: center;
-  font-size: 0.9rem;
+  font-weight: 500;
 }
 
-.form-status.success {
-  background-color: rgba(0, 212, 160, 0.1);
-  color: #00d4a0;
-  border: 1px solid rgba(0, 212, 160, 0.3);
+.form-status-minimal.success {
+  background-color: rgba(38, 222, 129, 0.1);
+  color: #26de81;
 }
 
-.form-status.error {
-  background-color: rgba(231, 76, 60, 0.1);
-  color: #e74c3c;
-  border: 1px solid rgba(231, 76, 60, 0.3);
+.form-status-minimal.error {
+  background-color: rgba(235, 77, 75, 0.1);
+  color: #eb4d4b;
 }
 
 /* Медиа-запросы */
 @media (max-width: 992px) {
-  .contact-container {
+  .contacts-inner {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 40px;
+    padding: 0 20px;
   }
   
-  .contact-info {
-    margin-bottom: 20px;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+  .contact-form-wrapper {
+    padding: 30px;
   }
 }
 
 @media (max-width: 768px) {
   .contacts-section {
-    padding: 50px 0;
+    padding: 60px 0;
   }
   
-  .contact-info {
-    grid-template-columns: 1fr 1fr;
+  .contact-headline {
+    font-size: 2rem;
   }
   
-  .contact-form {
-    grid-template-columns: 1fr;
+  .contact-tagline {
+    font-size: 1.1rem;
   }
   
-  .form-group.full-width {
-    grid-column: span 1;
-  }
-  
-  .submit-btn {
+  .minimal-button {
     width: 100%;
+    align-self: center;
   }
 }
 
 @media (max-width: 480px) {
-  .contact-info {
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
+  .contacts-section {
+    padding: 40px 0;
   }
   
-  .contact-method {
-    padding: 10px;
+  .contact-headline {
+    font-size: 1.8rem;
   }
   
-  .contact-form-container {
-    padding: 15px;
+  .contact-info-list {
+    gap: 20px;
   }
   
-  .contacts-section .contact-method h3 {
-    font-size: 1rem;
+  .contact-form-wrapper {
+    padding: 20px;
   }
   
-  .contacts-section .contact-method p {
-    font-size: 0.9rem;
+  .minimal-input,
+  .minimal-textarea {
+    padding: 12px;
   }
 } 

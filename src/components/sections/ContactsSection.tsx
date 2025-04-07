@@ -4,8 +4,6 @@ const ContactsSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    company: '',
-    phone: '',
     message: ''
   });
   
@@ -14,21 +12,18 @@ const ContactsSection = () => {
     message?: string;
   } | null>(null);
 
-  // Определяем стиль с фоновым изображением
+  // Минималистичный фон с градиентом
   const backgroundStyle = {
-    backgroundImage: `url(/images/background-dots.svg)`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
+    background: 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(240,240,240,0.95) 100%)',
     position: 'absolute' as const,
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-    opacity: 1,
     zIndex: 0
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -59,8 +54,6 @@ const ContactsSection = () => {
       setFormData({
         name: '',
         email: '',
-        company: '',
-        phone: '',
         message: ''
       });
       
@@ -75,54 +68,48 @@ const ContactsSection = () => {
     <section id="contacts" className="section contacts-section">
       <div style={backgroundStyle}></div>
       <div className="content-wrapper">
-        <h2 className="headline">Contact Us</h2>
-        <p className="section-description">Have questions about our products or want to request a quote? Our team is ready to assist you.</p>
-        
-        <div className="contact-container">
-          <div className="contact-info">
-            <div className="contact-method">
-              <div className="contact-icon">
-                <i className="fas fa-envelope"></i>
-              </div>
-              <h3>Email</h3>
-              <p><a href="mailto:info@ftdiam.com">info@ftdiam.com</a></p>
+        <div className="contacts-inner">
+          {/* Контактная информация */}
+          <div className="contact-details">
+            <div style={{ textAlign: 'center', width: '100%' }}>
+              <h2 className="contact-headline">Get in Touch</h2>
+              <p className="contact-tagline">We'd love to hear from you</p>
+              <div className="contact-separator"></div>
             </div>
             
-            <div className="contact-method">
-              <div className="contact-icon">
-                <i className="fas fa-phone-alt"></i>
+            <div className="contact-info-list">
+              <div className="contact-info-item">
+                <span className="contact-label">Email</span>
+                <a href="mailto:info@ftdiam.com" className="contact-value">info@ftdiam.com</a>
               </div>
-              <h3>Phone</h3>
-              <p><a href="tel:+16172752599">+1 617 275 2599</a></p>
-            </div>
-            
-            <div className="contact-method">
-              <div className="contact-icon">
-                <i className="fas fa-map-marker-alt"></i>
+              
+              <div className="contact-info-item">
+                <span className="contact-label">Phone</span>
+                <a href="tel:+16172752599" className="contact-value">+1 617 275 2599</a>
               </div>
-              <h3>Address</h3>
-              <p>220 Park Ave PMB 83131<br />New York, NY 10003, USA</p>
-            </div>
-
-            <div className="contact-method">
-              <div className="contact-icon">
-                <i className="fab fa-linkedin"></i>
+              
+              <div className="contact-info-item">
+                <span className="contact-label">Address</span>
+                <span className="contact-value">220 Park Ave PMB 83131<br />New York, NY 10003, USA</span>
               </div>
-              <h3>LinkedIn</h3>
-              <p><a href="https://www.linkedin.com/company/ftdiam" target="_blank" rel="noopener noreferrer">Follow us</a></p>
+              
+              <div className="contact-info-item">
+                <span className="contact-label">Follow Us</span>
+                <a href="https://www.linkedin.com/company/ftdiam" target="_blank" rel="noopener noreferrer" className="contact-value">LinkedIn</a>
+              </div>
             </div>
           </div>
           
-          <div className="contact-form-container">
-            <form className="contact-form" onSubmit={handleSubmit}>
+          {/* Форма контактов */}
+          <div className="contact-form-wrapper">
+            <form className="contact-form-minimal" onSubmit={handleSubmit}>
               {formStatus && (
-                <div className={`form-status ${formStatus.success ? 'success' : 'error'}`}>
+                <div className={`form-status-minimal ${formStatus.success ? 'success' : 'error'}`}>
                   {formStatus.message}
                 </div>
               )}
               
-              <div className="form-group">
-                <label htmlFor="name">Name *</label>
+              <div className="form-field">
                 <input 
                   type="text" 
                   id="name" 
@@ -130,12 +117,12 @@ const ContactsSection = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required 
-                  placeholder="Your name"
+                  placeholder="Your name *"
+                  className="minimal-input"
                 />
               </div>
               
-              <div className="form-group">
-                <label htmlFor="email">Email *</label>
+              <div className="form-field">
                 <input 
                   type="email" 
                   id="email" 
@@ -143,50 +130,27 @@ const ContactsSection = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required 
-                  placeholder="Your email"
+                  placeholder="Your email *"
+                  className="minimal-input"
                 />
               </div>
               
-              <div className="form-group">
-                <label htmlFor="company">Company</label>
-                <input 
-                  type="text" 
-                  id="company" 
-                  name="company" 
-                  value={formData.company}
-                  onChange={handleChange}
-                  placeholder="Your company"
-                />
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="phone">Phone</label>
-                <input 
-                  type="tel" 
-                  id="phone" 
-                  name="phone" 
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="Your phone"
-                />
-              </div>
-              
-              <div className="form-group full-width">
-                <label htmlFor="message">Message *</label>
+              <div className="form-field">
                 <textarea 
                   id="message" 
                   name="message" 
-                  rows={4}
+                  rows={5}
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  placeholder="Your message"
+                  placeholder="Your message *"
+                  className="minimal-textarea"
                 ></textarea>
               </div>
               
-              <div className="form-group full-width">
-                <button type="submit" className="submit-btn">Send Message</button>
-              </div>
+              <button type="submit" className="minimal-button">
+                Send Message
+              </button>
             </form>
           </div>
         </div>

@@ -22,7 +22,7 @@ const HomeSection = () => {
     <section id="home" className="section home-section">
       <div className="home-video-container">
         <div className="split-screen">
-          <div className="split-screen-left">
+          <div className="split-screen-left" style={{ overflow: 'hidden' }}>
             <video 
               ref={leftVideoRef}
               className="background-video" 
@@ -30,7 +30,14 @@ const HomeSection = () => {
               muted 
               playsInline 
               loop
-              style={{ objectFit: 'cover' }}
+              style={{ 
+                objectFit: 'cover',
+                width: '110%', // Увеличиваем размер на 10% для большего растяжения
+                height: '110%',
+                left: '-5%', // Центрируем видео
+                top: '-5%',
+                position: 'absolute'
+              }} 
             >
               <source src="/video/nature.mp4" type="video/mp4" />
             </video>
