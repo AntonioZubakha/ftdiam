@@ -103,9 +103,9 @@ function App() {
   useEffect(() => {
     sectionsRef.current = {
       home: document.getElementById('home'),
+      intro: document.getElementById('intro'),
       mission: document.getElementById('mission'),
       about: document.getElementById('about'),
-      intro: document.getElementById('intro'),
       technology: document.getElementById('technology'),
       products: document.getElementById('products'),
       quality: document.getElementById('quality'),
@@ -137,9 +137,9 @@ function App() {
 
           <main className="no-gap-container" style={{ position: 'relative' }}>
             <HomeSection />
+            <IntroSection />
             <MissionSection />
             <WhoWeAreSection />
-            <IntroSection />
             <TechnologySection />
             <ProductsSection />
             <QualitySection />

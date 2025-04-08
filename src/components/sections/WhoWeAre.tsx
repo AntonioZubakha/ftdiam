@@ -307,9 +307,9 @@ const WhoWeAreSection: React.FC = () => {
             <p style={{ 
               lineHeight: '1.6', 
               flex: 1, 
-              paddingLeft: '25%', 
-              paddingRight: '25%',
-              textAlign: 'center',
+              paddingLeft: '12.5%', 
+              paddingRight: '12.5%',
+              textAlign: 'left',
               fontSize: '1.1rem'
             }}>
               FTDiam is a US-based deep-tech start-up in advanced materials sector. We are revolutionizing the industry with the unique Advanced HPHT (AHPHT) technology. Since our inception, we've been dedicated to producing the highest-quality single-crystal diamond substrates for advanced applications.
