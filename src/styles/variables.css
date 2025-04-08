@@ -37,6 +37,20 @@
   --text-4xl: 2.25rem;  /* 36px */
   --text-5xl: 3rem;     /* 48px */
   
+  /* Унифицированные размеры заголовков для секций */
+  --section-headline-size: 3rem;           /* размер главных заголовков секций */
+  --section-headline-mobile-size: 2.25rem; /* размер главных заголовков на мобильных */
+  --section-headline-tablet-size: 2.5rem;  /* размер главных заголовков на планшетах */
+  --section-subheadline-size: 2rem;        /* размер подзаголовков секций */
+  --section-headline-letter-spacing: 0.5px;/* межбуквенное расстояние для заголовков */
+  --section-headline-after-width: 50px;    /* ширина подчеркивания заголовков */
+  --section-headline-after-height: 3px;    /* высота подчеркивания заголовков */
+  --section-headline-margin: 3rem;         /* отступ снизу для заголовков */
+  
+  /* Градиент для текста и элементов */
+  --main-gradient: linear-gradient(to right, var(--primary-teal), var(--primary-dark-blue));
+  --main-gradient-hover: linear-gradient(to right, var(--primary-dark-blue), var(--primary-teal));
+  
   /* Spacing */
   --spacing-0: 0;
   --spacing-1: 0.25rem;

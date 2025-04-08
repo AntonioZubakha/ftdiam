@@ -8,22 +8,21 @@ import ProductsSection from './components/sections/ProductsSection'
 import QualitySection from './components/sections/QualitySection'
 import ContactsSection from './components/sections/ContactsSection'
 import MissionSection from './components/sections/MissionSection'
-import { WhoWeAreSection, HistorySection } from './components/sections/AboutSection'
+import WhoWeAreSection from './components/sections/WhoWeAre'
+
+// Импорт стилей
 import './styles/index.css'
 import './styles/base.css'
-import './styles/layout.css'
 import './styles/header.css'
 import './styles/responsive.css'
 import './styles/intro.css'
 import './styles/technology.css'
 import './styles/quality.css'
-import './styles/about.css'
+import './styles/whoweare.css' // Убедимся, что стили импортированы
 import './styles/mission.css'
-import './styles/founders.css'
 import './styles/contacts.css'
 import './styles/footer.css'
 import './styles/home.css'
-import './styles/cards.css'
 import './styles/backgrounds.css'
 
 // Main App component
@@ -32,11 +31,15 @@ function App() {
   const [scrolled, setScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  
+  // Проверка импорта
+  console.log('WhoWeAreSection available:', !!WhoWeAreSection);
+  
   const sectionsRef = useRef<{ [key: string]: HTMLElement | null }>({
     home: null,
     mission: null,
-    intro: null,
     about: null,
+    intro: null,
     technology: null,
     products: null,
     quality: null,
@@ -100,8 +103,8 @@ function App() {
     sectionsRef.current = {
       home: document.getElementById('home'),
       mission: document.getElementById('mission'),
-      intro: document.getElementById('intro'),
       about: document.getElementById('about'),
+      intro: document.getElementById('intro'),
       technology: document.getElementById('technology'),
       products: document.getElementById('products'),
       quality: document.getElementById('quality'),
@@ -131,11 +134,11 @@ function App() {
         <>
           <Header activeSection={activeSection} scrollToSection={scrollToSection} />
 
-          <main className="no-gap-container">
+          <main className="no-gap-container" style={{ position: 'relative' }}>
             <HomeSection />
             <MissionSection />
-            <IntroSection />
             <WhoWeAreSection />
+            <IntroSection />
             <TechnologySection />
             <ProductsSection />
             <QualitySection />

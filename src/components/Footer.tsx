@@ -1,50 +1,47 @@
-const Footer = () => {
+import React from 'react';
+
+const Footer: React.FC = () => {
   return (
-    <footer>
-      <div className="footer-content">
-        <div className="footer-logo">
-          <img src="/images/Logo.png" alt="FTDiam Logo" className="footer-logo-img" />
-          <div className="footer-company-info">
-            <p>FTDiam - Flawless Technical Diamonds</p>
-            <p>220 Park Ave PMB 83131</p>
-            <p>New York, NY 10003, USA</p>
-            <p>A US-based deep-tech company in the advanced materials sector</p>
+    <footer className="footer">
+      <div className="footer-container">
+        <div className="footer-main">
+          <div className="footer-col footer-info">
+            <img src="/images/Logo.png" alt="FTDiam Logo" className="footer-logo" />
+          </div>
+          
+          <div className="footer-col">
+            <ul className="footer-links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">Who We Are</a></li>
+              <li><a href="#technology">Advanced HPHT</a></li>
+            </ul>
+          </div>
+          
+          <div className="footer-col">
+            <ul className="footer-links">
+              <li><a href="#products">Products</a></li>
+              <li><a href="#quality">Quality Analysis</a></li>
+              <li><a href="#contacts">Contacts</a></li>
+            </ul>
+          </div>
+          
+          <div className="footer-col">
+            <h3 className="footer-heading">Contact Us</h3>
+            <ul className="footer-contact">
+              <li><a href="mailto:info@ftdiam.com"><i className="fas fa-envelope"></i>info@ftdiam.com</a></li>
+              <li><a href="tel:+16172752599"><i className="fas fa-phone"></i>+1 617 275 2599</a></li>
+              <li><i className="fas fa-map-marker-alt"></i>220 Park Ave PMB 83131, NY 10003</li>
+              <li>
+                <a href="https://www.linkedin.com/company/ftdiam" target="_blank" rel="noopener noreferrer">
+                  <i className="fab fa-linkedin"></i>LinkedIn
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
         
-        <div className="footer-links">
-          <div className="footer-nav">
-            <div className="footer-nav-column">
-              <h4>Company</h4>
-              <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#technology">Our Technology</a></li>
-                <li><a href="#about">Our Mission</a></li>
-              </ul>
-            </div>
-            
-            <div className="footer-nav-column">
-              <h4>Products</h4>
-              <ul>
-                <li><a href="#products">Products Overview</a></li>
-                <li><a href="#quality">Quality Analysis</a></li>
-              </ul>
-            </div>
-            
-            <div className="footer-nav-column">
-              <h4>Contact</h4>
-              <ul>
-                <li><a href="mailto:info@ftdiam.com">info@ftdiam.com</a></li>
-                <li><a href="tel:+16172752599">+1 617 275 2599</a></li>
-                <li><a href="https://www.linkedin.com/company/ftdiam" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        
-        <div className="copyright">
-          <p>© {new Date().getFullYear()} FTDiam LLC. All rights reserved. Flawless Technical Diamonds</p>
+        <div className="footer-bottom">
+          <p>&copy; {new Date().getFullYear()} FTDiam. All rights reserved.</p>
         </div>
       </div>
     </footer>

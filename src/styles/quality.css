@@ -1,109 +1,168 @@
-/* Секция Quality Analysis */
+/* Основные стили для секции Quality */
 .quality-section {
+  padding: 200px 0;
+  background-color: #fff;
   position: relative;
-  overflow: hidden;
-  background-color: #fcfcfc;
 }
 
-.quality-section .headline {
+.quality-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
   text-align: center;
+}
+
+/* Стили для заголовка */
+.quality-headline {
+  font-size: 3rem;
   margin-bottom: 1rem;
 }
 
-.quality-section .quality-subheadline {
-  text-align: center;
-  color: var(--primary-teal);
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  font-weight: 600;
+.quality-subheadline {
+  font-size: 2rem;
+  background: linear-gradient(to right, #00837f, #241e46);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+  display: inline-block;
 }
 
-.quality-section .section-description {
-  max-width: 850px;
-  margin: 0 auto 3rem;
-  text-align: center;
-  color: var(--dark-gray);
+.quality-description {
   font-size: 1.1rem;
+  color: #666;
+  max-width: 800px;
+  margin: 0 auto 4rem;
   line-height: 1.6;
 }
 
-/* Методы качественного анализа */
-.quality-methods {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2.5rem;
-  margin-bottom: 4rem;
+.quality-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
-.quality-method {
-  background: #fff;
-  padding: 2.5rem;
-  border-radius: 8px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
-  transition: all 0.3s ease;
-  position: relative;
-  border: 1px solid rgba(0, 131, 127, 0.05);
+.quality-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.quality-row-graphs {
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.quality-row-graphs .quality-item {
+  max-width: 45%;
+}
+
+.quality-row-graphs .quality-image-container {
+  height: 300px;
+}
+
+.quality-item {
+  flex: 1;
+  max-width: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
 }
 
-.quality-method:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 131, 127, 0.2);
-}
-
-.quality-method-image {
+.quality-image-container {
   width: 100%;
-  height: 200px;
+  height: 250px;
   margin-bottom: 1.5rem;
-  border-radius: 8px;
   overflow: hidden;
-  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.quality-method-image img {
+.quality-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
 }
 
-.quality-method:hover .quality-method-image img {
-  transform: scale(1.05);
+.quality-item-title {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
-.quality-method h3 {
-  font-size: 1.4rem;
-  color: var(--primary-dark-blue);
-  margin: 0 0 1.2rem;
-  position: relative;
-  padding-bottom: 1rem;
-}
-
-.quality-method h3::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 2px;
-  background: linear-gradient(to right, #00837f, #241e46);
-  transition: width 0.3s ease;
-}
-
-.quality-method:hover h3::after {
-  width: 70px;
-}
-
-.quality-method p {
-  color: var(--dark-gray);
-  margin: 0;
-  line-height: 1.7;
+.quality-item-description {
   font-size: 1rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* Медиа-запросы для адаптивности */
+@media screen and (max-width: 992px) {
+  .quality-section {
+    padding: 160px 0;
+  }
+
+  .quality-headline {
+    font-size: 2.5rem;
+  }
+
+  .quality-subheadline {
+    font-size: 1.8rem;
+  }
+
+  .quality-image-container {
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .quality-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .quality-item,
+  .quality-row-graphs .quality-item {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .quality-image-container,
+  .quality-row-graphs .quality-image-container {
+    height: 250px;
+  }
+
+  .quality-headline {
+    font-size: 2.2rem;
+  }
+
+  .quality-subheadline {
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .quality-section {
+    padding: 120px 0;
+  }
+
+  .quality-headline {
+    font-size: 2rem;
+  }
+
+  .quality-subheadline {
+    font-size: 1.4rem;
+  }
+
+  .quality-description {
+    font-size: 1rem;
+  }
+
+  .quality-image-container {
+    height: 200px;
+  }
 }
 
 /* Стандарты качества */
@@ -198,41 +257,6 @@
 }
 
 /* Медиа-запросы */
-@media (max-width: 992px) {
-  .quality-methods {
-    gap: 2rem;
-  }
-  
-  .quality-section .quality-subheadline {
-    font-size: 1.6rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .quality-methods {
-    grid-template-columns: 1fr;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .quality-method {
-    padding: 2rem;
-  }
-  
-  .quality-section .quality-subheadline {
-    font-size: 1.4rem;
-  }
-  
-  .quality-method-image {
-    height: 180px;
-  }
-  
-  .quality-section .section-description {
-    font-size: 1rem;
-  }
-}
-
 @media (max-width: 480px) {
   .quality-section .section-description {
     font-size: 1rem;

@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import '../../styles/products.css';
 
 const ProductsSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-
+  
+  // Данные о продуктах точно по ТЗ
   const products = [
     {
-      name: "Diamond Substrates",
-      image: "/images/photo1.1.jpg",
+      id: 1,
+      title: "Diamond Substrates",
+      image: "/images/photo1.1.png",
       specs: [
         "Type IIa single-crystal plates.",
         "Sizes: 3x3 mm to 15x15 mm; Thickness: 0.1-10 mm.",
@@ -17,8 +20,9 @@ const ProductsSection: React.FC = () => {
       ]
     },
     {
-      name: "Diamond Anvils",
-      image: "/images/photo1.2.jpg",
+      id: 2,
+      title: "Diamond Anvils",
+      image: "/images/photo1.2.png",
       specs: [
         "Diameters: 2.5-4 mm.",
         "Designs: Smooth or faceted.",
@@ -27,251 +31,104 @@ const ProductsSection: React.FC = () => {
       ]
     },
     {
-      name: "Custom Products",
-      image: "/images/photo1.3.jpg",
+      id: 3,
+      title: "Custom Products",
+      image: "/images/photo1.3.png",
       specs: [
         "Lenses, optical windows and any shape per client specs."
       ]
     }
   ];
-
+  
   const handlePrevClick = () => {
-    setActiveIndex((prevIndex) => 
-      prevIndex === 0 ? products.length - 1 : prevIndex - 1
-    );
+    setActiveIndex(prevIndex => (prevIndex === 0 ? products.length - 1 : prevIndex - 1));
   };
-
+  
   const handleNextClick = () => {
-    setActiveIndex((prevIndex) => 
-      prevIndex === products.length - 1 ? 0 : prevIndex + 1
-    );
+    setActiveIndex(prevIndex => (prevIndex === products.length - 1 ? 0 : prevIndex + 1));
   };
-
+  
   const currentProduct = products[activeIndex];
-
+  
   return (
-    <section 
-      id="products" 
-      style={{
-        padding: '5rem 0',
-        background: 'white'
-      }}
-    >
-      <div style={{
-        maxWidth: '1300px',
-        margin: '0 auto',
-        padding: '0 2rem'
-      }}>
-        <h2 style={{
-          textAlign: 'center',
-          fontSize: '2.5rem',
-          marginBottom: '3rem'
-        }}>
-          High-Quality Diamond Products
-        </h2>
+    <section id="products" className="products-section">
+      <div className="products-container">
+        <div className="products-inner-container">
+          <div className="products-headline-container">
+            <h2 className="gradient-headline">
+              High Quality Diamond Products
+            </h2>
+          </div>
+        </div>
         
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1.1fr 1fr',
-          gap: '3rem',
-          alignItems: 'flex-start'
-        }}>
-          <div style={{
-            position: 'relative',
-            width: '95%',
-            height: '750px',
-            overflow: 'hidden',
-            boxShadow: 'none',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            background: 'transparent',
-            margin: '0 auto',
-            borderRadius: '0px'
-          }}>
-            <video 
-              src="/video/2.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              style={{
-                maxHeight: '98%',
-                width: 'auto',
-                height: 'auto',
-                maxWidth: '98%',
-                objectFit: 'contain',
-                borderRadius: '0px'
-              }}
-            />
+        <div className="products-content-wrapper">
+          {/* Левая часть с видео */}
+          <div className="video-container">
+            <div className="video-wrapper">
+              <video 
+                className="video-left"
+                autoPlay 
+                muted 
+                loop 
+                playsInline
+              >
+                <source src="/video/1.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div className="video-wrapper-right">
+              <video 
+                className="video-right" 
+                autoPlay 
+                muted 
+                loop 
+                playsInline
+              >
+                <source src="/video/2.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </div>
           
-          <div style={{
-            padding: '2rem',
-            borderRadius: '8px',
-            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
-            background: 'white',
-            display: 'flex',
-            flexDirection: 'column',
-            height: '750px',
-            position: 'relative'
-          }}>
-            <h3 style={{
-              textAlign: 'center',
-              fontSize: '1.8rem',
-              marginBottom: '2rem'
-            }}>
-              Tailored Solutions for Cutting-Edge Applications
-            </h3>
+          {/* Правая часть со слайдером */}
+          <div className="product-content">
+            <h3 className="product-title">Tailored Solutions For Cutting-Edge Applications</h3>
             
-            <div style={{
-              flex: '1',
-              display: 'flex',
-              flexDirection: 'column'
-            }}>
-              <div style={{ 
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                gap: '1rem',
-                marginBottom: '1.5rem',
-                height: '40px'
-              }}>
+            <div className="product-details">
+              <div className="title-nav-container">
                 <button 
+                  className="nav-button"
                   onClick={handlePrevClick}
-                  style={{
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '50%',
-                    border: 'none',
-                    background: '#00837f',
-                    color: 'white',
-                    fontSize: '1.2rem',
-                    cursor: 'pointer'
-                  }}
+                  aria-label="Previous product"
                 >
-                  &#9664;
+                  ←
                 </button>
-                
-                <div style={{ 
-                  fontWeight: 'bold',
-                  width: '40px',
-                  textAlign: 'center'
-                }}>
-                  {activeIndex + 1} / {products.length}
-                </div>
-                
+                <h4 className="product-section-title">{currentProduct.title}</h4>
                 <button 
+                  className="nav-button"
                   onClick={handleNextClick}
-                  style={{
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '50%',
-                    border: 'none',
-                    background: '#00837f',
-                    color: 'white',
-                    fontSize: '1.2rem',
-                    cursor: 'pointer'
-                  }}
+                  aria-label="Next product"
                 >
-                  &#9654;
+                  →
                 </button>
               </div>
               
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'minmax(150px, 200px) 1fr',
-                gap: '1.5rem',
-                padding: '1rem',
-                borderRadius: '8px',
-                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
-                minHeight: '400px',
-                overflow: 'hidden'
-              }}>
-                <div style={{
-                  height: '200px',
-                  width: '200px',
-                  borderRadius: '8px',
-                  overflow: 'hidden',
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
-                }}>
-                  <img 
-                    src={currentProduct.image} 
-                    alt={currentProduct.name}
-                    style={{
-                      width: '100%', 
-                      height: '100%',
-                      objectFit: 'cover'
-                    }}
-                  />
-                </div>
-                
-                <div style={{
-                  overflowY: 'auto'
-                }}>
-                  <h4 style={{
-                    fontSize: '1.4rem',
-                    marginBottom: '1rem',
-                    height: '30px'
-                  }}>
-                    {currentProduct.name}
-                  </h4>
-                  
-                  <ul style={{
-                    listStyle: 'none',
-                    padding: 0,
-                    margin: 0
-                  }}>
-                    {currentProduct.specs.map((spec, index) => (
-                      <li 
-                        key={index}
-                        style={{
-                          marginBottom: '0.8rem',
-                          paddingLeft: '1.5rem',
-                          position: 'relative',
-                          lineHeight: '1.5'
-                        }}
-                      >
-                        <span style={{
-                          position: 'absolute',
-                          left: 0,
-                          color: '#00837f'
-                        }}>•</span>
-                        {spec}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <img 
+                src={currentProduct.image} 
+                alt={currentProduct.title} 
+                className="product-image"
+              />
+
+              <div className="spec-list-container">
+                <ul className="spec-list">
+                  {currentProduct.specs.map((spec, index) => (
+                    <li key={index} className="spec-item">
+                      <span className="gradient-circle"></span>
+                      {spec}
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </div>
-            
-            <div style={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: '0.5rem',
-              height: '20px',
-              position: 'absolute',
-              bottom: '2rem',
-              left: 0,
-              right: 0
-            }}>
-              {products.map((_, index) => (
-                <button 
-                  key={index}
-                  onClick={() => setActiveIndex(index)}
-                  style={{
-                    width: '10px',
-                    height: '10px',
-                    borderRadius: '50%',
-                    border: 'none',
-                    background: index === activeIndex ? '#00837f' : '#e0e0e0',
-                    padding: 0,
-                    cursor: 'pointer',
-                    transform: index === activeIndex ? 'scale(1.2)' : 'scale(1)'
-                  }}
-                  aria-label={`Go to product ${index + 1}`}
-                />
-              ))}
             </div>
           </div>
         </div>

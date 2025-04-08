@@ -1,235 +1,262 @@
-/* Минималистичные стили для секции контактов */
+/* Основные стили для секции Contacts */
 .contacts-section {
+  background-color: #f9f9f9;
   position: relative;
-  padding: 80px 0;
-  color: #333;
   overflow: hidden;
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
-.contacts-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  max-width: 1100px;
+.contacts-section .container {
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 0 40px;
+}
+
+.contacts-headline {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 4rem;
   position: relative;
-  z-index: 2;
+  display: inline-block;
 }
 
-/* Стили для контактной информации */
-.contact-details {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.contact-headline {
-  font-size: 2.5rem;
-  color: #00837f;
-  margin-bottom: 10px;
-  font-weight: 600;
-  letter-spacing: -0.5px;
-}
-
-.contact-tagline {
-  font-size: 1.2rem;
-  color: #555;
-  margin-bottom: 30px;
-  font-weight: 300;
-}
-
-.contact-separator {
+.contacts-headline::after {
+  content: '';
+  display: block;
   width: 60px;
   height: 3px;
-  background: #00837f;
-  margin-bottom: 40px;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  background: linear-gradient(to right, #00837f, #241e46);
+  margin: 15px auto 0;
 }
 
-.contact-info-list {
+.contacts-content {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin: 0 auto;
+}
+
+/* Стили для информационной части */
+.contact-info {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 40px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  width: 100%;
+  gap: 25px;
+  flex: 1;
+}
+
+.contact-info-header {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.contact-info-header::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, #00837f, #241e46);
+  margin: 15px auto 0;
+}
+
+.info-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+  background: linear-gradient(to right, #00837f, #241e46);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 .contact-info-item {
   display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 10px 0;
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #00837f, #241e46);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.contact-text {
+  flex: 1;
+  display: flex;
   flex-direction: column;
-  gap: 5px;
 }
 
 .contact-label {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #888;
+  font-size: 14px;
   font-weight: 600;
+  margin-bottom: 5px;
+  color: #00837f;
 }
 
 .contact-value {
-  font-size: 1.1rem;
-  color: #333;
+  font-size: 16px;
+  color: #555;
   text-decoration: none;
-  transition: color 0.2s ease;
+  line-height: 1.5;
+  transition: color 0.3s ease;
 }
 
 a.contact-value:hover {
   color: #00837f;
 }
 
-/* Стиль для социальных ссылок */
-.social-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.social-link i {
-  font-size: 1.2rem;
-  color: #0077B5; /* LinkedIn brand color */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 /* Стили для формы */
-.contact-form-wrapper {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+.contact-form {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   padding: 40px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+  flex: 1;
 }
 
-.contact-form-wrapper:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+.form-header {
+  margin-bottom: 25px;
+  text-align: center;
 }
 
-.contact-form-minimal {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.form-header::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, #00837f, #241e46);
+  margin: 15px auto 0;
 }
 
-.form-field {
-  position: relative;
+.form-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+  background: linear-gradient(to right, #00837f, #241e46);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
-.minimal-input,
-.minimal-textarea {
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group textarea {
   width: 100%;
-  padding: 15px;
-  border: none;
-  border-radius: 4px;
-  background: #f9f9f9;
-  font-size: 1rem;
-  transition: all 0.2s ease;
-  color: #333;
+  padding: 12px 15px;
+  font-size: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
 }
 
-.minimal-textarea {
+.form-group textarea {
   min-height: 150px;
   resize: vertical;
 }
 
-.minimal-input:focus,
-.minimal-textarea:focus {
+.form-group input:focus,
+.form-group textarea:focus {
   outline: none;
-  background: #f2f2f2;
-  box-shadow: 0 0 0 2px rgba(0, 131, 127, 0.2);
+  border-color: #00837f;
+  box-shadow: 0 0 0 3px rgba(0, 131, 127, 0.1);
+  background-color: #fff;
 }
 
-.minimal-button {
-  background: #00837f;
-  color: white;
+.contact-submit-button {
+  width: 100%;
+  padding: 12px 15px;
   border: none;
-  border-radius: 4px;
-  padding: 15px 25px;
-  font-size: 1rem;
+  border-radius: 8px;
+  background: linear-gradient(to right, #00837f, #241e46);
+  color: #fff;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
-  align-self: flex-end;
+  transition: all 0.3s ease;
+  margin-top: 10px;
 }
 
-.minimal-button:hover {
-  background: #006a66;
+.contact-submit-button:hover {
   transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 131, 127, 0.2);
 }
 
-.form-status-minimal {
-  padding: 12px;
-  border-radius: 4px;
-  text-align: center;
-  font-weight: 500;
-}
-
-.form-status-minimal.success {
-  background-color: rgba(38, 222, 129, 0.1);
-  color: #26de81;
-}
-
-.form-status-minimal.error {
-  background-color: rgba(235, 77, 75, 0.1);
-  color: #eb4d4b;
-}
-
-/* Медиа-запросы */
+/* Адаптивные стили */
 @media (max-width: 992px) {
-  .contacts-inner {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    padding: 0 20px;
+  .contacts-section .container {
+    padding: 0 30px;
   }
   
-  .contact-form-wrapper {
-    padding: 30px;
+  .contacts-headline {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
   }
 }
 
 @media (max-width: 768px) {
-  .contacts-section {
-    padding: 60px 0;
+  .contacts-content {
+    flex-direction: column;
   }
   
-  .contact-headline {
-    font-size: 2rem;
+  .contacts-headline {
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
   }
   
-  .contact-tagline {
-    font-size: 1.1rem;
-  }
-  
-  .minimal-button {
-    width: 100%;
-    align-self: center;
+  .contact-info,
+  .contact-form {
+    padding: 30px;
   }
 }
 
-@media (max-width: 480px) {
-  .contacts-section {
-    padding: 40px 0;
+@media (max-width: 576px) {
+  .contacts-section .container {
+    padding: 0 20px;
   }
   
-  .contact-headline {
-    font-size: 1.8rem;
+  .contacts-headline {
+    font-size: 2rem;
   }
   
-  .contact-info-list {
-    gap: 20px;
+  .contact-info,
+  .contact-form {
+    padding: 25px;
   }
   
-  .contact-form-wrapper {
-    padding: 20px;
+  .contact-info-item {
+    gap: 10px;
   }
   
-  .minimal-input,
-  .minimal-textarea {
-    padding: 12px;
+  .contact-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+  
+  .form-group input,
+  .form-group textarea,
+  .contact-submit-button {
+    padding: 10px;
   }
 } 

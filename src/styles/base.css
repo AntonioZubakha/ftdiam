@@ -20,12 +20,16 @@ section + section {
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
   min-width: 320px;
+  width: 100%;
   min-height: 100vh;
   margin: 0;
+  padding: 0;
   overflow-x: hidden;
   color: var(--dark-gray);
   background-color: var(--white);
@@ -94,30 +98,54 @@ img {
 }
 
 .headline {
-  font-size: 2.5rem;
-  color: var(--primary-dark-blue);
-  position: relative;
-  display: inline-block;
-  margin-bottom: 1.5rem;
+  font-size: var(--section-headline-size);
+  margin-bottom: var(--section-headline-margin);
   text-align: center;
-  font-weight: 700;
+  color: var(--primary-color);
+  letter-spacing: var(--section-headline-letter-spacing);
+  font-weight: var(--font-weight-semibold);
+  position: relative;
+}
+
+/* Основной класс для градиентных заголовков */
+.gradient-headline {
+  background: var(--main-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Класс для подзаголовков с градиентом */
+.gradient-subheadline {
+  background: var(--main-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Класс для элементов с градиентом */
+.gradient-text {
+  background: var(--main-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 .headline::after {
   content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, var(--primary-teal), transparent);
-  border-radius: 2px;
-  transform: translateX(-50%);
-  transition: width 0.3s ease;
+  display: block;
+  width: var(--section-headline-after-width);
+  height: var(--section-headline-after-height);
+  margin: 15px auto 0;
+  background: var(--main-gradient);
+  transition: width var(--transition-normal);
 }
 
 .headline:hover::after {
-  width: 120px;
+  width: 80px;
 }
 
 .section-description {
@@ -152,7 +180,7 @@ img {
   }
   
   .headline {
-    font-size: 1.8rem;
+    font-size: var(--section-headline-mobile-size);
   }
   
   h1 {
@@ -322,4 +350,405 @@ textarea:focus {
 
 .p-2 { padding: var(--spacing-2); }
 .p-4 { padding: var(--spacing-4); }
-.p-8 { padding: var(--spacing-8); } 
+.p-8 { padding: var(--spacing-8); }
+
+/* Global Base Styles */
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--primary-font);
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 1rem;
+  font-family: var(--heading-font);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  color: var(--primary-color);
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary-color);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--primary-font);
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style-position: inside;
+}
+
+figure {
+  margin: 0;
+}
+
+/* Containers */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.content-wrapper {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Section Styles */
+.section {
+  padding: 5rem 0;
+  position: relative;
+}
+
+/* Headline Styles */
+.headline {
+  font-size: var(--section-headline-size);
+  margin-bottom: var(--section-headline-margin);
+  text-align: center;
+  color: var(--primary-color);
+  letter-spacing: var(--section-headline-letter-spacing);
+  font-weight: var(--font-weight-semibold);
+  position: relative;
+}
+
+.section-description {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--dark-gray);
+}
+
+/* Common utility classes */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+/* Flexbox helpers */
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+/* Margin and padding utility classes */
+.m-0 { margin: 0; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 1rem; }
+.mt-4 { margin-top: 1.5rem; }
+.mt-5 { margin-top: 3rem; }
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+.mb-5 { margin-bottom: 3rem; }
+
+.p-0 { padding: 0; }
+.p-1 { padding: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.p-3 { padding: 1rem; }
+.p-4 { padding: 1.5rem; }
+.p-5 { padding: 3rem; }
+
+/* Width utility classes */
+.w-full { width: 100%; }
+.w-half { width: 50%; }
+.w-auto { width: auto; }
+
+/* Height utility classes */
+.h-full { height: 100%; }
+.h-screen { height: 100vh; }
+.h-auto { height: auto; }
+
+/* Display utility classes */
+.block { display: block; }
+.inline-block { display: inline-block; }
+.inline { display: inline; }
+.hidden { display: none; }
+
+/* Position utility classes */
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+
+/* Overflow utility classes */
+.overflow-hidden { overflow: hidden; }
+.overflow-auto { overflow: auto; }
+.overflow-scroll { overflow: scroll; }
+
+/* Text utility classes */
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.capitalize { text-transform: capitalize; }
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Border utility classes */
+.border { border: 1px solid var(--light-gray); }
+.border-t { border-top: 1px solid var(--light-gray); }
+.border-r { border-right: 1px solid var(--light-gray); }
+.border-b { border-bottom: 1px solid var(--light-gray); }
+.border-l { border-left: 1px solid var(--light-gray); }
+.rounded { border-radius: var(--radius-md); }
+.rounded-lg { border-radius: var(--radius-lg); }
+.rounded-full { border-radius: 9999px; }
+
+/* Font utility classes */
+.font-light { font-weight: var(--font-weight-light); }
+.font-normal { font-weight: var(--font-weight-normal); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-bold { font-weight: var(--font-weight-bold); }
+
+/* Gradient text utility class */
+.gradient-text {
+  background: linear-gradient(to right, #00837f, #241e46);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Responsive utility classes */
+@media (max-width: 992px) {
+  html {
+    font-size: 15px;
+  }
+  
+  .headline {
+    font-size: var(--section-headline-tablet-size);
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  
+  .headline {
+    font-size: var(--section-headline-mobile-size);
+  }
+  
+  .section {
+    padding: 4rem 0;
+  }
+  
+  .section-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  html {
+    font-size: 13px;
+  }
+  
+  .headline {
+    font-size: var(--section-headline-mobile-size);
+    margin-bottom: 2rem;
+  }
+  
+  .section {
+    padding: 3rem 0;
+  }
+}
+
+/* Gradient headline class */
+.gradient-headline {
+  background: var(--main-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Перенесено из layout.css */
+/* Стили для контейнера контента */
+.content-wrapper {
+  position: relative;
+  z-index: 2;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+/* Стиль для центрирования заголовков внутри content-wrapper */
+.content-wrapper > h2.headline {
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+}
+
+/* Стиль для секций с описанием */
+.content-wrapper > .section-description {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-description {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--dark-gray);
+}
+
+/* Утилитарные классы для макета */
+.grid {
+  display: grid;
+}
+
+.grid-2-cols {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.grid-3-cols {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.grid-4-cols {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+/* Контейнер без отступов для секций */
+.no-gap-container {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Делаем, чтобы секции в контейнере не накладывались друг на друга */
+.no-gap-container > section {
+  position: relative;
+  display: block;
+  width: 100%;
+  z-index: 1;
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 1024px) {
+  .grid-4-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .section-description {
+    font-size: 1rem;
+  }
+  
+  .grid-2-cols,
+  .grid-3-cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-4-cols {
+    grid-template-columns: 1fr;
+  }
+} 

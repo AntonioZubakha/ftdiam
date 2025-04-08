@@ -1,31 +1,32 @@
 import React from 'react';
+import '../../styles/mission.css';
 
-const MissionSection: React.FC = () => {
-  // Определяем стиль для белого фона
-  const backgroundStyle = {
-    backgroundColor: '#fff',
-    position: 'absolute' as const,
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    zIndex: 0
-  };
-
+const MissionSection = () => {
   return (
-    <section id="mission" className="section mission-section">
-      <div style={backgroundStyle}></div>
-      <div className="content-wrapper">
-        <h2 className="headline">Our Mission</h2>
-        <div className="mission-container">
+    <section 
+      id="mission" 
+      className="mission-section" 
+      style={{ 
+        paddingTop: '120px',
+        paddingBottom: '120px',
+        backgroundColor: '#fff',
+        position: 'relative',
+        overflow: 'hidden',
+        textAlign: 'center'
+      }}
+    >
+      <div className="container">
+        <h2 className="mission-headline gradient-headline">Our Mission</h2>
+        
+        <div className="mission-content">
           <div className="mission-logo-container">
             <img src="/images/Logo.png" alt="FTDiam Logo" className="mission-logo" />
           </div>
-          <div className="mission-content">
-            <div className="quote-mark">&#8220;</div>
-            <p className="section-description">
-              Our vision is to provide CVD diamond Made-in-Germany with NV centers for 
-              applications in magnetic imaging, nano-NMR and quantum computing.
+          
+          <div className="mission-text">
+            <div className="quote-mark" dangerouslySetInnerHTML={{ __html: "&ldquo;" }}></div>
+            <p className="mission-description">
+            Our mission is to provide flawless technical diamonds that drive innovation across industries, from next-generation electronics to life-changing quantum solutions.
             </p>
           </div>
         </div>

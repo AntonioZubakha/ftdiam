@@ -56,11 +56,22 @@ const HomeSection = () => {
             </video>
           </div>
         </div>
+        
+        {/* Визуальный маркер для центра экрана (будет скрыт на продакшене) */}
+        <div className="center-marker"></div>
+      </div>
+      
+      {/* Логотип, центрированный абсолютно */}
+      <div className="logo-container">
+        <img 
+          src="/images/Logo_white.png" 
+          alt="FTDiam Logo" 
+          className="absolute-center-logo" 
+        />
       </div>
       
       <div className="content-wrapper">
         <div className="hero-content">
-          <img src="/images/Logo_white.png" alt="FTDiam Logo" className="hero-logo" />
           <div className="hero-text">
             <h2 className="hero-subheadline">Single Crystal Diamond Substrates</h2>
             <p className="hero-description">Advanced HPHT technology for cutting-edge applications</p>

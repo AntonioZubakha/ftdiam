@@ -1,0 +1,219 @@
+/* Общие стили для раздела */
+.who-we-are-section {
+  background-color: white;
+  padding: 120px 0 120px 0;
+  position: relative;
+  margin: 0;
+  /* Добавим небольшие разделители для четкого отделения секций */
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.who-we-are-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center; /* Центрируем заголовок */
+}
+
+/* Стили для заголовка */
+.who-we-are-section .headline {
+  font-size: var(--section-headline-size);
+  color: var(--primary-color);
+  margin-bottom: var(--section-headline-margin);
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  letter-spacing: var(--section-headline-letter-spacing);
+  font-weight: var(--font-weight-semibold);
+}
+
+.who-we-are-section .headline::after {
+  content: '';
+  display: block;
+  width: var(--section-headline-after-width);
+  height: var(--section-headline-after-height);
+  background: var(--main-gradient);
+  margin: 15px auto 0;
+  transition: width var(--transition-normal);
+}
+
+/* Сетка для 4 блоков */
+.who-we-are-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 40px;
+  margin-top: 40px;
+}
+
+/* Стили для информационных блоков */
+.info-block {
+  background-color: transparent;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-align: left;
+}
+
+/* Стили для блоков about и history */
+.about-block,
+.history-block {
+  padding: 0;
+}
+
+.block-title {
+  color: var(--primary-color);
+  font-size: 24px;
+  margin: 0 0 20px 0;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.block-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 3px;
+  background: var(--main-gradient);
+}
+
+.block-content {
+  color: #555;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.block-content p {
+  margin-bottom: 12px;
+}
+
+.block-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Стили для блоков основателей */
+.founder-block {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  height: 100%;
+}
+
+.founder-photo {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.founder-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: transparent;
+}
+
+.founder-details {
+  padding: 0;
+  background-color: transparent;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.founder-name {
+  font-size: 20px;
+  color: var(--primary-color);
+  margin: 0 0 5px 0;
+}
+
+.founder-title {
+  background: var(--main-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+  font-size: 16px;
+  margin: 0 0 10px 0;
+  display: inline-block;
+}
+
+.founder-bio {
+  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* Стили для блока истории */
+.history-block .block-content p {
+  margin-bottom: 15px;
+  position: relative;
+  padding-left: 0;
+}
+
+.history-block .block-content p strong {
+  background: var(--main-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+/* Адаптивная верстка */
+@media (max-width: 992px) {
+  .who-we-are-section {
+    padding: 80px 0;
+  }
+  
+  .who-we-are-section .headline {
+    font-size: var(--section-headline-tablet-size);
+  }
+  
+  .founder-photo {
+    height: 140px;
+  }
+}
+
+@media (max-width: 768px) {
+  .who-we-are-grid {
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+  }
+  
+  .who-we-are-section .headline {
+    font-size: var(--section-headline-mobile-size);
+  }
+  
+  .founder-photo {
+    height: 170px;
+  }
+}
+
+@media (max-width: 576px) {
+  .who-we-are-section {
+    padding: 60px 0;
+  }
+  
+  .who-we-are-section .headline {
+    font-size: var(--section-headline-mobile-size);
+    margin-bottom: 30px;
+  }
+  
+  .about-block,
+  .history-block {
+    padding: 0;
+  }
+  
+  .founder-photo {
+    height: 150px;
+  }
+} 

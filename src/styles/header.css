@@ -13,12 +13,51 @@ header {
   transition: all 0.3s ease;
   z-index: 100;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 header.scrolled {
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили логотипа в верхнем углу убираем */
+.header-logo {
+  display: none;
+}
+
+/* Отключаем стили site-header, которые были добавлены */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: transparent;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 2rem;
+  transition: all 0.3s ease;
+  z-index: 100;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.site-header.scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Мобильное меню нам не нужно */
+.mobile-menu-toggle {
+  display: none;
+}
+
+.header-content {
+  display: none;
 }
 
 /* Бургер-меню */
@@ -116,6 +155,7 @@ nav {
   z-index: 950;
   overflow-y: auto;
   transform: none;
+  box-sizing: border-box;
 }
 
 nav.open {
@@ -146,6 +186,8 @@ nav ul {
   flex-direction: column;
   gap: 25px;
   text-align: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 nav ul li {
@@ -155,6 +197,7 @@ nav ul li {
   padding: 0.5rem 0;
   transition: transform 0.2s;
   text-align: center;
+  box-sizing: border-box;
 }
 
 nav ul li:hover {
@@ -167,14 +210,17 @@ nav ul li span {
   font-weight: 700;
   display: block;
   text-align: center;
+  position: relative;
+  padding-bottom: 5px;
 }
 
 nav ul li.active span {
   color: #ffffff;
-  text-decoration: underline;
+  opacity: 1;
 }
 
-nav ul li::after {
+/* Убираем постоянное подчеркивание и используем псевдоэлемент для подчеркивания */
+nav ul li span::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -186,12 +232,19 @@ nav ul li::after {
   transition: width 0.3s;
 }
 
-nav ul li.active::after {
+/* Подчеркивание ТОЛЬКО при наведении */
+nav ul li:hover span::after {
   width: 80%;
 }
 
-nav ul li:hover::after {
-  width: 80%;
+/* Удаляем подчеркивание для активного пункта */
+nav ul li.active span::after {
+  width: 0;
+}
+
+/* Удаляем старые стили для подчеркивания */
+nav ul li::after {
+  display: none;
 }
 
 /* Overlay для закрытия меню при клике вне его */

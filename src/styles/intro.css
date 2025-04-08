@@ -2,13 +2,39 @@
 
 .intro-section {
   position: relative;
-  padding: 120px 0;
+  padding: 120px 0 50px 0;
   overflow: hidden;
-  min-height: 80vh;
+  min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--text-dark);
+  background-color: #f4f9fa; /* Светлый оттенок фона под SVG для лучшего отображения */
+  box-shadow: 0 -10px 30px rgba(244, 249, 250, 0.8); /* Тень сверху для плавного перехода */
+}
+
+.intro-section::before {
+  content: '';
+  position: absolute;
+  top: -50px; /* Выходим выше текущей секции */
+  left: 0;
+  right: 0;
+  height: 100px; /* Увеличиваем высоту для перекрытия */
+  background-color: #f4f9fa; /* Такой же цвет как у секции */
+  z-index: -1;
+}
+
+/* Дополнительное оформление правого верхнего угла */
+.intro-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle at top right, #f4f9fa 0%, transparent 70%);
+  opacity: 0.9;
+  z-index: 0;
 }
 
 .intro-section .content-wrapper {
@@ -76,9 +102,9 @@
 /* Стили для сетки спецификаций */
 .specs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  margin: 3rem 0 1rem;
+  margin: 3rem 0 0;
 }
 
 /* Уникальные стили для spec-block в IntroSection */
@@ -126,78 +152,78 @@
   letter-spacing: 0.5px;
 }
 
+.spec-block {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.spec-block:hover {
+  transform: translateY(-5px);
+}
+
+.spec-icon {
+  margin-bottom: 1rem;
+  color: var(--primary-dark-blue);
+}
+
+.spec-name {
+  color: var(--primary-dark-blue);
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.spec-description {
+  color: var(--dark-gray);
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}
+
+.section-description {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  opacity: 0.9;
+}
+
 /* Media Queries */
 @media (max-width: 992px) {
-  .intro-headline {
-    font-size: 2.4rem;
-  }
-  
-  .intro-section .spec-icon {
-    width: 100px;
-    height: 100px;
+  .intro-section {
+    padding: 100px 0 40px 0;
   }
   
   .specs-grid {
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
   }
 }
 
 @media (max-width: 768px) {
   .intro-section {
-    padding: 80px 0;
-  }
-  
-  .intro-headline {
-    font-size: 2rem;
-  }
-  
-  .intro-tagline {
-    font-size: 1.1rem;
-    max-width: 90%;
+    padding: 80px 0 30px 0;
   }
   
   .specs-grid {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .intro-section {
-    padding: 3rem 0;
-  }
-  
-  .intro-headline {
-    font-size: 1.8rem;
-  }
-  
-  .intro-headline::after {
-    width: 60px;
-    bottom: -8px;
-  }
-  
-  .intro-tagline {
-    font-size: 1rem;
-  }
-  
-  .intro-section .spec-value {
-    font-size: 1.6rem;
-  }
-  
-  .specs-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin: 2rem 0 1rem;
   }
 }
 
 @media (max-width: 576px) {
   .intro-section {
-    padding: 60px 0;
+    padding: 60px 0 25px 0;
   }
   
-  .intro-text {
-    font-size: 1rem;
+  .specs-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0 0;
   }
 }
 
@@ -219,21 +245,6 @@
   }
 }
 
-.spec-block {
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(5px);
-  padding: 2rem;
-  border-radius: 10px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.spec-block:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-}
-
 .intro-section h3 {
   color: var(--primary-dark-blue);
   margin-bottom: 0.5rem;
@@ -242,12 +253,4 @@
 
 .intro-section p {
   color: var(--dark-gray);
-}
-
-.section-description {
-  max-width: 800px;
-  margin: 0 auto 2rem;
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: var(--text-dark);
 } 

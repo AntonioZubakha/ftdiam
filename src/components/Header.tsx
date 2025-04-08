@@ -65,6 +65,15 @@ const Header = ({ activeSection, scrollToSection }: HeaderProps) => {
     closeMenu();
   };
 
+  const menuItems = [
+    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'Who We Are' },
+    { id: 'technology', label: 'Advanced HPHT' },
+    { id: 'products', label: 'Products' },
+    { id: 'quality', label: 'Quality Analysis' },
+    { id: 'contacts', label: 'Contacts' },
+  ];
+
   return (
     <header className={scrolled ? 'scrolled' : ''} onClick={() => handleSectionClick('home', window.event as any)}>
       <nav className={isMenuOpen ? 'open' : ''} onClick={(e) => e.stopPropagation()}>
@@ -72,57 +81,18 @@ const Header = ({ activeSection, scrollToSection }: HeaderProps) => {
           <span className="close-icon">×</span>
         </div>
         <ul>
-          <li 
-            className={activeSection === 'about' ? 'active' : ''}
-            onClick={(e) => handleSectionClick('about', e)}
-          >
-            <span>About Us</span>
-          </li>
-          <li 
-            className={activeSection === 'history' ? 'active' : ''}
-            onClick={(e) => handleSectionClick('history', e)}
-          >
-            <span>History</span>
-          </li>
-          <li 
-            className={activeSection === 'founders' ? 'active' : ''}
-            onClick={(e) => handleSectionClick('founders', e)}
-          >
-            <span>Founders</span>
-          </li>
-          <li 
-            className={activeSection === 'technology' ? 'active' : ''}
-            onClick={(e) => handleSectionClick('technology', e)}
-          >
-            <span>Our Technology</span>
-          </li>
-          <li 
-            className={activeSection === 'mission' ? 'active' : ''}
-            onClick={(e) => handleSectionClick('mission', e)}
-          >
-            <span>Our Mission</span>
-          </li>
-          <li 
-            className={activeSection === 'products' ? 'active' : ''}
-            onClick={(e) => handleSectionClick('products', e)}
-          >
-            <span>Products</span>
-          </li>
-          <li 
-            className={activeSection === 'quality' ? 'active' : ''}
-            onClick={(e) => handleSectionClick('quality', e)}
-          >
-            <span>Quality Analysis</span>
-          </li>
-          <li 
-            className={activeSection === 'contacts' ? 'active' : ''}
-            onClick={(e) => handleSectionClick('contacts', e)}
-          >
-            <span>Contact Us</span>
-          </li>
+          {menuItems.map((item) => (
+            <li 
+              key={item.id}
+              className={activeSection === item.id ? 'active' : ''}
+              onClick={(e) => handleSectionClick(item.id, e)}
+            >
+              <span>{item.label}</span>
+            </li>
+          ))}
         </ul>
       </nav>
-      
+       
       <button 
         className={`menu-button ${isMenuOpen ? 'active' : ''}`} 
         onClick={toggleMenu}
