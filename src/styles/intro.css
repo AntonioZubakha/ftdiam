@@ -2,39 +2,13 @@
 
 .intro-section {
   position: relative;
-  padding: 120px 0 50px 0;
+  padding: 180px 0 100px 0;
   overflow: hidden;
   min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--text-dark);
-  background-color: #f4f9fa; /* Светлый оттенок фона под SVG для лучшего отображения */
-  box-shadow: 0 -10px 30px rgba(244, 249, 250, 0.8); /* Тень сверху для плавного перехода */
-}
-
-.intro-section::before {
-  content: '';
-  position: absolute;
-  top: -50px; /* Выходим выше текущей секции */
-  left: 0;
-  right: 0;
-  height: 100px; /* Увеличиваем высоту для перекрытия */
-  background-color: #f4f9fa; /* Такой же цвет как у секции */
-  z-index: -1;
-}
-
-/* Дополнительное оформление правого верхнего угла */
-.intro-section::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle at top right, #f4f9fa 0%, transparent 70%);
-  opacity: 0.9;
-  z-index: 0;
 }
 
 .intro-section .content-wrapper {
@@ -153,8 +127,7 @@
 }
 
 .spec-block {
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.9);
   padding: 2rem;
   border-radius: 10px;
   text-align: center;
@@ -189,13 +162,12 @@
   margin: 0 auto 2rem;
   font-size: 1.2rem;
   color: var(--text-dark);
-  opacity: 0.9;
 }
 
 /* Media Queries */
 @media (max-width: 992px) {
   .intro-section {
-    padding: 100px 0 40px 0;
+    padding: 160px 0 80px 0;
   }
   
   .specs-grid {
@@ -206,7 +178,7 @@
 
 @media (max-width: 768px) {
   .intro-section {
-    padding: 80px 0 30px 0;
+    padding: 140px 0 60px 0;
   }
   
   .specs-grid {
@@ -217,7 +189,7 @@
 
 @media (max-width: 576px) {
   .intro-section {
-    padding: 60px 0 25px 0;
+    padding: 120px 0 40px 0;
   }
   
   .specs-grid {

@@ -17,7 +17,11 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: white;
+  background-color: #241e46;
+  background-image: url('/images/222.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,19 +33,26 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
 }
 
 .loader-logo {
-  max-width: 300px;
-  margin-bottom: 2rem;
+  width: 400px;
+  height: auto;
+  margin-bottom: 3rem;
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
 }
 
 .loader-spinner {
   width: 48px;
   height: 48px;
-  border: 5px solid rgba(0, 131, 127, 0.2);
+  border: 5px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
-  border-top-color: #00837f;
+  border-top-color: #ffffff;
   animation: loading 1s ease-in-out infinite;
 }
 
@@ -57,12 +68,12 @@
 /* Медиа-запросы для адаптивности */
 @media (max-width: 768px) {
   .loader-logo {
-    max-width: 250px;
+    width: 300px;
   }
 }
 
 @media (max-width: 480px) {
   .loader-logo {
-    max-width: 200px;
+    width: 250px;
   }
 } 

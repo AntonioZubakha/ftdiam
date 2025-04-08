@@ -11,6 +11,7 @@ import MissionSection from './components/sections/MissionSection'
 import WhoWeAreSection from './components/sections/WhoWeAre'
 
 // Импорт стилей
+import './styles/app.css'
 import './styles/index.css'
 import './styles/base.css'
 import './styles/header.css'

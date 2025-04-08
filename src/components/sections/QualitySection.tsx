@@ -3,7 +3,18 @@ import '../../styles/quality.css';
 
 const QualitySection: React.FC = () => {
   return (
-    <section id="quality" className="quality-section" style={{ paddingTop: '120px', paddingBottom: '120px' }}>
+    <section 
+      id="quality" 
+      className="quality-section" 
+      style={{ 
+        paddingTop: '120px', 
+        paddingBottom: '120px',
+        backgroundImage: 'url("/images/gpt.png")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       <div className="quality-container">
         <h2 className="quality-headline gradient-headline">Quality Analysis</h2>
         <div className="text-center">

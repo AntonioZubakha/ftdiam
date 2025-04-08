@@ -83,17 +83,19 @@
 /* Стилизация кавычки */
 .quote-mark {
   position: absolute;
-  top: -40px;
-  left: -20px;
-  font-size: 120px;
-  color: rgba(0, 131, 127, 0.1);
+  top: -60px;
+  left: -30px;
+  font-size: 150px;
+  background: linear-gradient(to right, #00837f, #241e46);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-family: Georgia, serif;
   line-height: 1;
   font-style: italic;
   font-weight: 400;
   z-index: -1;
   animation: float-subtle 6s infinite ease-in-out;
-  text-shadow: 0 0 15px rgba(0, 131, 127, 0.1);
 }
 
 @keyframes float-subtle {
@@ -213,6 +215,13 @@
   
   .mission-description {
     font-size: 0.95rem;
+  }
+  
+  .quote-mark {
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 120px;
   }
 }
 
