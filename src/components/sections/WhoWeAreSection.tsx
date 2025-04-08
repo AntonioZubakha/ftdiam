@@ -1,11 +1,8 @@
 import React from 'react';
 
 const WhoWeAreSection: React.FC = () => {
-  // Обновленные цвета фона для секций
+  // Обновленные цвета фона для секций - используем только белый
   const bgWhite = '#ffffff';    // Белый фон для всех блоков
-  const bgAbout = '#f4f9fa';    // Светлый оттенок бирюзового
-  const bgPeople = '#f5f4f9';   // Светлый оттенок синего
-  const bgHistory = '#f8f8f8';  // Очень светлый серый
 
   // Используем только inline-стили без зависимости от внешних CSS
   const sectionStyles = {
@@ -56,8 +53,7 @@ const WhoWeAreSection: React.FC = () => {
     width: '100%',
     margin: '20px auto 0',
     position: 'relative' as const,
-    maxWidth: '1200px',
-    overflow: 'hidden'
+    maxWidth: '1200px'
   };
 
   // Стиль для левой колонки (About + люди)
@@ -75,7 +71,7 @@ const WhoWeAreSection: React.FC = () => {
     minHeight: '900px', // Чтобы история занимала всю высоту
     display: 'flex',
     flexDirection: 'column' as const,
-    justifyContent: 'flex-start' as const
+    justifyContent: 'center' as const
   };
 
   // Базовый стиль для блоков
@@ -104,12 +100,7 @@ const WhoWeAreSection: React.FC = () => {
   const founderBlockStyles = {
     ...blockStyles,
     flex: 1,
-    padding: '40px 30px',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-    ':hover': {
-      transform: 'translateY(-5px)',
-      boxShadow: '0 10px 25px rgba(0, 0, 0, 0.08)'
-    }
+    padding: '40px 30px'
   };
 
   const blockTitleStyles = {
@@ -126,8 +117,7 @@ const WhoWeAreSection: React.FC = () => {
   const centeredBlockTitleStyles = {
     ...blockTitleStyles,
     textAlign: 'center' as const,
-    width: '100%',
-    marginBottom: '40px'
+    width: '100%'
   };
 
   const founderPhotoStyles = {

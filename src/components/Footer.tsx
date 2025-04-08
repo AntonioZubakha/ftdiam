@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
       <div className="footer-container">
         <div className="footer-main">
           <div className="footer-col footer-info">
-            <img src="/images/Logo.png" alt="FTDiam Logo" className="footer-logo" />
+            <img src="/images/Logo_white.png" alt="FTDiam Logo" className="footer-logo" />
           </div>
           
           <div className="footer-col">

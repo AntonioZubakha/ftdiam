@@ -9,10 +9,14 @@ const QualitySection: React.FC = () => {
       style={{ 
         paddingTop: '120px', 
         paddingBottom: '120px',
-        backgroundImage: 'url("/images/gpt.png")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
+        backgroundImage: 'url("/images/background.svg"), url("/images/gpt.png")',
+        backgroundSize: 'cover, contain',
+        backgroundPosition: 'center, center',
+        backgroundRepeat: 'no-repeat, no-repeat',
+        backgroundBlendMode: 'normal, overlay',
+        backgroundColor: 'rgba(255,255,255,0.9)',
+        position: 'relative',
+        zIndex: 1
       }}
     >
       <div className="quality-container">
