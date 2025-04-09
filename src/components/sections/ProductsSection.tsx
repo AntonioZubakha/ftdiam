@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../styles/products.css';
 
 const ProductsSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   
   // Данные о продуктах точно по ТЗ
   const products = [
@@ -41,12 +42,25 @@ const ProductsSection: React.FC = () => {
   ];
   
   const handlePrevClick = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
     setActiveIndex(prevIndex => (prevIndex === 0 ? products.length - 1 : prevIndex - 1));
   };
   
   const handleNextClick = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
     setActiveIndex(prevIndex => (prevIndex === products.length - 1 ? 0 : prevIndex + 1));
   };
+
+  useEffect(() => {
+    if (isTransitioning) {
+      const timer = setTimeout(() => {
+        setIsTransitioning(false);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [isTransitioning]);
   
   const currentProduct = products[activeIndex];
   
@@ -62,11 +76,10 @@ const ProductsSection: React.FC = () => {
         </div>
         
         <div className="products-content-wrapper">
-          {/* Левая часть с видео */}
+          {/* Левая часть с видео и изображениями */}
           <div className="video-container">
-            <div className="video-wrapper">
+            <div className="media-item video-top-left">
               <video 
-                className="video-left"
                 autoPlay 
                 muted 
                 loop 
@@ -76,9 +89,20 @@ const ProductsSection: React.FC = () => {
                 Your browser does not support the video tag.
               </video>
             </div>
-            <div className="video-wrapper-right">
+            <div className="media-item image-top-right">
+              <img 
+                src="/images/555.png" 
+                alt="Diamond manufacturing process"
+              />
+            </div>
+            <div className="media-item image-bottom-left">
+              <img 
+                src="/images/777.png" 
+                alt="Diamond quality control"
+              />
+            </div>
+            <div className="media-item video-bottom-right">
               <video 
-                className="video-right" 
                 autoPlay 
                 muted 
                 loop 
@@ -101,29 +125,35 @@ const ProductsSection: React.FC = () => {
                   onClick={handlePrevClick}
                   aria-label="Previous product"
                 >
-                  ←
                 </button>
-                <h4 className="product-section-title">{currentProduct.title}</h4>
+                <h4 className="product-section-title" style={{ opacity: isTransitioning ? 0.5 : 1 }}>
+                  {currentProduct.title}
+                </h4>
                 <button 
                   className="nav-button"
                   onClick={handleNextClick}
                   aria-label="Next product"
                 >
-                  →
                 </button>
               </div>
               
-              <img 
-                src={currentProduct.image} 
-                alt={currentProduct.title} 
-                className="product-image"
-              />
+              <div className="product-image-container">
+                <img 
+                  src={currentProduct.image} 
+                  alt={currentProduct.title} 
+                  className="product-image"
+                  style={{ 
+                    opacity: isTransitioning ? 0.5 : 1,
+                    transform: isTransitioning ? 'scale(0.95)' : 'scale(1)'
+                  }}
+                />
+              </div>
 
               <div className="spec-list-container">
-                <ul className="spec-list">
+                <ul className="spec-list" style={{ opacity: isTransitioning ? 0.5 : 1 }}>
                   {currentProduct.specs.map((spec, index) => (
                     <li key={index} className="spec-item">
-                      <span className="gradient-circle"></span>
+                      <span className="gradient-diamond"></span>
                       {spec}
                     </li>
                   ))}

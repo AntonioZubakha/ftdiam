@@ -23,12 +23,8 @@
 }
 
 .contacts-headline::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(to right, #00837f, #241e46);
-  margin: 15px auto 0;
+  content: none;
+  display: none;
 }
 
 .contacts-content {
@@ -61,11 +57,7 @@
 
 .contact-info-header::after {
   content: '';
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(to right, #00837f, #241e46);
-  margin: 15px auto 0;
+  display: none;
 }
 
 .info-title {
@@ -163,11 +155,7 @@ a.contact-value:hover {
 
 .form-header::after {
   content: '';
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(to right, #00837f, #241e46);
-  margin: 15px auto 0;
+  display: none;
 }
 
 .form-title {

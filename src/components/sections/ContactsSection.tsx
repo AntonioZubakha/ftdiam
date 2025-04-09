@@ -6,7 +6,7 @@ import '../../styles/contacts.css';
 
 const ContactsSection = () => {
   return (
-    <section id="contacts" className="contacts-section" style={{ paddingTop: '120px', paddingBottom: '120px' }}>
+    <section id="contacts" className="contacts-section" style={{ paddingTop: '60px', paddingBottom: '60px' }}>
       <div className="container">
         <h2 className="contacts-headline gradient-headline">Contacts</h2>
         
@@ -38,6 +38,18 @@ const ContactsSection = () => {
             
             <div className="contact-info-item">
               <div className="contact-icon">
+                <FontAwesomeIcon icon={faLinkedin} />
+              </div>
+              <div className="contact-text">
+                <span className="contact-label">LinkedIn</span>
+                <a href="https://www.linkedin.com/company/ftdiam" target="_blank" rel="noopener noreferrer" className="contact-value">
+                  Follow us
+                </a>
+              </div>
+            </div>
+            
+            <div className="contact-info-item">
+              <div className="contact-icon">
                 <FontAwesomeIcon icon={faLocationDot} />
               </div>
               <div className="contact-text">
@@ -46,18 +58,6 @@ const ContactsSection = () => {
                   220 Park Ave PMB 83131<br />
                   New York, NY 10003, USA
                 </p>
-              </div>
-            </div>
-            
-            <div className="contact-info-item">
-              <div className="contact-icon">
-                <FontAwesomeIcon icon={faLinkedin} />
-              </div>
-              <div className="contact-text">
-                <span className="contact-label">LinkedIn</span>
-                <a href="https://www.linkedin.com/company/ftdiam" target="_blank" rel="noopener noreferrer" className="contact-value">
-                  Follow us
-                </a>
               </div>
             </div>
           </div>

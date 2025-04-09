@@ -9,16 +9,27 @@ const QualitySection: React.FC = () => {
       style={{ 
         paddingTop: '120px', 
         paddingBottom: '120px',
-        backgroundImage: 'url("/images/background.svg"), url("/images/gpt.png")',
-        backgroundSize: 'cover, contain',
-        backgroundPosition: 'center, center',
-        backgroundRepeat: 'no-repeat, no-repeat',
-        backgroundBlendMode: 'normal, overlay',
-        backgroundColor: 'rgba(255,255,255,0.9)',
+        backgroundColor: '#fff',
         position: 'relative',
-        zIndex: 1
+        zIndex: 1,
+        backgroundImage: 'url(/images/gpt.png)',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed'
       }}
     >
+      <div 
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(255, 255, 255, 0.85)',
+          zIndex: -1
+        }}
+      ></div>
       <div className="quality-container">
         <h2 className="quality-headline gradient-headline">Quality Analysis</h2>
         <div className="text-center">

@@ -1,12 +1,6 @@
 import React from 'react';
 
 const WhoWeAreSection: React.FC = () => {
-  // Обновленные цвета фона для секций
-  const bgWhite = '#ffffff';    // Белый фон для всех блоков
-  const bgAbout = '#f4f9fa';    // Светлый оттенок бирюзового
-  const bgPeople = '#f5f4f9';   // Светлый оттенок синего
-  const bgHistory = '#f8f8f8';  // Очень светлый серый
-
   // Используем только inline-стили без зависимости от внешних CSS
   const sectionStyles = {
     padding: '120px 0 100px 0',
@@ -38,16 +32,6 @@ const WhoWeAreSection: React.FC = () => {
     display: 'inline-block'
   };
 
-  const headlineAfterStyles = {
-    content: '""',
-    display: 'block',
-    width: '60px',
-    height: '3px',
-    background: 'linear-gradient(to right, #00837f, #241e46)',
-    margin: '15px auto 0',
-    transition: 'width 0.3s ease'
-  };
-
   // Новый стиль для обновленного макета
   const newLayoutStyles = {
     display: 'grid',
@@ -64,7 +48,8 @@ const WhoWeAreSection: React.FC = () => {
   const leftColumnStyles = {
     display: 'flex',
     flexDirection: 'column' as const,
-    height: '100%'
+    height: '100%',
+    backgroundColor: '#fff'
   };
 
   // Стиль для правой колонки (История)
@@ -75,7 +60,8 @@ const WhoWeAreSection: React.FC = () => {
     minHeight: '900px', // Чтобы история занимала всю высоту
     display: 'flex',
     flexDirection: 'column' as const,
-    justifyContent: 'flex-start' as const
+    justifyContent: 'flex-start' as const,
+    backgroundColor: '#fff'
   };
 
   // Базовый стиль для блоков
@@ -293,7 +279,6 @@ const WhoWeAreSection: React.FC = () => {
         <div style={{textAlign: 'center'}}>
           <h2 style={{...headlineStyles, ...getResponsiveHeadlineStyles()}}>
             Who We Are
-            <span style={headlineAfterStyles}></span>
           </h2>
         </div>
       </div>

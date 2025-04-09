@@ -28,16 +28,6 @@
   font-weight: var(--font-weight-semibold);
 }
 
-.who-we-are-section .headline::after {
-  content: '';
-  display: block;
-  width: var(--section-headline-after-width);
-  height: var(--section-headline-after-height);
-  background: var(--main-gradient);
-  margin: 15px auto 0;
-  transition: width var(--transition-normal);
-}
-
 /* Сетка для 4 блоков */
 .who-we-are-grid {
   display: grid;
@@ -68,16 +58,6 @@
   margin: 0 0 20px 0;
   position: relative;
   padding-bottom: 15px;
-}
-
-.block-title::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 40px;
-  height: 3px;
-  background: var(--main-gradient);
 }
 
 .block-content {

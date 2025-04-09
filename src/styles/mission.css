@@ -25,22 +25,6 @@
   letter-spacing: var(--section-headline-letter-spacing);
 }
 
-.mission-headline::after {
-  content: '';
-  position: absolute;
-  bottom: -15px;
-  left: 50%;
-  width: var(--section-headline-after-width);
-  height: var(--section-headline-after-height);
-  background: var(--main-gradient);
-  transform: translateX(-50%);
-  transition: width var(--transition-normal);
-}
-
-.mission-headline:hover::after {
-  width: 80px;
-}
-
 .mission-content {
   display: flex;
   align-items: center;

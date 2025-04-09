@@ -30,11 +30,11 @@ const MissionSection = () => {
               aria-hidden="true"
               style={{ 
                 position: "absolute",
-                left: "-20px", 
-                top: "-15px",
-                width: "45px",
-                height: "36px",
-                opacity: 0.85
+                left: "-25px", 
+                top: "-20px",
+                width: "50px",
+                height: "40px",
+                opacity: 0.8
               }}
             />
             <p className="mission-description" style={{ 

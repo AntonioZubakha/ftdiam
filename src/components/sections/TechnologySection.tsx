@@ -12,17 +12,50 @@ const TechnologySection: React.FC = () => {
         </div>
         
         <div className="technology-content" style={{ marginTop: '60px' }}>
-          <div className="tech-points" style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
-            <div className="tech-point" style={{ marginBottom: '30px' }}>
-              <h3 className="gradient-subheadline">Ultra low dislocations number (10¹ cm⁻²)</h3>
+          <div className="advantages-grid" style={{ maxWidth: '1100px', margin: '0 auto' }}>
+            <div className="advantage-card">
+              <div className="advantage-icon">
+                <i className="fas fa-chart-line" style={{
+                  fontSize: '60px',
+                  marginBottom: '15px',
+                  background: 'linear-gradient(to right, #00837f, #241e46)',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  display: 'inline-block'
+                }}></i>
+              </div>
+              <h3 className="advantage-title gradient-subheadline">Ultra low dislocations number (10¹ cm⁻²)</h3>
             </div>
             
-            <div className="tech-point" style={{ marginBottom: '30px' }}>
-              <h3 className="gradient-subheadline">Record-size high-quality substrates</h3>
+            <div className="advantage-card">
+              <div className="advantage-icon">
+                <i className="fas fa-expand" style={{
+                  fontSize: '60px',
+                  marginBottom: '15px',
+                  background: 'linear-gradient(to right, #00837f, #241e46)',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  display: 'inline-block'
+                }}></i>
+              </div>
+              <h3 className="advantage-title gradient-subheadline">Record-size high-quality substrates</h3>
             </div>
             
-            <div className="tech-point">
-              <h3 className="gradient-subheadline">Very low strain and zero-Nitrogen level</h3>
+            <div className="advantage-card">
+              <div className="advantage-icon">
+                <i className="fas fa-atom" style={{
+                  fontSize: '60px',
+                  marginBottom: '15px',
+                  background: 'linear-gradient(to right, #00837f, #241e46)',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  display: 'inline-block'
+                }}></i>
+              </div>
+              <h3 className="advantage-title gradient-subheadline">Very low strain and zero-Nitrogen level</h3>
             </div>
           </div>
         </div>

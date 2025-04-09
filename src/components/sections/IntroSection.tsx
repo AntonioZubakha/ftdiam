@@ -39,10 +39,7 @@ const IntroSection: React.FC = () => {
 
   // Определяем стиль с фоновым изображением
   const backgroundStyle = {
-    backgroundImage: `url(/images/111.png)`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
+    backgroundColor: '#fff',
     position: 'absolute' as const,
     top: 0,
     left: 0,

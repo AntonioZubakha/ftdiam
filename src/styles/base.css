@@ -116,6 +116,11 @@ img {
   display: inline-block;
 }
 
+/* Убираем подчеркивание для всех градиентных заголовков */
+.gradient-headline::after {
+  content: none !important;
+}
+
 /* Класс для подзаголовков с градиентом */
 .gradient-subheadline {
   background: var(--main-gradient);
@@ -132,20 +137,6 @@ img {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
-}
-
-.headline::after {
-  content: '';
-  display: block;
-  width: var(--section-headline-after-width);
-  height: var(--section-headline-after-height);
-  margin: 15px auto 0;
-  background: var(--main-gradient);
-  transition: width var(--transition-normal);
-}
-
-.headline:hover::after {
-  width: 80px;
 }
 
 .section-description {

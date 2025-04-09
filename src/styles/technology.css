@@ -33,16 +33,6 @@
   font-weight: var(--font-weight-semibold);
 }
 
-.technology-headline::after {
-  content: '';
-  display: block;
-  width: var(--section-headline-after-width);
-  height: var(--section-headline-after-height);
-  background: var(--main-gradient);
-  margin: 15px auto 0;
-  transition: width var(--transition-normal);
-}
-
 .technology-subtitle {
   font-size: 20px;
   font-weight: 500;
@@ -328,17 +318,6 @@
 
 .tech-point:last-child {
   margin-bottom: 0;
-}
-
-.tech-point::before {
-  content: '';
-  position: absolute;
-  top: 8px;
-  left: 0;
-  width: 10px;
-  height: 10px;
-  background: var(--main-gradient);
-  border-radius: 50%;
 }
 
 .tech-point h3 {
