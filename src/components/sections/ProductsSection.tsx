@@ -89,15 +89,14 @@ const ProductsSection: React.FC = () => {
                 Your browser does not support the video tag.
               </video>
             </div>
-            <div className="media-item image-top-right">
-              <img 
-                src="/images/555.png" 
-                alt="Diamond manufacturing process"
-              />
+            <div className="media-item image-top-right tailored-solutions-container">
+              <h3 className="tailored-solutions-title">
+                Tailored Solutions For Cutting-Edge Applications
+              </h3>
             </div>
             <div className="media-item image-bottom-left">
               <img 
-                src="/images/777.png" 
+                src="/images/6565.jpg" 
                 alt="Diamond quality control"
               />
             </div>
@@ -116,8 +115,6 @@ const ProductsSection: React.FC = () => {
           
           {/* Правая часть со слайдером */}
           <div className="product-content">
-            <h3 className="product-title">Tailored Solutions For Cutting-Edge Applications</h3>
-            
             <div className="product-details">
               <div className="title-nav-container">
                 <button 

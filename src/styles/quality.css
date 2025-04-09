@@ -3,6 +3,8 @@
   padding: 200px 0;
   background-color: #fff;
   position: relative;
+  /* overflow: hidden; */ /* Удаляем свойство, блокирующее липкость */
+  width: 100%;
 }
 
 .quality-container {

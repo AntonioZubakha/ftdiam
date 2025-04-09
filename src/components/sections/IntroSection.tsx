@@ -1,56 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 
 const IntroSection: React.FC = () => {
-  const titleRef = useRef<HTMLDivElement>(null);
-  const contentWrapperRef = useRef<HTMLDivElement>(null);
-  
-  // Эффект "липкого" скролла для заголовка, чтобы он оставался в центре экрана
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!titleRef.current) return;
-      
-      const scrollPosition = window.scrollY;
-      const windowHeight = window.innerHeight;
-      
-      // Начальная позиция секции
-      const sectionTop = document.getElementById('intro')?.offsetTop || 0;
-      
-      // Начинаем фиксировать заголовок, когда верх секции достигает верха видимой области
-      if (scrollPosition > sectionTop) {
-        // Вычисляем, насколько нужно сместить заголовок, чтобы он был в центре экрана
-        const titleHeight = titleRef.current.offsetHeight;
-        const centerPosition = windowHeight / 2 - titleHeight / 2 + 250;
-        
-        // Смещение относительно верха страницы, чтобы заголовок оказался в центре
-        const translateY = scrollPosition - sectionTop + centerPosition;
-        
-        // Ограничение максимального смещения
-        const maxTranslate = 1000;
-        const limitedTranslateY = Math.min(translateY, maxTranslate);
-        
-        // Применяем трансформацию только если заголовок должен двигаться вниз
-        if (limitedTranslateY > 0) {
-          titleRef.current.style.transform = `translateY(${limitedTranslateY}px)`;
-          // Для плавного перехода к фиксированной позиции
-          titleRef.current.style.position = 'relative';
-        } else {
-          titleRef.current.style.transform = 'translateY(0)';
-        }
-      } else {
-        // Если скролл выше секции, возвращаем заголовок в исходное положение
-        titleRef.current.style.transform = 'translateY(0)';
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    // Запускаем один раз при загрузке
-    handleScroll();
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   // Определяем стиль с фоновым изображением
   const backgroundStyle = {
     backgroundColor: '#fff',
@@ -60,6 +10,19 @@ const IntroSection: React.FC = () => {
     right: 0,
     bottom: 0,
     zIndex: 0
+  };
+
+  // Новый стиль для липкого заголовка
+  const stickyTitleStyle = {
+    position: 'sticky' as const,
+    top: '100px',
+    flex: '1',
+    minWidth: '300px',
+    paddingRight: '40px',
+    textAlign: 'left' as const,
+    alignSelf: 'flex-start' as const,
+    height: 'fit-content',
+    zIndex: 5
   };
 
   return (
@@ -78,7 +41,6 @@ const IntroSection: React.FC = () => {
       
       <div className="content-wrapper" style={{ width: '100%', maxWidth: '100%', padding: 0 }}>
         <div 
-          ref={contentWrapperRef}
           style={{ 
             display: 'flex', 
             flexDirection: 'row',
@@ -91,21 +53,13 @@ const IntroSection: React.FC = () => {
             position: 'relative'
           }}
         >
-          {/* Левая колонка с заголовком и подзаголовком */}
-          <div style={{ 
-            flex: '1',
-            minWidth: '300px',
-            paddingRight: '40px',
-            position: 'relative',
-            textAlign: 'left',
-            zIndex: 5 // Добавляем z-index чтобы быть уверенным, что заголовок виден
-          }} ref={titleRef}>
+          {/* Левая колонка с заголовком и подзаголовком - теперь с position: sticky */}
+          <div style={stickyTitleStyle} className="sticky-title">
             <h2 className="headline gradient-headline" style={{ 
               fontSize: '3rem',
               textAlign: 'left',
               marginBottom: '2rem',
-              position: 'relative',
-              transition: 'transform 0.1s ease-out'
+              position: 'relative'
             }}>
               Premium Single Crystal Diamond Substrates
             </h2>
@@ -133,7 +87,7 @@ const IntroSection: React.FC = () => {
             }}>
               <div className="spec-block">
                 <div className="spec-icon">
-                  <i className="fas fa-cogs" style={{
+                  <i className="fas fa-gem" style={{
                     fontSize: '60px',
                     marginBottom: '15px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',

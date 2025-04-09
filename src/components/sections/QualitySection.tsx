@@ -1,44 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import '../../styles/quality.css';
 
 const QualitySection: React.FC = () => {
-  const titleRef = useRef<HTMLDivElement>(null);
   const [modalImage, setModalImage] = useState<string | null>(null);
   
-  // Эффект "липкого" скролла для заголовка
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!titleRef.current) return;
-      
-      const section = document.getElementById('quality');
-      if (!section) return;
-      
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      const scrollPosition = window.scrollY;
-      
-      // Вычисляем, насколько заголовок должен сдвинуться вниз
-      const scrollPercentage = Math.min(
-        Math.max(0, (scrollPosition - sectionTop) / (sectionHeight - window.innerHeight * 0.6)), 
-        1
-      );
-      
-      // Максимальное смещение - 70% высоты секции
-      const maxOffset = sectionHeight * 0.7;
-      const translateY = scrollPercentage * maxOffset;
-      
-      titleRef.current.style.transform = `translateY(${translateY}px)`;
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    // Запускаем один раз при загрузке
-    handleScroll();
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   // Открытие изображения в модальном окне
   const openModal = (imageSrc: string) => {
     setModalImage(imageSrc);
@@ -133,6 +98,19 @@ const QualitySection: React.FC = () => {
     backgroundColor: 'rgba(0, 0, 0, 0.5)'
   };
 
+  // Новый стиль для липкого заголовка
+  const stickyTitleStyle = {
+    position: 'sticky' as const,
+    top: '100px',
+    flex: '1',
+    minWidth: '300px',
+    paddingRight: '40px',
+    paddingTop: '20px',
+    textAlign: 'left' as const,
+    alignSelf: 'flex-start' as const,
+    height: 'fit-content'
+  };
+
   return (
     <section 
       id="quality" 
@@ -148,7 +126,13 @@ const QualitySection: React.FC = () => {
       <div style={backgroundStyle}></div>
       <div style={overlayStyle}></div>
       
-      <div className="content-wrapper" style={{ width: '100%', maxWidth: '100%', padding: 0, position: 'relative', zIndex: 2 }}>
+      <div className="content-wrapper" style={{ 
+        width: '100%', 
+        maxWidth: '100%', 
+        padding: 0, 
+        position: 'relative', 
+        zIndex: 2
+      }}>
         <div style={{ 
           display: 'flex', 
           flexDirection: 'row',
@@ -159,20 +143,13 @@ const QualitySection: React.FC = () => {
           padding: '0 20px',
           minHeight: '60vh'
         }}>
-          {/* Левая колонка с заголовком и подзаголовком */}
-          <div style={{ 
-            flex: '1',
-            minWidth: '300px',
-            paddingRight: '40px',
-            position: 'relative',
-            textAlign: 'left'
-          }} ref={titleRef}>
+          {/* Левая колонка с заголовком и подзаголовком - теперь с position: sticky */}
+          <div style={stickyTitleStyle}>
             <h2 className="quality-headline gradient-headline" style={{ 
               fontSize: '3rem',
               textAlign: 'left',
               marginBottom: '2rem',
-              position: 'relative',
-              transition: 'transform 0.1s ease-out'
+              position: 'relative'
             }}>
               Quality Analysis
             </h2>
@@ -206,7 +183,7 @@ const QualitySection: React.FC = () => {
               gap: '2rem',
               margin: 0
             }}>
-              {/* Первый ряд: 3 изображения */}
+              {/* Первый ряд: только 2 изображения */}
               <div className="spec-block" style={{ padding: '20px' }}>
                 <div 
                   style={imageContainerStyle}
@@ -250,8 +227,15 @@ const QualitySection: React.FC = () => {
                 }}>Very low strain</div>
                 <p className="spec-description">Perfect for optical applications</p>
               </div>
-              
-              <div className="spec-block" style={{ padding: '20px' }}>
+            </div>
+            
+            {/* Средний ряд: X-Ray Diffraction по центру */}
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              margin: '2rem 0'
+            }}>
+              <div className="spec-block" style={{ padding: '20px', maxWidth: '400px' }}>
                 <div 
                   style={imageContainerStyle}
                   onClick={() => openModal('/images/photo5.jpg')}
@@ -274,7 +258,7 @@ const QualitySection: React.FC = () => {
               </div>
             </div>
             
-            {/* Второй ряд: 2 графика */}
+            {/* Нижний ряд: 2 графика */}
             <div style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(2, 1fr)',

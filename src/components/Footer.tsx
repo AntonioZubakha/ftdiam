@@ -11,14 +11,8 @@ const Footer: React.FC = () => {
           
           <div className="footer-col">
             <ul className="footer-links">
-              <li><a href="#home">Home</a></li>
               <li><a href="#about">Who We Are</a></li>
               <li><a href="#technology">Advanced HPHT</a></li>
-            </ul>
-          </div>
-          
-          <div className="footer-col">
-            <ul className="footer-links">
               <li><a href="#products">Products</a></li>
               <li><a href="#quality">Quality Analysis</a></li>
               <li><a href="#contacts">Contacts</a></li>
@@ -36,6 +30,7 @@ const Footer: React.FC = () => {
                   <i className="fab fa-linkedin"></i>LinkedIn
                 </a>
               </li>
+              <li className="empty-space"></li>
             </ul>
           </div>
         </div>

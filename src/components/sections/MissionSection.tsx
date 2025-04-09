@@ -7,8 +7,8 @@ const MissionSection = () => {
       id="mission" 
       className="mission-section" 
       style={{ 
-        paddingTop: '120px',
-        paddingBottom: '120px',
+        paddingTop: '0px',
+        paddingBottom: '60px',
         backgroundColor: '#fff',
         position: 'relative',
         overflow: 'hidden',

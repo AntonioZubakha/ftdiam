@@ -6,7 +6,11 @@ import '../../styles/contacts.css';
 
 const ContactsSection = () => {
   return (
-    <section id="contacts" className="contacts-section" style={{ paddingTop: '60px', paddingBottom: '60px' }}>
+    <section id="contacts" className="contacts-section" style={{ 
+      paddingTop: '60px', 
+      paddingBottom: '60px',
+      overflow: 'hidden' 
+    }}>
       <div className="container">
         <h2 className="contacts-headline gradient-headline">Contacts</h2>
         
