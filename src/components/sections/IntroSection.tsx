@@ -2,30 +2,44 @@ import React, { useEffect, useRef } from 'react';
 
 const IntroSection: React.FC = () => {
   const titleRef = useRef<HTMLDivElement>(null);
+  const contentWrapperRef = useRef<HTMLDivElement>(null);
   
-  // Эффект "липкого" скролла для заголовка
+  // Эффект "липкого" скролла для заголовка, чтобы он оставался в центре экрана
   useEffect(() => {
     const handleScroll = () => {
       if (!titleRef.current) return;
       
-      const section = document.getElementById('intro');
-      if (!section) return;
-      
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
       const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
       
-      // Вычисляем, насколько заголовок должен сдвинуться вниз
-      const scrollPercentage = Math.min(
-        Math.max(0, (scrollPosition - sectionTop) / (sectionHeight - window.innerHeight * 0.6)), 
-        1
-      );
+      // Начальная позиция секции
+      const sectionTop = document.getElementById('intro')?.offsetTop || 0;
       
-      // Максимальное смещение - 70% высоты секции
-      const maxOffset = sectionHeight * 0.7;
-      const translateY = scrollPercentage * maxOffset;
-      
-      titleRef.current.style.transform = `translateY(${translateY}px)`;
+      // Начинаем фиксировать заголовок, когда верх секции достигает верха видимой области
+      if (scrollPosition > sectionTop) {
+        // Вычисляем, насколько нужно сместить заголовок, чтобы он был в центре экрана
+        const titleHeight = titleRef.current.offsetHeight;
+        const centerPosition = windowHeight / 2 - titleHeight / 2 + 250;
+        
+        // Смещение относительно верха страницы, чтобы заголовок оказался в центре
+        const translateY = scrollPosition - sectionTop + centerPosition;
+        
+        // Ограничение максимального смещения
+        const maxTranslate = 1000;
+        const limitedTranslateY = Math.min(translateY, maxTranslate);
+        
+        // Применяем трансформацию только если заголовок должен двигаться вниз
+        if (limitedTranslateY > 0) {
+          titleRef.current.style.transform = `translateY(${limitedTranslateY}px)`;
+          // Для плавного перехода к фиксированной позиции
+          titleRef.current.style.position = 'relative';
+        } else {
+          titleRef.current.style.transform = 'translateY(0)';
+        }
+      } else {
+        // Если скролл выше секции, возвращаем заголовок в исходное положение
+        titleRef.current.style.transform = 'translateY(0)';
+      }
     };
     
     window.addEventListener('scroll', handleScroll);
@@ -56,30 +70,35 @@ const IntroSection: React.FC = () => {
         backgroundColor: 'transparent',
         marginTop: '150px',
         paddingTop: '120px',
-        paddingBottom: '100px',
+        paddingBottom: '0', // Убираем нижний padding, чтобы новый блок прилегал вплотную
         minHeight: '80vh'
       }}
     >
       <div style={backgroundStyle}></div>
       
       <div className="content-wrapper" style={{ width: '100%', maxWidth: '100%', padding: 0 }}>
-        <div style={{ 
-          display: 'flex', 
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          width: '100%',
-          maxWidth: '1400px',
-          margin: '0 auto',
-          padding: '0 20px',
-          minHeight: '60vh'
-        }}>
+        <div 
+          ref={contentWrapperRef}
+          style={{ 
+            display: 'flex', 
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            width: '100%',
+            maxWidth: '1400px',
+            margin: '0 auto',
+            padding: '0 20px',
+            minHeight: '60vh',
+            position: 'relative'
+          }}
+        >
           {/* Левая колонка с заголовком и подзаголовком */}
           <div style={{ 
             flex: '1',
             minWidth: '300px',
             paddingRight: '40px',
             position: 'relative',
-            textAlign: 'left'
+            textAlign: 'left',
+            zIndex: 5 // Добавляем z-index чтобы быть уверенным, что заголовок виден
           }} ref={titleRef}>
             <h2 className="headline gradient-headline" style={{ 
               fontSize: '3rem',
@@ -248,6 +267,34 @@ const IntroSection: React.FC = () => {
               </div>
             </div>
           </div>
+        </div>
+        
+        {/* Новый блок с текстом на градиентном фоне */}
+        <div style={{
+          width: '100%',
+          height: '200px',
+          background: 'linear-gradient(to right, #00837f, #241e46)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: '40px',
+          marginBottom: '100px',
+          position: 'relative',
+          zIndex: 2 // Понижаем z-index, чтобы заголовок мог быть над ним если нужно
+        }}>
+          <p style={{
+            color: 'white',
+            fontSize: '3rem',
+            fontWeight: 'bold',
+            textAlign: 'center',
+            padding: '0 20px',
+            maxWidth: '1400px',
+            margin: '0 auto',
+            letterSpacing: '0.5px',
+            lineHeight: '1.2'
+          }}>
+            Engineered for excellence. Trusted for precision. Perfect for advanced applications.
+          </p>
         </div>
       </div>
     </section>

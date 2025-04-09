@@ -1,95 +1,341 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import '../../styles/quality.css';
 
 const QualitySection: React.FC = () => {
+  const titleRef = useRef<HTMLDivElement>(null);
+  const [modalImage, setModalImage] = useState<string | null>(null);
+  
+  // Эффект "липкого" скролла для заголовка
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!titleRef.current) return;
+      
+      const section = document.getElementById('quality');
+      if (!section) return;
+      
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const scrollPosition = window.scrollY;
+      
+      // Вычисляем, насколько заголовок должен сдвинуться вниз
+      const scrollPercentage = Math.min(
+        Math.max(0, (scrollPosition - sectionTop) / (sectionHeight - window.innerHeight * 0.6)), 
+        1
+      );
+      
+      // Максимальное смещение - 70% высоты секции
+      const maxOffset = sectionHeight * 0.7;
+      const translateY = scrollPercentage * maxOffset;
+      
+      titleRef.current.style.transform = `translateY(${translateY}px)`;
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    // Запускаем один раз при загрузке
+    handleScroll();
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Открытие изображения в модальном окне
+  const openModal = (imageSrc: string) => {
+    setModalImage(imageSrc);
+    document.body.style.overflow = 'hidden'; // Блокируем прокрутку страницы
+  };
+
+  // Закрытие модального окна
+  const closeModal = () => {
+    setModalImage(null);
+    document.body.style.overflow = ''; // Возвращаем прокрутку страницы
+  };
+
+  // Определяем стиль с фоновым изображением
+  const backgroundStyle = {
+    backgroundImage: 'url(/images/gpt.png)',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'fixed',
+    position: 'absolute' as const,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 0
+  };
+
+  const overlayStyle = {
+    position: 'absolute' as const,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(255, 255, 255, 0.85)',
+    zIndex: 1
+  };
+
+  const imageContainerStyle = {
+    width: '100%',
+    height: '250px',
+    marginBottom: '1.2rem',
+    overflow: 'hidden',
+    borderRadius: '8px',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+    cursor: 'pointer'
+  };
+
+  const imageStyle = {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover' as const,
+    transition: 'transform 0.3s ease'
+  };
+
+  const modalStyle = {
+    position: 'fixed' as const,
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.85)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 1000,
+    padding: '20px',
+    boxSizing: 'border-box' as const
+  };
+
+  const modalImageStyle = {
+    maxWidth: '90%',
+    maxHeight: '90%',
+    objectFit: 'contain' as const,
+    boxShadow: '0 0 30px rgba(0, 0, 0, 0.5)'
+  };
+
+  const closeButtonStyle = {
+    position: 'absolute' as const,
+    top: '20px',
+    right: '20px',
+    background: 'transparent',
+    color: 'white',
+    border: 'none',
+    fontSize: '24px',
+    cursor: 'pointer',
+    width: '40px',
+    height: '40px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '50%',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)'
+  };
+
   return (
     <section 
       id="quality" 
       className="quality-section" 
       style={{ 
-        paddingTop: '120px', 
+        backgroundColor: 'transparent',
+        paddingTop: '120px',
         paddingBottom: '120px',
-        backgroundColor: '#fff',
         position: 'relative',
-        zIndex: 1,
-        backgroundImage: 'url(/images/gpt.png)',
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed'
+        minHeight: '80vh'
       }}
     >
-      <div 
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(255, 255, 255, 0.85)',
-          zIndex: -1
-        }}
-      ></div>
-      <div className="quality-container">
-        <h2 className="quality-headline gradient-headline">Quality Analysis</h2>
-        <div className="text-center">
-          <h3 className="quality-subheadline">Tested. Proven. Exceptional.</h3>
-        </div>
-        <p className="quality-description">
-          Our diamonds undergo rigorous testing to ensure they meet the highest standards. 
-          See the evidence of our flawless quality below.
-        </p>
-
-        <div className="quality-grid">
-          {/* First row - 3 items */}
-          <div className="quality-row">
-            <div className="quality-item">
-              <div className="quality-image-container">
-                <img src="/images/photo1.jpg" alt="Diamond View" className="quality-image" />
-              </div>
-              <h4 className="quality-item-title">Diamond View</h4>
-              <p className="quality-item-description">
-                Shows no inclusions, no defects, dislocations &lt;10¹ cm⁻².
-              </p>
-            </div>
-
-            <div className="quality-item">
-              <div className="quality-image-container">
-                <img src="/images/photo2.jpg" alt="Polarized Light Microscopy" className="quality-image" />
-              </div>
-              <h4 className="quality-item-title">Polarized Light Microscopy</h4>
-              <p className="quality-item-description">Very low strain.</p>
-            </div>
-
-            <div className="quality-item">
-              <div className="quality-image-container">
-                <img src="/images/photo5.jpg" alt="X-Ray Diffraction Imaging" className="quality-image" />
-              </div>
-              <h4 className="quality-item-title">X-Ray Diffraction Imaging</h4>
-              <p className="quality-item-description">Dislocation density &lt;50 cm⁻².</p>
-            </div>
+      <div style={backgroundStyle}></div>
+      <div style={overlayStyle}></div>
+      
+      <div className="content-wrapper" style={{ width: '100%', maxWidth: '100%', padding: 0, position: 'relative', zIndex: 2 }}>
+        <div style={{ 
+          display: 'flex', 
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          width: '100%',
+          maxWidth: '1400px',
+          margin: '0 auto',
+          padding: '0 20px',
+          minHeight: '60vh'
+        }}>
+          {/* Левая колонка с заголовком и подзаголовком */}
+          <div style={{ 
+            flex: '1',
+            minWidth: '300px',
+            paddingRight: '40px',
+            position: 'relative',
+            textAlign: 'left'
+          }} ref={titleRef}>
+            <h2 className="quality-headline gradient-headline" style={{ 
+              fontSize: '3rem',
+              textAlign: 'left',
+              marginBottom: '2rem',
+              position: 'relative',
+              transition: 'transform 0.1s ease-out'
+            }}>
+              Quality Analysis
+            </h2>
+            <h3 className="quality-subheadline" style={{ 
+              textAlign: 'left',
+              marginBottom: '1rem',
+              display: 'inline-block'
+            }}>
+              Tested. Proven. Exceptional.
+            </h3>
+            <p className="quality-description" style={{ 
+              textAlign: 'left',
+              fontSize: '1.2rem',
+              lineHeight: '1.6',
+              maxWidth: '100%',
+              margin: '0 0 2rem 0'
+            }}>
+              Our diamonds undergo rigorous testing to ensure they meet the highest standards. 
+              See the evidence of our flawless quality below.
+            </p>
           </div>
-
-          {/* Second row - 2 items */}
-          <div className="quality-row quality-row-graphs">
-            <div className="quality-item">
-              <div className="quality-image-container">
-                <img src="/images/photo3.jpg" alt="FTIR" className="quality-image" />
+          
+          {/* Правая колонка с карточками */}
+          <div style={{ 
+            flex: '1.2',
+            minWidth: '350px'
+          }}>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '2rem',
+              margin: 0
+            }}>
+              {/* Первый ряд: 3 изображения */}
+              <div className="spec-block" style={{ padding: '20px' }}>
+                <div 
+                  style={imageContainerStyle}
+                  onClick={() => openModal('/images/photo1.jpg')}
+                >
+                  <img src="/images/photo1.jpg" alt="Diamond View" style={imageStyle} />
+                </div>
+                <h3 className="spec-name">Diamond View</h3>
+                <div style={{
+                  fontSize: '1.4rem',
+                  background: 'linear-gradient(to right, #00837f, #241e46)',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  margin: '0.5rem 0',
+                  fontWeight: 'bold',
+                  letterSpacing: '0.5px',
+                  display: 'inline-block'
+                }}>No inclusions</div>
+                <p className="spec-description">No defects, dislocations &lt;10¹ cm⁻²</p>
               </div>
-              <h4 className="quality-item-title">FTIR</h4>
-              <p className="quality-item-description">Ultra-pure crystals.</p>
+              
+              <div className="spec-block" style={{ padding: '20px' }}>
+                <div 
+                  style={imageContainerStyle}
+                  onClick={() => openModal('/images/photo2.jpg')}
+                >
+                  <img src="/images/photo2.jpg" alt="Polarized Light Microscopy" style={imageStyle} />
+                </div>
+                <h3 className="spec-name">Polarized Light</h3>
+                <div style={{
+                  fontSize: '1.4rem',
+                  background: 'linear-gradient(to right, #00837f, #241e46)',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  margin: '0.5rem 0',
+                  fontWeight: 'bold',
+                  letterSpacing: '0.5px',
+                  display: 'inline-block'
+                }}>Very low strain</div>
+                <p className="spec-description">Perfect for optical applications</p>
+              </div>
+              
+              <div className="spec-block" style={{ padding: '20px' }}>
+                <div 
+                  style={imageContainerStyle}
+                  onClick={() => openModal('/images/photo5.jpg')}
+                >
+                  <img src="/images/photo5.jpg" alt="X-Ray Diffraction Imaging" style={imageStyle} />
+                </div>
+                <h3 className="spec-name">X-Ray Diffraction</h3>
+                <div style={{
+                  fontSize: '1.4rem',
+                  background: 'linear-gradient(to right, #00837f, #241e46)',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  margin: '0.5rem 0',
+                  fontWeight: 'bold',
+                  letterSpacing: '0.5px',
+                  display: 'inline-block'
+                }}>&lt;50 cm⁻²</div>
+                <p className="spec-description">Dislocation density</p>
+              </div>
             </div>
-
-            <div className="quality-item">
-              <div className="quality-image-container">
-                <img src="/images/photo4.jpg" alt="UV-Vis" className="quality-image" />
+            
+            {/* Второй ряд: 2 графика */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: '2rem',
+              margin: '2rem 0 0 0'
+            }}>
+              <div className="spec-block" style={{ padding: '20px' }}>
+                <div 
+                  style={imageContainerStyle}
+                  onClick={() => openModal('/images/photo3.jpg')}
+                >
+                  <img src="/images/photo3.jpg" alt="FTIR" style={imageStyle} />
+                </div>
+                <h3 className="spec-name">FTIR</h3>
+                <div style={{
+                  fontSize: '1.4rem',
+                  background: 'linear-gradient(to right, #00837f, #241e46)',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  margin: '0.5rem 0',
+                  fontWeight: 'bold',
+                  letterSpacing: '0.5px',
+                  display: 'inline-block'
+                }}>Ultra-pure</div>
+                <p className="spec-description">Exceptional crystal purity</p>
               </div>
-              <h4 className="quality-item-title">UV-Vis</h4>
-              <p className="quality-item-description">Low absorbance, premium quality.</p>
+              
+              <div className="spec-block" style={{ padding: '20px' }}>
+                <div 
+                  style={imageContainerStyle}
+                  onClick={() => openModal('/images/photo4.jpg')}
+                >
+                  <img src="/images/photo4.jpg" alt="UV-Vis" style={imageStyle} />
+                </div>
+                <h3 className="spec-name">UV-Vis</h3>
+                <div style={{
+                  fontSize: '1.4rem',
+                  background: 'linear-gradient(to right, #00837f, #241e46)',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  margin: '0.5rem 0',
+                  fontWeight: 'bold',
+                  letterSpacing: '0.5px',
+                  display: 'inline-block'
+                }}>Low absorbance</div>
+                <p className="spec-description">Premium optical quality</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Модальное окно для увеличенного изображения */}
+      {modalImage && (
+        <div style={modalStyle} onClick={closeModal}>
+          <img src={modalImage} alt="Enlarged view" style={modalImageStyle} onClick={(e) => e.stopPropagation()} />
+          <button style={closeButtonStyle} onClick={closeModal}>×</button>
+        </div>
+      )}
     </section>
   );
 };
