@@ -183,7 +183,7 @@ const IntroSection: React.FC = () => {
               
               <div className="spec-block">
                 <div className="spec-icon">
-                  <i className="fas fa-project-diagram" style={{
+                  <i className="fas fa-microscope" style={{
                     fontSize: '60px',
                     marginBottom: '15px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
@@ -210,7 +210,7 @@ const IntroSection: React.FC = () => {
               
               <div className="spec-block">
                 <div className="spec-icon">
-                  <i className="fas fa-tachometer-alt" style={{
+                  <i className="fas fa-ruler-combined" style={{
                     fontSize: '60px',
                     marginBottom: '15px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
