@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../../styles/products.css';
 
 const ProductsSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const imagesLoaded = useRef<boolean[]>([]);
   
   // Данные о продуктах точно по ТЗ
   const products = [
@@ -41,6 +42,17 @@ const ProductsSection: React.FC = () => {
     }
   ];
   
+  // Предзагрузка изображений
+  useEffect(() => {
+    products.forEach((product, index) => {
+      const img = new Image();
+      img.src = product.image;
+      img.onload = () => {
+        imagesLoaded.current[index] = true;
+      };
+    });
+  }, []);
+  
   const handlePrevClick = () => {
     if (isTransitioning) return;
     setIsTransitioning(true);
@@ -63,6 +75,10 @@ const ProductsSection: React.FC = () => {
   }, [isTransitioning]);
   
   const currentProduct = products[activeIndex];
+  
+  // Подготовка следующего и предыдущего индексов для предзагрузки
+  const nextIndex = activeIndex === products.length - 1 ? 0 : activeIndex + 1;
+  const prevIndex = activeIndex === 0 ? products.length - 1 : activeIndex - 1;
   
   return (
     <section id="products" className="products-section">
@@ -121,6 +137,7 @@ const ProductsSection: React.FC = () => {
                   className="nav-button"
                   onClick={handlePrevClick}
                   aria-label="Previous product"
+                  disabled={isTransitioning}
                 >
                 </button>
                 <h4 className="product-section-title" style={{ opacity: isTransitioning ? 0.5 : 1 }}>
@@ -130,11 +147,13 @@ const ProductsSection: React.FC = () => {
                   className="nav-button"
                   onClick={handleNextClick}
                   aria-label="Next product"
+                  disabled={isTransitioning}
                 >
                 </button>
               </div>
               
               <div className="product-image-container">
+                {/* Текущее изображение */}
                 <img 
                   src={currentProduct.image} 
                   alt={currentProduct.title} 
@@ -144,6 +163,12 @@ const ProductsSection: React.FC = () => {
                     transform: isTransitioning ? 'scale(0.95)' : 'scale(1)'
                   }}
                 />
+                
+                {/* Предзагрузка следующего и предыдущего изображения */}
+                <div style={{ display: 'none' }}>
+                  <img src={products[nextIndex].image} alt="Preload next" />
+                  <img src={products[prevIndex].image} alt="Preload previous" />
+                </div>
               </div>
 
               <div className="spec-list-container">

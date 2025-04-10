@@ -1,6 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const IntroSection: React.FC = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if the screen is mobile-sized
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile(); // Initial check
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   // Определяем стиль с фоновым изображением
   const backgroundStyle = {
     backgroundColor: '#fff',
@@ -14,7 +28,7 @@ const IntroSection: React.FC = () => {
 
   // Новый стиль для липкого заголовка
   const stickyTitleStyle = {
-    position: 'sticky' as const,
+    position: isMobile ? 'static' as const : 'sticky' as const,
     top: '100px',
     flex: '1',
     minWidth: '300px',
@@ -22,7 +36,8 @@ const IntroSection: React.FC = () => {
     textAlign: 'left' as const,
     alignSelf: 'flex-start' as const,
     height: 'fit-content',
-    zIndex: 5
+    zIndex: 5,
+    marginBottom: isMobile ? '30px' : '0'
   };
 
   return (
@@ -226,7 +241,7 @@ const IntroSection: React.FC = () => {
         {/* Новый блок с текстом на градиентном фоне */}
         <div style={{
           width: '100%',
-          height: '200px',
+          height: isMobile ? '300px' : '200px',
           background: 'linear-gradient(to right, #00837f, #241e46)',
           display: 'flex',
           alignItems: 'center',
@@ -238,7 +253,7 @@ const IntroSection: React.FC = () => {
         }}>
           <p style={{
             color: 'white',
-            fontSize: '3rem',
+            fontSize: isMobile ? '2rem' : '3rem',
             fontWeight: 'bold',
             textAlign: 'center',
             padding: '0 20px',

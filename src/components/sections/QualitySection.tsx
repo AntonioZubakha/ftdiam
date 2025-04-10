@@ -1,8 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../styles/quality.css';
 
 const QualitySection: React.FC = () => {
   const [modalImage, setModalImage] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  // Check if the screen is mobile-sized
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile(); // Initial check
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   
   // Открытие изображения в модальном окне
   const openModal = (imageSrc: string) => {
@@ -43,64 +56,29 @@ const QualitySection: React.FC = () => {
 
   const imageContainerStyle = {
     width: '100%',
-    height: '250px',
+    height: '0',
+    paddingBottom: '100%', // Создаем квадратное соотношение сторон
     marginBottom: '1.2rem',
     overflow: 'hidden',
     borderRadius: '8px',
     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    position: 'relative' as const
   };
 
   const imageStyle = {
+    position: 'absolute' as const,
+    top: '0',
+    left: '0',
     width: '100%',
     height: '100%',
     objectFit: 'cover' as const,
     transition: 'transform 0.3s ease'
   };
 
-  const modalStyle = {
-    position: 'fixed' as const,
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.85)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    zIndex: 1000,
-    padding: '20px',
-    boxSizing: 'border-box' as const
-  };
-
-  const modalImageStyle = {
-    maxWidth: '90%',
-    maxHeight: '90%',
-    objectFit: 'contain' as const,
-    boxShadow: '0 0 30px rgba(0, 0, 0, 0.5)'
-  };
-
-  const closeButtonStyle = {
-    position: 'absolute' as const,
-    top: '20px',
-    right: '20px',
-    background: 'transparent',
-    color: 'white',
-    border: 'none',
-    fontSize: '24px',
-    cursor: 'pointer',
-    width: '40px',
-    height: '40px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: '50%',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)'
-  };
-
   // Новый стиль для липкого заголовка
   const stickyTitleStyle = {
-    position: 'sticky' as const,
+    position: isMobile ? 'static' as const : 'sticky' as const,
     top: '100px',
     flex: '1',
     minWidth: '300px',
@@ -108,7 +86,8 @@ const QualitySection: React.FC = () => {
     paddingTop: '20px',
     textAlign: 'left' as const,
     alignSelf: 'flex-start' as const,
-    height: 'fit-content'
+    height: 'fit-content',
+    marginBottom: isMobile ? '30px' : '0'
   };
 
   return (
@@ -143,7 +122,7 @@ const QualitySection: React.FC = () => {
           padding: '0 20px',
           minHeight: '60vh'
         }}>
-          {/* Левая колонка с заголовком и подзаголовком - теперь с position: sticky */}
+          {/* Левая колонка с заголовком и подзаголовком */}
           <div style={stickyTitleStyle}>
             <h2 className="quality-headline gradient-headline" style={{ 
               fontSize: '3rem',
@@ -320,9 +299,48 @@ const QualitySection: React.FC = () => {
 
       {/* Модальное окно для увеличенного изображения */}
       {modalImage && (
-        <div style={modalStyle} onClick={closeModal}>
-          <img src={modalImage} alt="Enlarged view" style={modalImageStyle} onClick={(e) => e.stopPropagation()} />
-          <button style={closeButtonStyle} onClick={closeModal}>×</button>
+        <div style={{
+          position: 'fixed' as const,
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0, 0, 0, 0.85)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 1000,
+          padding: '20px',
+          boxSizing: 'border-box' as const
+        }} onClick={closeModal}>
+          <img 
+            src={modalImage} 
+            alt="Enlarged view" 
+            style={{
+              maxWidth: '90%',
+              maxHeight: '90%',
+              objectFit: 'contain' as const,
+              boxShadow: '0 0 30px rgba(0, 0, 0, 0.5)'
+            }} 
+            onClick={(e) => e.stopPropagation()} 
+          />
+          <button style={{
+            position: 'absolute' as const,
+            top: '20px',
+            right: '20px',
+            background: 'transparent',
+            color: 'white',
+            border: 'none',
+            fontSize: '24px',
+            cursor: 'pointer',
+            width: '40px',
+            height: '40px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: '50%',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)'
+          }} onClick={closeModal}>×</button>
         </div>
       )}
     </section>

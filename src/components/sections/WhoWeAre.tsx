@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const WhoWeAreSection: React.FC = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  
+  // Check if the screen is mobile-sized
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile(); // Initial check
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   // Используем только inline-стили без зависимости от внешних CSS
   const sectionStyles = {
     padding: '120px 0 60px 0',
@@ -19,7 +33,7 @@ const WhoWeAreSection: React.FC = () => {
   };
 
   const headlineStyles = {
-    fontSize: '3rem',
+    fontSize: isMobile ? '2.2rem' : '3rem',
     background: 'linear-gradient(to right, #00837f, #241e46)',
     WebkitBackgroundClip: 'text' as const,
     backgroundClip: 'text' as const,
@@ -35,7 +49,7 @@ const WhoWeAreSection: React.FC = () => {
   // Новый стиль для обновленного макета
   const newLayoutStyles = {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
+    gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
     gap: '30px',
     width: '100%',
     margin: '20px auto 0',
@@ -49,15 +63,16 @@ const WhoWeAreSection: React.FC = () => {
     display: 'flex',
     flexDirection: 'column' as const,
     height: '100%',
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    marginBottom: isMobile ? '30px' : '0'
   };
 
   // Стиль для правой колонки (История)
   const rightColumnStyles = {
-    padding: '50px 60px',
+    padding: isMobile ? '30px 20px' : '50px 60px',
     height: '100%',
     position: 'relative' as const,
-    minHeight: '900px', // Чтобы история занимала всю высоту
+    minHeight: isMobile ? 'auto' : '900px', // Чтобы история занимала всю высоту
     display: 'flex',
     flexDirection: 'column' as const,
     justifyContent: 'flex-start' as const,
@@ -77,20 +92,21 @@ const WhoWeAreSection: React.FC = () => {
   const aboutBlockStyles = {
     ...blockStyles,
     minHeight: '300px',
-    padding: '50px 40px'
+    padding: '50px 40px 5px'
   };
 
   const foundersContainerStyles = {
     display: 'flex',
-    flexDirection: 'row' as const,
-    height: '500px',
-    marginTop: '30px'
+    flexDirection: isMobile ? 'column' as const : 'row' as const,
+    height: isMobile ? 'auto' : '500px',
+    marginTop: '0px',
+    gap: isMobile ? '20px' : '0'
   };
 
   const founderBlockStyles = {
     ...blockStyles,
     flex: 1,
-    padding: '40px 30px',
+    padding: isMobile ? '20px 20px' : '40px 30px',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
     ':hover': {
       transform: 'translateY(-5px)',
@@ -118,7 +134,7 @@ const WhoWeAreSection: React.FC = () => {
 
   const founderPhotoStyles = {
     width: '100%',
-    height: '220px',
+    height: isMobile ? '180px' : '220px',
     marginBottom: '15px',
     display: 'flex',
     justifyContent: 'center' as const,
@@ -144,7 +160,7 @@ const WhoWeAreSection: React.FC = () => {
 
   // Стиль для имен основателей (градиентный) - теперь как заголовки About Us и History
   const founderNameStyles = {
-    fontSize: '24px',
+    fontSize: isMobile ? '20px' : '24px',
     background: 'linear-gradient(to right, #00837f, #241e46)',
     WebkitBackgroundClip: 'text' as const,
     backgroundClip: 'text' as const,
@@ -156,7 +172,7 @@ const WhoWeAreSection: React.FC = () => {
 
   // Стиль для подзаголовков (должности) - теперь тоже как About Us и History
   const roleStyles = {
-    fontSize: '24px',
+    fontSize: isMobile ? '20px' : '24px',
     background: 'linear-gradient(to right, #00837f, #241e46)',
     WebkitBackgroundClip: 'text' as const,
     backgroundClip: 'text' as const,
@@ -189,7 +205,7 @@ const WhoWeAreSection: React.FC = () => {
 
   const timelineItemStyles = {
     position: 'relative' as const,
-    marginBottom: '60px',
+    marginBottom: isMobile ? '40px' : '60px',
     paddingLeft: '50px',
     display: 'flex',
     flexDirection: 'column' as const
@@ -233,7 +249,7 @@ const WhoWeAreSection: React.FC = () => {
 
   // Новые стили для годов в таймлайне
   const timelineYearStyles = {
-    fontSize: '32px',
+    fontSize: isMobile ? '28px' : '32px',
     fontWeight: 'bold' as const,
     background: 'linear-gradient(to right, #00837f, #00837f)',
     WebkitBackgroundClip: 'text' as const,
@@ -269,7 +285,7 @@ const WhoWeAreSection: React.FC = () => {
     marginBottom: '0', 
     color: '#555', 
     lineHeight: '1.6',
-    fontSize: '1.1rem'
+    fontSize: isMobile ? '1rem' : '1.1rem'
   };
 
   // Стили для адаптивности
@@ -307,10 +323,17 @@ const WhoWeAreSection: React.FC = () => {
 
   // Стиль для текста биографии фаундеров - соответствует тексту под About Us
   const founderBioStyles = {
-    fontSize: '1.1rem',
+    fontSize: isMobile ? '1rem' : '1.1rem',
     lineHeight: '1.6',
     textAlign: 'center' as const,
     color: '#555'
+  };
+
+  // Add custom styles for Dan's photo
+  const ceoPhotoStyles = {
+    width: '90%', // Larger than the default 80%
+    height: '105%', // Slightly taller
+    objectFit: 'contain' as const
   };
 
   return (
@@ -332,10 +355,10 @@ const WhoWeAreSection: React.FC = () => {
             <p style={{ 
               lineHeight: '1.6', 
               flex: 1, 
-              paddingLeft: '12.5%', 
-              paddingRight: '12.5%',
+              paddingLeft: isMobile ? '5%' : '12.5%', 
+              paddingRight: isMobile ? '5%' : '12.5%',
               textAlign: 'left',
-              fontSize: '1.1rem'
+              fontSize: isMobile ? '1rem' : '1.1rem'
             }}>
               FTDiam is a US-based deep-tech start-up in advanced materials sector. We are revolutionizing the industry with the unique Advanced HPHT (AHPHT) technology. Since our inception, we've been dedicated to producing the highest-quality single-crystal diamond substrates for advanced applications.
             </p>
@@ -367,7 +390,7 @@ const WhoWeAreSection: React.FC = () => {
                 <img 
                   src="/images/Dan.png" 
                   alt="Daniil Kurganov" 
-                  style={founderPhotoImgStyles}
+                  style={ceoPhotoStyles}
                 />
               </div>
               <div style={{ flex: 1, display: 'flex', flexDirection: 'column' as const }}>

@@ -4,7 +4,7 @@ const TechnologySection: React.FC = () => {
   return (
     <section id="technology" className="technology-section" style={{ 
       backgroundColor: '#fff',
-      padding: '60px 0 120px 0'  // Установка стандартных отступов как в других секциях
+      padding: '180px 0 180px 0'  // Установка стандартных отступов как в других секциях
     }}>
       <div className="technology-container">
         <div className="technology-headline-container">
@@ -15,7 +15,7 @@ const TechnologySection: React.FC = () => {
           <div className="advantages-grid" style={{ maxWidth: '1100px', margin: '0 auto' }}>
             <div className="advantage-card">
               <div className="advantage-icon">
-                <i className="fas fa-chart-line" style={{
+                <i className="fas fa-arrow-trend-down" style={{
                   fontSize: '60px',
                   marginBottom: '15px',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
