@@ -130,6 +130,7 @@
 }
 
 .hero-text::before {
+  display: none; /* Скрываем верхнее подчеркивание */
   content: '';
   position: absolute;
   top: 0;
@@ -141,6 +142,7 @@
 }
 
 .hero-text::after {
+  display: none; /* Скрываем нижнее подчеркивание */
   content: '';
   position: absolute;
   bottom: 0;

@@ -32,7 +32,7 @@ const IntroSection: React.FC = () => {
       style={{ 
         backgroundColor: 'transparent',
         marginTop: '150px',
-        paddingTop: '120px',
+        paddingTop: '150px',
         paddingBottom: '0', // Убираем нижний padding, чтобы новый блок прилегал вплотную
         minHeight: '80vh'
       }}

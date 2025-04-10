@@ -179,11 +179,12 @@ const QualitySection: React.FC = () => {
           }}>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gridTemplateColumns: 'repeat(2, 1fr)',
               gap: '2rem',
               margin: 0
-            }}>
-              {/* Первый ряд: только 2 изображения */}
+            }}
+            className="quality-card-row"
+            >
               <div className="spec-block" style={{ padding: '20px' }}>
                 <div 
                   style={imageContainerStyle}
@@ -235,7 +236,11 @@ const QualitySection: React.FC = () => {
               justifyContent: 'center',
               margin: '2rem 0'
             }}>
-              <div className="spec-block" style={{ padding: '20px', maxWidth: '400px' }}>
+              <div className="spec-block" style={{ 
+                padding: '20px', 
+                width: 'calc(((100% - 2rem) / 2))', /* Точная ширина одной из верхних карточек */
+                maxWidth: '100%'
+              }}>
                 <div 
                   style={imageContainerStyle}
                   onClick={() => openModal('/images/photo5.jpg')}

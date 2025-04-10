@@ -10,6 +10,7 @@ const Footer: React.FC = () => {
           </div>
           
           <div className="footer-col">
+            <h3 className="footer-heading">Navigation</h3>
             <ul className="footer-links">
               <li><a href="#about">Who We Are</a></li>
               <li><a href="#technology">Advanced HPHT</a></li>
@@ -24,13 +25,9 @@ const Footer: React.FC = () => {
             <ul className="footer-contact">
               <li><a href="mailto:info@ftdiam.com"><i className="fas fa-envelope"></i>info@ftdiam.com</a></li>
               <li><a href="tel:+16172752599"><i className="fas fa-phone"></i>+1 617 275 2599</a></li>
-              <li><i className="fas fa-map-marker-alt"></i>220 Park Ave PMB 83131, NY 10003</li>
-              <li>
-                <a href="https://www.linkedin.com/company/ftdiam" target="_blank" rel="noopener noreferrer">
-                  <i className="fab fa-linkedin"></i>LinkedIn
-                </a>
-              </li>
-              <li className="empty-space"></li>
+              <li><a href="#address"><i className="fas fa-map-marker-alt"></i>220 Park Ave PMB 83131, NY 10003</a></li>
+              <li><a href="https://www.linkedin.com/company/ftdiam" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin"></i>LinkedIn</a></li>
+              <li><a href="#" style={{visibility: "hidden"}}><i className="fas fa-empty"></i>&nbsp;</a></li>
             </ul>
           </div>
         </div>

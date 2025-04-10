@@ -3,7 +3,7 @@ import React from 'react';
 const WhoWeAreSection: React.FC = () => {
   // Используем только inline-стили без зависимости от внешних CSS
   const sectionStyles = {
-    padding: '120px 0 100px 0',
+    padding: '120px 0 60px 0',
     backgroundColor: '#fff',
     position: 'relative' as const,
     marginBottom: '0',
@@ -142,9 +142,9 @@ const WhoWeAreSection: React.FC = () => {
     fontSize: '18px'
   };
 
-  // Стиль для имен основателей (градиентный)
+  // Стиль для имен основателей (градиентный) - теперь как заголовки About Us и History
   const founderNameStyles = {
-    fontSize: '20px',
+    fontSize: '24px',
     background: 'linear-gradient(to right, #00837f, #241e46)',
     WebkitBackgroundClip: 'text' as const,
     backgroundClip: 'text' as const,
@@ -154,81 +154,122 @@ const WhoWeAreSection: React.FC = () => {
     textAlign: 'center' as const
   };
 
-  // Стиль для подзаголовков (должности)
+  // Стиль для подзаголовков (должности) - теперь тоже как About Us и History
   const roleStyles = {
+    fontSize: '24px',
     background: 'linear-gradient(to right, #00837f, #241e46)',
     WebkitBackgroundClip: 'text' as const,
     backgroundClip: 'text' as const,
     WebkitTextFillColor: 'transparent' as const,
-    fontWeight: 'bold' as const,
+    fontWeight: '600' as const,
     marginBottom: '10px',
-    fontSize: '16px',
     textAlign: 'center' as const
   };
 
-  // Стили для таймлайна
+  // Стили для таймлайна - полностью переделанные
   const timelineContainerStyles = {
     position: 'relative' as const,
     marginTop: '40px',
-    paddingLeft: '30px',
-    maxWidth: '80%',
-    margin: '40px auto 0'
+    maxWidth: '90%',
+    margin: '40px auto 0',
+    paddingLeft: '0'
   };
 
-  // Вертикальная линия таймлайна
+  // Вертикальная линия таймлайна - новый подход с брендовыми цветами
   const timelineLineStyles = {
     position: 'absolute' as const,
-    top: '5px',
-    bottom: '5px',
-    left: '0',
-    width: '3px',
-    background: 'linear-gradient(to bottom, #00837f, #241e46)',
-    borderRadius: '2px',
+    top: '0',
+    bottom: '0',
+    left: '16px', // Смещаем линию левее
+    width: '6px',
+    background: 'linear-gradient(to bottom, #00837f 0%, #00837f 30%, #00837f 50%, #241e46 100%)',
+    borderRadius: '3px',
     zIndex: 1
   };
 
   const timelineItemStyles = {
     position: 'relative' as const,
-    marginBottom: '50px',
-    paddingLeft: '40px'
+    marginBottom: '60px',
+    paddingLeft: '50px',
+    display: 'flex',
+    flexDirection: 'column' as const
   };
 
+  // Новый подход к маркерам - они будут кругами с внутренним белым кругом
   const timelineMarkerStyles = {
     position: 'absolute' as const,
-    left: '-14px',
-    top: '5px',
-    width: '24px',
-    height: '24px',
+    left: '16px', // Точно то же значение, что и у линии
+    top: '10px',
+    width: '18px',
+    height: '18px',
     borderRadius: '50%',
-    backgroundColor: '#ffffff',
-    border: '3px solid #00837f',
-    zIndex: 2,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
+    backgroundColor: '#00837f', // Бирюзовый цвет бренда
+    transform: 'translateX(-6px)', // Располагаем точно по центру линии
+    zIndex: 3
   };
 
-  const timelineMarker2Styles = {
-    ...timelineMarkerStyles,
-    top: '5px',
-    border: '3px solid #00667f'
-  };
-
-  const timelineMarker3Styles = {
-    ...timelineMarkerStyles,
-    top: '5px',
-    border: '3px solid #241e46'
-  };
-
-  const timelineDotStyles = {
+  // Белый круг внутри маркера
+  const timelineMarkerInnerStyles = {
+    position: 'absolute' as const,
+    top: '4px',
+    left: '4px',
     width: '10px',
     height: '10px',
     borderRadius: '50%',
-    background: 'linear-gradient(to right, #00837f, #241e46)'
+    backgroundColor: '#ffffff',
+    zIndex: 4
+  };
+
+  // Варианты маркеров для разных годов
+  const timelineMarker2023Styles = {
+    ...timelineMarkerStyles,
+    backgroundColor: '#00837f' // Тот же бирюзовый цвет
+  };
+
+  const timelineMarker2027Styles = {
+    ...timelineMarkerStyles,
+    backgroundColor: '#241e46' // Темно-синий цвет бренда
+  };
+
+  // Новые стили для годов в таймлайне
+  const timelineYearStyles = {
+    fontSize: '32px',
+    fontWeight: 'bold' as const,
+    background: 'linear-gradient(to right, #00837f, #00837f)',
+    WebkitBackgroundClip: 'text' as const,
+    backgroundClip: 'text' as const,
+    WebkitTextFillColor: 'transparent' as const,
+    marginBottom: '15px',
+    lineHeight: '1'
+  };
+
+  const timelineYear2023Styles = {
+    ...timelineYearStyles,
+    background: 'linear-gradient(to right, #00837f, #241e46)',
+    WebkitBackgroundClip: 'text' as const,
+    backgroundClip: 'text' as const,
+    WebkitTextFillColor: 'transparent' as const
+  };
+
+  const timelineYear2027Styles = {
+    ...timelineYearStyles,
+    background: 'linear-gradient(to right, #241e46, #241e46)',
+    WebkitBackgroundClip: 'text' as const,
+    backgroundClip: 'text' as const,
+    WebkitTextFillColor: 'transparent' as const
   };
 
   const timelineContentStyles = {
-    padding: '25px'
+    padding: '0'
+  };
+
+  // Изменяю стили текста для описаний в таймлайне - теперь как текст под About Us
+  const timelineTextStyles = {
+    marginTop: '12px', 
+    marginBottom: '0', 
+    color: '#555', 
+    lineHeight: '1.6',
+    fontSize: '1.1rem'
   };
 
   // Стили для адаптивности
@@ -264,13 +305,12 @@ const WhoWeAreSection: React.FC = () => {
     textAlign: 'center' as const
   };
 
-  // Стили для года в таймлайне
-  const timelineYearStyles = {
-    ...yearStyles,
-    fontSize: '22px',
-    fontWeight: 'bold' as const,
-    marginBottom: '15px',
-    display: 'block'
+  // Стиль для текста биографии фаундеров - соответствует тексту под About Us
+  const founderBioStyles = {
+    fontSize: '1.1rem',
+    lineHeight: '1.6',
+    textAlign: 'center' as const,
+    color: '#555'
   };
 
   return (
@@ -315,7 +355,7 @@ const WhoWeAreSection: React.FC = () => {
               <div style={{ flex: 1, display: 'flex', flexDirection: 'column' as const }}>
                 <h3 style={founderNameStyles}>Dmitry Semchenko</h3>
                 <div style={roleStyles}>CTO</div>
-                <p style={{ fontSize: '14px', lineHeight: '1.5', textAlign: 'center', color: '#555' }}>
+                <p style={founderBioStyles}>
                   Serial entrepreneur with over 8 years in high-quality diamond material. Holder of AHPHT technology.
                 </p>
               </div>
@@ -333,8 +373,8 @@ const WhoWeAreSection: React.FC = () => {
               <div style={{ flex: 1, display: 'flex', flexDirection: 'column' as const }}>
                 <h3 style={founderNameStyles}>Daniil Kurganov</h3>
                 <div style={roleStyles}>CEO</div>
-                <p style={{ fontSize: '14px', lineHeight: '1.5', textAlign: 'center', color: '#555' }}>
-                  15+ years in management, technical sales and business development worldwide.
+                <p style={founderBioStyles}>
+                  15+ years in management, technical sales and business development worldwide. Experienced leader.
                 </p>
               </div>
             </div>
@@ -345,7 +385,7 @@ const WhoWeAreSection: React.FC = () => {
         <div style={rightColumnStyles}>
           <h3 style={historyTitleStyles}>History</h3>
           
-          {/* Таймлайн */}
+          {/* Таймлайн в новом стиле */}
           <div style={timelineContainerStyles}>
             {/* Вертикальная линия таймлайна */}
             <div style={timelineLineStyles}></div>
@@ -353,38 +393,38 @@ const WhoWeAreSection: React.FC = () => {
             {/* Элемент таймлайна 2022 */}
             <div style={timelineItemStyles}>
               <div style={timelineMarkerStyles}>
-                <div style={timelineDotStyles}></div>
+                <div style={timelineMarkerInnerStyles}></div>
               </div>
               <div style={timelineContentStyles}>
                 <div style={timelineYearStyles}>2022</div>
-                <p style={{ marginTop: '10px', marginBottom: '0' }}>
-                  Founded as a sales-focused entity sourcing diamonds from a partner facility in India.
+                <p style={timelineTextStyles}>
+                  • Founded as a sales-focused entity sourcing diamonds from a partner facility in India.
                 </p>
               </div>
             </div>
             
             {/* Элемент таймлайна 2023 */}
             <div style={timelineItemStyles}>
-              <div style={timelineMarker2Styles}>
-                <div style={timelineDotStyles}></div>
+              <div style={timelineMarker2023Styles}>
+                <div style={timelineMarkerInnerStyles}></div>
               </div>
               <div style={timelineContentStyles}>
-                <div style={timelineYearStyles}>2023</div>
-                <p style={{ marginTop: '10px', marginBottom: '0' }}>
-                  Expanded partnerships and client base across quantum technology sector.
+                <div style={timelineYear2023Styles}>2023</div>
+                <p style={timelineTextStyles}>
+                  • Expanded partnerships and client base across quantum technology sector.
                 </p>
               </div>
             </div>
             
             {/* Элемент таймлайна 2027 */}
             <div style={timelineItemStyles}>
-              <div style={timelineMarker3Styles}>
-                <div style={timelineDotStyles}></div>
+              <div style={timelineMarker2027Styles}>
+                <div style={timelineMarkerInnerStyles}></div>
               </div>
               <div style={timelineContentStyles}>
-                <div style={timelineYearStyles}>2027</div>
-                <p style={{ marginTop: '10px', marginBottom: '0' }}>
-                  Planned establishment of own AHPHT production facility.
+                <div style={timelineYear2027Styles}>2027</div>
+                <p style={timelineTextStyles}>
+                  • Planned establishment of own AHPHT production facility.
                 </p>
               </div>
             </div>

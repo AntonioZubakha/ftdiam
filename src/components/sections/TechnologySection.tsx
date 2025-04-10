@@ -4,7 +4,7 @@ const TechnologySection: React.FC = () => {
   return (
     <section id="technology" className="technology-section" style={{ 
       backgroundColor: '#fff',
-      padding: '160px 0 150px 0'  // Установка стандартных отступов как в других секциях
+      padding: '60px 0 120px 0'  // Установка стандартных отступов как в других секциях
     }}>
       <div className="technology-container">
         <div className="technology-headline-container">
