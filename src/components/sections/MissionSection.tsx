@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../styles/mission.css';
 
 const MissionSection = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  
+  // Check if the screen is mobile-sized
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile(); // Initial check
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <section 
       id="mission" 
       className="mission-section" 
       style={{ 
-        paddingTop: '180px',
-        paddingBottom: '180px',
+        paddingTop: isMobile ? '40px' : '180px',
+        paddingBottom: isMobile ? '40px' : '180px',
         backgroundColor: '#fff',
         position: 'relative',
         overflow: 'hidden',
@@ -16,11 +30,19 @@ const MissionSection = () => {
       }}
     >
       <div className="container">
-        <h2 className="mission-headline gradient-headline">Our Mission</h2>
+        <h2 className="mission-headline gradient-headline" style={{ 
+          fontSize: isMobile ? '2rem' : '3rem',
+          marginBottom: isMobile ? '1.5rem' : '2.5rem'
+        }}>Our Mission</h2>
         
         <div className="mission-content" style={{ position: 'relative' }}>
-          <div className="mission-logo-container">
-            <img src="/images/Logo.png" alt="FTDiam Logo" className="mission-logo" />
+          <div className="mission-logo-container" style={{ marginBottom: isMobile ? '15px' : '30px' }}>
+            <img 
+              src="/images/Logo.png" 
+              alt="FTDiam Logo" 
+              className="mission-logo" 
+              style={{ width: isMobile ? '120px' : '150px' }}
+            />
           </div>
           
           <div className="mission-text">
@@ -30,17 +52,21 @@ const MissionSection = () => {
               aria-hidden="true"
               style={{ 
                 position: "absolute",
-                left: "-25px", 
-                top: "-20px",
-                width: "50px",
-                height: "40px",
+                left: isMobile ? "-15px" : "-25px", 
+                top: isMobile ? "-15px" : "-20px",
+                width: isMobile ? "30px" : "50px",
+                height: isMobile ? "25px" : "40px",
                 opacity: 0.8
               }}
             />
             <p className="mission-description" style={{ 
               fontStyle: 'normal',
-              paddingLeft: '30px',
-              position: 'relative'
+              paddingLeft: isMobile ? '20px' : '30px',
+              position: 'relative',
+              fontSize: isMobile ? '1.1rem' : '1.3rem',
+              lineHeight: isMobile ? '1.5' : '1.7',
+              maxWidth: isMobile ? '100%' : '80%',
+              margin: '0 auto'
             }}>
             Our mission is to provide flawless technical diamonds that drive innovation across industries, from next-generation electronics to life-changing quantum solutions.
             </p>

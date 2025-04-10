@@ -17,7 +17,7 @@ const WhoWeAreSection: React.FC = () => {
 
   // Используем только inline-стили без зависимости от внешних CSS
   const sectionStyles = {
-    padding: '120px 0 60px 0',
+    padding: isMobile ? '40px 0 20px 0' : '120px 0 60px 0',
     backgroundColor: '#fff',
     position: 'relative' as const,
     marginBottom: '0',
@@ -29,17 +29,17 @@ const WhoWeAreSection: React.FC = () => {
   const containerStyles = {
     maxWidth: '1200px',
     margin: '0 auto',
-    padding: '0 20px'
+    padding: isMobile ? '0 15px' : '0 20px'
   };
 
   const headlineStyles = {
-    fontSize: isMobile ? '2.2rem' : '3rem',
+    fontSize: isMobile ? '2rem' : '3rem',
     background: 'linear-gradient(to right, #00837f, #241e46)',
     WebkitBackgroundClip: 'text' as const,
     backgroundClip: 'text' as const,
     WebkitTextFillColor: 'transparent' as const,
     textAlign: 'center' as const,
-    marginBottom: '2rem',
+    marginBottom: isMobile ? '1.5rem' : '2rem',
     position: 'relative' as const,
     fontWeight: '600' as const,
     letterSpacing: '0.5px',
@@ -50,9 +50,9 @@ const WhoWeAreSection: React.FC = () => {
   const newLayoutStyles = {
     display: 'grid',
     gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-    gap: '30px',
+    gap: isMobile ? '15px' : '30px',
     width: '100%',
-    margin: '20px auto 0',
+    margin: isMobile ? '10px auto 0' : '20px auto 0',
     position: 'relative' as const,
     maxWidth: '1200px',
     overflow: 'hidden'
@@ -64,12 +64,12 @@ const WhoWeAreSection: React.FC = () => {
     flexDirection: 'column' as const,
     height: '100%',
     backgroundColor: '#fff',
-    marginBottom: isMobile ? '30px' : '0'
+    marginBottom: isMobile ? '15px' : '0'
   };
 
   // Стиль для правой колонки (История)
   const rightColumnStyles = {
-    padding: isMobile ? '30px 20px' : '50px 60px',
+    padding: isMobile ? '20px 15px' : '50px 60px',
     height: '100%',
     position: 'relative' as const,
     minHeight: isMobile ? 'auto' : '900px', // Чтобы история занимала всю высоту
@@ -91,8 +91,8 @@ const WhoWeAreSection: React.FC = () => {
 
   const aboutBlockStyles = {
     ...blockStyles,
-    minHeight: '300px',
-    padding: '50px 40px 5px'
+    minHeight: isMobile ? '200px' : '300px',
+    padding: isMobile ? '30px 20px 5px' : '50px 40px 5px'
   };
 
   const foundersContainerStyles = {
@@ -100,13 +100,13 @@ const WhoWeAreSection: React.FC = () => {
     flexDirection: isMobile ? 'column' as const : 'row' as const,
     height: isMobile ? 'auto' : '500px',
     marginTop: '0px',
-    gap: isMobile ? '20px' : '0'
+    gap: isMobile ? '15px' : '0'
   };
 
   const founderBlockStyles = {
     ...blockStyles,
     flex: 1,
-    padding: isMobile ? '20px 20px' : '40px 30px',
+    padding: isMobile ? '15px 15px' : '40px 30px',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
     ':hover': {
       transform: 'translateY(-5px)',
@@ -185,9 +185,9 @@ const WhoWeAreSection: React.FC = () => {
   // Стили для таймлайна - полностью переделанные
   const timelineContainerStyles = {
     position: 'relative' as const,
-    marginTop: '40px',
-    maxWidth: '90%',
-    margin: '40px auto 0',
+    marginTop: isMobile ? '25px' : '40px',
+    maxWidth: isMobile ? '95%' : '90%',
+    margin: isMobile ? '25px auto 0' : '40px auto 0',
     paddingLeft: '0'
   };
 
@@ -205,57 +205,40 @@ const WhoWeAreSection: React.FC = () => {
 
   const timelineItemStyles = {
     position: 'relative' as const,
-    marginBottom: isMobile ? '40px' : '60px',
+    marginBottom: isMobile ? '25px' : '60px',
     paddingLeft: '50px',
     display: 'flex',
     flexDirection: 'column' as const
   };
 
-  // Новый подход к маркерам - они будут кругами с внутренним белым кругом
+  // Убираем маркеры полностью (скрываем их)
   const timelineMarkerStyles = {
-    position: 'absolute' as const,
-    left: '16px', // Точно то же значение, что и у линии
-    top: '10px',
-    width: '18px',
-    height: '18px',
-    borderRadius: '50%',
-    backgroundColor: '#00837f', // Бирюзовый цвет бренда
-    transform: 'translateX(-6px)', // Располагаем точно по центру линии
-    zIndex: 3
+    display: 'none'
   };
 
-  // Белый круг внутри маркера
+  // Белый круг внутри маркера тоже скрываем
   const timelineMarkerInnerStyles = {
-    position: 'absolute' as const,
-    top: '4px',
-    left: '4px',
-    width: '10px',
-    height: '10px',
-    borderRadius: '50%',
-    backgroundColor: '#ffffff',
-    zIndex: 4
+    display: 'none'
   };
 
-  // Варианты маркеров для разных годов
+  // Варианты маркеров для разных годов тоже скрываем
   const timelineMarker2023Styles = {
-    ...timelineMarkerStyles,
-    backgroundColor: '#00837f' // Тот же бирюзовый цвет
+    display: 'none'
   };
 
   const timelineMarker2027Styles = {
-    ...timelineMarkerStyles,
-    backgroundColor: '#241e46' // Темно-синий цвет бренда
+    display: 'none'
   };
 
   // Новые стили для годов в таймлайне
   const timelineYearStyles = {
-    fontSize: isMobile ? '28px' : '32px',
+    fontSize: isMobile ? '22px' : '32px',
     fontWeight: 'bold' as const,
     background: 'linear-gradient(to right, #00837f, #00837f)',
     WebkitBackgroundClip: 'text' as const,
     backgroundClip: 'text' as const,
     WebkitTextFillColor: 'transparent' as const,
-    marginBottom: '15px',
+    marginBottom: isMobile ? '10px' : '15px',
     lineHeight: '1'
   };
 
@@ -281,11 +264,13 @@ const WhoWeAreSection: React.FC = () => {
 
   // Изменяю стили текста для описаний в таймлайне - теперь как текст под About Us
   const timelineTextStyles = {
-    marginTop: '12px', 
+    marginTop: isMobile ? '8px' : '12px', 
     marginBottom: '0', 
     color: '#555', 
     lineHeight: '1.6',
-    fontSize: isMobile ? '1rem' : '1.1rem'
+    fontSize: isMobile ? '0.9rem' : '1.1rem',
+    listStyleType: 'none',
+    paddingLeft: '0'
   };
 
   // Стили для адаптивности
@@ -421,7 +406,7 @@ const WhoWeAreSection: React.FC = () => {
               <div style={timelineContentStyles}>
                 <div style={timelineYearStyles}>2022</div>
                 <p style={timelineTextStyles}>
-                  • Founded as a sales-focused entity sourcing diamonds from a partner facility in India.
+                  Founded as a sales-focused entity sourcing diamonds from a partner facility in India.
                 </p>
               </div>
             </div>
@@ -434,7 +419,7 @@ const WhoWeAreSection: React.FC = () => {
               <div style={timelineContentStyles}>
                 <div style={timelineYear2023Styles}>2023</div>
                 <p style={timelineTextStyles}>
-                  • Expanded partnerships and client base across quantum technology sector.
+                  Expanded partnerships and client base across quantum technology sector.
                 </p>
               </div>
             </div>
@@ -447,7 +432,7 @@ const WhoWeAreSection: React.FC = () => {
               <div style={timelineContentStyles}>
                 <div style={timelineYear2027Styles}>2027</div>
                 <p style={timelineTextStyles}>
-                  • Planned establishment of own AHPHT production facility.
+                  Planned establishment of own AHPHT production facility.
                 </p>
               </div>
             </div>

@@ -742,4 +742,38 @@ figure {
   .grid-4-cols {
     grid-template-columns: 1fr;
   }
+}
+
+/* Стили для анимации появления контента при скроллинге */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Уменьшение отступов между секциями для мобильных устройств */
+@media (max-width: 768px) {
+  section {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  
+  .container, .content-wrapper {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+  
+  h2.gradient-headline, 
+  h2.section-headline, 
+  h2.headline {
+    margin-bottom: 20px !important;
+    font-size: 2rem !important;
+  }
 } 

@@ -96,10 +96,10 @@ const QualitySection: React.FC = () => {
       className="quality-section" 
       style={{ 
         backgroundColor: 'transparent',
-        paddingTop: '120px',
-        paddingBottom: '120px',
+        paddingTop: isMobile ? '40px' : '120px',
+        paddingBottom: isMobile ? '40px' : '120px',
         position: 'relative',
-        minHeight: '80vh'
+        minHeight: isMobile ? 'auto' : '80vh'
       }}
     >
       <div style={backgroundStyle}></div>
@@ -120,28 +120,29 @@ const QualitySection: React.FC = () => {
           maxWidth: '1400px',
           margin: '0 auto',
           padding: '0 20px',
-          minHeight: '60vh'
+          minHeight: isMobile ? 'auto' : '60vh'
         }}>
           {/* Левая колонка с заголовком и подзаголовком */}
           <div style={stickyTitleStyle}>
             <h2 className="quality-headline gradient-headline" style={{ 
-              fontSize: '3rem',
+              fontSize: isMobile ? '2rem' : '3rem',
               textAlign: 'left',
-              marginBottom: '2rem',
+              marginBottom: isMobile ? '1rem' : '2rem',
               position: 'relative'
             }}>
               Quality Analysis
             </h2>
             <h3 className="quality-subheadline" style={{ 
               textAlign: 'left',
-              marginBottom: '1rem',
+              marginBottom: isMobile ? '0.5rem' : '1rem',
+              fontSize: isMobile ? '1.5rem' : '1.8rem',
               display: 'inline-block'
             }}>
               Tested. Proven. Exceptional.
             </h3>
             <p className="quality-description" style={{ 
               textAlign: 'left',
-              fontSize: '1.2rem',
+              fontSize: isMobile ? '1rem' : '1.2rem',
               lineHeight: '1.6',
               maxWidth: '100%',
               margin: '0 0 2rem 0'
@@ -154,26 +155,26 @@ const QualitySection: React.FC = () => {
           {/* Правая колонка с карточками */}
           <div style={{ 
             flex: '1.2',
-            minWidth: '350px'
+            minWidth: isMobile ? '300px' : '350px'
           }}>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: '2rem',
+              gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+              gap: isMobile ? '1rem' : '2rem',
               margin: 0
             }}
             className="quality-card-row"
             >
-              <div className="spec-block" style={{ padding: '20px' }}>
+              <div className="spec-block" style={{ padding: isMobile ? '15px' : '20px' }}>
                 <div 
-                  style={imageContainerStyle}
+                  style={{...imageContainerStyle, paddingBottom: isMobile ? '90%' : '100%'}}
                   onClick={() => openModal('/images/photo1.jpg')}
                 >
                   <img src="/images/photo1.jpg" alt="Diamond View" style={imageStyle} />
                 </div>
-                <h3 className="spec-name">Diamond View</h3>
+                <h3 className="spec-name" style={{ fontSize: isMobile ? '1rem' : '1.2rem' }}>Diamond View</h3>
                 <div style={{
-                  fontSize: '1.4rem',
+                  fontSize: isMobile ? '1.2rem' : '1.4rem',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
@@ -183,19 +184,19 @@ const QualitySection: React.FC = () => {
                   letterSpacing: '0.5px',
                   display: 'inline-block'
                 }}>No inclusions</div>
-                <p className="spec-description">No defects, dislocations &lt;10¹ cm⁻²</p>
+                <p className="spec-description" style={{ fontSize: isMobile ? '0.9rem' : '1rem' }}>No defects, dislocations &lt;10¹ cm⁻²</p>
               </div>
               
-              <div className="spec-block" style={{ padding: '20px' }}>
+              <div className="spec-block" style={{ padding: isMobile ? '15px' : '20px' }}>
                 <div 
-                  style={imageContainerStyle}
+                  style={{...imageContainerStyle, paddingBottom: isMobile ? '90%' : '100%'}}
                   onClick={() => openModal('/images/photo2.jpg')}
                 >
                   <img src="/images/photo2.jpg" alt="Polarized Light Microscopy" style={imageStyle} />
                 </div>
-                <h3 className="spec-name">Polarized Light</h3>
+                <h3 className="spec-name" style={{ fontSize: isMobile ? '1rem' : '1.2rem' }}>Polarized Light</h3>
                 <div style={{
-                  fontSize: '1.4rem',
+                  fontSize: isMobile ? '1.2rem' : '1.4rem',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
@@ -205,7 +206,7 @@ const QualitySection: React.FC = () => {
                   letterSpacing: '0.5px',
                   display: 'inline-block'
                 }}>Very low strain</div>
-                <p className="spec-description">Perfect for optical applications</p>
+                <p className="spec-description" style={{ fontSize: isMobile ? '0.9rem' : '1rem' }}>Perfect for optical applications</p>
               </div>
             </div>
             
@@ -213,22 +214,22 @@ const QualitySection: React.FC = () => {
             <div style={{
               display: 'flex',
               justifyContent: 'center',
-              margin: '2rem 0'
+              margin: isMobile ? '1rem 0' : '2rem 0'
             }}>
               <div className="spec-block" style={{ 
-                padding: '20px', 
+                padding: isMobile ? '15px' : '20px', 
                 width: 'calc(((100% - 2rem) / 2))', /* Точная ширина одной из верхних карточек */
                 maxWidth: '100%'
               }}>
                 <div 
-                  style={imageContainerStyle}
+                  style={{...imageContainerStyle, paddingBottom: isMobile ? '90%' : '100%'}}
                   onClick={() => openModal('/images/photo5.jpg')}
                 >
                   <img src="/images/photo5.jpg" alt="X-Ray Diffraction Imaging" style={imageStyle} />
                 </div>
-                <h3 className="spec-name">X-Ray Diffraction</h3>
+                <h3 className="spec-name" style={{ fontSize: isMobile ? '1rem' : '1.2rem' }}>X-Ray Diffraction</h3>
                 <div style={{
-                  fontSize: '1.4rem',
+                  fontSize: isMobile ? '1.2rem' : '1.4rem',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
@@ -238,27 +239,27 @@ const QualitySection: React.FC = () => {
                   letterSpacing: '0.5px',
                   display: 'inline-block'
                 }}>&lt;50 cm⁻²</div>
-                <p className="spec-description">Dislocation density</p>
+                <p className="spec-description" style={{ fontSize: isMobile ? '0.9rem' : '1rem' }}>Dislocation density</p>
               </div>
             </div>
             
             {/* Нижний ряд: 2 графика */}
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: '2rem',
-              margin: '2rem 0 0 0'
+              gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+              gap: isMobile ? '1rem' : '2rem',
+              margin: isMobile ? '1rem 0 0 0' : '2rem 0 0 0'
             }}>
-              <div className="spec-block" style={{ padding: '20px' }}>
+              <div className="spec-block" style={{ padding: isMobile ? '15px' : '20px' }}>
                 <div 
-                  style={imageContainerStyle}
+                  style={{...imageContainerStyle, paddingBottom: isMobile ? '90%' : '100%'}}
                   onClick={() => openModal('/images/photo3.jpg')}
                 >
                   <img src="/images/photo3.jpg" alt="FTIR" style={imageStyle} />
                 </div>
-                <h3 className="spec-name">FTIR</h3>
+                <h3 className="spec-name" style={{ fontSize: isMobile ? '1rem' : '1.2rem' }}>FTIR</h3>
                 <div style={{
-                  fontSize: '1.4rem',
+                  fontSize: isMobile ? '1.2rem' : '1.4rem',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
@@ -268,19 +269,19 @@ const QualitySection: React.FC = () => {
                   letterSpacing: '0.5px',
                   display: 'inline-block'
                 }}>Ultra-pure</div>
-                <p className="spec-description">Exceptional crystal purity</p>
+                <p className="spec-description" style={{ fontSize: isMobile ? '0.9rem' : '1rem' }}>Exceptional crystal purity</p>
               </div>
               
-              <div className="spec-block" style={{ padding: '20px' }}>
+              <div className="spec-block" style={{ padding: isMobile ? '15px' : '20px' }}>
                 <div 
-                  style={imageContainerStyle}
+                  style={{...imageContainerStyle, paddingBottom: isMobile ? '90%' : '100%'}}
                   onClick={() => openModal('/images/photo4.jpg')}
                 >
                   <img src="/images/photo4.jpg" alt="UV-Vis" style={imageStyle} />
                 </div>
-                <h3 className="spec-name">UV-Vis</h3>
+                <h3 className="spec-name" style={{ fontSize: isMobile ? '1rem' : '1.2rem' }}>UV-Vis</h3>
                 <div style={{
-                  fontSize: '1.4rem',
+                  fontSize: isMobile ? '1.2rem' : '1.4rem',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
@@ -290,7 +291,7 @@ const QualitySection: React.FC = () => {
                   letterSpacing: '0.5px',
                   display: 'inline-block'
                 }}>Low absorbance</div>
-                <p className="spec-description">Premium optical quality</p>
+                <p className="spec-description" style={{ fontSize: isMobile ? '0.9rem' : '1rem' }}>Premium optical quality</p>
               </div>
             </div>
           </div>

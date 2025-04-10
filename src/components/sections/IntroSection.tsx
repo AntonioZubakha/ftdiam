@@ -32,12 +32,12 @@ const IntroSection: React.FC = () => {
     top: '100px',
     flex: '1',
     minWidth: '300px',
-    paddingRight: '40px',
+    paddingRight: isMobile ? '0' : '40px',
     textAlign: 'left' as const,
     alignSelf: 'flex-start' as const,
     height: 'fit-content',
     zIndex: 5,
-    marginBottom: isMobile ? '30px' : '0'
+    marginBottom: isMobile ? '20px' : '0'
   };
 
   return (
@@ -46,10 +46,10 @@ const IntroSection: React.FC = () => {
       className="intro-section" 
       style={{ 
         backgroundColor: 'transparent',
-        marginTop: '150px',
-        paddingTop: '150px',
+        marginTop: isMobile ? '60px' : '150px',
+        paddingTop: isMobile ? '40px' : '150px',
         paddingBottom: '0', // Убираем нижний padding, чтобы новый блок прилегал вплотную
-        minHeight: '80vh'
+        minHeight: isMobile ? 'auto' : '80vh'
       }}
     >
       <div style={backgroundStyle}></div>
@@ -64,23 +64,23 @@ const IntroSection: React.FC = () => {
             maxWidth: '1400px',
             margin: '0 auto',
             padding: '0 20px',
-            minHeight: '60vh',
+            minHeight: isMobile ? 'auto' : '60vh',
             position: 'relative'
           }}
         >
           {/* Левая колонка с заголовком и подзаголовком - теперь с position: sticky */}
           <div style={stickyTitleStyle} className="sticky-title">
             <h2 className="headline gradient-headline" style={{ 
-              fontSize: '3rem',
+              fontSize: isMobile ? '2rem' : '3rem',
               textAlign: 'left',
-              marginBottom: '2rem',
+              marginBottom: isMobile ? '1rem' : '2rem',
               position: 'relative'
             }}>
               Premium Single Crystal Diamond Substrates
             </h2>
             <p className="section-description" style={{ 
               textAlign: 'left',
-              fontSize: '1.2rem',
+              fontSize: isMobile ? '1rem' : '1.2rem',
               lineHeight: '1.6',
               maxWidth: '100%'
             }}>
@@ -95,15 +95,15 @@ const IntroSection: React.FC = () => {
           }}>
             <div className="specs-grid" style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: '1.5rem',
+              gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+              gap: isMobile ? '1rem' : '1.5rem',
               margin: 0,
-              marginBottom: '60px'
+              marginBottom: isMobile ? '30px' : '60px'
             }}>
               <div className="spec-block">
                 <div className="spec-icon">
                   <i className="fas fa-gem" style={{
-                    fontSize: '60px',
+                    fontSize: isMobile ? '40px' : '60px',
                     marginBottom: '15px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
                     WebkitBackgroundClip: 'text',
@@ -114,7 +114,7 @@ const IntroSection: React.FC = () => {
                 </div>
                 <h3 className="spec-name">Technologies</h3>
                 <div style={{
-                  fontSize: '1.8rem',
+                  fontSize: isMobile ? '1.5rem' : '1.8rem',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
@@ -130,7 +130,7 @@ const IntroSection: React.FC = () => {
               <div className="spec-block">
                 <div className="spec-icon">
                   <i className="fas fa-cubes" style={{
-                    fontSize: '60px',
+                    fontSize: isMobile ? '40px' : '60px',
                     marginBottom: '15px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
                     WebkitBackgroundClip: 'text',
@@ -141,7 +141,7 @@ const IntroSection: React.FC = () => {
                 </div>
                 <h3 className="spec-name">Types</h3>
                 <div style={{
-                  fontSize: '1.6rem',
+                  fontSize: isMobile ? '1.4rem' : '1.6rem',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
@@ -157,7 +157,7 @@ const IntroSection: React.FC = () => {
               <div className="spec-block">
                 <div className="spec-icon">
                   <i className="fas fa-expand-alt" style={{
-                    fontSize: '60px',
+                    fontSize: isMobile ? '40px' : '60px',
                     marginBottom: '15px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
                     WebkitBackgroundClip: 'text',
@@ -168,7 +168,7 @@ const IntroSection: React.FC = () => {
                 </div>
                 <h3 className="spec-name">Sizes</h3>
                 <div style={{
-                  fontSize: '1.8rem',
+                  fontSize: isMobile ? '1.5rem' : '1.8rem',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
@@ -184,7 +184,7 @@ const IntroSection: React.FC = () => {
               <div className="spec-block">
                 <div className="spec-icon">
                   <i className="fas fa-microscope" style={{
-                    fontSize: '60px',
+                    fontSize: isMobile ? '40px' : '60px',
                     marginBottom: '15px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
                     WebkitBackgroundClip: 'text',
@@ -195,7 +195,7 @@ const IntroSection: React.FC = () => {
                 </div>
                 <h3 className="spec-name">Dislocation Density</h3>
                 <div style={{
-                  fontSize: '1.8rem',
+                  fontSize: isMobile ? '1.5rem' : '1.8rem',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
@@ -211,7 +211,7 @@ const IntroSection: React.FC = () => {
               <div className="spec-block">
                 <div className="spec-icon">
                   <i className="fas fa-ruler-combined" style={{
-                    fontSize: '60px',
+                    fontSize: isMobile ? '40px' : '60px',
                     marginBottom: '15px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
                     WebkitBackgroundClip: 'text',
@@ -222,7 +222,7 @@ const IntroSection: React.FC = () => {
                 </div>
                 <h3 className="spec-name">Surface Perfection</h3>
                 <div style={{
-                  fontSize: '1.8rem',
+                  fontSize: isMobile ? '1.5rem' : '1.8rem',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
@@ -241,19 +241,19 @@ const IntroSection: React.FC = () => {
         {/* Новый блок с текстом на градиентном фоне */}
         <div style={{
           width: '100%',
-          height: isMobile ? '300px' : '200px',
+          height: isMobile ? '250px' : '200px',
           background: 'linear-gradient(to right, #00837f, #241e46)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          marginTop: '40px',
-          marginBottom: '100px',
+          marginTop: isMobile ? '20px' : '40px',
+          marginBottom: isMobile ? '40px' : '100px',
           position: 'relative',
           zIndex: 2 // Понижаем z-index, чтобы заголовок мог быть над ним если нужно
         }}>
           <p style={{
             color: 'white',
-            fontSize: isMobile ? '2rem' : '3rem',
+            fontSize: isMobile ? '1.5rem' : '3rem',
             fontWeight: 'bold',
             textAlign: 'center',
             padding: '0 20px',
