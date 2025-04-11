@@ -21,8 +21,8 @@ const MissionSection = () => {
       id="mission" 
       className="mission-section" 
       style={{ 
-        paddingTop: isMobile ? '220px' : '180px',
-        paddingBottom: isMobile ? '220px' : '180px',
+        paddingTop: isMobile ? '100px' : '180px',
+        paddingBottom: isMobile ? '100px' : '180px',
         backgroundColor: '#fff',
         position: 'relative',
         overflow: 'hidden',
@@ -41,7 +41,7 @@ const MissionSection = () => {
               src="/images/Logo.png" 
               alt="FTDiam Logo" 
               className="mission-logo" 
-              style={{ width: isMobile ? '120px' : '150px' }}
+              style={{ width: isMobile ? '140px' : '300px' }}
             />
           </div>
           

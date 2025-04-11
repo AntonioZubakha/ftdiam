@@ -310,29 +310,40 @@ const IntroSection: React.FC = () => {
         {/* Новый блок с текстом на градиентном фоне */}
         <div style={{
           width: '100%',
-          height: isMobile ? '250px' : '200px',
+          height: isMobile ? '300px' : '200px',
           background: 'linear-gradient(to right, #00837f, #241e46)',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
+          justifyContent: isMobile ? 'flex-start' : 'center',
           marginTop: isMobile ? '20px' : '40px',
           marginBottom: isMobile ? '40px' : '100px',
           position: 'relative',
           zIndex: 2
         }}>
-          <p style={{
+          <div style={{
             color: 'white',
-            fontSize: isMobile ? 'var(--h2-mobile)' : 'var(--h1-desktop)',
+            fontSize: isMobile ? 'var(--h1-mobile)' : 'var(--h1-desktop)',
             fontWeight: 'bold',
-            textAlign: 'center',
-            padding: '0 20px',
+            textAlign: isMobile ? 'left' : 'center',
+            padding: isMobile ? '0 30px' : '0 20px',
             maxWidth: '1400px',
             margin: '0 auto',
             letterSpacing: '0.5px',
-            lineHeight: '1.2'
+            lineHeight: '1.4',
+            width: '100%'
           }}>
-            Engineered for excellence. Trusted for precision. Perfect for advanced applications.
-          </p>
+            {isMobile ? (
+              <div style={{ textAlign: 'left', width: '100%' }}>
+                <p style={{ margin: '0 0 15px 0', fontSize: '2rem', textAlign: 'left', color: 'white' }}>Engineered for excellence.</p>
+                <p style={{ margin: '0 0 15px 0', fontSize: '2rem', textAlign: 'left', color: 'white' }}>Trusted for precision.</p>
+                <p style={{ margin: '0', fontSize: '2rem', textAlign: 'left', color: 'white' }}>Perfect for advanced applications.</p>
+              </div>
+            ) : (
+              <p style={{ margin: '0', color: 'white' }}>
+                Engineered for excellence. Trusted for precision. Perfect for advanced applications.
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </section>

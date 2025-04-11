@@ -28,12 +28,13 @@ const ProductsSection: React.FC = () => {
       title: "Diamond Substrates",
       image: "/images/photo1.1.png",
       specs: [
-        "Type IIa single-crystal plates.",
-        "Sizes: 3x3 mm to 15x15 mm; Thickness: 0.1-10 mm.",
-        "Purity: ≤5 ppb Nitrogen.",
-        "Dislocations: As low as 10¹ cm⁻².",
-        "Surface: Polished up to 0.5 nm Ra.",
-        "Customizable: Shapes, orientations ((100), (111), (110), etc.), miscut."
+        "Type IIa single-crystal plates",
+        "Sizes: 3x3 mm to 15x15 mm",
+        "Thickness: 0.1-10 mm",
+        "Purity: ≤5 ppb Nitrogen",
+        "Dislocations: As low as 10¹ cm⁻²",
+        "Surface: Polished up to 0.5 nm Ra",
+        "Customizable: Shapes, orientations ((100), (111), (110), etc.), miscut"
       ]
     },
     {
@@ -42,9 +43,9 @@ const ProductsSection: React.FC = () => {
       image: "/images/photo1.2.png",
       specs: [
         "Diameters: 2.5-4 mm.",
-        "Designs: Smooth or faceted.",
-        "Table orientation: (100) standard, custom available.",
-        "Quality: No inclusions and defects at 50x magnification, low birefringence."
+        "Designs: Smooth or faceted",
+        "Table orientation: (100) standard, custom available",
+        "Quality: No inclusions and defects at 50x magnification, low birefringence"
       ]
     },
     {
@@ -52,7 +53,7 @@ const ProductsSection: React.FC = () => {
       title: "Custom Products",
       image: "/images/photo1.3.png",
       specs: [
-        "Lenses, optical windows and any shape per client specs."
+        "Lenses, optical windows and any shape per client specs"
       ]
     }
   ];

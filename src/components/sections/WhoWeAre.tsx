@@ -191,50 +191,75 @@ const WhoWeAreSection: React.FC = () => {
     paddingLeft: '0'
   };
 
-  // Вертикальная линия таймлайна - новый подход с брендовыми цветами
+  // Вертикальная линия таймлайна
   const timelineLineStyles = {
     position: 'absolute' as const,
     top: '0',
     bottom: '0',
-    left: '16px', // Смещаем линию левее
-    width: '6px',
-    background: 'linear-gradient(to bottom, #00837f 0%, #00837f 30%, #00837f 50%, #241e46 100%)',
-    borderRadius: '3px',
+    left: '18px', // Центрируем линию с маркерами
+    width: '3px',
+    background: 'linear-gradient(to bottom, #00837f 0%, #00837f 40%, #241e46 100%)',
     zIndex: 1
   };
 
   const timelineItemStyles = {
     position: 'relative' as const,
     marginBottom: isMobile ? '25px' : '60px',
-    paddingLeft: '50px',
+    paddingLeft: '60px', // Увеличиваем отступ для содержимого
     display: 'flex',
     flexDirection: 'column' as const
   };
 
-  // Убираем маркеры полностью (скрываем их)
+  // Маркеры таймлайна
   const timelineMarkerStyles = {
-    display: 'none'
+    position: 'absolute' as const,
+    left: '3px', // Позиционируем маркеры по центру линии
+    top: '8px',
+    width: '30px',
+    height: '30px',
+    backgroundColor: '#fff',
+    borderRadius: '50%',
+    display: 'flex',
+    alignItems: 'center' as const,
+    justifyContent: 'center' as const,
+    zIndex: 2,
+    border: '3px solid #00837f'
   };
 
-  // Белый круг внутри маркера тоже скрываем
+  // Внутренний круг маркера
   const timelineMarkerInnerStyles = {
-    display: 'none'
+    width: '14px',
+    height: '14px',
+    backgroundColor: '#00837f',
+    borderRadius: '50%',
+    zIndex: 3
   };
 
-  // Варианты маркеров для разных годов тоже скрываем
+  // Варианты маркеров для разных годов
   const timelineMarker2023Styles = {
-    display: 'none'
+    ...timelineMarkerStyles,
+    border: '3px solid #00837f' // Средний бирюзовый
   };
 
   const timelineMarker2027Styles = {
-    display: 'none'
+    ...timelineMarkerStyles,
+    border: '3px solid #241e46' // Темно-синий
   };
 
-  // Новые стили для годов в таймлайне
+  // Новые стили для годов в таймлайне - 2022 (бирюзовый)
   const timelineYearStyles = {
     fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
     fontWeight: 'bold' as const,
-    background: 'linear-gradient(to right, #00837f, #00837f)',
+    color: '#00837f', // Бирюзовый для 2022
+    marginBottom: isMobile ? '10px' : '15px',
+    lineHeight: '1'
+  };
+
+  // 2023 (градиент)
+  const timelineYear2023Styles = {
+    fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
+    fontWeight: 'bold' as const,
+    background: 'linear-gradient(to right, #00837f, #241e46)',
     WebkitBackgroundClip: 'text' as const,
     backgroundClip: 'text' as const,
     WebkitTextFillColor: 'transparent' as const,
@@ -242,35 +267,27 @@ const WhoWeAreSection: React.FC = () => {
     lineHeight: '1'
   };
 
-  const timelineYear2023Styles = {
-    ...timelineYearStyles,
-    background: 'linear-gradient(to right, #00837f, #241e46)',
-    WebkitBackgroundClip: 'text' as const,
-    backgroundClip: 'text' as const,
-    WebkitTextFillColor: 'transparent' as const
-  };
-
+  // 2027 (темно-синий)
   const timelineYear2027Styles = {
-    ...timelineYearStyles,
-    background: 'linear-gradient(to right, #241e46, #241e46)',
-    WebkitBackgroundClip: 'text' as const,
-    backgroundClip: 'text' as const,
-    WebkitTextFillColor: 'transparent' as const
+    fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
+    fontWeight: 'bold' as const,
+    color: '#241e46', // Темно-синий для 2027
+    marginBottom: isMobile ? '10px' : '15px',
+    lineHeight: '1'
   };
 
   const timelineContentStyles = {
     padding: '0'
   };
 
-  // Изменяю стили текста для описаний в таймлайне - теперь как текст под About Us
+  // Стили для текста в таймлайне
   const timelineTextStyles = {
     marginTop: isMobile ? '8px' : '12px', 
     marginBottom: '0', 
     color: '#555', 
     lineHeight: '1.6',
-    fontSize: isMobile ? '0.9rem' : '1.1rem',
-    listStyleType: 'none',
-    paddingLeft: '0'
+    fontSize: isMobile ? '0.9rem' : '1rem',
+    position: 'relative' as const
   };
 
   // Стили для адаптивности
@@ -317,8 +334,17 @@ const WhoWeAreSection: React.FC = () => {
   // Add custom styles for Dan's photo
   const ceoPhotoStyles = {
     width: '90%', // Larger than the default 80%
-    height: '105%', // Slightly taller
-    objectFit: 'contain' as const
+    height: '100%', // Changed from 105% to 100% to align bottoms
+    objectFit: 'contain' as const,
+    objectPosition: 'bottom' // Align image to bottom
+  };
+
+  // Update the CTO photo style to also align to bottom
+  const ctoPhotoStyles = {
+    width: '80%',
+    height: '100%',
+    objectFit: 'contain' as const,
+    objectPosition: 'bottom' // Align image to bottom
   };
 
   return (
@@ -357,7 +383,7 @@ const WhoWeAreSection: React.FC = () => {
                 <img 
                   src="/images/Dmitri.png" 
                   alt="Dmitry Semchenko" 
-                  style={founderPhotoImgStyles}
+                  style={ctoPhotoStyles}
                 />
               </div>
               <div style={{ flex: 1, display: 'flex', flexDirection: 'column' as const }}>
@@ -406,7 +432,7 @@ const WhoWeAreSection: React.FC = () => {
               <div style={timelineContentStyles}>
                 <div style={timelineYearStyles}>2022</div>
                 <p style={timelineTextStyles}>
-                  Founded as a sales-focused entity sourcing diamonds from a partner facility in India.
+                  Founded as a sales-focused entity sourcing diamonds from a partner facility in India
                 </p>
               </div>
             </div>
@@ -419,7 +445,7 @@ const WhoWeAreSection: React.FC = () => {
               <div style={timelineContentStyles}>
                 <div style={timelineYear2023Styles}>2023</div>
                 <p style={timelineTextStyles}>
-                  Expanded partnerships and client base across quantum technology sector.
+                  Expanded partnerships and client base across quantum technology sector
                 </p>
               </div>
             </div>
@@ -432,7 +458,7 @@ const WhoWeAreSection: React.FC = () => {
               <div style={timelineContentStyles}>
                 <div style={timelineYear2027Styles}>2027</div>
                 <p style={timelineTextStyles}>
-                  Planned establishment of own AHPHT production facility.
+                  Planned establishment of own AHPHT production facility
                 </p>
               </div>
             </div>
