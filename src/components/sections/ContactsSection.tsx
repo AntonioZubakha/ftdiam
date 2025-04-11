@@ -6,6 +6,7 @@ import '../../styles/contacts.css';
 
 const ContactsSection = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
   
   // Check if the screen is mobile-sized
   useEffect(() => {
@@ -17,6 +18,18 @@ const ContactsSection = () => {
     window.addEventListener('resize', checkMobile);
     
     return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Проверяем URL параметры при загрузке компонента для определения статуса отправки формы
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('submitted') === 'true') {
+      setFormSubmitted(true);
+      
+      // Очищаем URL после обработки
+      const newUrl = window.location.pathname + window.location.hash;
+      window.history.replaceState({}, document.title, newUrl);
+    }
   }, []);
 
   return (
@@ -103,35 +116,117 @@ const ContactsSection = () => {
               }}>Get in touch</h3>
             </div>
             
-            <form>
-              <div className="form-group" style={{ marginBottom: isMobile ? '10px' : '15px' }}>
-                <input type="text" placeholder="Your name" required style={{ padding: isMobile ? '8px 12px' : '10px 15px' }} />
-              </div>
-              
-              <div className="form-group" style={{ marginBottom: isMobile ? '10px' : '15px' }}>
-                <input type="email" placeholder="Your email" required style={{ padding: isMobile ? '8px 12px' : '10px 15px' }} />
-              </div>
-              
-              <div className="form-group" style={{ marginBottom: isMobile ? '15px' : '20px' }}>
-                <textarea 
-                  name="message" 
-                  placeholder="Your message" 
-                  required 
-                  style={{ 
-                    padding: isMobile ? '8px 12px' : '10px 15px',
-                    height: isMobile ? '100px' : '120px'
-                  }}></textarea>
-              </div>
-              
-              <button 
-                type="submit" 
-                className="contact-submit-button"
+            {formSubmitted ? (
+              <div 
+                className="form-message form-success"
                 style={{ 
-                  padding: isMobile ? '8px 16px' : '10px 20px',
-                  fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)'
+                  padding: '20px', 
+                  borderRadius: '5px',
+                  backgroundColor: '#effff4',
+                  color: '#00837f',
+                  border: '1px solid #c3f0d1',
+                  marginBottom: '20px',
+                  textAlign: 'center'
                 }}
-              >Send message</button>
-            </form>
+              >
+                <p style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '10px' }}>
+                  Thank you!
+                </p>
+                <p>Your message has been sent successfully.</p>
+                <p style={{ fontSize: '0.9rem', marginTop: '15px' }}>
+                  <strong>Note:</strong> If this is your first time using the form, please check your email for a confirmation message from FormSubmit.
+                </p>
+              </div>
+            ) : (
+              <form 
+                action="https://formsubmit.co/info@ftdiam.com" 
+                method="POST"
+              >
+                {/* Скрытые поля для настройки FormSubmit.co */}
+                <input type="hidden" name="_subject" value="New message from FTDiam website" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_next" value={`${window.location.href.split('?')[0]}?submitted=true`} />
+                <input type="text" name="_honey" style={{ display: 'none' }} />
+                
+                <div className="form-group" style={{ marginBottom: isMobile ? '15px' : '20px' }}>
+                  <input 
+                    type="text" 
+                    name="name"
+                    placeholder="Your name" 
+                    required
+                    style={{ 
+                      padding: isMobile ? '8px 12px' : '10px 15px',
+                      width: '100%',
+                      border: '1px solid #e0e0e0',
+                      borderRadius: '8px',
+                      fontSize: '15px'
+                    }} 
+                  />
+                </div>
+                
+                <div className="form-group" style={{ marginBottom: isMobile ? '15px' : '20px' }}>
+                  <input 
+                    type="email" 
+                    name="email"
+                    placeholder="Your email" 
+                    required
+                    style={{ 
+                      padding: isMobile ? '8px 12px' : '10px 15px',
+                      width: '100%',
+                      border: '1px solid #e0e0e0',
+                      borderRadius: '8px',
+                      fontSize: '15px'
+                    }} 
+                  />
+                </div>
+                
+                <div className="form-group" style={{ marginBottom: isMobile ? '20px' : '25px' }}>
+                  <textarea 
+                    name="message"
+                    placeholder="Your message" 
+                    required
+                    style={{ 
+                      padding: isMobile ? '8px 12px' : '10px 15px',
+                      height: isMobile ? '100px' : '120px',
+                      width: '100%',
+                      border: '1px solid #e0e0e0',
+                      borderRadius: '8px',
+                      fontSize: '15px',
+                      resize: 'vertical'
+                    }}
+                  ></textarea>
+                </div>
+                
+                <p style={{ 
+                  fontSize: '0.8rem', 
+                  marginBottom: '15px', 
+                  color: '#666',
+                  fontStyle: 'italic'
+                }}>
+                  * The first message will require a confirmation from FormSubmit
+                </p>
+                
+                <button 
+                  type="submit" 
+                  className="contact-submit-button"
+                  style={{ 
+                    padding: isMobile ? '10px 16px' : '12px 20px',
+                    fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)',
+                    width: '100%',
+                    border: 'none',
+                    borderRadius: '8px',
+                    background: 'linear-gradient(to right, #00837f, #241e46)',
+                    color: '#fff',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  Send message
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>
