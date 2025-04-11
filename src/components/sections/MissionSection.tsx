@@ -21,8 +21,8 @@ const MissionSection = () => {
       id="mission" 
       className="mission-section" 
       style={{ 
-        paddingTop: isMobile ? '40px' : '180px',
-        paddingBottom: isMobile ? '40px' : '180px',
+        paddingTop: isMobile ? '80px' : '180px',
+        paddingBottom: isMobile ? '80px' : '180px',
         backgroundColor: '#fff',
         position: 'relative',
         overflow: 'hidden',
@@ -52,8 +52,8 @@ const MissionSection = () => {
               aria-hidden="true"
               style={{ 
                 position: "absolute",
-                left: isMobile ? "-15px" : "-25px", 
-                top: isMobile ? "-15px" : "-20px",
+                left: isMobile ? "0" : "-25px", 
+                top: isMobile ? "0" : "-20px",
                 width: isMobile ? "30px" : "50px",
                 height: isMobile ? "25px" : "40px",
                 opacity: 0.8
@@ -61,7 +61,7 @@ const MissionSection = () => {
             />
             <p className="mission-description" style={{ 
               fontStyle: 'normal',
-              paddingLeft: isMobile ? '20px' : '30px',
+              paddingLeft: isMobile ? '30px' : '30px',
               position: 'relative',
               fontSize: isMobile ? '1.1rem' : '1.3rem',
               lineHeight: isMobile ? '1.5' : '1.7',

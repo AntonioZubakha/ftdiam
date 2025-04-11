@@ -1,10 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../../styles/quality.css';
 
 const QualitySection: React.FC = () => {
   const [modalImage, setModalImage] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [visibleCards, setVisibleCards] = useState<number[]>([]);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   
+  // Массив путей к изображениям
+  const imagePaths = [
+    '/images/photo1.jpg',
+    '/images/photo2.jpg',
+    '/images/photo5.jpg',
+    '/images/photo3.jpg',
+    '/images/photo4.jpg'
+  ];
+
+  // Предзагрузка изображений
+  useEffect(() => {
+    const loadImage = (src: string): Promise<void> => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve();
+        img.onerror = reject;
+        img.src = src;
+      });
+    };
+
+    Promise.all(imagePaths.map(path => loadImage(path)))
+      .then(() => {
+        setImagesLoaded(true);
+      })
+      .catch(error => {
+        console.error('Error preloading images:', error);
+        // Даже если произошла ошибка, позволяем компоненту отрендериться
+        setImagesLoaded(true);
+      });
+  }, []);
+
   // Check if the screen is mobile-sized
   useEffect(() => {
     const checkMobile = () => {
@@ -16,17 +50,46 @@ const QualitySection: React.FC = () => {
     
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Добавляем наблюдатель за каждой карточкой только после загрузки изображений
+  useEffect(() => {
+    if (!isMobile || !imagesLoaded) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const index = cardRefs.current.indexOf(entry.target as HTMLDivElement);
+          if (index !== -1 && !visibleCards.includes(index)) {
+            setVisibleCards(prev => [...prev, index]);
+          }
+        }
+      });
+    }, {
+      threshold: 0.3,
+      rootMargin: '0px'
+    });
+
+    cardRefs.current.forEach(card => {
+      if (card) observer.observe(card);
+    });
+
+    return () => {
+      cardRefs.current.forEach(card => {
+        if (card) observer.unobserve(card);
+      });
+    };
+  }, [isMobile, imagesLoaded]);
   
   // Открытие изображения в модальном окне
   const openModal = (imageSrc: string) => {
     setModalImage(imageSrc);
-    document.body.style.overflow = 'hidden'; // Блокируем прокрутку страницы
+    document.body.style.overflow = 'hidden';
   };
 
   // Закрытие модального окна
   const closeModal = () => {
     setModalImage(null);
-    document.body.style.overflow = ''; // Возвращаем прокрутку страницы
+    document.body.style.overflow = '';
   };
 
   // Определяем стиль с фоновым изображением
@@ -57,7 +120,7 @@ const QualitySection: React.FC = () => {
   const imageContainerStyle = {
     width: '100%',
     height: '0',
-    paddingBottom: '100%', // Создаем квадратное соотношение сторон
+    paddingBottom: '100%',
     marginBottom: '1.2rem',
     overflow: 'hidden',
     borderRadius: '8px',
@@ -99,7 +162,8 @@ const QualitySection: React.FC = () => {
         paddingTop: isMobile ? '40px' : '120px',
         paddingBottom: isMobile ? '40px' : '120px',
         position: 'relative',
-        minHeight: isMobile ? 'auto' : '80vh'
+        minHeight: isMobile ? 'auto' : '80vh',
+        visibility: imagesLoaded ? 'visible' : 'hidden' // Скрываем секцию до загрузки изображений
       }}
     >
       <div style={backgroundStyle}></div>
@@ -165,7 +229,11 @@ const QualitySection: React.FC = () => {
             }}
             className="quality-card-row"
             >
-              <div className="spec-block" style={{ padding: isMobile ? '15px' : '20px' }}>
+              <div 
+                ref={el => cardRefs.current[0] = el}
+                className={`spec-block spec-block-animate ${visibleCards.includes(0) ? 'visible' : ''}`}
+                style={{ padding: isMobile ? '15px' : '20px' }}
+              >
                 <div 
                   style={{...imageContainerStyle, paddingBottom: isMobile ? '90%' : '100%'}}
                   onClick={() => openModal('/images/photo1.jpg')}
@@ -187,7 +255,11 @@ const QualitySection: React.FC = () => {
                 <p className="spec-description" style={{ fontSize: isMobile ? '0.9rem' : '1rem' }}>No defects, dislocations &lt;10¹ cm⁻²</p>
               </div>
               
-              <div className="spec-block" style={{ padding: isMobile ? '15px' : '20px' }}>
+              <div 
+                ref={el => cardRefs.current[1] = el}
+                className={`spec-block spec-block-animate ${visibleCards.includes(1) ? 'visible' : ''}`}
+                style={{ padding: isMobile ? '15px' : '20px' }}
+              >
                 <div 
                   style={{...imageContainerStyle, paddingBottom: isMobile ? '90%' : '100%'}}
                   onClick={() => openModal('/images/photo2.jpg')}
@@ -216,11 +288,14 @@ const QualitySection: React.FC = () => {
               justifyContent: 'center',
               margin: isMobile ? '1rem 0' : '2rem 0'
             }}>
-              <div className="spec-block" style={{ 
-                padding: isMobile ? '15px' : '20px', 
-                width: 'calc(((100% - 2rem) / 2))', /* Точная ширина одной из верхних карточек */
-                maxWidth: '100%'
-              }}>
+              <div 
+                ref={el => cardRefs.current[2] = el}
+                className={`spec-block spec-block-animate ${visibleCards.includes(2) ? 'visible' : ''}`}
+                style={{ 
+                  padding: isMobile ? '15px' : '20px',
+                  width: isMobile ? '100%' : 'calc(((100% - 2rem) / 2))'
+                }}
+              >
                 <div 
                   style={{...imageContainerStyle, paddingBottom: isMobile ? '90%' : '100%'}}
                   onClick={() => openModal('/images/photo5.jpg')}
@@ -250,7 +325,11 @@ const QualitySection: React.FC = () => {
               gap: isMobile ? '1rem' : '2rem',
               margin: isMobile ? '1rem 0 0 0' : '2rem 0 0 0'
             }}>
-              <div className="spec-block" style={{ padding: isMobile ? '15px' : '20px' }}>
+              <div 
+                ref={el => cardRefs.current[3] = el}
+                className={`spec-block spec-block-animate ${visibleCards.includes(3) ? 'visible' : ''}`}
+                style={{ padding: isMobile ? '15px' : '20px' }}
+              >
                 <div 
                   style={{...imageContainerStyle, paddingBottom: isMobile ? '90%' : '100%'}}
                   onClick={() => openModal('/images/photo3.jpg')}
@@ -272,7 +351,11 @@ const QualitySection: React.FC = () => {
                 <p className="spec-description" style={{ fontSize: isMobile ? '0.9rem' : '1rem' }}>Exceptional crystal purity</p>
               </div>
               
-              <div className="spec-block" style={{ padding: isMobile ? '15px' : '20px' }}>
+              <div 
+                ref={el => cardRefs.current[4] = el}
+                className={`spec-block spec-block-animate ${visibleCards.includes(4) ? 'visible' : ''}`}
+                style={{ padding: isMobile ? '15px' : '20px' }}
+              >
                 <div 
                   style={{...imageContainerStyle, paddingBottom: isMobile ? '90%' : '100%'}}
                   onClick={() => openModal('/images/photo4.jpg')}

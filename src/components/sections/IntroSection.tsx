@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const IntroSection: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [visibleCards, setVisibleCards] = useState<number[]>([]);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // Check if the screen is mobile-sized
   useEffect(() => {
@@ -14,6 +16,35 @@ const IntroSection: React.FC = () => {
     
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Добавляем наблюдатель за каждой карточкой
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const index = cardRefs.current.indexOf(entry.target as HTMLDivElement);
+          if (index !== -1 && !visibleCards.includes(index)) {
+            setVisibleCards(prev => [...prev, index]);
+          }
+        }
+      });
+    }, {
+      threshold: 0.3
+    });
+
+    // Начинаем наблюдать за каждой карточкой
+    cardRefs.current.forEach(card => {
+      if (card) observer.observe(card);
+    });
+
+    return () => {
+      cardRefs.current.forEach(card => {
+        if (card) observer.unobserve(card);
+      });
+    };
+  }, [isMobile]);
 
   // Определяем стиль с фоновым изображением
   const backgroundStyle = {
@@ -40,6 +71,16 @@ const IntroSection: React.FC = () => {
     marginBottom: isMobile ? '20px' : '0'
   };
 
+  // Mobile card container styles
+  const mobileCardContainerStyle = {
+    display: 'grid',
+    gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+    gap: isMobile ? '15px' : '1.5rem',
+    margin: 0,
+    marginBottom: isMobile ? '30px' : '60px',
+    padding: isMobile ? '0 0 15px 0' : '0',
+  };
+
   return (
     <section 
       id="intro" 
@@ -48,7 +89,7 @@ const IntroSection: React.FC = () => {
         backgroundColor: 'transparent',
         marginTop: isMobile ? '60px' : '150px',
         paddingTop: isMobile ? '40px' : '150px',
-        paddingBottom: '0', // Убираем нижний padding, чтобы новый блок прилегал вплотную
+        paddingBottom: '0',
         minHeight: isMobile ? 'auto' : '80vh'
       }}
     >
@@ -68,7 +109,7 @@ const IntroSection: React.FC = () => {
             position: 'relative'
           }}
         >
-          {/* Левая колонка с заголовком и подзаголовком - теперь с position: sticky */}
+          {/* Левая колонка с заголовком и подзаголовком */}
           <div style={stickyTitleStyle} className="sticky-title">
             <h2 className="headline gradient-headline" style={{ 
               fontSize: isMobile ? '2rem' : '3rem',
@@ -91,20 +132,21 @@ const IntroSection: React.FC = () => {
           {/* Правая колонка с карточками */}
           <div style={{ 
             flex: '1',
-            minWidth: '300px'
+            minWidth: '300px',
+            overflow: 'visible'
           }}>
-            <div className="specs-grid" style={{
-              display: 'grid',
-              gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
-              gap: isMobile ? '1rem' : '1.5rem',
-              margin: 0,
-              marginBottom: isMobile ? '30px' : '60px'
-            }}>
-              <div className="spec-block">
+            <div 
+              className="specs-grid" 
+              style={mobileCardContainerStyle}
+            >
+              <div 
+                ref={el => cardRefs.current[0] = el}
+                className={`spec-block spec-block-animate ${visibleCards.includes(0) ? 'visible' : ''}`}
+              >
                 <div className="spec-icon">
                   <i className="fas fa-gem" style={{
-                    fontSize: isMobile ? '40px' : '60px',
-                    marginBottom: '15px',
+                    fontSize: isMobile ? '32px' : '60px',
+                    marginBottom: isMobile ? '10px' : '15px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
                     WebkitBackgroundClip: 'text',
                     backgroundClip: 'text',
@@ -112,26 +154,29 @@ const IntroSection: React.FC = () => {
                     display: 'inline-block'
                   }}></i>
                 </div>
-                <h3 className="spec-name">Technologies</h3>
+                <h3 className="spec-name" style={{ fontSize: isMobile ? '1.1rem' : '1.3rem' }}>Technologies</h3>
                 <div style={{
-                  fontSize: isMobile ? '1.5rem' : '1.8rem',
+                  fontSize: isMobile ? '1.3rem' : '1.8rem',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
-                  margin: '1rem 0',
+                  margin: '0.7rem 0',
                   fontWeight: 'bold',
                   letterSpacing: '0.5px',
                   display: 'inline-block'
                 }}>CVD & HPHT</div>
-                <p className="spec-description">Advanced manufacturing methods</p>
+                <p className="spec-description" style={{ fontSize: isMobile ? '0.85rem' : '0.95rem' }}>Advanced manufacturing methods</p>
               </div>
               
-              <div className="spec-block">
+              <div 
+                ref={el => cardRefs.current[1] = el}
+                className={`spec-block spec-block-animate ${visibleCards.includes(1) ? 'visible' : ''}`}
+              >
                 <div className="spec-icon">
                   <i className="fas fa-cubes" style={{
-                    fontSize: isMobile ? '40px' : '60px',
-                    marginBottom: '15px',
+                    fontSize: isMobile ? '32px' : '60px',
+                    marginBottom: isMobile ? '10px' : '15px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
                     WebkitBackgroundClip: 'text',
                     backgroundClip: 'text',
@@ -139,26 +184,29 @@ const IntroSection: React.FC = () => {
                     display: 'inline-block'
                   }}></i>
                 </div>
-                <h3 className="spec-name">Types</h3>
+                <h3 className="spec-name" style={{ fontSize: isMobile ? '1.1rem' : '1.3rem' }}>Types</h3>
                 <div style={{
-                  fontSize: isMobile ? '1.4rem' : '1.6rem',
+                  fontSize: isMobile ? '1.2rem' : '1.6rem',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
-                  margin: '1rem 0',
+                  margin: '0.7rem 0',
                   fontWeight: 'bold',
                   letterSpacing: '0.5px',
                   display: 'inline-block'
                 }}>IIa, N-doped, B-doped</div>
-                <p className="spec-description">Various compositions available</p>
+                <p className="spec-description" style={{ fontSize: isMobile ? '0.85rem' : '0.95rem' }}>Various compositions available</p>
               </div>
               
-              <div className="spec-block">
+              <div 
+                ref={el => cardRefs.current[2] = el}
+                className={`spec-block spec-block-animate ${visibleCards.includes(2) ? 'visible' : ''}`}
+              >
                 <div className="spec-icon">
                   <i className="fas fa-expand-alt" style={{
-                    fontSize: isMobile ? '40px' : '60px',
-                    marginBottom: '15px',
+                    fontSize: isMobile ? '32px' : '60px',
+                    marginBottom: isMobile ? '10px' : '15px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
                     WebkitBackgroundClip: 'text',
                     backgroundClip: 'text',
@@ -166,26 +214,29 @@ const IntroSection: React.FC = () => {
                     display: 'inline-block'
                   }}></i>
                 </div>
-                <h3 className="spec-name">Sizes</h3>
+                <h3 className="spec-name" style={{ fontSize: isMobile ? '1.1rem' : '1.3rem' }}>Sizes</h3>
                 <div style={{
-                  fontSize: isMobile ? '1.5rem' : '1.8rem',
+                  fontSize: isMobile ? '1.3rem' : '1.8rem',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
-                  margin: '1rem 0',
+                  margin: '0.7rem 0',
                   fontWeight: 'bold',
                   letterSpacing: '0.5px',
                   display: 'inline-block'
                 }}>Up to 15×15 mm</div>
-                <p className="spec-description">Perfect for all applications</p>
+                <p className="spec-description" style={{ fontSize: isMobile ? '0.85rem' : '0.95rem' }}>Perfect for all applications</p>
               </div>
               
-              <div className="spec-block">
+              <div 
+                ref={el => cardRefs.current[3] = el}
+                className={`spec-block spec-block-animate ${visibleCards.includes(3) ? 'visible' : ''}`}
+              >
                 <div className="spec-icon">
                   <i className="fas fa-microscope" style={{
-                    fontSize: isMobile ? '40px' : '60px',
-                    marginBottom: '15px',
+                    fontSize: isMobile ? '32px' : '60px',
+                    marginBottom: isMobile ? '10px' : '15px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
                     WebkitBackgroundClip: 'text',
                     backgroundClip: 'text',
@@ -193,26 +244,29 @@ const IntroSection: React.FC = () => {
                     display: 'inline-block'
                   }}></i>
                 </div>
-                <h3 className="spec-name">Dislocation Density</h3>
+                <h3 className="spec-name" style={{ fontSize: isMobile ? '1.1rem' : '1.3rem' }}>Dislocation Density</h3>
                 <div style={{
-                  fontSize: isMobile ? '1.5rem' : '1.8rem',
+                  fontSize: isMobile ? '1.3rem' : '1.8rem',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
-                  margin: '1rem 0',
+                  margin: '0.7rem 0',
                   fontWeight: 'bold',
                   letterSpacing: '0.5px',
                   display: 'inline-block'
                 }}>As low as 10¹ cm⁻²</div>
-                <p className="spec-description">Ultra-low defect concentration</p>
+                <p className="spec-description" style={{ fontSize: isMobile ? '0.85rem' : '0.95rem' }}>Ultra-low defect concentration</p>
               </div>
               
-              <div className="spec-block">
+              <div 
+                ref={el => cardRefs.current[4] = el}
+                className={`spec-block spec-block-animate ${visibleCards.includes(4) ? 'visible' : ''}`}
+              >
                 <div className="spec-icon">
                   <i className="fas fa-ruler-combined" style={{
-                    fontSize: isMobile ? '40px' : '60px',
-                    marginBottom: '15px',
+                    fontSize: isMobile ? '32px' : '60px',
+                    marginBottom: isMobile ? '10px' : '15px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
                     WebkitBackgroundClip: 'text',
                     backgroundClip: 'text',
@@ -220,19 +274,19 @@ const IntroSection: React.FC = () => {
                     display: 'inline-block'
                   }}></i>
                 </div>
-                <h3 className="spec-name">Surface Perfection</h3>
+                <h3 className="spec-name" style={{ fontSize: isMobile ? '1.1rem' : '1.3rem' }}>Surface Perfection</h3>
                 <div style={{
-                  fontSize: isMobile ? '1.5rem' : '1.8rem',
+                  fontSize: isMobile ? '1.3rem' : '1.8rem',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
-                  margin: '1rem 0',
+                  margin: '0.7rem 0',
                   fontWeight: 'bold',
                   letterSpacing: '0.5px',
                   display: 'inline-block'
                 }}>Down to 1 nm</div>
-                <p className="spec-description">Exceptional polishing roughness</p>
+                <p className="spec-description" style={{ fontSize: isMobile ? '0.85rem' : '0.95rem' }}>Exceptional polishing roughness</p>
               </div>
             </div>
           </div>
@@ -249,7 +303,7 @@ const IntroSection: React.FC = () => {
           marginTop: isMobile ? '20px' : '40px',
           marginBottom: isMobile ? '40px' : '100px',
           position: 'relative',
-          zIndex: 2 // Понижаем z-index, чтобы заголовок мог быть над ним если нужно
+          zIndex: 2
         }}>
           <p style={{
             color: 'white',

@@ -171,19 +171,19 @@ img {
   }
   
   .headline {
-    font-size: var(--section-headline-mobile-size);
+    font-size: 2.5rem;
   }
   
   h1 {
-    font-size: calc(var(--text-5xl) * 0.8);
+    font-size: 2.25rem;
   }
   
   h2 {
-    font-size: calc(var(--text-3xl) * 0.8);
+    font-size: 2rem;
   }
   
   h3 {
-    font-size: 1.4rem;
+    font-size: 1.75rem;
   }
   
   .section-description {
@@ -611,11 +611,19 @@ figure {
   }
   
   .headline {
-    font-size: var(--section-headline-mobile-size);
+    font-size: 2.5rem;
   }
   
-  .section {
-    padding: 4rem 0;
+  h1 {
+    font-size: 2.25rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.75rem;
   }
   
   .section-description {
@@ -744,69 +752,22 @@ figure {
   }
 }
 
-/* Стили для анимации появления контента при скроллинге */
+/* Удаляем классы анимации для мобильных устройств */
 .fade-in-section {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  will-change: opacity, transform;
-  pointer-events: none;
+  opacity: 1;
+  transform: none;
+  transition: none;
 }
 
 .fade-in-section.is-visible {
   opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
+  transform: none;
 }
 
-/* Задержка для создания каскадной анимации */
-.fade-in-section:nth-child(2) {
-  transition-delay: 0.1s;
-}
-
-.fade-in-section:nth-child(3) {
-  transition-delay: 0.2s;
-}
-
-.fade-in-section:nth-child(4) {
-  transition-delay: 0.3s;
-}
-
-/* Специальная анимация для мобильных устройств */
-@media (max-width: 768px) {
+/* Для десктопа элементы сразу видимы */
+@media (min-width: 769px) {
   .fade-in-section {
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
-  
-  /* Более явные и заметные анимации на мобильных устройствах */
-  .spec-block.fade-in-section,
-  .founder-block.fade-in-section,
-  .advantage-card.fade-in-section,
-  .contact-info.fade-in-section, 
-  .contact-form.fade-in-section {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-  }
-  
-  /* Другие мобильные стили */
-  section {
-    padding-top: 40px !important;
-    padding-bottom: 40px !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-  }
-  
-  .container, .content-wrapper {
-    padding-left: 15px !important;
-    padding-right: 15px !important;
-  }
-  
-  h2.gradient-headline, 
-  h2.section-headline, 
-  h2.headline {
-    margin-bottom: 20px !important;
-    font-size: 2rem !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 } 

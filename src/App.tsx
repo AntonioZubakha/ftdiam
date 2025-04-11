@@ -56,37 +56,37 @@ function App() {
       })
     }
   }
-
-  useEffect(() => {
-    // Функция обработки скролла
-    const handleScroll = () => {
-      // Обновляем стиль хедера при скролле
-      if (window.scrollY > 50) {
-        setScrolled(true)
-      } else {
-        setScrolled(false)
-      }
+  
+  // Функция обработки скролла
+  const handleScroll = () => {
+    // Обновляем стиль хедера при скролле
+    if (window.scrollY > 50) {
+      setScrolled(true)
+    } else {
+      setScrolled(false)
+    }
+    
+    const scrollPosition = window.scrollY + window.innerHeight / 3;
+    
+    // Определяем, какая секция сейчас видна
+    for (const section in sectionsRef.current) {
+      const element = sectionsRef.current[section];
       
-      const scrollPosition = window.scrollY + window.innerHeight / 3;
-      
-      // Определяем, какая секция сейчас видна
-      for (const section in sectionsRef.current) {
-        const element = sectionsRef.current[section];
+      if (element) {
+        const offsetTop = element.offsetTop;
+        const offsetHeight = element.offsetHeight;
         
-        if (element) {
-          const offsetTop = element.offsetTop;
-          const offsetHeight = element.offsetHeight;
-          
-          if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + offsetHeight
-          ) {
-            setActiveSection(section);
-          }
+        if (
+          scrollPosition >= offsetTop &&
+          scrollPosition < offsetTop + offsetHeight
+        ) {
+          setActiveSection(section);
         }
       }
-    };
+    }
+  };
 
+  useEffect(() => {
     // Устанавливаем обработчик события скролла
     window.addEventListener('scroll', handleScroll);
     
@@ -128,7 +128,6 @@ function App() {
         <div className="loader">
           <div className="loader-content">
             <img src="/images/Logo.png" alt="FTDiam Logo" className="loader-logo" />
-            <div className="loader-spinner"></div>
           </div>
         </div>
       ) : (
