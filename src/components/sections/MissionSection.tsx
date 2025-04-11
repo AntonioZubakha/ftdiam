@@ -21,8 +21,8 @@ const MissionSection = () => {
       id="mission" 
       className="mission-section" 
       style={{ 
-        paddingTop: isMobile ? '80px' : '180px',
-        paddingBottom: isMobile ? '80px' : '180px',
+        paddingTop: isMobile ? '220px' : '180px',
+        paddingBottom: isMobile ? '220px' : '180px',
         backgroundColor: '#fff',
         position: 'relative',
         overflow: 'hidden',
@@ -31,7 +31,7 @@ const MissionSection = () => {
     >
       <div className="container">
         <h2 className="mission-headline gradient-headline" style={{ 
-          fontSize: isMobile ? '2rem' : '3rem',
+          fontSize: isMobile ? '2.5rem' : '3rem',
           marginBottom: isMobile ? '1.5rem' : '2.5rem'
         }}>Our Mission</h2>
         

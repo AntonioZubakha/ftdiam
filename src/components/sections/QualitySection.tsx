@@ -145,12 +145,13 @@ const QualitySection: React.FC = () => {
     top: '100px',
     flex: '1',
     minWidth: '300px',
-    paddingRight: '40px',
+    paddingRight: isMobile ? '0' : '40px',
     paddingTop: '20px',
-    textAlign: 'left' as const,
+    textAlign: isMobile ? 'center' as const : 'left' as const,
     alignSelf: 'flex-start' as const,
     height: 'fit-content',
-    marginBottom: isMobile ? '30px' : '0'
+    marginBottom: isMobile ? '30px' : '0',
+    width: isMobile ? '100%' : 'auto'
   };
 
   return (
@@ -184,29 +185,33 @@ const QualitySection: React.FC = () => {
           maxWidth: '1400px',
           margin: '0 auto',
           padding: '0 20px',
-          minHeight: isMobile ? 'auto' : '60vh'
+          minHeight: isMobile ? 'auto' : '60vh',
+          justifyContent: isMobile ? 'center' : 'flex-start'
         }}>
           {/* Левая колонка с заголовком и подзаголовком */}
           <div style={stickyTitleStyle}>
             <h2 className="quality-headline gradient-headline" style={{ 
-              fontSize: isMobile ? '2rem' : '3rem',
-              textAlign: 'left',
+              fontSize: isMobile ? '2.5rem' : '3rem',
+              textAlign: isMobile ? 'center' : 'left',
               marginBottom: isMobile ? '1rem' : '2rem',
-              position: 'relative'
+              position: 'relative',
+              lineHeight: isMobile ? '1.2' : '1.3'
             }}>
               Quality Analysis
             </h2>
             <h3 className="quality-subheadline" style={{ 
-              textAlign: 'left',
-              marginBottom: isMobile ? '0.5rem' : '1rem',
-              fontSize: isMobile ? '1.5rem' : '1.8rem',
-              display: 'inline-block'
+              textAlign: isMobile ? 'center' : 'left',
+              marginBottom: isMobile ? '1rem' : '1rem',
+              fontSize: isMobile ? '1.8rem' : '1.8rem',
+              display: 'inline-block',
+              width: '100%',
+              lineHeight: '1.3'
             }}>
               Tested. Proven. Exceptional.
             </h3>
             <p className="quality-description" style={{ 
-              textAlign: 'left',
-              fontSize: isMobile ? '1rem' : '1.2rem',
+              textAlign: isMobile ? 'center' : 'left',
+              fontSize: isMobile ? '1.1rem' : '1.2rem',
               lineHeight: '1.6',
               maxWidth: '100%',
               margin: '0 0 2rem 0'

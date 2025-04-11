@@ -3,8 +3,20 @@ import React, { useState, useEffect, useRef } from 'react';
 const IntroSection: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
+  const [contentLoaded, setContentLoaded] = useState(false);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  // Проверяем, загружены ли все шрифты и стили
+  useEffect(() => {
+    // Дожидаемся загрузки шрифтов
+    document.fonts.ready.then(() => {
+      // Добавляем небольшую задержку для гарантии загрузки стилей
+      setTimeout(() => {
+        setContentLoaded(true);
+      }, 100);
+    });
+  }, []);
+  
   // Check if the screen is mobile-sized
   useEffect(() => {
     const checkMobile = () => {
@@ -17,9 +29,9 @@ const IntroSection: React.FC = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Добавляем наблюдатель за каждой карточкой
+  // Добавляем наблюдатель за каждой карточкой только после полной загрузки контента
   useEffect(() => {
-    if (!isMobile) return;
+    if (!isMobile || !contentLoaded) return;
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -31,10 +43,10 @@ const IntroSection: React.FC = () => {
         }
       });
     }, {
-      threshold: 0.3
+      threshold: 0.3,
+      rootMargin: '0px'
     });
 
-    // Начинаем наблюдать за каждой карточкой
     cardRefs.current.forEach(card => {
       if (card) observer.observe(card);
     });
@@ -44,7 +56,7 @@ const IntroSection: React.FC = () => {
         if (card) observer.unobserve(card);
       });
     };
-  }, [isMobile]);
+  }, [isMobile, contentLoaded]);
 
   // Определяем стиль с фоновым изображением
   const backgroundStyle = {
@@ -90,7 +102,10 @@ const IntroSection: React.FC = () => {
         marginTop: isMobile ? '60px' : '150px',
         paddingTop: isMobile ? '40px' : '150px',
         paddingBottom: '0',
-        minHeight: isMobile ? 'auto' : '80vh'
+        minHeight: isMobile ? 'auto' : '80vh',
+        visibility: contentLoaded ? 'visible' : 'hidden', // Скрываем секцию до загрузки контента
+        opacity: contentLoaded ? 1 : 0,
+        transition: 'opacity 0.3s ease-in'
       }}
     >
       <div style={backgroundStyle}></div>
@@ -112,7 +127,7 @@ const IntroSection: React.FC = () => {
           {/* Левая колонка с заголовком и подзаголовком */}
           <div style={stickyTitleStyle} className="sticky-title">
             <h2 className="headline gradient-headline" style={{ 
-              fontSize: isMobile ? '2rem' : '3rem',
+              fontSize: isMobile ? '2.5rem' : '3rem',
               textAlign: 'left',
               marginBottom: isMobile ? '1rem' : '2rem',
               position: 'relative'

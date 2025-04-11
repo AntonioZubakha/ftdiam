@@ -190,32 +190,38 @@
 .spec-block-animate {
   opacity: 0;
   transform: translateX(50px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 .spec-block-animate.visible {
   opacity: 1;
   transform: translateX(0);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 /* Мобильная версия - анимация при появлении */
 @media (max-width: 768px) {
   .spec-block-animate {
     opacity: 0;
-    transform: translateX(100px);
-    animation: none; /* Отключаем автоматическую анимацию */
+    transform: translateX(50px);
+    will-change: transform, opacity;
+    transition: none;
   }
   
   .spec-block-animate.visible {
-    animation: slideInFromRight 0.8s forwards;
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   }
   
-  /* Задержки анимации для классов visible */
-  .spec-block-animate:nth-child(1).visible { animation-delay: 0.1s; }
-  .spec-block-animate:nth-child(2).visible { animation-delay: 0.3s; }
-  .spec-block-animate:nth-child(3).visible { animation-delay: 0.5s; }
-  .spec-block-animate:nth-child(4).visible { animation-delay: 0.7s; }
-  .spec-block-animate:nth-child(5).visible { animation-delay: 0.9s; }
+  /* Задержки для transition */
+  .spec-block-animate:nth-child(1) { transition-delay: 0.1s; }
+  .spec-block-animate:nth-child(2) { transition-delay: 0.2s; }
+  .spec-block-animate:nth-child(3) { transition-delay: 0.3s; }
+  .spec-block-animate:nth-child(4) { transition-delay: 0.4s; }
+  .spec-block-animate:nth-child(5) { transition-delay: 0.5s; }
 }
 
 /* Стили для мобильной верстки */
