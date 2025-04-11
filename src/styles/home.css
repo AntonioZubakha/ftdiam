@@ -48,6 +48,14 @@
   overflow: hidden;
 }
 
+/* Стили для мобильного видео (полный экран) */
+.mobile-screen {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
 .background-video {
   position: absolute;
   top: 0;
@@ -200,12 +208,17 @@
   }
   
   .absolute-center-logo {
-    top: -25%;
+    top: -15%; /* Уменьшаем смещение вверх для лучшего позиционирования */
     width: 250px;
   }
   
+  .mobile-screen .background-video {
+    object-position: center; /* Убедимся, что мобильное видео центрировано */
+  }
+  
   .hero-content {
-    margin-top: 180px;
+    margin-top: 160px; /* Оптимизируем положение контента */
+    padding: 1.5rem;
   }
   
   .hero-subheadline {
@@ -219,7 +232,8 @@
 
 @media (max-width: 480px) {
   .absolute-center-logo {
-    width: 200px;
+    width: 180px; /* Немного уменьшаем размер логотипа */
+    top: -10%; /* Меньше смещение для маленьких экранов */
   }
   
   .hero-subheadline {
@@ -231,6 +245,7 @@
   }
   
   .hero-content {
-    margin-top: 150px;
+    margin-top: 130px; /* Адаптированное положение для маленьких экранов */
+    padding: 1rem;
   }
 } 

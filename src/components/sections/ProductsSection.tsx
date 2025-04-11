@@ -5,18 +5,20 @@ const ProductsSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isSmallMobile, setIsSmallMobile] = useState(false);
   const imagesLoaded = useRef<boolean[]>([]);
   
-  // Check if the screen is mobile-sized
+  // Check screen size
   useEffect(() => {
-    const checkMobile = () => {
+    const checkScreenSize = () => {
       setIsMobile(window.innerWidth <= 768);
+      setIsSmallMobile(window.innerWidth <= 576);
     };
     
-    checkMobile(); // Initial check
-    window.addEventListener('resize', checkMobile);
+    checkScreenSize(); // Initial check
+    window.addEventListener('resize', checkScreenSize);
     
-    return () => window.removeEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
   
   // Данные о продуктах точно по ТЗ
@@ -155,7 +157,11 @@ const ProductsSection: React.FC = () => {
                   disabled={isTransitioning}
                 >
                 </button>
-                <h4 className="product-section-title" style={{ opacity: isTransitioning ? 0.5 : 1 }}>
+                <h4 className="product-section-title" style={{ 
+                  opacity: isTransitioning ? 0.5 : 1,
+                  fontSize: isSmallMobile ? '1.5rem' : isMobile ? '1.6rem' : 'var(--h4-desktop)',
+                  fontWeight: isMobile ? 'bold' : '600'
+                }}>
                   {currentProduct.title}
                 </h4>
                 <button 
