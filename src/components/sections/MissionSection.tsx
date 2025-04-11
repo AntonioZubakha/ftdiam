@@ -22,7 +22,7 @@ const MissionSection = () => {
       className="mission-section" 
       style={{ 
         paddingTop: isMobile ? '100px' : '180px',
-        paddingBottom: isMobile ? '170px' : '180px',
+        paddingBottom: isMobile ? '180px' : '180px',
         backgroundColor: '#fff',
         position: 'relative',
         overflow: 'hidden',

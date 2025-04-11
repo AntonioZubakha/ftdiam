@@ -1,6 +1,6 @@
 /* Стили для домашней секции */
 .home-section {
-  height: 100vh;
+  height: 101vh;
   min-height: 600px;
   padding: 0;
   display: flex;
@@ -8,6 +8,9 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
+  margin-bottom: -2px; /* Отрицательный отступ для устранения пробела */
+  background-color: black; /* Добавляем черный фон ко всей секции */
+  border-bottom: 5px solid black; /* Добавляем черную границу внизу */
 }
 
 .home-section .content-wrapper {
@@ -23,37 +26,53 @@
 /* Уникальный класс видео-контейнера для домашней секции */
 .home-video-container {
   position: absolute;
-  top: 0;
+  top: -10px; /* Больший сдвиг вверх */
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 110%; /* Значительно увеличиваем высоту */
   overflow: hidden;
   z-index: 1;
+  background-color: black; /* Добавляем черный фон */
+}
+
+/* Добавляем дополнительный оверлей внизу видео-контейнера для перекрытия белой линии */
+.home-video-container::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background-color: black;
+  z-index: 4;
 }
 
 /* Стили для разделенного экрана */
 .split-screen {
   display: flex;
   width: 100%;
-  height: 100%;
+  height: 110%; /* Значительно увеличиваем высоту */
   position: relative;
   overflow: hidden;
+  background-color: black; /* Добавляем черный фон */
 }
 
 .split-screen-left,
 .split-screen-right {
   position: relative;
   width: 50%;
-  height: 100%;
+  height: 110%; /* Значительно увеличиваем высоту */
   overflow: hidden;
+  background-color: black; /* Добавляем черный фон */
 }
 
 /* Стили для мобильного видео (полный экран) */
 .mobile-screen {
   width: 100%;
-  height: 100%;
+  height: 110%; /* Значительно увеличиваем высоту */
   position: relative;
   overflow: hidden;
+  background-color: black; /* Добавляем черный фон */
 }
 
 .background-video {
@@ -61,8 +80,9 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 110%; /* Значительно увеличиваем высоту */
   object-fit: cover;
+  margin-bottom: -5px; /* Отрицательный отступ для устранения пробела */
 }
 
 .home-video-container::after {
@@ -71,7 +91,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 115%; /* Еще больше увеличиваем затемнение */
   background: rgba(0, 0, 0, 0.3);
   z-index: 3;
 }
