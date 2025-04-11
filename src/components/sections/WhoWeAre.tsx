@@ -290,32 +290,6 @@ const WhoWeAreSection: React.FC = () => {
     position: 'relative' as const
   };
 
-  // Стили для адаптивности
-  const getResponsiveHeadlineStyles = () => {
-    if (typeof window !== 'undefined') {
-      if (window.innerWidth <= 768) {
-        return {
-          fontSize: '2.25rem'
-        };
-      } else if (window.innerWidth <= 992) {
-        return {
-          fontSize: '2.5rem'
-        };
-      }
-    }
-    return {};
-  };
-
-  const timelineStyles = {
-    listStyle: 'none',
-    padding: 0,
-    margin: 0,
-    display: 'flex',
-    justifyContent: 'space-between',
-    position: 'relative' as const,
-    zIndex: 2
-  };
-
   // Центрированный стиль для заголовков в блоке истории
   const historyTitleStyles = {
     ...blockTitleStyles,
@@ -351,7 +325,7 @@ const WhoWeAreSection: React.FC = () => {
     <section id="about" style={sectionStyles}>
       <div style={containerStyles}>
         <div style={{textAlign: 'center'}}>
-          <h2 style={{...headlineStyles, ...getResponsiveHeadlineStyles()}}>
+          <h2 style={headlineStyles}>
             Who We Are
           </h2>
         </div>
