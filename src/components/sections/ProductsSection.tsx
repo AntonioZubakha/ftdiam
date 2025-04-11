@@ -6,7 +6,8 @@ const ProductsSection: React.FC = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isSmallMobile, setIsSmallMobile] = useState(false);
-  const imagesLoaded = useRef<boolean[]>([]);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const imageLoadedArray = useRef<boolean[]>([]);
   
   // Check screen size
   useEffect(() => {
@@ -42,7 +43,7 @@ const ProductsSection: React.FC = () => {
       title: "Diamond Anvils",
       image: "/images/photo1.2.png",
       specs: [
-        "Diameters: 2.5-4 mm.",
+        "Diameters: 2.5-4 mm",
         "Designs: Smooth or faceted",
         "Table orientation: (100) standard, custom available",
         "Quality: No inclusions and defects at 50x magnification, low birefringence"
@@ -58,15 +59,45 @@ const ProductsSection: React.FC = () => {
     }
   ];
   
-  // Предзагрузка изображений
+  // Предзагрузка изображений с улучшенной версией
   useEffect(() => {
-    products.forEach((product, index) => {
-      const img = new Image();
-      img.src = product.image;
-      img.onload = () => {
-        imagesLoaded.current[index] = true;
-      };
-    });
+    const loadImages = async () => {
+      try {
+        // Также загружаем изображение из секции с видео
+        const imagePromises = [
+          ...products.map((product, index) => {
+            return new Promise<void>((resolve) => {
+              const img = new Image();
+              img.onload = () => {
+                imageLoadedArray.current[index] = true;
+                resolve();
+              };
+              img.onerror = () => {
+                // Even if error, mark as loaded to allow rendering
+                imageLoadedArray.current[index] = true;
+                resolve();
+              };
+              img.src = product.image;
+            });
+          }),
+          new Promise<void>((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve();
+            img.onerror = () => resolve();
+            img.src = "/images/6565.jpg";
+          })
+        ];
+        
+        await Promise.all(imagePromises);
+        setImagesLoaded(true);
+      } catch (error) {
+        console.error("Error loading images:", error);
+        // Even if there's an error, mark images as loaded
+        setImagesLoaded(true);
+      }
+    };
+    
+    loadImages();
   }, []);
   
   const handlePrevClick = () => {
@@ -95,6 +126,27 @@ const ProductsSection: React.FC = () => {
   // Подготовка следующего и предыдущего индексов для предзагрузки
   const nextIndex = activeIndex === products.length - 1 ? 0 : activeIndex + 1;
   const prevIndex = activeIndex === 0 ? products.length - 1 : activeIndex - 1;
+  
+  if (!imagesLoaded) {
+    return (
+      <section id="products" className="products-section" style={{
+        minHeight: "300px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+      }}>
+        <div className="loading-indicator">
+          <div style={{ 
+            fontSize: "1.2rem", 
+            color: "#00837f", 
+            textAlign: "center" 
+          }}>
+            Loading products...
+          </div>
+        </div>
+      </section>
+    );
+  }
   
   return (
     <section id="products" className="products-section">
