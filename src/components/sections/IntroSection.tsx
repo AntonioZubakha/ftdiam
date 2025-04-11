@@ -31,7 +31,7 @@ const IntroSection: React.FC = () => {
 
   // Добавляем наблюдатель за каждой карточкой только после полной загрузки контента
   useEffect(() => {
-    if (!isMobile || !contentLoaded) return;
+    if (!contentLoaded) return;
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -56,7 +56,7 @@ const IntroSection: React.FC = () => {
         if (card) observer.unobserve(card);
       });
     };
-  }, [isMobile, contentLoaded]);
+  }, [contentLoaded]);
 
   // Определяем стиль с фоновым изображением
   const backgroundStyle = {
@@ -127,16 +127,16 @@ const IntroSection: React.FC = () => {
           {/* Левая колонка с заголовком и подзаголовком */}
           <div style={stickyTitleStyle} className="sticky-title">
             <h2 className="headline gradient-headline" style={{ 
-              fontSize: isMobile ? '2.5rem' : '3rem',
-              textAlign: 'left',
+              fontSize: isMobile ? 'var(--section-headline-mobile-size)' : 'var(--section-headline-size)',
+              textAlign: isMobile ? 'center' : 'left',
               marginBottom: isMobile ? '1rem' : '2rem',
               position: 'relative'
             }}>
               Premium Single Crystal Diamond Substrates
             </h2>
             <p className="section-description" style={{ 
-              textAlign: 'left',
-              fontSize: isMobile ? '1rem' : '1.2rem',
+              textAlign: isMobile ? 'center' : 'left',
+              fontSize: isMobile ? 'var(--text-base)' : 'var(--text-lg)',
               lineHeight: '1.6',
               maxWidth: '100%'
             }}>
@@ -169,9 +169,9 @@ const IntroSection: React.FC = () => {
                     display: 'inline-block'
                   }}></i>
                 </div>
-                <h3 className="spec-name" style={{ fontSize: isMobile ? '1.1rem' : '1.3rem' }}>Technologies</h3>
+                <h3 className="spec-name" style={{ fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)' }}>Technologies</h3>
                 <div style={{
-                  fontSize: isMobile ? '1.3rem' : '1.8rem',
+                  fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
@@ -181,7 +181,7 @@ const IntroSection: React.FC = () => {
                   letterSpacing: '0.5px',
                   display: 'inline-block'
                 }}>CVD & HPHT</div>
-                <p className="spec-description" style={{ fontSize: isMobile ? '0.85rem' : '0.95rem' }}>Advanced manufacturing methods</p>
+                <p className="spec-description" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Advanced manufacturing methods</p>
               </div>
               
               <div 
@@ -199,9 +199,9 @@ const IntroSection: React.FC = () => {
                     display: 'inline-block'
                   }}></i>
                 </div>
-                <h3 className="spec-name" style={{ fontSize: isMobile ? '1.1rem' : '1.3rem' }}>Types</h3>
+                <h3 className="spec-name" style={{ fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)' }}>Types</h3>
                 <div style={{
-                  fontSize: isMobile ? '1.2rem' : '1.6rem',
+                  fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
@@ -211,7 +211,7 @@ const IntroSection: React.FC = () => {
                   letterSpacing: '0.5px',
                   display: 'inline-block'
                 }}>IIa, N-doped, B-doped</div>
-                <p className="spec-description" style={{ fontSize: isMobile ? '0.85rem' : '0.95rem' }}>Various compositions available</p>
+                <p className="spec-description" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Various compositions available</p>
               </div>
               
               <div 
@@ -229,9 +229,9 @@ const IntroSection: React.FC = () => {
                     display: 'inline-block'
                   }}></i>
                 </div>
-                <h3 className="spec-name" style={{ fontSize: isMobile ? '1.1rem' : '1.3rem' }}>Sizes</h3>
+                <h3 className="spec-name" style={{ fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)' }}>Sizes</h3>
                 <div style={{
-                  fontSize: isMobile ? '1.3rem' : '1.8rem',
+                  fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
@@ -241,7 +241,7 @@ const IntroSection: React.FC = () => {
                   letterSpacing: '0.5px',
                   display: 'inline-block'
                 }}>Up to 15×15 mm</div>
-                <p className="spec-description" style={{ fontSize: isMobile ? '0.85rem' : '0.95rem' }}>Perfect for all applications</p>
+                <p className="spec-description" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Perfect for all applications</p>
               </div>
               
               <div 
@@ -259,9 +259,9 @@ const IntroSection: React.FC = () => {
                     display: 'inline-block'
                   }}></i>
                 </div>
-                <h3 className="spec-name" style={{ fontSize: isMobile ? '1.1rem' : '1.3rem' }}>Dislocation Density</h3>
+                <h3 className="spec-name" style={{ fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)' }}>Dislocation Density</h3>
                 <div style={{
-                  fontSize: isMobile ? '1.3rem' : '1.8rem',
+                  fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
@@ -271,7 +271,7 @@ const IntroSection: React.FC = () => {
                   letterSpacing: '0.5px',
                   display: 'inline-block'
                 }}>As low as 10¹ cm⁻²</div>
-                <p className="spec-description" style={{ fontSize: isMobile ? '0.85rem' : '0.95rem' }}>Ultra-low defect concentration</p>
+                <p className="spec-description" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Ultra-low defect concentration</p>
               </div>
               
               <div 
@@ -289,9 +289,9 @@ const IntroSection: React.FC = () => {
                     display: 'inline-block'
                   }}></i>
                 </div>
-                <h3 className="spec-name" style={{ fontSize: isMobile ? '1.1rem' : '1.3rem' }}>Surface Perfection</h3>
+                <h3 className="spec-name" style={{ fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)' }}>Surface Perfection</h3>
                 <div style={{
-                  fontSize: isMobile ? '1.3rem' : '1.8rem',
+                  fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
@@ -301,7 +301,7 @@ const IntroSection: React.FC = () => {
                   letterSpacing: '0.5px',
                   display: 'inline-block'
                 }}>Down to 1 nm</div>
-                <p className="spec-description" style={{ fontSize: isMobile ? '0.85rem' : '0.95rem' }}>Exceptional polishing roughness</p>
+                <p className="spec-description" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Exceptional polishing roughness</p>
               </div>
             </div>
           </div>
@@ -322,7 +322,7 @@ const IntroSection: React.FC = () => {
         }}>
           <p style={{
             color: 'white',
-            fontSize: isMobile ? '1.5rem' : '3rem',
+            fontSize: isMobile ? 'var(--h2-mobile)' : 'var(--h1-desktop)',
             fontWeight: 'bold',
             textAlign: 'center',
             padding: '0 20px',

@@ -27,7 +27,7 @@ const ContactsSection = () => {
     }}>
       <div className="container">
         <h2 className="contacts-headline gradient-headline" style={{ 
-          fontSize: isMobile ? '2rem' : '3rem',
+          fontSize: isMobile ? 'var(--section-headline-mobile-size)' : 'var(--section-headline-size)',
           marginBottom: isMobile ? '1.5rem' : '2.5rem'
         }}>Contacts</h2>
         
@@ -42,50 +42,50 @@ const ContactsSection = () => {
           }}>
             <div className="contact-info-header">
               <h3 className="info-title" style={{ 
-                fontSize: isMobile ? '1.3rem' : '1.5rem',
+                fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)',
                 marginBottom: isMobile ? '15px' : '25px'
               }}>Contact Information</h3>
             </div>
             
             <div className="contact-info-item" style={{ marginBottom: isMobile ? '10px' : '20px' }}>
-              <div className="contact-icon" style={{ fontSize: isMobile ? '1.2rem' : '1.5rem' }}>
+              <div className="contact-icon" style={{ fontSize: isMobile ? 'var(--text-xl)' : 'var(--h4-desktop)' }}>
                 <FontAwesomeIcon icon={faEnvelope} />
               </div>
               <div className="contact-text">
-                <span className="contact-label" style={{ fontSize: isMobile ? '0.9rem' : '1rem' }}>Email</span>
-                <a href="mailto:info@ftdiam.com" className="contact-value" style={{ fontSize: isMobile ? '1rem' : '1.1rem' }}>info@ftdiam.com</a>
+                <span className="contact-label" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Email</span>
+                <a href="mailto:info@ftdiam.com" className="contact-value" style={{ fontSize: isMobile ? 'var(--text-base)' : 'var(--text-lg)' }}>info@ftdiam.com</a>
               </div>
             </div>
             
             <div className="contact-info-item" style={{ marginBottom: isMobile ? '10px' : '20px' }}>
-              <div className="contact-icon" style={{ fontSize: isMobile ? '1.2rem' : '1.5rem' }}>
+              <div className="contact-icon" style={{ fontSize: isMobile ? 'var(--text-xl)' : 'var(--h4-desktop)' }}>
                 <FontAwesomeIcon icon={faPhone} />
               </div>
               <div className="contact-text">
-                <span className="contact-label" style={{ fontSize: isMobile ? '0.9rem' : '1rem' }}>Phone</span>
-                <a href="tel:+16172752599" className="contact-value" style={{ fontSize: isMobile ? '1rem' : '1.1rem' }}>+1 617 275 2599</a>
+                <span className="contact-label" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Phone</span>
+                <a href="tel:+16172752599" className="contact-value" style={{ fontSize: isMobile ? 'var(--text-base)' : 'var(--text-lg)' }}>+1 617 275 2599</a>
               </div>
             </div>
             
             <div className="contact-info-item" style={{ marginBottom: isMobile ? '10px' : '20px' }}>
-              <div className="contact-icon" style={{ fontSize: isMobile ? '1.2rem' : '1.5rem' }}>
+              <div className="contact-icon" style={{ fontSize: isMobile ? 'var(--text-xl)' : 'var(--h4-desktop)' }}>
                 <FontAwesomeIcon icon={faLinkedin} />
               </div>
               <div className="contact-text">
-                <span className="contact-label" style={{ fontSize: isMobile ? '0.9rem' : '1rem' }}>LinkedIn</span>
-                <a href="https://www.linkedin.com/company/ftdiam" target="_blank" rel="noopener noreferrer" className="contact-value" style={{ fontSize: isMobile ? '1rem' : '1.1rem' }}>
+                <span className="contact-label" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>LinkedIn</span>
+                <a href="https://www.linkedin.com/company/ftdiam" target="_blank" rel="noopener noreferrer" className="contact-value" style={{ fontSize: isMobile ? 'var(--text-base)' : 'var(--text-lg)' }}>
                   Follow us
                 </a>
               </div>
             </div>
             
             <div className="contact-info-item" style={{ marginBottom: isMobile ? '0' : '0' }}>
-              <div className="contact-icon" style={{ fontSize: isMobile ? '1.2rem' : '1.5rem' }}>
+              <div className="contact-icon" style={{ fontSize: isMobile ? 'var(--text-xl)' : 'var(--h4-desktop)' }}>
                 <FontAwesomeIcon icon={faLocationDot} />
               </div>
               <div className="contact-text">
-                <span className="contact-label" style={{ fontSize: isMobile ? '0.9rem' : '1rem' }}>Address</span>
-                <p className="contact-value" style={{ fontSize: isMobile ? '1rem' : '1.1rem' }}>
+                <span className="contact-label" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Address</span>
+                <p className="contact-value" style={{ fontSize: isMobile ? 'var(--text-base)' : 'var(--text-lg)' }}>
                   220 Park Ave PMB 83131<br />
                   New York, NY 10003, USA
                 </p>
@@ -98,7 +98,7 @@ const ContactsSection = () => {
           }}>
             <div className="form-header">
               <h3 className="form-title" style={{ 
-                fontSize: isMobile ? '1.3rem' : '1.5rem',
+                fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)',
                 marginBottom: isMobile ? '15px' : '25px'
               }}>Get in touch</h3>
             </div>
@@ -128,7 +128,7 @@ const ContactsSection = () => {
                 className="contact-submit-button"
                 style={{ 
                   padding: isMobile ? '8px 16px' : '10px 20px',
-                  fontSize: isMobile ? '0.9rem' : '1rem'
+                  fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)'
                 }}
               >Send message</button>
             </form>

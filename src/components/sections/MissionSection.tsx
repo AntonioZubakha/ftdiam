@@ -31,7 +31,7 @@ const MissionSection = () => {
     >
       <div className="container">
         <h2 className="mission-headline gradient-headline" style={{ 
-          fontSize: isMobile ? '2.5rem' : '3rem',
+          fontSize: isMobile ? 'var(--section-headline-mobile-size)' : 'var(--section-headline-size)',
           marginBottom: isMobile ? '1.5rem' : '2.5rem'
         }}>Our Mission</h2>
         
@@ -63,7 +63,7 @@ const MissionSection = () => {
               fontStyle: 'normal',
               paddingLeft: isMobile ? '30px' : '30px',
               position: 'relative',
-              fontSize: isMobile ? '1.1rem' : '1.3rem',
+              fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)',
               lineHeight: isMobile ? '1.5' : '1.7',
               maxWidth: isMobile ? '100%' : '80%',
               margin: '0 auto'

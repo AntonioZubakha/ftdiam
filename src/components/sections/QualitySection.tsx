@@ -53,7 +53,7 @@ const QualitySection: React.FC = () => {
 
   // Добавляем наблюдатель за каждой карточкой только после загрузки изображений
   useEffect(() => {
-    if (!isMobile || !imagesLoaded) return;
+    if (!imagesLoaded) return;
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -78,7 +78,7 @@ const QualitySection: React.FC = () => {
         if (card) observer.unobserve(card);
       });
     };
-  }, [isMobile, imagesLoaded]);
+  }, [imagesLoaded]);
   
   // Открытие изображения в модальном окне
   const openModal = (imageSrc: string) => {
@@ -191,7 +191,7 @@ const QualitySection: React.FC = () => {
           {/* Левая колонка с заголовком и подзаголовком */}
           <div style={stickyTitleStyle}>
             <h2 className="quality-headline gradient-headline" style={{ 
-              fontSize: isMobile ? '2.5rem' : '3rem',
+              fontSize: isMobile ? 'var(--section-headline-mobile-size)' : 'var(--section-headline-size)',
               textAlign: isMobile ? 'center' : 'left',
               marginBottom: isMobile ? '1rem' : '2rem',
               position: 'relative',
@@ -202,7 +202,7 @@ const QualitySection: React.FC = () => {
             <h3 className="quality-subheadline" style={{ 
               textAlign: isMobile ? 'center' : 'left',
               marginBottom: isMobile ? '1rem' : '1rem',
-              fontSize: isMobile ? '1.8rem' : '1.8rem',
+              fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
               display: 'inline-block',
               width: '100%',
               lineHeight: '1.3'
@@ -211,7 +211,7 @@ const QualitySection: React.FC = () => {
             </h3>
             <p className="quality-description" style={{ 
               textAlign: isMobile ? 'center' : 'left',
-              fontSize: isMobile ? '1.1rem' : '1.2rem',
+              fontSize: isMobile ? 'var(--text-base)' : 'var(--text-lg)',
               lineHeight: '1.6',
               maxWidth: '100%',
               margin: '0 0 2rem 0'
@@ -245,9 +245,9 @@ const QualitySection: React.FC = () => {
                 >
                   <img src="/images/photo1.jpg" alt="Diamond View" style={imageStyle} />
                 </div>
-                <h3 className="spec-name" style={{ fontSize: isMobile ? '1rem' : '1.2rem' }}>Diamond View</h3>
+                <h3 className="spec-name" style={{ fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)' }}>Diamond View</h3>
                 <div style={{
-                  fontSize: isMobile ? '1.2rem' : '1.4rem',
+                  fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
@@ -257,7 +257,7 @@ const QualitySection: React.FC = () => {
                   letterSpacing: '0.5px',
                   display: 'inline-block'
                 }}>No inclusions</div>
-                <p className="spec-description" style={{ fontSize: isMobile ? '0.9rem' : '1rem' }}>No defects, dislocations &lt;10¹ cm⁻²</p>
+                <p className="spec-description" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>No defects, dislocations &lt;10¹ cm⁻²</p>
               </div>
               
               <div 
@@ -271,9 +271,9 @@ const QualitySection: React.FC = () => {
                 >
                   <img src="/images/photo2.jpg" alt="Polarized Light Microscopy" style={imageStyle} />
                 </div>
-                <h3 className="spec-name" style={{ fontSize: isMobile ? '1rem' : '1.2rem' }}>Polarized Light</h3>
+                <h3 className="spec-name" style={{ fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)' }}>Polarized Light</h3>
                 <div style={{
-                  fontSize: isMobile ? '1.2rem' : '1.4rem',
+                  fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
@@ -283,7 +283,7 @@ const QualitySection: React.FC = () => {
                   letterSpacing: '0.5px',
                   display: 'inline-block'
                 }}>Very low strain</div>
-                <p className="spec-description" style={{ fontSize: isMobile ? '0.9rem' : '1rem' }}>Perfect for optical applications</p>
+                <p className="spec-description" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Perfect for optical applications</p>
               </div>
             </div>
             
@@ -307,9 +307,9 @@ const QualitySection: React.FC = () => {
                 >
                   <img src="/images/photo5.jpg" alt="X-Ray Diffraction Imaging" style={imageStyle} />
                 </div>
-                <h3 className="spec-name" style={{ fontSize: isMobile ? '1rem' : '1.2rem' }}>X-Ray Diffraction</h3>
+                <h3 className="spec-name" style={{ fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)' }}>X-Ray Diffraction</h3>
                 <div style={{
-                  fontSize: isMobile ? '1.2rem' : '1.4rem',
+                  fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
@@ -319,7 +319,7 @@ const QualitySection: React.FC = () => {
                   letterSpacing: '0.5px',
                   display: 'inline-block'
                 }}>&lt;50 cm⁻²</div>
-                <p className="spec-description" style={{ fontSize: isMobile ? '0.9rem' : '1rem' }}>Dislocation density</p>
+                <p className="spec-description" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Dislocation density</p>
               </div>
             </div>
             
@@ -341,9 +341,9 @@ const QualitySection: React.FC = () => {
                 >
                   <img src="/images/photo3.jpg" alt="FTIR" style={imageStyle} />
                 </div>
-                <h3 className="spec-name" style={{ fontSize: isMobile ? '1rem' : '1.2rem' }}>FTIR</h3>
+                <h3 className="spec-name" style={{ fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)' }}>FTIR</h3>
                 <div style={{
-                  fontSize: isMobile ? '1.2rem' : '1.4rem',
+                  fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
@@ -353,7 +353,7 @@ const QualitySection: React.FC = () => {
                   letterSpacing: '0.5px',
                   display: 'inline-block'
                 }}>Ultra-pure</div>
-                <p className="spec-description" style={{ fontSize: isMobile ? '0.9rem' : '1rem' }}>Exceptional crystal purity</p>
+                <p className="spec-description" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Exceptional crystal purity</p>
               </div>
               
               <div 
@@ -367,9 +367,9 @@ const QualitySection: React.FC = () => {
                 >
                   <img src="/images/photo4.jpg" alt="UV-Vis" style={imageStyle} />
                 </div>
-                <h3 className="spec-name" style={{ fontSize: isMobile ? '1rem' : '1.2rem' }}>UV-Vis</h3>
+                <h3 className="spec-name" style={{ fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)' }}>UV-Vis</h3>
                 <div style={{
-                  fontSize: isMobile ? '1.2rem' : '1.4rem',
+                  fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
@@ -379,7 +379,7 @@ const QualitySection: React.FC = () => {
                   letterSpacing: '0.5px',
                   display: 'inline-block'
                 }}>Low absorbance</div>
-                <p className="spec-description" style={{ fontSize: isMobile ? '0.9rem' : '1rem' }}>Premium optical quality</p>
+                <p className="spec-description" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Premium optical quality</p>
               </div>
             </div>
           </div>

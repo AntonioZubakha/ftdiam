@@ -33,7 +33,7 @@ const WhoWeAreSection: React.FC = () => {
   };
 
   const headlineStyles = {
-    fontSize: isMobile ? '2rem' : '3rem',
+    fontSize: isMobile ? 'var(--section-headline-mobile-size)' : 'var(--section-headline-size)',
     background: 'linear-gradient(to right, #00837f, #241e46)',
     WebkitBackgroundClip: 'text' as const,
     backgroundClip: 'text' as const,
@@ -115,7 +115,7 @@ const WhoWeAreSection: React.FC = () => {
   };
 
   const blockTitleStyles = {
-    fontSize: '24px',
+    fontSize: 'var(--h3-desktop)',
     background: 'linear-gradient(to right, #00837f, #241e46)',
     WebkitBackgroundClip: 'text' as const,
     backgroundClip: 'text' as const,
@@ -155,12 +155,12 @@ const WhoWeAreSection: React.FC = () => {
     WebkitTextFillColor: 'transparent' as const,
     fontWeight: 'bold' as const,
     display: 'inline-block',
-    fontSize: '18px'
+    fontSize: 'var(--text-lg)'
   };
 
   // Стиль для имен основателей (градиентный) - теперь как заголовки About Us и History
   const founderNameStyles = {
-    fontSize: isMobile ? '20px' : '24px',
+    fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)',
     background: 'linear-gradient(to right, #00837f, #241e46)',
     WebkitBackgroundClip: 'text' as const,
     backgroundClip: 'text' as const,
@@ -172,7 +172,7 @@ const WhoWeAreSection: React.FC = () => {
 
   // Стиль для подзаголовков (должности) - теперь тоже как About Us и History
   const roleStyles = {
-    fontSize: isMobile ? '20px' : '24px',
+    fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)',
     background: 'linear-gradient(to right, #00837f, #241e46)',
     WebkitBackgroundClip: 'text' as const,
     backgroundClip: 'text' as const,
@@ -232,7 +232,7 @@ const WhoWeAreSection: React.FC = () => {
 
   // Новые стили для годов в таймлайне
   const timelineYearStyles = {
-    fontSize: isMobile ? '22px' : '32px',
+    fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
     fontWeight: 'bold' as const,
     background: 'linear-gradient(to right, #00837f, #00837f)',
     WebkitBackgroundClip: 'text' as const,

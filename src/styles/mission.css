@@ -18,11 +18,16 @@
 .mission-headline {
   font-size: var(--section-headline-size);
   color: var(--primary-color);
-  margin-bottom: 4rem;
+  margin-bottom: var(--spacing-lg);
   position: relative;
   display: inline-block;
   font-weight: var(--font-weight-semibold);
   letter-spacing: var(--section-headline-letter-spacing);
+}
+
+.mission-subheading {
+  font-size: var(--h3-desktop);
+  margin-bottom: var(--spacing-md);
 }
 
 .mission-content {
@@ -62,6 +67,8 @@
   padding-left: 30px;
   position: relative;
   font-style: italic;
+  font-size: var(--text-base);
+  line-height: 1.6;
 }
 
 /* Стилизация кавычки */
@@ -92,10 +99,21 @@
 }
 
 .mission-description {
-  font-size: 1.5rem;
-  line-height: 1.7;
+  font-size: var(--text-lg);
+  line-height: 1.6;
   color: var(--text-color);
   margin: 0;
+}
+
+.mission-number {
+  font-size: var(--text-5xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-teal);
+  opacity: 0.15;
+  position: absolute;
+  top: -2rem;
+  left: -1rem;
+  z-index: -1;
 }
 
 /* Стили для изображений и дополнительного контента */
@@ -158,6 +176,10 @@
     font-size: var(--section-headline-tablet-size);
   }
   
+  .mission-subheading {
+    font-size: var(--h3-tablet);
+  }
+  
   .mission-content {
     margin-top: 40px;
   }
@@ -173,6 +195,10 @@
   .mission-description {
     font-size: 1rem;
   }
+  
+  .mission-number {
+    font-size: calc(var(--text-5xl) * 0.8);
+  }
 }
 
 @media (max-width: 768px) {
@@ -181,7 +207,11 @@
   }
   
   .mission-headline {
-    font-size: var(--section-headline-mobile-size);
+    font-size: var(--section-headline-tablet-size);
+  }
+  
+  .mission-subheading {
+    font-size: var(--h3-tablet);
   }
   
   .mission-logo-container {
@@ -201,6 +231,10 @@
     font-size: 0.95rem;
   }
   
+  .mission-number {
+    font-size: calc(var(--text-5xl) * 0.8);
+  }
+  
   .quote-mark {
     top: -40px;
     left: 50%;
@@ -216,5 +250,27 @@
   
   .mission-headline {
     font-size: calc(var(--section-headline-mobile-size) - 0.25rem);
+  }
+  
+  .mission-subheading {
+    font-size: var(--h3-mobile);
+  }
+  
+  .mission-number {
+    font-size: calc(var(--text-5xl) * 0.6);
+  }
+}
+
+@media (max-width: 480px) {
+  .mission-headline {
+    font-size: var(--section-headline-mobile-size);
+  }
+  
+  .mission-subheading {
+    font-size: var(--h3-mobile);
+  }
+  
+  .mission-number {
+    font-size: calc(var(--text-5xl) * 0.6);
   }
 } 

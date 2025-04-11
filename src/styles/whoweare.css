@@ -170,7 +170,7 @@
   }
   
   .who-we-are-section .headline {
-    font-size: var(--section-headline-mobile-size);
+    font-size: var(--section-headline-tablet-size);
   }
   
   .founder-photo {
@@ -195,5 +195,31 @@
   
   .founder-photo {
     height: 150px;
+  }
+}
+
+.whoweare-headline {
+  font-size: var(--section-headline-size);
+  margin-bottom: var(--spacing-lg);
+}
+
+.whoweare-description {
+  font-size: var(--text-lg);
+  line-height: 1.6;
+}
+
+.whoweare-text {
+  font-size: var(--text-base);
+  line-height: 1.6;
+}
+
+.whoweare-subheading {
+  font-size: var(--text-xl);
+  margin-bottom: var(--spacing-md);
+}
+
+@media (max-width: 480px) {
+  .whoweare-headline {
+    font-size: var(--section-headline-mobile-size);
   }
 } 

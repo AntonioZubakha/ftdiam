@@ -16,25 +16,30 @@
 
 /* Стили для заголовка */
 .quality-headline {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: var(--section-headline-size);
+  margin-bottom: var(--spacing-lg);
 }
 
-.quality-subheadline {
-  font-size: 2rem;
+.quality-subheading {
+  font-size: var(--h3-desktop);
   background: linear-gradient(to right, #00837f, #241e46);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-md);
   display: inline-block;
 }
 
 .quality-description {
-  font-size: 1.1rem;
+  font-size: var(--text-lg);
   color: #666;
   max-width: 800px;
   margin: 0 auto 4rem;
+  line-height: 1.6;
+}
+
+.quality-text {
+  font-size: var(--text-base);
   line-height: 1.6;
 }
 
@@ -88,16 +93,21 @@
 }
 
 .quality-item-title {
-  font-size: 1.2rem;
+  font-size: var(--h4-desktop);
   color: #333;
   margin-bottom: 0.5rem;
   font-weight: 600;
 }
 
 .quality-item-description {
-  font-size: 1rem;
+  font-size: var(--text-base);
   color: #666;
   line-height: 1.4;
+}
+
+.quality-card-title {
+  font-size: var(--h4-desktop);
+  margin-bottom: var(--spacing-sm);
 }
 
 /* Медиа-запросы для адаптивности */
@@ -107,15 +117,23 @@
   }
 
   .quality-headline {
-    font-size: 2.5rem;
+    font-size: var(--section-headline-tablet-size);
   }
 
-  .quality-subheadline {
-    font-size: 1.8rem;
+  .quality-subheading {
+    font-size: var(--h3-tablet);
   }
 
   .quality-image-container {
     height: 200px;
+  }
+  
+  .quality-item-title {
+    font-size: var(--h4-tablet);
+  }
+  
+  .quality-item-description {
+    font-size: var(--text-sm);
   }
 }
 
@@ -137,11 +155,19 @@
   }
 
   .quality-headline {
-    font-size: 2.2rem;
+    font-size: var(--section-headline-tablet-size);
   }
 
-  .quality-subheadline {
-    font-size: 1.6rem;
+  .quality-subheading {
+    font-size: var(--h3-tablet);
+  }
+
+  .quality-card-title {
+    font-size: var(--h4-tablet);
+  }
+  
+  .quality-description {
+    font-size: var(--text-base);
   }
 }
 
@@ -151,19 +177,67 @@
   }
 
   .quality-headline {
-    font-size: 2rem;
+    font-size: var(--section-headline-mobile-size);
   }
 
-  .quality-subheadline {
-    font-size: 1.4rem;
+  .quality-subheading {
+    font-size: var(--h3-mobile);
   }
 
   .quality-description {
-    font-size: 1rem;
+    font-size: var(--text-sm);
   }
 
   .quality-image-container {
     height: 200px;
+  }
+  
+  .quality-item-title {
+    font-size: var(--h4-mobile);
+  }
+  
+  .quality-item-description {
+    font-size: var(--text-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .quality-headline {
+    font-size: var(--section-headline-mobile-size);
+  }
+
+  .quality-subheading {
+    font-size: var(--h3-mobile);
+  }
+
+  .quality-card-title {
+    font-size: var(--h4-mobile);
+  }
+  
+  .quality-method {
+    padding: 1.8rem;
+  }
+  
+  .quality-method-image {
+    height: 160px;
+  }
+  
+  .standard-item {
+    padding: 1.5rem;
+  }
+  
+  .standard-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 1rem;
+  }
+  
+  .standard-icon i {
+    font-size: var(--text-xl);
+  }
+  
+  .quality-standards {
+    padding: 1.5rem;
   }
 }
 
@@ -177,7 +251,7 @@
 
 .quality-standards h3 {
   text-align: center;
-  font-size: 1.8rem;
+  font-size: var(--h3-desktop);
   color: var(--primary-dark-blue);
   margin-bottom: 2.5rem;
   position: relative;
@@ -232,7 +306,7 @@
 }
 
 .standard-icon i {
-  font-size: 1.5rem;
+  font-size: var(--h4-desktop);
   background: linear-gradient(135deg, #00837f, #241e46);
   -webkit-background-clip: text;
   background-clip: text;
@@ -248,7 +322,7 @@
   margin: 0;
   color: var(--dark-gray);
   line-height: 1.5;
-  font-size: 1rem;
+  font-size: var(--text-base);
 }
 
 .standard-item p strong {
@@ -256,43 +330,6 @@
   font-weight: 600;
   display: block;
   margin-bottom: 0.3rem;
-}
-
-/* Медиа-запросы */
-@media (max-width: 480px) {
-  .quality-section .section-description {
-    font-size: 1rem;
-  }
-  
-  .quality-section .quality-subheadline {
-    font-size: 1.3rem;
-  }
-  
-  .quality-method {
-    padding: 1.8rem;
-  }
-  
-  .quality-method-image {
-    height: 160px;
-  }
-  
-  .standard-item {
-    padding: 1.5rem;
-  }
-  
-  .standard-icon {
-    width: 40px;
-    height: 40px;
-    margin-right: 1rem;
-  }
-  
-  .standard-icon i {
-    font-size: 1.2rem;
-  }
-  
-  .quality-standards {
-    padding: 1.5rem;
-  }
 }
 
 /* Анимация для появления карточек */
@@ -341,4 +378,26 @@
   .spec-block-animate:nth-child(3) { transition-delay: 0.3s; }
   .spec-block-animate:nth-child(4) { transition-delay: 0.4s; }
   .spec-block-animate:nth-child(5) { transition-delay: 0.5s; }
+  
+  .quality-standards h3 {
+    font-size: var(--h3-tablet);
+  }
+  
+  .standard-icon i {
+    font-size: var(--h4-tablet);
+  }
+  
+  .standard-item p {
+    font-size: var(--text-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .quality-standards h3 {
+    font-size: var(--h3-mobile);
+  }
+  
+  .standard-icon i {
+    font-size: var(--h4-mobile);
+  }
 } 

@@ -36,12 +36,34 @@
   --text-3xl: 1.875rem; /* 30px */
   --text-4xl: 2.25rem;  /* 36px */
   --text-5xl: 3rem;     /* 48px */
-  
+
+  /* Размеры заголовков */
+  --h1-desktop: var(--text-5xl);     /* 3rem / 48px */
+  --h2-desktop: var(--text-4xl);     /* 2.25rem / 36px */
+  --h3-desktop: var(--text-3xl);     /* 1.875rem / 30px */
+  --h4-desktop: var(--text-2xl);     /* 1.5rem / 24px */
+  --h5-desktop: var(--text-xl);      /* 1.25rem / 20px */
+  --h6-desktop: var(--text-lg);      /* 1.125rem / 18px */
+
+  --h1-tablet: 2.5rem;               /* 40px */
+  --h2-tablet: 2rem;                 /* 32px */
+  --h3-tablet: 1.75rem;              /* 28px */
+  --h4-tablet: 1.5rem;               /* 24px */
+  --h5-tablet: 1.25rem;              /* 20px */
+  --h6-tablet: 1.125rem;             /* 18px */
+
+  --h1-mobile: 2rem;                 /* 32px */
+  --h2-mobile: 1.75rem;              /* 28px */
+  --h3-mobile: 1.5rem;               /* 24px */
+  --h4-mobile: 1.25rem;              /* 20px */
+  --h5-mobile: 1.125rem;             /* 18px */
+  --h6-mobile: 1rem;                 /* 16px */
+
   /* Унифицированные размеры заголовков для секций */
-  --section-headline-size: 3rem;           /* размер главных заголовков секций */
-  --section-headline-mobile-size: 2.25rem; /* размер главных заголовков на мобильных */
-  --section-headline-tablet-size: 2.5rem;  /* размер главных заголовков на планшетах */
-  --section-subheadline-size: 2rem;        /* размер подзаголовков секций */
+  --section-headline-size: var(--h1-desktop);           /* размер главных заголовков секций */
+  --section-headline-tablet-size: var(--h1-tablet);     /* размер главных заголовков на планшетах */
+  --section-headline-mobile-size: var(--h1-mobile);     /* размер главных заголовков на мобильных */
+  --section-subheadline-size: var(--h2-desktop);        /* размер подзаголовков секций */
   --section-headline-letter-spacing: 0.5px;/* межбуквенное расстояние для заголовков */
   --section-headline-after-width: 50px;    /* ширина подчеркивания заголовков */
   --section-headline-after-height: 3px;    /* высота подчеркивания заголовков */

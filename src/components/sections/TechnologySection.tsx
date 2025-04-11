@@ -23,7 +23,9 @@ const TechnologySection: React.FC = () => {
     }}>
       <div className="technology-container">
         <div className="technology-headline-container">
-          <h2 className="technology-headline gradient-headline">Advanced HPHT Technology</h2>
+          <h2 className="technology-headline gradient-headline" style={{ 
+            fontSize: isMobile ? 'var(--section-headline-mobile-size)' : 'var(--section-headline-size)'
+          }}>Advanced HPHT Technology</h2>
         </div>
         
         <div className="technology-content" style={{ marginTop: isMobile ? '30px' : '60px' }}>
@@ -47,7 +49,7 @@ const TechnologySection: React.FC = () => {
                 }}></i>
               </div>
               <h3 className="advantage-title gradient-subheadline" style={{ 
-                fontSize: isMobile ? '1.2rem' : '1.5rem',
+                fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)',
                 marginBottom: isMobile ? '5px' : '10px'
               }}>Ultra low dislocations number (10¹ cm⁻²)</h3>
             </div>
@@ -65,7 +67,7 @@ const TechnologySection: React.FC = () => {
                 }}></i>
               </div>
               <h3 className="advantage-title gradient-subheadline" style={{ 
-                fontSize: isMobile ? '1.2rem' : '1.5rem',
+                fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)',
                 marginBottom: isMobile ? '5px' : '10px'
               }}>Record-size high-quality substrates</h3>
             </div>
@@ -83,7 +85,7 @@ const TechnologySection: React.FC = () => {
                 }}></i>
               </div>
               <h3 className="advantage-title gradient-subheadline" style={{ 
-                fontSize: isMobile ? '1.2rem' : '1.5rem',
+                fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)',
                 marginBottom: isMobile ? '5px' : '10px'
               }}>Very low strain and zero-Nitrogen level</h3>
             </div>

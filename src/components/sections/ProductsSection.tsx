@@ -4,7 +4,20 @@ import '../../styles/products.css';
 const ProductsSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const imagesLoaded = useRef<boolean[]>([]);
+  
+  // Check if the screen is mobile-sized
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile(); // Initial check
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   
   // Данные о продуктах точно по ТЗ
   const products = [
@@ -85,7 +98,9 @@ const ProductsSection: React.FC = () => {
       <div className="products-container">
         <div className="products-inner-container">
           <div className="products-headline-container">
-            <h2 className="gradient-headline">
+            <h2 className="gradient-headline" style={{ 
+              fontSize: isMobile ? 'var(--section-headline-mobile-size)' : 'var(--section-headline-size)' 
+            }}>
               High Quality Diamond Products
             </h2>
           </div>

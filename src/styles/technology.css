@@ -26,11 +26,16 @@
 .technology-headline {
   font-size: var(--section-headline-size);
   color: var(--primary-color);
-  margin-bottom: 20px;
+  margin-bottom: var(--spacing-lg);
   position: relative;
   display: inline-block;
   letter-spacing: var(--section-headline-letter-spacing);
   font-weight: var(--font-weight-semibold);
+}
+
+.technology-subheading {
+  font-size: var(--h3-desktop);
+  margin-bottom: var(--spacing-md);
 }
 
 .technology-subtitle {
@@ -70,19 +75,19 @@
 .technology-description {
   flex: 1;
   min-width: 300px;
+  font-size: var(--text-lg);
+  line-height: 1.6;
 }
 
 .technology-description h3 {
-  font-size: 28px;
+  font-size: var(--h3-desktop);
   margin-bottom: 20px;
   font-weight: 600;
 }
 
-.technology-description p {
-  color: #555;
-  font-size: 16px;
-  line-height: 1.7;
-  margin-bottom: 20px;
+.technology-text {
+  font-size: var(--text-base);
+  line-height: 1.6;
 }
 
 .technology-description p:last-child {
@@ -137,7 +142,7 @@
 }
 
 .advantage-title {
-  font-size: 18px;
+  font-size: var(--h4-desktop);
   font-weight: 600;
   color: #241e46;
   margin-bottom: 12px;
@@ -145,7 +150,7 @@
 
 .advantage-card p {
   color: #555;
-  font-size: 15px;
+  font-size: var(--text-base);
   line-height: 1.5;
   margin: 0;
 }
@@ -169,12 +174,12 @@
     font-size: var(--section-headline-tablet-size);
   }
   
-  .technology-subtitle {
-    font-size: 18px;
+  .technology-subheading {
+    font-size: var(--h3-tablet);
   }
   
   .technology-description h3 {
-    font-size: 24px;
+    font-size: var(--h3-tablet);
   }
   
   .advantages-grid {
@@ -197,7 +202,11 @@
   }
   
   .technology-headline {
-    font-size: var(--section-headline-mobile-size);
+    font-size: var(--section-headline-tablet-size);
+  }
+  
+  .technology-subheading {
+    font-size: var(--h3-tablet);
   }
   
   .technology-overview {
@@ -210,23 +219,27 @@
   }
   
   .technology-description h3 {
-    font-size: 22px;
+    font-size: var(--h3-tablet);
   }
   
   .technology-description p {
-    font-size: 15px;
+    font-size: var(--text-base);
   }
   
   .advantages-title {
-    font-size: 24px;
+    font-size: var(--h3-tablet);
   }
   
   .tech-point h3 {
-    font-size: 20px;
+    font-size: var(--h4-tablet);
   }
   
   .tech-point p {
-    font-size: 15px;
+    font-size: var(--text-base);
+  }
+
+  .advantage-title {
+    font-size: var(--h4-tablet);
   }
 }
 
@@ -237,6 +250,10 @@
   
   .technology-headline {
     font-size: var(--section-headline-mobile-size);
+  }
+  
+  .technology-subheading {
+    font-size: var(--h3-mobile);
   }
   
   .advantages-grid {
@@ -250,6 +267,30 @@
   
   .tech-highlight {
     min-width: 100%;
+  }
+
+  .technology-description h3 {
+    font-size: var(--h3-mobile);
+  }
+  
+  .technology-description p {
+    font-size: var(--text-sm);
+  }
+  
+  .advantages-title {
+    font-size: var(--h3-mobile);
+  }
+  
+  .tech-point h3 {
+    font-size: var(--h4-mobile);
+  }
+  
+  .tech-point p {
+    font-size: var(--text-sm);
+  }
+
+  .advantage-title {
+    font-size: var(--h4-mobile);
   }
 }
 
@@ -295,13 +336,13 @@
 
 .tech-highlight h4 {
   margin: 0 0 10px 0;
-  font-size: 18px;
+  font-size: var(--text-lg);
   color: var(--primary-color);
 }
 
 .tech-highlight p {
   margin: 0;
-  font-size: 14px;
+  font-size: var(--text-sm);
   line-height: 1.5;
   color: #555;
 }
@@ -322,14 +363,14 @@
 
 .tech-point h3 {
   margin: 0 0 8px 0;
-  font-size: 22px;
+  font-size: var(--h3-desktop);
   color: var(--primary-color);
   font-weight: var(--font-weight-semibold);
 }
 
 .tech-point p {
   margin: 0;
-  font-size: 16px;
+  font-size: var(--text-base);
   line-height: 1.6;
   color: #555;
 } 
