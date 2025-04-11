@@ -197,8 +197,8 @@ const WhoWeAreSection: React.FC = () => {
     top: '0',
     bottom: '0',
     left: '18px', // Центрируем линию с маркерами
-    width: '3px',
-    background: 'linear-gradient(to bottom, #00837f 0%, #00837f 40%, #241e46 100%)',
+    width: '7px', // Увеличиваем толщину линии с 5px до 7px
+    background: 'linear-gradient(to bottom, #5798d1 0%, #00837f 50%, #241e46 100%)', // Тройной градиент: голубой -> бирюзовый -> темно-синий
     zIndex: 1
   };
 
@@ -210,40 +210,29 @@ const WhoWeAreSection: React.FC = () => {
     flexDirection: 'column' as const
   };
 
-  // Маркеры таймлайна
+  // Маркеры таймлайна - делаем полые круги, убираем внутренний круг
   const timelineMarkerStyles = {
     position: 'absolute' as const,
-    left: '3px', // Позиционируем маркеры по центру линии
+    left: '11.5px', // Точно по центру линии: 18px (позиция линии) + 3.5px (половина ширины линии) - 10px (половина ширины маркера)
     top: '8px',
-    width: '30px',
-    height: '30px',
-    backgroundColor: '#fff',
+    width: '20px',
+    height: '20px',
+    backgroundColor: 'white',
     borderRadius: '50%',
-    display: 'flex',
-    alignItems: 'center' as const,
-    justifyContent: 'center' as const,
     zIndex: 2,
-    border: '3px solid #00837f'
-  };
-
-  // Внутренний круг маркера
-  const timelineMarkerInnerStyles = {
-    width: '14px',
-    height: '14px',
-    backgroundColor: '#00837f',
-    borderRadius: '50%',
-    zIndex: 3
+    border: '2px solid #5798d1', // Голубой верхний маркер
+    boxSizing: 'border-box' as const
   };
 
   // Варианты маркеров для разных годов
   const timelineMarker2023Styles = {
     ...timelineMarkerStyles,
-    border: '3px solid #00837f' // Средний бирюзовый
+    border: '2px solid #00837f', // Средний бирюзовый
   };
 
   const timelineMarker2027Styles = {
     ...timelineMarkerStyles,
-    border: '3px solid #241e46' // Темно-синий
+    border: '2px solid #241e46', // Темно-синий
   };
 
   // Новые стили для годов в таймлайне - 2022 (бирюзовый)
@@ -401,7 +390,7 @@ const WhoWeAreSection: React.FC = () => {
             {/* Элемент таймлайна 2022 */}
             <div style={timelineItemStyles}>
               <div style={timelineMarkerStyles}>
-                <div style={timelineMarkerInnerStyles}></div>
+                {/* Убираем внутренний круг */}
               </div>
               <div style={timelineContentStyles}>
                 <div style={timelineYearStyles}>2022</div>
@@ -414,7 +403,7 @@ const WhoWeAreSection: React.FC = () => {
             {/* Элемент таймлайна 2023 */}
             <div style={timelineItemStyles}>
               <div style={timelineMarker2023Styles}>
-                <div style={timelineMarkerInnerStyles}></div>
+                {/* Убираем внутренний круг */}
               </div>
               <div style={timelineContentStyles}>
                 <div style={timelineYear2023Styles}>2023</div>
@@ -427,7 +416,7 @@ const WhoWeAreSection: React.FC = () => {
             {/* Элемент таймлайна 2027 */}
             <div style={timelineItemStyles}>
               <div style={timelineMarker2027Styles}>
-                <div style={timelineMarkerInnerStyles}></div>
+                {/* Убираем внутренний круг */}
               </div>
               <div style={timelineContentStyles}>
                 <div style={timelineYear2027Styles}>2027</div>

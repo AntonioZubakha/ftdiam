@@ -336,10 +336,17 @@ const QualitySection: React.FC = () => {
                 style={{ padding: isMobile ? '15px' : '20px' }}
               >
                 <div 
-                  style={{...imageContainerStyle, paddingBottom: isMobile ? '90%' : '100%'}}
+                  style={{
+                    ...imageContainerStyle, 
+                    paddingBottom: isMobile ? '75%' : '80%',
+                    marginBottom: '0.8rem',
+                    backgroundImage: 'url(/images/photo3.jpg)',
+                    backgroundPosition: 'center',
+                    backgroundSize: 'contain',
+                    backgroundRepeat: 'no-repeat'
+                  }}
                   onClick={() => openModal('/images/photo3.jpg')}
                 >
-                  <img src="/images/photo3.jpg" alt="FTIR" style={imageStyle} />
                 </div>
                 <h3 className="spec-name" style={{ fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)' }}>FTIR</h3>
                 <div style={{
@@ -362,10 +369,22 @@ const QualitySection: React.FC = () => {
                 style={{ padding: isMobile ? '15px' : '20px' }}
               >
                 <div 
-                  style={{...imageContainerStyle, paddingBottom: isMobile ? '90%' : '100%'}}
+                  style={{
+                    ...imageContainerStyle, 
+                    paddingBottom: isMobile ? '75%' : '80%',
+                    marginBottom: '0.8rem'
+                  }}
                   onClick={() => openModal('/images/photo4.jpg')}
                 >
-                  <img src="/images/photo4.jpg" alt="UV-Vis" style={imageStyle} />
+                  <img 
+                    src="/images/photo4.jpg" 
+                    alt="UV-Vis" 
+                    style={{
+                      ...imageStyle,
+                      objectFit: 'contain' as const,
+                      padding: '5px'
+                    }} 
+                  />
                 </div>
                 <h3 className="spec-name" style={{ fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)' }}>UV-Vis</h3>
                 <div style={{
