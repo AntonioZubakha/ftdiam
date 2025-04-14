@@ -66,7 +66,7 @@ const Header = ({ activeSection, scrollToSection }: HeaderProps) => {
   };
 
   const menuItems = [
-    { id: 'about', label: 'Who We Are' },
+    { id: 'about', label: 'Our Blueprint' },
     { id: 'technology', label: 'Advanced HPHT' },
     { id: 'products', label: 'Products' },
     { id: 'quality', label: 'Quality Analysis' },

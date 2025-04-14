@@ -315,7 +315,7 @@ const WhoWeAreSection: React.FC = () => {
       <div style={containerStyles}>
         <div style={{textAlign: 'center'}}>
           <h2 style={headlineStyles}>
-            Who We Are
+            Our Blueprint
           </h2>
         </div>
       </div>

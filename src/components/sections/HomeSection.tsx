@@ -114,9 +114,16 @@ const HomeSection = () => {
       
       <div className="content-wrapper">
         <div className="hero-content">
+          <div className="hero-text-background"></div>
           <div className="hero-text">
-            <h2 className="hero-subheadline">Single Crystal Diamond Substrates</h2>
-            <p className="hero-description">Advanced HPHT technology for cutting-edge applications</p>
+            <div className="text-with-shadow">
+              <div className="text-shadow-element">Single Crystal Diamond Substrates</div>
+              <h2 className="hero-subheadline">Single Crystal Diamond Substrates</h2>
+            </div>
+            <div className="text-with-shadow">
+              <div className="text-shadow-element">Advanced HPHT technology for cutting-edge applications</div>
+              <p className="hero-description">Advanced HPHT technology for cutting-edge applications</p>
+            </div>
           </div>
         </div>
       </div>

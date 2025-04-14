@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
           <div className="footer-col">
             <h3 className="footer-heading">Navigation</h3>
             <ul className="footer-links">
-              <li><a href="#about">Who We Are</a></li>
+              <li><a href="#about">Our Blueprint</a></li>
               <li><a href="#technology">Advanced HPHT</a></li>
               <li><a href="#products">Products</a></li>
               <li><a href="#quality">Quality Analysis</a></li>
