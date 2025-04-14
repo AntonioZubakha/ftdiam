@@ -38,7 +38,9 @@ const ContactsSection = () => {
       paddingBottom: isMobile ? '40px' : '60px',
       overflow: 'hidden' 
     }}>
-      <div className="container">
+      <div className="container" style={{
+        padding: isMobile ? '0 25px' : '0 40px'
+      }}>
         <h2 className="contacts-headline gradient-headline" style={{ 
           fontSize: isMobile ? 'var(--section-headline-mobile-size)' : 'var(--section-headline-size)',
           marginBottom: isMobile ? '1.5rem' : '2.5rem'
@@ -47,21 +49,21 @@ const ContactsSection = () => {
         <div className="contacts-content" style={{ 
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
-          gap: isMobile ? '20px' : '40px' 
+          gap: isMobile ? '10px' : '40px' 
         }}>
           <div className="contact-info" style={{ 
-            padding: isMobile ? '15px' : '30px',
+            padding: isMobile ? '0' : '30px',
             marginBottom: isMobile ? '0' : '0'
           }}>
             <div className="contact-info-header">
               <h3 className="info-title" style={{ 
                 fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)',
-                marginBottom: isMobile ? '15px' : '25px'
+                marginBottom: isMobile ? '10px' : '25px'
               }}>Contact Information</h3>
             </div>
             
-            <div className="contact-info-item" style={{ marginBottom: isMobile ? '10px' : '20px' }}>
-              <div className="contact-icon" style={{ fontSize: isMobile ? 'var(--text-xl)' : 'var(--h4-desktop)' }}>
+            <div className="contact-info-item" style={{ marginBottom: isMobile ? '5px' : '15px' }}>
+              <div className="contact-icon" style={{ fontSize: isMobile ? 'var(--text-lg)' : 'var(--h4-desktop)' }}>
                 <FontAwesomeIcon icon={faEnvelope} />
               </div>
               <div className="contact-text">
@@ -70,8 +72,8 @@ const ContactsSection = () => {
               </div>
             </div>
             
-            <div className="contact-info-item" style={{ marginBottom: isMobile ? '10px' : '20px' }}>
-              <div className="contact-icon" style={{ fontSize: isMobile ? 'var(--text-xl)' : 'var(--h4-desktop)' }}>
+            <div className="contact-info-item" style={{ marginBottom: isMobile ? '5px' : '15px' }}>
+              <div className="contact-icon" style={{ fontSize: isMobile ? 'var(--text-lg)' : 'var(--h4-desktop)' }}>
                 <FontAwesomeIcon icon={faPhone} />
               </div>
               <div className="contact-text">
@@ -80,8 +82,8 @@ const ContactsSection = () => {
               </div>
             </div>
             
-            <div className="contact-info-item" style={{ marginBottom: isMobile ? '10px' : '20px' }}>
-              <div className="contact-icon" style={{ fontSize: isMobile ? 'var(--text-xl)' : 'var(--h4-desktop)' }}>
+            <div className="contact-info-item" style={{ marginBottom: isMobile ? '5px' : '15px' }}>
+              <div className="contact-icon" style={{ fontSize: isMobile ? 'var(--text-lg)' : 'var(--h4-desktop)' }}>
                 <FontAwesomeIcon icon={faLinkedin} />
               </div>
               <div className="contact-text">
@@ -92,8 +94,8 @@ const ContactsSection = () => {
               </div>
             </div>
             
-            <div className="contact-info-item" style={{ marginBottom: isMobile ? '0' : '0' }}>
-              <div className="contact-icon" style={{ fontSize: isMobile ? 'var(--text-xl)' : 'var(--h4-desktop)' }}>
+            <div className="contact-info-item" style={{ marginBottom: isMobile ? '5px' : '15px' }}>
+              <div className="contact-icon" style={{ fontSize: isMobile ? 'var(--text-lg)' : 'var(--h4-desktop)' }}>
                 <FontAwesomeIcon icon={faLocationDot} />
               </div>
               <div className="contact-text">
@@ -107,12 +109,12 @@ const ContactsSection = () => {
           </div>
           
           <div className="contact-form" style={{ 
-            padding: isMobile ? '15px' : '30px'
+            padding: isMobile ? '0' : '30px'
           }}>
             <div className="form-header">
               <h3 className="form-title" style={{ 
                 fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)',
-                marginBottom: isMobile ? '15px' : '25px'
+                marginBottom: isMobile ? '10px' : '25px'
               }}>Get in touch</h3>
             </div>
             
@@ -141,6 +143,9 @@ const ContactsSection = () => {
               <form 
                 action="https://formsubmit.co/info@ftdiam.com" 
                 method="POST"
+                style={{
+                  padding: isMobile ? '0 10px' : '0'
+                }}
               >
                 {/* Скрытые поля для настройки FormSubmit.co */}
                 <input type="hidden" name="_subject" value="New message from FTDiam website" />
@@ -156,7 +161,7 @@ const ContactsSection = () => {
                     placeholder="Your name" 
                     required
                     style={{ 
-                      padding: isMobile ? '8px 12px' : '10px 15px',
+                      padding: isMobile ? '10px 15px' : '10px 15px',
                       width: '100%',
                       border: '1px solid #e0e0e0',
                       borderRadius: '8px',
@@ -172,7 +177,7 @@ const ContactsSection = () => {
                     placeholder="Your email" 
                     required
                     style={{ 
-                      padding: isMobile ? '8px 12px' : '10px 15px',
+                      padding: isMobile ? '10px 15px' : '10px 15px',
                       width: '100%',
                       border: '1px solid #e0e0e0',
                       borderRadius: '8px',
@@ -187,7 +192,7 @@ const ContactsSection = () => {
                     placeholder="Your message" 
                     required
                     style={{ 
-                      padding: isMobile ? '8px 12px' : '10px 15px',
+                      padding: isMobile ? '10px 15px' : '10px 15px',
                       height: isMobile ? '100px' : '120px',
                       width: '100%',
                       border: '1px solid #e0e0e0',
@@ -211,7 +216,7 @@ const ContactsSection = () => {
                   type="submit" 
                   className="contact-submit-button"
                   style={{ 
-                    padding: isMobile ? '10px 16px' : '12px 20px',
+                    padding: isMobile ? '12px 20px' : '12px 20px',
                     fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)',
                     width: '100%',
                     border: 'none',

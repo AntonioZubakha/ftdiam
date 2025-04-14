@@ -314,7 +314,7 @@ const IntroSection: React.FC = () => {
           background: 'linear-gradient(to right, #00837f, #241e46)',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
+          justifyContent: isMobile ? 'flex-start' : 'center',
           marginTop: isMobile ? '20px' : '40px',
           marginBottom: isMobile ? '40px' : '100px',
           position: 'relative',
@@ -324,7 +324,7 @@ const IntroSection: React.FC = () => {
             color: 'white',
             fontSize: isMobile ? 'var(--h1-mobile)' : 'var(--h1-desktop)',
             fontWeight: 'bold',
-            textAlign: 'center',
+            textAlign: isMobile ? 'center' : 'center',
             padding: isMobile ? '0 20px' : '0 20px',
             maxWidth: '1400px',
             margin: '0 auto',
@@ -336,7 +336,7 @@ const IntroSection: React.FC = () => {
               <div style={{ textAlign: 'center', width: '100%' }}>
                 <p style={{ 
                   margin: '0 0 10px 0', 
-                  fontSize: '1.45rem', 
+                  fontSize: '1.4rem', 
                   textAlign: 'center', 
                   color: 'white',
                   whiteSpace: 'nowrap',
@@ -345,7 +345,7 @@ const IntroSection: React.FC = () => {
                 }}>Engineered for excellence.</p>
                 <p style={{ 
                   margin: '0 0 10px 0', 
-                  fontSize: '1.45rem', 
+                  fontSize: '1.4rem', 
                   textAlign: 'center', 
                   color: 'white',
                   whiteSpace: 'nowrap',
@@ -354,7 +354,7 @@ const IntroSection: React.FC = () => {
                 }}>Trusted for precision.</p>
                 <p style={{ 
                   margin: '0', 
-                  fontSize: '1.45rem', 
+                  fontSize: '1.4rem', 
                   textAlign: 'center', 
                   color: 'white',
                   whiteSpace: 'nowrap',

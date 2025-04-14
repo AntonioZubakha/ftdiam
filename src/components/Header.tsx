@@ -77,7 +77,7 @@ const Header = ({ activeSection, scrollToSection }: HeaderProps) => {
     <header className={scrolled ? 'scrolled' : ''} onClick={() => handleSectionClick('home', window.event as any)}>
       <nav className={isMenuOpen ? 'open' : ''} onClick={(e) => e.stopPropagation()}>
         <div className="close-button" onClick={closeMenu}>
-          <span className="close-icon">×</span>
+          <span className="close-icon"></span>
         </div>
         <ul>
           {menuItems.map((item) => (
