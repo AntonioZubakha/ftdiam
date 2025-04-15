@@ -239,7 +239,10 @@ const WhoWeAreSection: React.FC = () => {
   const timelineYearStyles = {
     fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
     fontWeight: 'bold' as const,
-    color: '#00837f', // Бирюзовый для 2022
+    background: 'linear-gradient(to right, #5798d1, #00837f)',
+    WebkitBackgroundClip: 'text' as const,
+    backgroundClip: 'text' as const,
+    WebkitTextFillColor: 'transparent' as const,
     marginBottom: isMobile ? '10px' : '15px',
     lineHeight: '1'
   };
@@ -260,7 +263,10 @@ const WhoWeAreSection: React.FC = () => {
   const timelineYear2027Styles = {
     fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
     fontWeight: 'bold' as const,
-    color: '#241e46', // Темно-синий для 2027
+    background: 'linear-gradient(to right, #241e46, #00837f)',
+    WebkitBackgroundClip: 'text' as const,
+    backgroundClip: 'text' as const,
+    WebkitTextFillColor: 'transparent' as const,
     marginBottom: isMobile ? '10px' : '15px',
     lineHeight: '1'
   };
