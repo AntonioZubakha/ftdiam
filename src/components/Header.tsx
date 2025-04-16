@@ -1,10 +1,21 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
-const Header = () => {
+interface HeaderProps {
+  activeSection?: string;
+  scrollToSection?: (section: string) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrollToSection }) => {
   const [logoError, setLogoError] = useState(false);
   const [activeSection, setActiveSection] = useState('');
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // Используем активный раздел из пропсов, если он доступен
+  useEffect(() => {
+    if (propActiveSection) {
+      setActiveSection(propActiveSection);
+    }
+  }, [propActiveSection]);
 
   // Закрытие меню при нажатии Escape - для доступности
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
@@ -16,6 +27,13 @@ const Header = () => {
   // Обработчик клика по пунктам меню
   const handleSectionClick = (sectionId: string, e: React.MouseEvent) => {
     e.preventDefault();
+    
+    if (scrollToSection) {
+      scrollToSection(sectionId);
+      setMenuOpen(false);
+      return;
+    }
+    
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -44,12 +62,6 @@ const Header = () => {
   // Определение активного раздела при прокрутке
   useEffect(() => {
     const handleScroll = () => {
-      // Меняем состояние прокрутки для эффекта хедера
-      const isScrolled = window.scrollY > 50;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
-      
       const sections = [
         'home',
         'about',
@@ -86,7 +98,7 @@ const Header = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [scrolled]);
+  }, []);
 
   const handleLogoError = () => {
     setLogoError(true);
@@ -104,18 +116,20 @@ const Header = () => {
     setMenuOpen(!menuOpen);
   };
 
+  // Обновленные пункты меню, соответствующие секциям в App.tsx
   const menuItems = [
     { id: 'home', label: 'Home' },
+    { id: 'intro', label: 'Intro' },
+    { id: 'mission', label: 'Mission' },
     { id: 'about', label: 'About' },
+    { id: 'technology', label: 'Technology' },
     { id: 'products', label: 'Products' },
-    { id: 'applications', label: 'Applications' },
-    { id: 'facilities', label: 'Facilities' },
-    { id: 'diamond', label: 'Diamond' },
-    { id: 'contacts', label: 'Contact' }
+    { id: 'quality', label: 'Quality' },
+    { id: 'contacts', label: 'Contacts' }
   ];
 
   return (
-    <header className={`static-header ${scrolled ? 'scrolled' : ''}`}>
+    <header className="static-header">
       <div className="header-container">
         <div className="logo-wrapper fade-in">
           <a href="#home" onClick={(e) => handleSectionClick('home', e)}>

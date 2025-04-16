@@ -3,7 +3,7 @@
   height: 101vh;
   min-height: 600px;
   padding: 0;
-  padding-top: var(--header-height); /* Используем переменную для отступа */
+  /* Убираем отступ, так как хедер теперь прозрачный */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -123,7 +123,7 @@
   max-width: 1000px;
   width: 100%;
   animation: fadeIn 1.5s ease;
-  margin-top: -30px; /* Adjust for header height to maintain vertical centering */
+  margin-top: 70px; /* Добавляем отступ, чтобы контент не перекрывался с прозрачным хедером */
 }
 
 .hero-text {
@@ -223,6 +223,38 @@
   letter-spacing: 0.5px;
 }
 
+/* Стили для кнопки */
+.hero-button {
+  background: linear-gradient(to right, #00837f, #241e46);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 32px;
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  margin-top: var(--spacing-8);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 3;
+  outline: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  animation: fadeIn 1.5s ease-out 0.5s both;
+}
+
+.hero-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(to right, #009e99, #2d267a);
+}
+
+.hero-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
 /* Медиа-запросы */
 @media (max-width: 1024px) {
   .hero-subheadline {
@@ -231,6 +263,11 @@
   
   .hero-description {
     font-size: var(--h2-tablet);
+  }
+  
+  .hero-button {
+    font-size: var(--text-lg);
+    padding: 14px 28px;
   }
 }
 
@@ -263,6 +300,12 @@
     padding: var(--spacing-3) var(--spacing-5);
     max-width: 90%;
   }
+  
+  .hero-button {
+    font-size: var(--text-base);
+    padding: 12px 24px;
+    margin-top: var(--spacing-6);
+  }
 }
 
 @media (max-width: 480px) {
@@ -282,6 +325,12 @@
   .text-backdrop {
     padding: var(--spacing-2) var(--spacing-4);
     max-width: 95%;
+  }
+  
+  .hero-button {
+    font-size: var(--text-sm);
+    padding: 10px 20px;
+    margin-top: var(--spacing-4);
   }
 }
 

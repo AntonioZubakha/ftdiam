@@ -1,10 +1,14 @@
 import { useRef, useEffect, useState } from 'react';
+import '../../styles/home.css';
+import ContactModal from '../../components/ContactModal';
 
-const HomeSection = () => {
+const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = ({ scrollToSection }) => {
   const leftVideoRef = useRef<HTMLVideoElement>(null);
   const rightVideoRef = useRef<HTMLVideoElement>(null);
   const mobileVideoRef = useRef<HTMLVideoElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   // Определяем, является ли устройство мобильным
   useEffect(() => {
@@ -37,8 +41,20 @@ const HomeSection = () => {
     }
   }, []);
 
+  // Функция открытия модального окна
+  const openModal = (e: React.MouseEvent) => {
+    e.preventDefault(); // Предотвращаем любые действия по умолчанию
+    e.stopPropagation(); // Останавливаем всплытие события
+    setModalOpen(true);
+  };
+
+  // Функция закрытия модального окна
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   return (
-    <section id="home" className="section home-section">
+    <section id="home" className="section home-section" ref={sectionRef}>
       <div className="home-video-container">
         {isMobile ? (
           // Мобильная версия - одно видео
@@ -108,16 +124,58 @@ const HomeSection = () => {
           <div className="hero-text-background"></div>
           <div className="hero-text">
             <div className="text-with-shadow">
-              <div className="text-shadow-element">Single Crystal Diamond Substrates</div>
-              <h2 className="hero-subheadline">Single Crystal Diamond Substrates</h2>
+              <div className="text-shadow-element">Flawless Diamond Substrates</div>
+              <h2 className="hero-subheadline">Flawless Diamond Substrates</h2>
             </div>
             <div className="text-with-shadow">
-              <div className="text-shadow-element">Advanced HPHT technology for cutting-edge applications</div>
-              <p className="hero-description">Advanced HPHT technology for cutting-edge applications</p>
+              <div className="text-shadow-element">Produced by Advanced HPHT (AHPHT) technology for cutting-edge applications</div>
+              <p className="hero-description">Produced by Advanced HPHT (AHPHT) technology for cutting-edge applications</p>
             </div>
+            
+            {/* Кнопка для открытия модального окна */}
+            <button 
+              className="hero-button" 
+              onClick={openModal}
+              aria-label="Contact us for more information"
+              style={{
+                background: 'linear-gradient(to right, #00837f, #241e46)',
+                color: 'white',
+                border: 'none',
+                borderRadius: '8px',
+                padding: '16px 32px',
+                fontSize: 'var(--text-xl)',
+                fontWeight: 'var(--font-weight-semibold)',
+                cursor: 'pointer',
+                boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3)',
+                marginTop: 'var(--spacing-8)',
+                transition: 'all 0.3s ease',
+                textTransform: 'uppercase',
+                letterSpacing: '1px',
+                position: 'relative',
+                zIndex: 3,
+                outline: 'none',
+              }}
+              onMouseOver={(e) => {
+                const target = e.currentTarget as HTMLButtonElement;
+                target.style.transform = 'translateY(-3px)';
+                target.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.4)';
+                target.style.background = 'linear-gradient(to right, #009e99, #2d267a)';
+              }}
+              onMouseOut={(e) => {
+                const target = e.currentTarget as HTMLButtonElement;
+                target.style.transform = 'translateY(0)';
+                target.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.3)';
+                target.style.background = 'linear-gradient(to right, #00837f, #241e46)';
+              }}
+            >
+              Get in touch
+            </button>
           </div>
         </div>
       </div>
+      
+      {/* Модальное окно с контактной формой */}
+      <ContactModal isOpen={modalOpen} onClose={closeModal} />
     </section>
   );
 };

@@ -1,50 +1,40 @@
 /* Header styles */
 .static-header {
-  position: fixed;
-  top: 0;
+  position: absolute;
+  top: 10px;
   left: 0;
   right: 0;
   width: 100%;
   height: 70px;
-  background-color: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background-color: transparent;
   z-index: var(--z-fixed);
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-normal);
-  will-change: background-color, box-shadow, height;
-  contain: layout;
-}
-
-/* Эффект при прокрутке */
-.static-header.scrolled {
-  background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: var(--shadow-md);
 }
 
 .header-container {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  width: 100%;
   height: 100%;
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  padding: 0 var(--spacing-6);
-  transition: padding var(--transition-normal);
 }
 
+/* Логотип слева, но на одной линии с меню */
 .logo-wrapper {
+  position: absolute;
+  left: 15px;
   display: flex;
   align-items: center;
   height: 100%;
-  padding: var(--spacing-2) 0;
+  z-index: 1;
 }
 
 .header-logo {
-  height: 50px;
+  height: 65px;
   width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.07));
+  /* Белая тень для логотипа */
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.99)) 
+          drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
 }
 
 /* Placeholder logo styling */
@@ -60,9 +50,12 @@
   letter-spacing: 1px;
 }
 
+/* Меню центрировано на всю ширину */
 .static-menu {
+  width: 100%;
   height: 100%;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -73,7 +66,7 @@
   padding: 0;
   height: 100%;
   align-items: center;
-  gap: var(--spacing-8);
+  gap: var(--spacing-20); /* Увеличенные отступы между пунктами меню */
 }
 
 .static-menu li {
@@ -84,52 +77,56 @@
 }
 
 .static-menu a {
-  color: var(--primary-dark-blue);
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-medium);
+  color: white; /* Белый текст */
+  font-size: var(--text-xl); /* Увеличенный размер шрифта */
+  font-weight: var(--font-weight-semibold);
   text-decoration: none;
   padding: var(--spacing-1) 0;
   position: relative;
   letter-spacing: 0.5px;
   white-space: nowrap;
   text-transform: uppercase;
+  /* Градиентная тень для текста */
+  text-shadow: 
+    0 0 10px rgba(0, 131, 127, 0.6),
+    0 0 15px rgba(36, 30, 70, 0.5);
+  /* Убираем фокусную рамку при клике */
+  outline: none;
+  /* Плавный переход для эффектов наведения */
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.static-menu a:focus {
+  outline: none;
 }
 
 .static-menu a:hover {
-  color: var(--primary-teal);
+  /* Усиленная градиентная тень при наведении (ярче) */
+  text-shadow: 
+    0 0 12px rgba(0, 131, 127, 1),
+    0 0 20px rgba(36, 30, 70, 0.9),
+    0 0 25px rgba(255, 255, 255, 0.5);
+  /* Минимальное увеличение при наведении */
+  transform: scale(1.03);
 }
 
-.static-menu a::after {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--main-gradient);
-  transition: width 0.3s ease;
-}
-
-.static-menu a:hover::after {
-  width: 100%;
-}
-
-/* Переопределение стилей для активного элемента, чтобы они не отличались */
+/* Переопределение стилей для активного элемента */
 .static-menu a.active {
-  color: var(--primary-dark-blue); /* Такой же цвет, как и у неактивных пунктов */
-}
-
-.static-menu a.active::after {
-  width: 0;
+  /* Усиленная градиентная тень для активного элемента */
+  text-shadow: 
+    0 0 10px rgba(0, 131, 127, 0.9),
+    0 0 20px rgba(36, 30, 70, 0.8);
 }
 
 /* При наведении на активный элемент */
 .static-menu a.active:hover {
-  color: var(--primary-teal); /* Такой же цвет при наведении, как у других пунктов */
-}
-
-.static-menu a.active:hover::after {
-  width: 100%;
+  /* Еще более усиленная тень при наведении на активный элемент */
+  text-shadow: 
+    0 0 15px rgba(0, 131, 127, 1),
+    0 0 25px rgba(36, 30, 70, 0.9),
+    0 0 30px rgba(255, 255, 255, 0.6);
+  /* Минимальное увеличение при наведении */
+  transform: scale(1.03);
 }
 
 /* Анимация появления элементов */
@@ -149,14 +146,11 @@
   animation-fill-mode: both;
   animation-timing-function: ease-out;
   will-change: opacity, transform;
-  contain: layout;
 }
 
-/* Улучшенная доступность */
+/* Улучшенная доступность - изменена для соответствия запросу */
 .static-menu a:focus-visible {
-  outline: 2px solid var(--primary-teal);
-  outline-offset: 4px;
-  border-radius: var(--radius-sm);
+  outline: none;
 }
 
 /* Боковое скользящее меню для мобильных устройств */
@@ -174,121 +168,25 @@
   width: 24px;
   height: 2px;
   margin: 4px 0;
-  background-color: var(--primary-dark-blue);
+  background: var(--main-gradient);
   transition: all var(--transition-fast);
 }
 
 /* Prefers reduced motion - соблюдаем доступность */
 @media (prefers-reduced-motion: reduce) {
   .static-header,
-  .static-header.scrolled,
   .header-container,
-  .static-menu a::after,
   .fade-in {
     transition: none;
     animation: none;
   }
-}
-
-/* Media queries for responsive behavior */
-@media (max-width: 1024px) {
-  .static-menu ul {
-    gap: var(--spacing-5);
-  }
   
   .static-menu a {
-    font-size: var(--text-xs);
+    transition: none;
   }
   
-  .header-container {
-    padding: 0 var(--spacing-4);
-  }
-  
-  .static-header.scrolled {
-    height: 60px;
-  }
-}
-
-@media (max-width: 768px) {
-  .static-header {
-    height: 70px;
-  }
-  
-  .header-container {
-    padding: 0 var(--spacing-2);
-  }
-  
-  .menu-toggle {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .static-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 80%;
-    max-width: 300px;
-    height: 100vh;
-    background-color: var(--white);
-    box-shadow: var(--shadow-lg);
-    padding: var(--spacing-16) var(--spacing-4) var(--spacing-4);
-    transition: right var(--transition-normal);
-    z-index: var(--z-menu);
-  }
-  
-  .static-menu.open {
-    right: 0;
-  }
-  
-  .static-menu ul {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    height: auto;
-    gap: var(--spacing-4);
-  }
-  
-  .static-menu li {
-    width: 100%;
-    height: auto;
-  }
-  
-  .static-menu a {
-    display: block;
-    width: 100%;
-    padding: var(--spacing-2) 0;
-    font-size: var(--text-lg);
-    border-bottom: 1px solid var(--light-gray);
-  }
-  
-  .logo-wrapper {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .header-logo {
-    height: 40px;
-  }
-}
-
-@media (max-width: 480px) {
-  .header-logo {
-    height: 30px;
-  }
-  
-  .placeholder-logo {
-    font-size: var(--text-lg);
-  }
-  
-  .menu-toggle span {
-    width: 20px;
-  }
-  
-  .static-menu a {
-    font-size: var(--text-base);
+  .static-menu a:hover {
+    transform: none;
   }
 }
 
@@ -316,4 +214,92 @@
 
 .menu-toggle span.open:nth-child(3) {
   transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Media queries for responsive behavior */
+@media (max-width: 1024px) {
+  .static-menu ul {
+    gap: var(--spacing-5);
+  }
+  
+  .static-menu a {
+    font-size: var(--text-xs);
+  }
+}
+
+@media (max-width: 768px) {
+  .static-header {
+    background-color: rgba(0, 0, 0, 0.5); /* Немного затемнить на мобильных */
+  }
+  
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .static-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: var(--spacing-16) var(--spacing-4) var(--spacing-4);
+    transition: right var(--transition-normal);
+    z-index: var(--z-menu);
+  }
+  
+  .static-menu.open {
+    right: 0;
+  }
+  
+  .static-menu ul {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    gap: var(--spacing-4);
+  }
+  
+  .static-menu li {
+    width: 100%;
+    height: auto;
+  }
+  
+  .static-menu a {
+    display: block;
+    width: 100%;
+    padding: var(--spacing-2) 0;
+    font-size: var(--text-lg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .header-logo {
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-logo {
+    height: 30px;
+  }
+  
+  .placeholder-logo {
+    font-size: var(--text-lg);
+  }
+  
+  .menu-toggle span {
+    width: 20px;
+  }
+  
+  .static-menu a {
+    font-size: var(--text-base);
+  }
 } 

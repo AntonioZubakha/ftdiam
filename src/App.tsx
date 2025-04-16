@@ -24,11 +24,12 @@ import './styles/contacts.css'
 import './styles/footer.css'
 import './styles/home.css'
 import './styles/backgrounds.css'
+import './styles/contact-modal.css' // Стили для модального окна Contact
+import './styles/technology-modal.css' // Стили для модального окна Technology
 
 // Main App component
 function App() {
   const [activeSection, setActiveSection] = useState('home')
-  const [scrolled, setScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   
@@ -58,13 +59,6 @@ function App() {
   
   // Функция обработки скролла
   const handleScroll = () => {
-    // Обновляем стиль хедера при скролле
-    if (window.scrollY > 50) {
-      setScrolled(true)
-    } else {
-      setScrolled(false)
-    }
-    
     const scrollPosition = window.scrollY + window.innerHeight / 3;
     
     // Определяем, какая секция сейчас видна
@@ -134,13 +128,13 @@ function App() {
           <Header activeSection={activeSection} scrollToSection={scrollToSection} />
 
           <main className="no-gap-container" style={{ position: 'relative' }}>
-            <HomeSection />
+            <HomeSection scrollToSection={scrollToSection} />
             <IntroSection />
-            <MissionSection />
-            <WhoWeAreSection />
             <TechnologySection />
             <ProductsSection />
             <QualitySection />
+            <MissionSection />
+            <WhoWeAreSection />
             <ContactsSection />
           </main>
 

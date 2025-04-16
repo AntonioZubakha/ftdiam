@@ -99,6 +99,13 @@
 .intro-section .spec-block {
   position: relative;
   overflow: hidden;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 2rem;
+  padding: 2.5rem 1.5rem;
 }
 
 /* Добавляем декоративный светящийся элемент */
@@ -143,6 +150,11 @@
   text-align: center;
   transition: transform 0.3s ease;
   border: 1px solid rgba(0, 0, 0, 0.05);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .spec-block:hover {
@@ -156,15 +168,17 @@
 
 .spec-name {
   color: var(--primary-dark-blue);
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   font-size: var(--h4-desktop);
   font-weight: 600;
+  margin-top: 1rem;
 }
 
 .spec-description {
   color: var(--dark-gray);
   font-size: var(--text-base);
-  margin-top: 0.5rem;
+  margin-top: 1rem;
+  line-height: 1.4;
 }
 
 .section-description {
