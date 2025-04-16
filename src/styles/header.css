@@ -1,12 +1,25 @@
 /* Header styles */
 .static-header {
   position: absolute;
-  top: 10px;
+  top: 0;
   left: 0;
   right: 0;
   width: 100%;
   height: 70px;
-  background-color: transparent;
+  background-color: white;
+  z-index: var(--z-fixed);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Добавляем белый фон над хедером */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background-color: white;
   z-index: var(--z-fixed);
 }
 
@@ -32,9 +45,6 @@
   height: 65px;
   width: auto;
   object-fit: contain;
-  /* Белая тень для логотипа */
-  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.99)) 
-          drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
 }
 
 /* Placeholder logo styling */
@@ -77,7 +87,10 @@
 }
 
 .static-menu a {
-  color: white; /* Белый текст */
+  background: var(--main-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: var(--text-xl); /* Увеличенный размер шрифта */
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
@@ -86,14 +99,10 @@
   letter-spacing: 0.5px;
   white-space: nowrap;
   text-transform: uppercase;
-  /* Градиентная тень для текста */
-  text-shadow: 
-    0 0 10px rgba(0, 131, 127, 0.6),
-    0 0 15px rgba(36, 30, 70, 0.5);
   /* Убираем фокусную рамку при клике */
   outline: none;
   /* Плавный переход для эффектов наведения */
-  transition: transform 0.3s ease, text-shadow 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .static-menu a:focus {
@@ -101,30 +110,23 @@
 }
 
 .static-menu a:hover {
-  /* Усиленная градиентная тень при наведении (ярче) */
-  text-shadow: 
-    0 0 12px rgba(0, 131, 127, 1),
-    0 0 20px rgba(36, 30, 70, 0.9),
-    0 0 25px rgba(255, 255, 255, 0.5);
   /* Минимальное увеличение при наведении */
   transform: scale(1.03);
 }
 
 /* Переопределение стилей для активного элемента */
 .static-menu a.active {
-  /* Усиленная градиентная тень для активного элемента */
-  text-shadow: 
-    0 0 10px rgba(0, 131, 127, 0.9),
-    0 0 20px rgba(36, 30, 70, 0.8);
+  font-weight: var(--font-weight-bold);
+  position: relative;
+}
+
+/* Удаляем подчеркивание у активного элемента */
+.static-menu a.active::after {
+  content: none;
 }
 
 /* При наведении на активный элемент */
 .static-menu a.active:hover {
-  /* Еще более усиленная тень при наведении на активный элемент */
-  text-shadow: 
-    0 0 15px rgba(0, 131, 127, 1),
-    0 0 25px rgba(36, 30, 70, 0.9),
-    0 0 30px rgba(255, 255, 255, 0.6);
   /* Минимальное увеличение при наведении */
   transform: scale(1.03);
 }
@@ -229,7 +231,7 @@
 
 @media (max-width: 768px) {
   .static-header {
-    background-color: rgba(0, 0, 0, 0.5); /* Немного затемнить на мобильных */
+    background-color: white;
   }
   
   .menu-toggle {
@@ -250,10 +252,11 @@
     width: 80%;
     max-width: 300px;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: white;
     padding: var(--spacing-16) var(--spacing-4) var(--spacing-4);
     transition: right var(--transition-normal);
     z-index: var(--z-menu);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
   }
   
   .static-menu.open {
@@ -278,7 +281,7 @@
     width: 100%;
     padding: var(--spacing-2) 0;
     font-size: var(--text-lg);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
   
   .header-logo {
