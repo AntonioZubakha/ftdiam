@@ -1,109 +1,173 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
-interface HeaderProps {
-  activeSection: string;
-  scrollToSection: (section: string) => void;
-}
-
-const Header = ({ activeSection, scrollToSection }: HeaderProps) => {
+const Header = () => {
+  const [logoError, setLogoError] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
   const [scrolled, setScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
+  // Закрытие меню при нажатии Escape - для доступности
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Escape' && menuOpen) {
+      setMenuOpen(false);
+    }
+  }, [menuOpen]);
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (isMenuOpen) {
-        setIsMenuOpen(false);
-        document.body.style.overflow = 'auto';
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [isMenuOpen]);
-
-  useEffect(() => {
-    const handleEscKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && isMenuOpen) {
-        setIsMenuOpen(false);
-        document.body.style.overflow = 'auto';
-      }
-    };
-
-    document.addEventListener('keydown', handleEscKey);
-    return () => document.removeEventListener('keydown', handleEscKey);
-  }, [isMenuOpen]);
-
-  const toggleMenu = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setIsMenuOpen(!isMenuOpen);
-    document.body.style.overflow = !isMenuOpen ? 'hidden' : 'auto';
-  };
-
-  const closeMenu = () => {
-    if (isMenuOpen) {
-      setIsMenuOpen(false);
-      document.body.style.overflow = 'auto';
+  // Обработчик клика по пунктам меню
+  const handleSectionClick = (sectionId: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setActiveSection(sectionId);
+      setMenuOpen(false); // Закрываем меню при клике на пункт
     }
   };
 
-  const handleSectionClick = (section: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    scrollToSection(section);
-    closeMenu();
+  // Блокировка скролла при открытом меню
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    
+    // Слушатель клавиатуры для доступности
+    window.addEventListener('keydown', handleKeyDown);
+    
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [menuOpen, handleKeyDown]);
+
+  // Определение активного раздела при прокрутке
+  useEffect(() => {
+    const handleScroll = () => {
+      // Меняем состояние прокрутки для эффекта хедера
+      const isScrolled = window.scrollY > 50;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+      
+      const sections = [
+        'home',
+        'about',
+        'products',
+        'applications',
+        'facilities',
+        'diamond',
+        'contacts'
+      ];
+      
+      const scrollPosition = window.scrollY + 100; // Смещение для лучшего определения активного раздела
+      
+      let activeFound = false;
+      
+      // Находим текущий активный раздел
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i]);
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i]);
+          activeFound = true;
+          break;
+        }
+      }
+      
+      // Если ни один раздел не активен (например, пользователь в самом верху страницы)
+      if (!activeFound) {
+        setActiveSection('');
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Вызываем при монтировании
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrolled]);
+
+  const handleLogoError = () => {
+    setLogoError(true);
+  };
+  
+  // Функция для управления анимацией появления элементов
+  const getAnimationDelay = (index: number) => {
+    return {
+      animationDelay: `${0.1 + index * 0.05}s`
+    };
+  };
+
+  // Переключение меню
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
   };
 
   const menuItems = [
-    { id: 'about', label: 'Our Blueprint' },
-    { id: 'technology', label: 'Advanced HPHT' },
+    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' },
     { id: 'products', label: 'Products' },
-    { id: 'quality', label: 'Quality Analysis' },
-    { id: 'contacts', label: 'Contacts' },
+    { id: 'applications', label: 'Applications' },
+    { id: 'facilities', label: 'Facilities' },
+    { id: 'diamond', label: 'Diamond' },
+    { id: 'contacts', label: 'Contact' }
   ];
 
   return (
-    <header className={scrolled ? 'scrolled' : ''} onClick={() => handleSectionClick('home', window.event as any)}>
-      <nav className={isMenuOpen ? 'open' : ''} onClick={(e) => e.stopPropagation()}>
-        <div className="close-button" onClick={closeMenu}>
-          <span className="close-icon"></span>
+    <header className={`static-header ${scrolled ? 'scrolled' : ''}`}>
+      <div className="header-container">
+        <div className="logo-wrapper fade-in">
+          <a href="#home" onClick={(e) => handleSectionClick('home', e)}>
+            {!logoError ? (
+              <img 
+                src="/images/Logo.png" 
+                alt="FTD Logo" 
+                className="header-logo" 
+                onError={handleLogoError} 
+              />
+            ) : (
+              <span className="placeholder-logo">FTD</span>
+            )}
+          </a>
         </div>
-        <ul>
-          {menuItems.map((item) => (
-            <li 
-              key={item.id}
-              className={activeSection === item.id ? 'active' : ''}
-              onClick={(e) => handleSectionClick(item.id, e)}
-            >
-              <span>{item.label}</span>
-            </li>
-          ))}
-        </ul>
-      </nav>
-       
-      <button 
-        className={`menu-button ${isMenuOpen ? 'active' : ''}`} 
-        onClick={toggleMenu}
-        aria-label="Toggle menu"
-      >
-        <span className="menu-icon"></span>
-      </button>
-
-      <div 
-        className={`menu-overlay ${isMenuOpen ? 'active' : ''}`} 
-        onClick={closeMenu}
-      ></div>
+        
+        <button 
+          className="menu-toggle" 
+          onClick={toggleMenu}
+          aria-expanded={menuOpen}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+        >
+          <span className={menuOpen ? "open" : ""}></span>
+          <span className={menuOpen ? "open" : ""}></span>
+          <span className={menuOpen ? "open" : ""}></span>
+        </button>
+        
+        <nav className={`static-menu ${menuOpen ? 'open' : ''}`}>
+          <ul>
+            {menuItems.map((item, index) => (
+              <li key={item.id} style={getAnimationDelay(index)} className="fade-in">
+                <a 
+                  href={`#${item.id}`}
+                  onClick={(e) => handleSectionClick(item.id, e)}
+                  className={activeSection === item.id ? 'active' : ''}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        
+        {/* Оверлей для мобильного меню */}
+        {menuOpen && (
+          <div 
+            className="menu-overlay" 
+            onClick={() => setMenuOpen(false)}
+            aria-hidden="true"
+          ></div>
+        )}
+      </div>
     </header>
   );
 };

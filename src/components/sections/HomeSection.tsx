@@ -103,15 +103,6 @@ const HomeSection = () => {
         <div className="center-marker"></div>
       </div>
       
-      {/* Логотип, центрированный абсолютно */}
-      <div className="logo-container">
-        <img 
-          src="/images/Logo_white.png" 
-          alt="FTDiam Logo" 
-          className="absolute-center-logo" 
-        />
-      </div>
-      
       <div className="content-wrapper">
         <div className="hero-content">
           <div className="hero-text-background"></div>

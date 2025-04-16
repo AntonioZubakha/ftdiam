@@ -3,14 +3,15 @@
   height: 101vh;
   min-height: 600px;
   padding: 0;
+  padding-top: var(--header-height); /* Используем переменную для отступа */
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
   margin-bottom: -2px; /* Отрицательный отступ для устранения пробела */
-  background-color: black; /* Добавляем черный фон ко всей секции */
-  border-bottom: 5px solid black; /* Добавляем черную границу внизу */
+  background-color: var(--black); /* Используем переменную для черного фона */
+  border-bottom: 5px solid var(--black); /* Используем переменную для границы */
 }
 
 .home-section .content-wrapper {
@@ -31,8 +32,8 @@
   width: 100%;
   height: 110%; /* Значительно увеличиваем высоту */
   overflow: hidden;
-  z-index: 1;
-  background-color: black; /* Добавляем черный фон */
+  z-index: var(--z-back);
+  background-color: var(--black); /* Используем переменную для черного фона */
 }
 
 /* Добавляем дополнительный оверлей внизу видео-контейнера для перекрытия белой линии */
@@ -43,7 +44,7 @@
   left: 0;
   width: 100%;
   height: 20px;
-  background-color: black;
+  background-color: var(--black);
   z-index: 4;
 }
 
@@ -54,7 +55,7 @@
   height: 110%; /* Значительно увеличиваем высоту */
   position: relative;
   overflow: hidden;
-  background-color: black; /* Добавляем черный фон */
+  background-color: var(--black); /* Используем переменную для черного фона */
 }
 
 .split-screen-left,
@@ -63,7 +64,7 @@
   width: 50%;
   height: 110%; /* Значительно увеличиваем высоту */
   overflow: hidden;
-  background-color: black; /* Добавляем черный фон */
+  background-color: var(--black); /* Используем переменную для черного фона */
 }
 
 /* Стили для мобильного видео (полный экран) */
@@ -72,7 +73,7 @@
   height: 110%; /* Значительно увеличиваем высоту */
   position: relative;
   overflow: hidden;
-  background-color: black; /* Добавляем черный фон */
+  background-color: var(--black); /* Используем переменную для черного фона */
 }
 
 .background-video {
@@ -104,35 +105,9 @@
   width: 2px;
   height: 100%;
   background-color: rgba(255, 0, 0, 0.8);
-  z-index: 20;
+  z-index: var(--z-menu);
   pointer-events: none;
   display: none; /* Скрываем маркер центра */
-}
-
-/* Контейнер для логотипа */
-.logo-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  pointer-events: none; /* Чтобы логотип не перехватывал клики */
-}
-
-/* Абсолютно позиционированный логотип */
-.absolute-center-logo {
-  position: relative;
-  top: -10%;
-  width: 300px;
-  height: auto;
-  z-index: 10;
-  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
-  animation: var(--float-animation);
-  pointer-events: none; /* Чтобы логотип не перехватывал клики */
 }
 
 .hero-content {
@@ -144,17 +119,17 @@
   color: var(--white);
   position: relative;
   z-index: 6;
-  padding: 2rem;
-  max-width: 800px;
+  padding: var(--spacing-8);
+  max-width: 1000px;
   width: 100%;
   animation: fadeIn 1.5s ease;
-  margin-top: 250px; /* Увеличиваем отступ сверху для текста */
+  margin-top: -30px; /* Adjust for header height to maintain vertical centering */
 }
 
 .hero-text {
   width: 100%;
   position: relative;
-  padding: 1.5rem 0;
+  padding: var(--spacing-6) 0;
 }
 
 /* Градиентный фон за текстом */
@@ -199,17 +174,18 @@
   display: inline-block;
   animation: fadeIn 1.2s ease-out, slideUp 1s ease-out;
   z-index: 3;
+  margin-bottom: var(--spacing-8);
 }
 
 /* Стили для тени текста */
 .text-shadow-element {
   position: absolute;
-  top: 6px;
-  left: 6px;
+  top: 8px;
+  left: 8px;
   width: 100%;
   z-index: 1;
   color: rgba(0, 0, 0, 0.7);
-  filter: blur(6px);
+  filter: blur(8px);
   opacity: 0.8;
   font-size: inherit;
   font-weight: inherit;
@@ -222,37 +198,39 @@
 
 /* Стили для заголовка */
 .hero-subheadline {
-  font-size: var(--h2-desktop);
-  margin-bottom: 1rem;
+  font-size: var(--text-5xl); /* Используем переменную для размера */
+  margin-bottom: var(--spacing-6);
   position: relative;
   z-index: 3;
-  font-weight: var(--font-medium);
-  color: #ffffff;
+  font-weight: var(--font-weight-bold);
+  color: var(--white);
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
   filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5));
+  letter-spacing: 1px;
 }
 
 /* Стили для описания */
 .hero-description {
-  font-size: var(--text-xl);
-  margin-bottom: 1rem;
-  max-width: 600px;
+  font-size: var(--text-3xl); /* Используем переменную для размера */
+  margin-bottom: var(--spacing-4);
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
-  color: #ffffff;
+  color: var(--white);
   position: relative;
   z-index: 3;
   filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5));
+  letter-spacing: 0.5px;
 }
 
 /* Медиа-запросы */
 @media (max-width: 1024px) {
   .hero-subheadline {
-    font-size: var(--h2-tablet);
+    font-size: var(--h1-tablet);
   }
   
   .hero-description {
-    font-size: var(--text-lg);
+    font-size: var(--h2-tablet);
   }
 }
 
@@ -268,55 +246,41 @@
     height: 50%;
   }
   
-  .absolute-center-logo {
-    top: -15%; /* Уменьшаем смещение вверх для лучшего позиционирования */
-    width: 250px;
-  }
-  
-  .mobile-screen .background-video {
-    object-position: center; /* Убедимся, что мобильное видео центрировано */
-  }
-  
   .hero-content {
-    margin-top: 160px; /* Оптимизируем положение контента */
-    padding: 1.5rem;
+    margin-top: 0;
+    padding: var(--spacing-6);
   }
   
   .hero-subheadline {
-    font-size: var(--h2-tablet);
+    font-size: var(--h1-mobile);
   }
   
   .hero-description {
-    font-size: var(--text-lg);
+    font-size: var(--h2-mobile);
   }
   
   .text-backdrop {
-    padding: 12px 20px;
+    padding: var(--spacing-3) var(--spacing-5);
     max-width: 90%;
   }
 }
 
 @media (max-width: 480px) {
-  .absolute-center-logo {
-    width: 180px; /* Немного уменьшаем размер логотипа */
-    top: -10%; /* Меньше смещение для маленьких экранов */
-  }
-  
   .hero-subheadline {
-    font-size: var(--h2-mobile);
+    font-size: var(--h1-mobile);
   }
   
   .hero-description {
-    font-size: var(--text-base);
+    font-size: var(--h3-mobile);
   }
   
   .hero-content {
-    margin-top: 130px; /* Адаптированное положение для маленьких экранов */
-    padding: 1rem;
+    margin-top: 0;
+    padding: var(--spacing-4);
   }
   
   .text-backdrop {
-    padding: 10px 15px;
+    padding: var(--spacing-2) var(--spacing-4);
     max-width: 95%;
   }
 }
