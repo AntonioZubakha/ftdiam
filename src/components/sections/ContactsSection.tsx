@@ -53,57 +53,70 @@ const ContactsSection = () => {
         }}>
           <div className="contact-info" style={{ 
             padding: isMobile ? '0' : '30px',
-            marginBottom: isMobile ? '0' : '0'
+            marginBottom: isMobile ? '0' : '0',
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100%'
           }}>
             <div className="contact-info-header">
               <h3 className="info-title" style={{ 
                 fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)',
-                marginBottom: isMobile ? '10px' : '25px'
+                marginBottom: isMobile ? '10px' : '15px'
               }}>Contact Information</h3>
             </div>
             
-            <div className="contact-info-item" style={{ marginBottom: isMobile ? '5px' : '15px' }}>
-              <div className="contact-icon" style={{ fontSize: isMobile ? 'var(--text-lg)' : 'var(--h4-desktop)' }}>
-                <FontAwesomeIcon icon={faEnvelope} />
-              </div>
-              <div className="contact-text">
-                <span className="contact-label" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Email</span>
-                <a href="mailto:info@ftdiam.com" className="contact-value" style={{ fontSize: isMobile ? 'var(--text-base)' : 'var(--text-lg)' }}>info@ftdiam.com</a>
-              </div>
-            </div>
-            
-            <div className="contact-info-item" style={{ marginBottom: isMobile ? '5px' : '15px' }}>
-              <div className="contact-icon" style={{ fontSize: isMobile ? 'var(--text-lg)' : 'var(--h4-desktop)' }}>
-                <FontAwesomeIcon icon={faPhone} />
-              </div>
-              <div className="contact-text">
-                <span className="contact-label" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Phone</span>
-                <a href="tel:+16172752599" className="contact-value" style={{ fontSize: isMobile ? 'var(--text-base)' : 'var(--text-lg)' }}>+1 617 275 2599</a>
-              </div>
-            </div>
-            
-            <div className="contact-info-item" style={{ marginBottom: isMobile ? '5px' : '15px' }}>
-              <div className="contact-icon" style={{ fontSize: isMobile ? 'var(--text-lg)' : 'var(--h4-desktop)' }}>
-                <FontAwesomeIcon icon={faLinkedin} />
-              </div>
-              <div className="contact-text">
-                <span className="contact-label" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>LinkedIn</span>
-                <a href="https://www.linkedin.com/company/ftdiam" target="_blank" rel="noopener noreferrer" className="contact-value" style={{ fontSize: isMobile ? 'var(--text-base)' : 'var(--text-lg)' }}>
-                  Follow us
-                </a>
-              </div>
-            </div>
-            
-            <div className="contact-info-item" style={{ marginBottom: isMobile ? '5px' : '15px' }}>
-              <div className="contact-icon" style={{ fontSize: isMobile ? 'var(--text-lg)' : 'var(--h4-desktop)' }}>
-                <FontAwesomeIcon icon={faLocationDot} />
-              </div>
-              <div className="contact-text">
-                <span className="contact-label" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Address</span>
-                <p className="contact-value" style={{ fontSize: isMobile ? 'var(--text-base)' : 'var(--text-lg)' }}>
-                  220 Park Ave PMB 83131<br />
-                  New York, NY 10003, USA
-                </p>
+            <div style={{ 
+              display: 'flex', 
+              flexDirection: 'column', 
+              gap: isMobile ? '12px' : '20px',
+              height: '100%',
+              justifyContent: 'space-between'
+            }}>
+              <div>
+                <div className="contact-info-item" style={{ marginBottom: isMobile ? '12px' : '20px' }}>
+                  <div className="contact-icon" style={{ fontSize: isMobile ? 'var(--text-lg)' : 'var(--h4-desktop)' }}>
+                    <FontAwesomeIcon icon={faEnvelope} />
+                  </div>
+                  <div className="contact-text">
+                    <span className="contact-label" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Email</span>
+                    <a href="mailto:info@ftdiam.com" className="contact-value" style={{ fontSize: isMobile ? 'var(--text-base)' : 'var(--text-lg)' }}>info@ftdiam.com</a>
+                  </div>
+                </div>
+                
+                <div className="contact-info-item" style={{ marginBottom: isMobile ? '12px' : '20px' }}>
+                  <div className="contact-icon" style={{ fontSize: isMobile ? 'var(--text-lg)' : 'var(--h4-desktop)' }}>
+                    <FontAwesomeIcon icon={faPhone} />
+                  </div>
+                  <div className="contact-text">
+                    <span className="contact-label" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Phone</span>
+                    <a href="tel:+16172752599" className="contact-value" style={{ fontSize: isMobile ? 'var(--text-base)' : 'var(--text-lg)' }}>+1 617 275 2599</a>
+                  </div>
+                </div>
+                
+                <div className="contact-info-item" style={{ marginBottom: isMobile ? '12px' : '20px' }}>
+                  <div className="contact-icon" style={{ fontSize: isMobile ? 'var(--text-lg)' : 'var(--h4-desktop)' }}>
+                    <FontAwesomeIcon icon={faLinkedin} />
+                  </div>
+                  <div className="contact-text">
+                    <span className="contact-label" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>LinkedIn</span>
+                    <a href="https://www.linkedin.com/company/ftdiam" target="_blank" rel="noopener noreferrer" className="contact-value" style={{ fontSize: isMobile ? 'var(--text-base)' : 'var(--text-lg)' }}>
+                      Follow us
+                    </a>
+                  </div>
+                </div>
+              
+                <div className="contact-info-item" style={{ marginBottom: '0' }}>
+                  <div className="contact-icon" style={{ fontSize: isMobile ? 'var(--text-lg)' : 'var(--h4-desktop)' }}>
+                    <FontAwesomeIcon icon={faLocationDot} />
+                  </div>
+                  <div className="contact-text">
+                    <span className="contact-label" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Address</span>
+                    <p className="contact-value" style={{ fontSize: isMobile ? 'var(--text-base)' : 'var(--text-lg)' }}>
+                      220 Park Ave PMB 83131<br />
+                      New York, NY 10003, USA
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
