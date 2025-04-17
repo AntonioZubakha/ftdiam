@@ -46,7 +46,6 @@ const BluePrint: React.FC = () => {
     display: 'inline-block'
   };
 
-  // Новый стиль для обновленного макета
   const newLayoutStyles = {
     display: 'grid',
     gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
@@ -54,12 +53,10 @@ const BluePrint: React.FC = () => {
     width: '100%',
     margin: isMobile ? '10px auto 0' : '20px auto 0',
     position: 'relative' as const,
-    maxWidth: '1200px',
-    overflow: 'hidden'
+    maxWidth: '1200px'
   };
 
-  // Стиль для левой колонки (About + люди)
-  const leftColumnStyles = {
+  const columnStyles = {
     display: 'flex',
     flexDirection: 'column' as const,
     height: '100%',
@@ -67,69 +64,43 @@ const BluePrint: React.FC = () => {
     marginBottom: isMobile ? '15px' : '0'
   };
 
-  // Стиль для правой колонки (История)
-  const rightColumnStyles = {
-    padding: isMobile ? '20px 15px' : '50px 60px',
-    height: '100%',
-    position: 'relative' as const,
-    minHeight: isMobile ? 'auto' : '900px', // Чтобы история занимала всю высоту
-    display: 'flex',
-    flexDirection: 'column' as const,
-    justifyContent: 'flex-start' as const,
-    backgroundColor: '#fff'
-  };
-
-  // Базовый стиль для блоков
   const blockStyles = {
-    padding: '40px',
-    position: 'relative' as const,
-    zIndex: 1,
-    display: 'flex' as const,
-    flexDirection: 'column' as const,
-    justifyContent: 'flex-start' as const
-  };
-
-  const aboutBlockStyles = {
-    ...blockStyles,
-    minHeight: isMobile ? '200px' : '300px',
-    padding: isMobile ? '30px 20px 5px' : '50px 40px 5px'
-  };
-
-  const foundersContainerStyles = {
     display: 'flex',
-    flexDirection: isMobile ? 'column' as const : 'row' as const,
-    height: isMobile ? 'auto' : '500px',
-    marginTop: '0px',
-    gap: isMobile ? '15px' : '0'
+    flexDirection: 'column' as const,
+    alignItems: 'center',
+    padding: '0',
+    marginTop: '20px'
   };
 
-  const founderBlockStyles = {
-    ...blockStyles,
-    flex: 1,
-    padding: isMobile ? '15px 15px' : '40px 30px',
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-    ':hover': {
-      transform: 'translateY(-5px)',
-      boxShadow: '0 10px 25px rgba(0, 0, 0, 0.08)'
-    }
-  };
-
-  const blockTitleStyles = {
+  const centeredBlockTitleStyles = {
     fontSize: 'var(--h3-desktop)',
     background: 'linear-gradient(to right, #00837f, #241e46)',
     WebkitBackgroundClip: 'text' as const,
     backgroundClip: 'text' as const,
     WebkitTextFillColor: 'transparent' as const,
-    marginBottom: '20px',
-    fontWeight: '600' as const
+    fontWeight: '600' as const,
+    marginBottom: '40px',
+    textAlign: 'center' as const,
+    width: '100%'
   };
 
-  // Отдельный стиль для центрированного заголовка About Us
-  const centeredBlockTitleStyles = {
-    ...blockTitleStyles,
-    textAlign: 'center' as const,
+  const textContainerStyles = {
     width: '100%',
-    marginBottom: '40px'
+    padding: isMobile ? '0 5%' : '0 12.5%',
+    textAlign: 'left' as const
+  };
+
+  const textStyles = {
+    fontSize: isMobile ? '1rem' : '1.1rem',
+    lineHeight: '1.6',
+    color: '#555'
+  };
+
+  const founderBlockStyles = {
+    display: 'flex',
+    flexDirection: 'column' as const,
+    padding: isMobile ? '15px 15px' : '40px 30px',
+    transition: 'transform 0.3s ease, box-shadow 0.3s ease'
   };
 
   const founderPhotoStyles = {
@@ -141,24 +112,6 @@ const BluePrint: React.FC = () => {
     alignItems: 'center' as const
   };
 
-  const founderPhotoImgStyles = {
-    width: '80%',
-    height: '100%',
-    objectFit: 'contain' as const
-  };
-
-  // Гарантируем что год выделен
-  const yearStyles = {
-    background: 'linear-gradient(to right, #00837f, #241e46)',
-    WebkitBackgroundClip: 'text' as const,
-    backgroundClip: 'text' as const,
-    WebkitTextFillColor: 'transparent' as const,
-    fontWeight: 'bold' as const,
-    display: 'inline-block',
-    fontSize: 'var(--text-lg)'
-  };
-
-  // Стиль для имен основателей (градиентный) - теперь как заголовки About Us и History
   const founderNameStyles = {
     fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)',
     background: 'linear-gradient(to right, #00837f, #241e46)',
@@ -170,7 +123,6 @@ const BluePrint: React.FC = () => {
     textAlign: 'center' as const
   };
 
-  // Стиль для подзаголовков (должности) - теперь тоже как About Us и History
   const roleStyles = {
     fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)',
     background: 'linear-gradient(to right, #00837f, #241e46)',
@@ -182,117 +134,6 @@ const BluePrint: React.FC = () => {
     textAlign: 'center' as const
   };
 
-  // Стили для таймлайна - полностью переделанные
-  const timelineContainerStyles = {
-    position: 'relative' as const,
-    marginTop: isMobile ? '25px' : '40px',
-    maxWidth: isMobile ? '95%' : '90%',
-    margin: isMobile ? '25px auto 0' : '40px auto 0',
-    paddingLeft: '0'
-  };
-
-  // Вертикальная линия таймлайна
-  const timelineLineStyles = {
-    position: 'absolute' as const,
-    top: '0',
-    bottom: '0',
-    left: '18px', // Центрируем линию с маркерами
-    width: '7px', // Увеличиваем толщину линии с 5px до 7px
-    background: 'linear-gradient(to bottom, #5798d1 0%, #00837f 50%, #241e46 100%)', // Тройной градиент: голубой -> бирюзовый -> темно-синий
-    zIndex: 1
-  };
-
-  const timelineItemStyles = {
-    position: 'relative' as const,
-    marginBottom: isMobile ? '25px' : '60px',
-    paddingLeft: '60px', // Увеличиваем отступ для содержимого
-    display: 'flex',
-    flexDirection: 'column' as const
-  };
-
-  // Маркеры таймлайна - делаем полые круги, убираем внутренний круг
-  const timelineMarkerStyles = {
-    position: 'absolute' as const,
-    left: '11.5px', // Точно по центру линии: 18px (позиция линии) + 3.5px (половина ширины линии) - 10px (половина ширины маркера)
-    top: '8px',
-    width: '20px',
-    height: '20px',
-    backgroundColor: 'white',
-    borderRadius: '50%',
-    zIndex: 2,
-    border: '2px solid #5798d1', // Голубой верхний маркер
-    boxSizing: 'border-box' as const
-  };
-
-  // Варианты маркеров для разных годов
-  const timelineMarker2023Styles = {
-    ...timelineMarkerStyles,
-    border: '2px solid #00837f', // Средний бирюзовый
-  };
-
-  const timelineMarker2027Styles = {
-    ...timelineMarkerStyles,
-    border: '2px solid #241e46', // Темно-синий
-  };
-
-  // Новые стили для годов в таймлайне - 2022 (бирюзовый)
-  const timelineYearStyles = {
-    fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
-    fontWeight: 'bold' as const,
-    background: 'linear-gradient(to right, #5798d1, #00837f)',
-    WebkitBackgroundClip: 'text' as const,
-    backgroundClip: 'text' as const,
-    WebkitTextFillColor: 'transparent' as const,
-    marginBottom: isMobile ? '10px' : '15px',
-    lineHeight: '1'
-  };
-
-  // 2023 (градиент)
-  const timelineYear2023Styles = {
-    fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
-    fontWeight: 'bold' as const,
-    background: 'linear-gradient(to right, #00837f, #241e46)',
-    WebkitBackgroundClip: 'text' as const,
-    backgroundClip: 'text' as const,
-    WebkitTextFillColor: 'transparent' as const,
-    marginBottom: isMobile ? '10px' : '15px',
-    lineHeight: '1'
-  };
-
-  // 2027 (темно-синий)
-  const timelineYear2027Styles = {
-    fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
-    fontWeight: 'bold' as const,
-    background: 'linear-gradient(to right, #241e46, #00837f)',
-    WebkitBackgroundClip: 'text' as const,
-    backgroundClip: 'text' as const,
-    WebkitTextFillColor: 'transparent' as const,
-    marginBottom: isMobile ? '10px' : '15px',
-    lineHeight: '1'
-  };
-
-  const timelineContentStyles = {
-    padding: '0'
-  };
-
-  // Стили для текста в таймлайне
-  const timelineTextStyles = {
-    marginTop: isMobile ? '8px' : '12px', 
-    marginBottom: '0', 
-    color: '#555', 
-    lineHeight: '1.6',
-    fontSize: isMobile ? '0.9rem' : '1rem',
-    position: 'relative' as const
-  };
-
-  // Центрированный стиль для заголовков в блоке истории
-  const historyTitleStyles = {
-    ...blockTitleStyles,
-    marginBottom: '40px',
-    textAlign: 'center' as const
-  };
-
-  // Стиль для текста биографии фаундеров - соответствует тексту под About Us
   const founderBioStyles = {
     fontSize: isMobile ? '1rem' : '1.1rem',
     lineHeight: '1.6',
@@ -300,63 +141,43 @@ const BluePrint: React.FC = () => {
     color: '#555'
   };
 
-  // Add custom styles for Dan's photo
   const ceoPhotoStyles = {
-    width: '90%', // Larger than the default 80%
-    height: '100%', // Changed from 105% to 100% to align bottoms
+    width: '90%',
+    height: '100%',
     objectFit: 'contain' as const,
-    objectPosition: 'bottom' // Align image to bottom
+    objectPosition: 'bottom'
   };
 
-  // Update the CTO photo style to also align to bottom
   const ctoPhotoStyles = {
     width: '80%',
     height: '100%',
     objectFit: 'contain' as const,
-    objectPosition: 'bottom' // Align image to bottom
+    objectPosition: 'bottom'
   };
 
   return (
-    <section 
-      id="blueprint"
-      style={sectionStyles}
-    >
+    <section id="blueprint" style={sectionStyles}>
       <div style={containerStyles}>
         <div style={{textAlign: 'center'}}>
-          <h2 style={headlineStyles}>
-            Our Blueprint
-          </h2>
+          <h2 style={headlineStyles}>Our Blueprint</h2>
         </div>
       </div>
       
       <div style={newLayoutStyles}>
-        {/* Левая колонка: About + Команда */}
-        <div style={leftColumnStyles}>
-          {/* Блок About Us */}
-          <div style={aboutBlockStyles}>
+        <div style={columnStyles}>
+          <div style={blockStyles}>
             <h3 style={centeredBlockTitleStyles}>About Us</h3>
-            <p style={{ 
-              lineHeight: '1.6', 
-              flex: 1, 
-              paddingLeft: isMobile ? '5%' : '12.5%', 
-              paddingRight: isMobile ? '5%' : '12.5%',
-              textAlign: 'left',
-              fontSize: isMobile ? '1rem' : '1.1rem'
-            }}>
-              FTDiam is a US-based deep-tech start-up in advanced materials sector. We are revolutionizing the industry with the unique Advanced HPHT (AHPHT) technology. Since our inception, we've been dedicated to producing the highest-quality single-crystal diamond substrates for advanced applications.
-            </p>
+            <div style={textContainerStyles}>
+              <p style={textStyles}>
+                FTDiam is a US-based deep-tech start-up in advanced materials sector. We are revolutionizing the industry with the unique Advanced HPHT (AHPHT) technology. Since our inception, we've been dedicated to producing the highest-quality single-crystal diamond substrates for advanced applications.
+              </p>
+            </div>
           </div>
           
-          {/* Блоки с основателями */}
-          <div style={foundersContainerStyles}>
-            {/* CTO */}
+          <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: isMobile ? '15px' : '0' }}>
             <div style={founderBlockStyles}>
               <div style={founderPhotoStyles}>
-                <img 
-                  src="/images/Dmitri.png" 
-                  alt="Dmitry Semchenko" 
-                  style={ctoPhotoStyles}
-                />
+                <img src="/images/Dmitri.png" alt="Dmitry Semchenko" style={ctoPhotoStyles} />
               </div>
               <div style={{ flex: 1, display: 'flex', flexDirection: 'column' as const }}>
                 <h3 style={founderNameStyles}>Dmitry Semchenko</h3>
@@ -367,14 +188,9 @@ const BluePrint: React.FC = () => {
               </div>
             </div>
             
-            {/* CEO */}
             <div style={founderBlockStyles}>
               <div style={founderPhotoStyles}>
-                <img 
-                  src="/images/Dan.png" 
-                  alt="Daniil Kurganov" 
-                  style={ceoPhotoStyles}
-                />
+                <img src="/images/Dan.png" alt="Daniil Kurganov" style={ceoPhotoStyles} />
               </div>
               <div style={{ flex: 1, display: 'flex', flexDirection: 'column' as const }}>
                 <h3 style={founderNameStyles}>Daniil Kurganov</h3>
@@ -387,52 +203,13 @@ const BluePrint: React.FC = () => {
           </div>
         </div>
         
-        {/* Правая колонка: История */}
-        <div style={rightColumnStyles}>
-          <h3 style={historyTitleStyles}>History</h3>
-          
-          {/* Таймлайн в новом стиле */}
-          <div style={timelineContainerStyles}>
-            {/* Вертикальная линия таймлайна */}
-            <div style={timelineLineStyles}></div>
-            
-            {/* Элемент таймлайна 2022 */}
-            <div style={timelineItemStyles}>
-              <div style={timelineMarkerStyles}>
-                {/* Убираем внутренний круг */}
-              </div>
-              <div style={timelineContentStyles}>
-                <div style={timelineYearStyles}>2022</div>
-                <p style={timelineTextStyles}>
-                  Founded as a sales-focused entity sourcing diamonds from a partner facility in India
-                </p>
-              </div>
-            </div>
-            
-            {/* Элемент таймлайна 2023 */}
-            <div style={timelineItemStyles}>
-              <div style={timelineMarker2023Styles}>
-                {/* Убираем внутренний круг */}
-              </div>
-              <div style={timelineContentStyles}>
-                <div style={timelineYear2023Styles}>2023</div>
-                <p style={timelineTextStyles}>
-                  Expanded partnerships and client base across quantum technology sector
-                </p>
-              </div>
-            </div>
-            
-            {/* Элемент таймлайна 2027 */}
-            <div style={timelineItemStyles}>
-              <div style={timelineMarker2027Styles}>
-                {/* Убираем внутренний круг */}
-              </div>
-              <div style={timelineContentStyles}>
-                <div style={timelineYear2027Styles}>2027</div>
-                <p style={timelineTextStyles}>
-                  Planned establishment of own AHPHT production facility
-                </p>
-              </div>
+        <div style={columnStyles}>
+          <div style={blockStyles}>
+            <h3 style={centeredBlockTitleStyles}>Our Mission</h3>
+            <div style={textContainerStyles}>
+              <p style={textStyles}>
+                Our mission is to provide flawless technical diamonds that drive innovation across industries, from next-generation electronics to life-changing quantum solutions.
+              </p>
             </div>
           </div>
         </div>
