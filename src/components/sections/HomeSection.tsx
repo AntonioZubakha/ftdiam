@@ -153,8 +153,6 @@ const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = 
                 position: 'relative',
                 zIndex: 3,
                 outline: 'none',
-                textDecoration: 'underline',
-                textDecorationStyle: 'double',
                 textUnderlineOffset: '6px',
                 backdropFilter: 'blur(5px)',
               }}
