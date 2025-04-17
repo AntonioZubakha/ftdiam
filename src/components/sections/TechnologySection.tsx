@@ -153,7 +153,7 @@ const TechnologySection: React.FC = () => {
                 <h3 className="advantage-title gradient-subheadline" style={{ 
                   fontSize: 'var(--h4-mobile)',
                   marginBottom: '5px'
-                }}>Record-size high-quality substrates</h3>
+                }}>No Nitrogen</h3>
               </div>
               
               <div className="advantage-card" style={{ 
@@ -178,7 +178,7 @@ const TechnologySection: React.FC = () => {
                 <h3 className="advantage-title gradient-subheadline" style={{ 
                   fontSize: 'var(--h4-mobile)',
                   marginBottom: '5px'
-                }}>Very low strain and zero-Nitrogen level</h3>
+                }}>Very low strain</h3>
               </div>
             </div>
           </>
@@ -301,7 +301,7 @@ const TechnologySection: React.FC = () => {
                 target.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.05)';
               }}>
                 <div className="advantage-icon" style={{ marginBottom: '20px' }}>
-                  <i className="fas fa-expand" style={{
+                  <i className="fas fa-flask" style={{
                     fontSize: '60px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
                     WebkitBackgroundClip: 'text',
@@ -313,7 +313,7 @@ const TechnologySection: React.FC = () => {
                 <h3 className="advantage-title gradient-subheadline" style={{ 
                   fontSize: 'var(--h3-desktop)',
                   marginBottom: '10px'
-                }}>Record-size high-quality substrates</h3>
+                }}>No Nitrogen</h3>
               </div>
               
               <div className="advantage-card" style={{ 
@@ -333,7 +333,7 @@ const TechnologySection: React.FC = () => {
                 target.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.05)';
               }}>
                 <div className="advantage-icon" style={{ marginBottom: '20px' }}>
-                  <i className="fas fa-atom" style={{
+                  <i className="fas fa-compress" style={{
                     fontSize: '60px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
                     WebkitBackgroundClip: 'text',
@@ -345,7 +345,7 @@ const TechnologySection: React.FC = () => {
                 <h3 className="advantage-title gradient-subheadline" style={{ 
                   fontSize: 'var(--h3-desktop)',
                   marginBottom: '10px'
-                }}>Very low strain and zero-Nitrogen level</h3>
+                }}>Very low strain</h3>
               </div>
             </div>
           </div>
