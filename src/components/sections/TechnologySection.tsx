@@ -140,7 +140,7 @@ const TechnologySection: React.FC = () => {
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease'
               }}>
                 <div className="advantage-icon">
-                  <i className="fas fa-expand" style={{
+                  <i className="fas fa-flask" style={{
                     fontSize: '40px',
                     marginBottom: '10px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
@@ -165,7 +165,7 @@ const TechnologySection: React.FC = () => {
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease'
               }}>
                 <div className="advantage-icon">
-                  <i className="fas fa-atom" style={{
+                  <i className="fas fa-compress" style={{
                     fontSize: '40px',
                     marginBottom: '10px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
