@@ -146,7 +146,6 @@ const QualitySection: React.FC = () => {
     flex: '1',
     minWidth: '300px',
     paddingRight: isMobile ? '0' : '40px',
-    paddingTop: '20px',
     textAlign: isMobile ? 'center' as const : 'left' as const,
     alignSelf: 'flex-start' as const,
     height: 'fit-content',

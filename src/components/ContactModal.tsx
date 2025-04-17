@@ -148,18 +148,18 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
   return ReactDOM.createPortal(
     <div className="contact-modal-overlay" onClick={handleOutsideClick}>
       <div className="contact-modal-container" ref={modalRef}>
-        <button className="contact-modal-close" onClick={onClose} aria-label="Close">×</button>
+        <button className="modal-close" onClick={onClose} aria-label="Close">×</button>
         
-        <div className="contact-modal-header">
-          <h2>Contact Us</h2>
+        <div className="modal-header">
+          <h2>Request a Quotation</h2>
         </div>
         
-        <div className="contact-modal-content">
+        <div className="modal-content">
           {isSubmitted ? (
-            <div className="contact-success-message">
-              <i className="fas fa-check-circle contact-success-icon"></i>
-              <h3>Thank you for your message!</h3>
-              <p>We will get back to you as soon as possible.</p>
+            <div className="success-message">
+              <i className="fas fa-check-circle success-icon"></i>
+              <h3>Thank you for your request!</h3>
+              <p>We will contact you shortly to discuss your quotation requirements.</p>
             </div>
           ) : (
             <form className="contact-form" onSubmit={handleSubmit}>
@@ -205,25 +205,25 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
               </div>
               
               <div className="form-group">
-                <label htmlFor="contact-message">Message</label>
+                <label htmlFor="message">Your Requirements</label>
                 <textarea
-                  id="contact-message"
+                  id="message"
                   name="message"
                   rows={5}
-                  placeholder="How can we help you?"
+                  placeholder="Describe your requirements"
                   value={formData.message}
                   onChange={handleChange}
                   disabled={isLoading}
                 />
-                {errors.message && <p className="contact-error-text">{errors.message}</p>}
+                {errors.message && <p className="error-text">{errors.message}</p>}
               </div>
               
               <button 
                 type="submit" 
-                className={`contact-submit-button ${isLoading ? 'loading' : ''}`} 
+                className={`submit-button ${isLoading ? 'loading' : ''}`} 
                 disabled={isLoading}
               >
-                {isLoading ? 'Sending...' : 'Send Message'}
+                {isLoading ? 'Sending...' : 'Request a Quotation'}
               </button>
             </form>
           )}

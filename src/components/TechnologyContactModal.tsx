@@ -151,7 +151,7 @@ const TechnologyContactModal: React.FC<TechnologyContactModalProps> = ({ isOpen,
         <button className="tech-modal-close" onClick={onClose} aria-label="Close">×</button>
         
         <div className="tech-modal-header">
-          <h2>Request Samples</h2>
+          <h2>Request a Quotation</h2>
         </div>
         
         <div className="tech-modal-content">
@@ -159,7 +159,7 @@ const TechnologyContactModal: React.FC<TechnologyContactModalProps> = ({ isOpen,
             <div className="tech-success-message">
               <i className="fas fa-check-circle tech-success-icon"></i>
               <h3>Thank you for your request!</h3>
-              <p>We will contact you shortly to discuss your sample requirements.</p>
+              <p>We will contact you shortly to discuss your quotation requirements.</p>
             </div>
           ) : (
             <form className="tech-form" onSubmit={handleSubmit}>
@@ -205,12 +205,12 @@ const TechnologyContactModal: React.FC<TechnologyContactModalProps> = ({ isOpen,
               </div>
               
               <div className="form-group">
-                <label htmlFor="tech-message">Sample Requirements</label>
+                <label htmlFor="tech-message">Your Requirements</label>
                 <textarea
                   id="tech-message"
                   name="message"
                   rows={5}
-                  placeholder="Describe the samples you're interested in"
+                  placeholder="Describe your requirements"
                   value={formData.message}
                   onChange={handleChange}
                   disabled={isLoading}
@@ -223,7 +223,7 @@ const TechnologyContactModal: React.FC<TechnologyContactModalProps> = ({ isOpen,
                 className={`tech-submit-button ${isLoading ? 'loading' : ''}`} 
                 disabled={isLoading}
               >
-                {isLoading ? 'Sending...' : 'Request Samples'}
+                {isLoading ? 'Sending...' : 'Request a Quotation'}
               </button>
             </form>
           )}

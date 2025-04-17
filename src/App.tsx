@@ -22,7 +22,6 @@ import './styles/bluePrint.css' // Убедимся, что стили импо�
 import './styles/contacts.css'
 import './styles/footer.css'
 import './styles/home.css'
-import './styles/backgrounds.css'
 import './styles/contact-modal.css' // Стили для модального окна Contact
 import './styles/technology-modal.css' // Стили для модального окна Technology
 import './styles/clients.css'

@@ -4,21 +4,21 @@
   position: relative;
   overflow: hidden;
   text-align: center;
-  margin: 0;
-  padding: 0;
+  margin: 80px 0 120px 0;
+  padding: 80px 0;
   width: 100%;
 }
 
 .contacts-section .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 40px 80px 40px;
 }
 
 .contacts-headline {
   font-size: 3rem;
   text-align: center;
-  margin-bottom: 4rem;
+  margin: 40px 0 4rem 0;
   position: relative;
   display: inline-block;
 }
@@ -40,25 +40,32 @@
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  padding: 40px 60px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
-  gap: 25px;
   flex: 1;
   text-align: left;
   max-width: 500px;
-  margin: 0 auto;
+  margin: 0;
   position: relative;
 }
 
 .contact-info-header {
   margin-bottom: 25px;
-  text-align: center;
+  text-align: left;
 }
 
 .contact-info-header::after {
   content: '';
   display: none;
+}
+
+.contact-info-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  height: 100%;
 }
 
 .info-title {
@@ -74,11 +81,18 @@
 
 .contact-info-item {
   display: flex;
-  align-items: flex-start;
-  gap: 0;
-  padding: 8px 0;
+  align-items: center;
+  gap: 15px;
   position: relative;
   padding-left: 55px;
+  min-height: 40px;
+  margin: 0;
+}
+
+.contact-info-item:nth-child(2),
+.contact-info-item:nth-child(3) {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .contact-icon {
@@ -147,11 +161,13 @@ a.contact-value:hover {
   padding: 40px;
   text-align: left;
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-header {
   margin-bottom: 25px;
-  text-align: center;
+  text-align: left;
 }
 
 .form-header::after {
@@ -170,8 +186,24 @@ a.contact-value:hover {
   display: inline-block;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  height: 100%;
+}
+
+.form-group:first-of-type {
+  margin-top: 0;
+}
+
 .form-group {
   margin-bottom: 20px;
+}
+
+.form-group:last-of-type {
+  margin-bottom: auto;
 }
 
 .form-group input,
@@ -217,6 +249,48 @@ a.contact-value:hover {
   box-shadow: 0 6px 15px rgba(0, 131, 127, 0.2);
 }
 
+/* Стили для сообщения об успешной отправке */
+.form-message.form-success {
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #effff4;
+  color: #00837f;
+  border: 1px solid #c3f0d1;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.success-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.success-note {
+  font-size: 0.9rem;
+  margin-top: 15px;
+}
+
+.form-note {
+  margin-top: auto;
+  margin-bottom: 15px;
+  color: #666;
+  font-style: italic;
+}
+
+/* Стили для заголовков */
+.contact-info-header h2,
+.form-header h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 25px 0;
+  background: linear-gradient(to right, #00837f, #241e46);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
 /* Адаптивные стили */
 @media (max-width: 992px) {
   .contacts-section .container {
@@ -235,8 +309,13 @@ a.contact-value:hover {
 }
 
 @media (max-width: 768px) {
+  .contacts-section {
+    padding: 40px 0;
+  }
+
   .contacts-content {
     flex-direction: column;
+    gap: 20px;
   }
   
   .contacts-headline {
@@ -246,16 +325,37 @@ a.contact-value:hover {
   
   .contact-info,
   .contact-form {
-    padding: 20px 30px;
+    padding: 30px;
+  }
+  
+  .contact-info-header,
+  .form-header {
+    margin-bottom: 20px;
+  }
+  
+  .contact-info-content {
+    gap: 20px;
   }
   
   .contact-info-item {
     padding-left: 45px;
-    margin-bottom: 8px !important;
+    margin: 0;
   }
   
   .contact-icon {
     left: 0;
+  }
+  
+  .contact-info-header h2,
+  .form-header h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .contact-info-item:nth-child(2),
+  .contact-info-item:nth-child(3) {
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
   
   /* Убираю подложки в мобильной версии */
@@ -270,6 +370,10 @@ a.contact-value:hover {
 }
 
 @media (max-width: 576px) {
+  .contacts-section {
+    padding: 30px 0;
+  }
+
   .contacts-section .container {
     padding: 0 25px;
   }
@@ -280,14 +384,12 @@ a.contact-value:hover {
   
   .contact-info,
   .contact-form {
-    background-color: transparent;
-    box-shadow: none;
-    padding: 10px 15px;
+    padding: 20px;
   }
   
-  .contact-info-item {
-    padding-left: 40px;
-    margin-bottom: 6px !important;
+  .contact-info-header,
+  .form-header {
+    margin-bottom: 15px;
   }
   
   .contact-icon {
@@ -302,6 +404,22 @@ a.contact-value:hover {
     margin-bottom: 10px;
   }
   
+  .contact-info-header h2,
+  .form-header h3 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+  }
+  
+  .contact-info-item {
+    padding-left: 40px;
+  }
+  
+  .contact-info-item:nth-child(2),
+  .contact-info-item:nth-child(3) {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
   /* Увеличиваем отступы для полей формы */
   .form-group input,
   .form-group textarea,
@@ -313,5 +431,38 @@ a.contact-value:hover {
   /* Добавляем дополнительные отступы для формы */
   .contact-form form {
     padding: 0 5px;
+  }
+  
+  .form-group {
+    margin-bottom: 12px;
+  }
+  
+  .contact-info-content {
+    gap: 15px;
+  }
+}
+
+/* Адаптивные стили для текста */
+@media (max-width: 768px) {
+  .contact-label {
+    font-size: var(--text-sm);
+  }
+  
+  .contact-value {
+    font-size: var(--text-base);
+  }
+  
+  .contact-icon {
+    font-size: var(--text-lg);
+  }
+  
+  .contacts-headline {
+    font-size: var(--section-headline-mobile-size);
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-title {
+    font-size: var(--h4-mobile);
+    margin-bottom: 10px;
   }
 } 
