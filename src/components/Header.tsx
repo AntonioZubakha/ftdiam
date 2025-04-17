@@ -118,8 +118,6 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
 
   // Обновленные пункты меню, соответствующие секциям в App.tsx
   const menuItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'intro', label: 'Intro' },
     { id: 'mission', label: 'Mission' },
     { id: 'about', label: 'About' },
     { id: 'technology', label: 'Technology' },
