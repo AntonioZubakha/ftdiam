@@ -25,19 +25,20 @@ body::before {
 
 .header-container {
   position: relative;
-  display: flex;
-  align-items: center;
   width: 100%;
   height: 100%;
+  display: grid;
+  grid-template-columns: 200px 1fr 50px;
+  align-items: center;
 }
 
-/* Логотип слева, но на одной линии с меню */
+/* Логотип слева */
 .logo-wrapper {
-  position: absolute;
-  left: 15px;
+  grid-column: 1;
+  padding-left: 15px;
+  height: 100%;
   display: flex;
   align-items: center;
-  height: 100%;
   z-index: 1;
 }
 
@@ -60,8 +61,9 @@ body::before {
   letter-spacing: 1px;
 }
 
-/* Меню центрировано на всю ширину */
+/* Меню в центре */
 .static-menu {
+  grid-column: 2;
   width: 100%;
   height: 100%;
   display: flex;
@@ -76,7 +78,9 @@ body::before {
   padding: 0;
   height: 100%;
   align-items: center;
-  gap: var(--spacing-20); /* Увеличенные отступы между пунктами меню */
+  gap: var(--spacing-16);
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .static-menu li {
@@ -91,7 +95,7 @@ body::before {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: var(--text-xl); /* Увеличенный размер шрифта */
+  font-size: var(--text-lg);
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
   padding: var(--spacing-1) 0;
@@ -99,70 +103,21 @@ body::before {
   letter-spacing: 0.5px;
   white-space: nowrap;
   text-transform: uppercase;
-  /* Убираем фокусную рамку при клике */
   outline: none;
-  /* Плавный переход для эффектов наведения */
   transition: transform 0.3s ease;
 }
 
-.static-menu a:focus {
-  outline: none;
-}
-
-.static-menu a:hover {
-  /* Минимальное увеличение при наведении */
-  transform: scale(1.03);
-}
-
-/* Переопределение стилей для активного элемента */
-.static-menu a.active {
-  font-weight: var(--font-weight-bold);
-  position: relative;
-}
-
-/* Удаляем подчеркивание у активного элемента */
-.static-menu a.active::after {
-  content: none;
-}
-
-/* При наведении на активный элемент */
-.static-menu a.active:hover {
-  /* Минимальное увеличение при наведении */
-  transform: scale(1.03);
-}
-
-/* Анимация появления элементов */
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in {
-  animation: fadeInDown 0.5s;
-  animation-fill-mode: both;
-  animation-timing-function: ease-out;
-  will-change: opacity, transform;
-}
-
-/* Улучшенная доступность - изменена для соответствия запросу */
-.static-menu a:focus-visible {
-  outline: none;
-}
-
-/* Боковое скользящее меню для мобильных устройств */
+/* Гамбургер меню справа */
 .menu-toggle {
+  grid-column: 3;
   display: none;
   background: none;
   border: none;
   padding: var(--spacing-2);
   cursor: pointer;
   z-index: var(--z-menu);
+  justify-self: end;
+  margin-right: 10px;
 }
 
 .menu-toggle span {
@@ -218,35 +173,41 @@ body::before {
   transform: translateY(-6px) rotate(-45deg);
 }
 
-/* Media queries for responsive behavior */
+/* Media queries */
 @media (max-width: 1024px) {
+  .header-container {
+    grid-template-columns: 150px 1fr 50px;
+  }
+
   .static-menu ul {
-    gap: var(--spacing-5);
+    gap: var(--spacing-4);
   }
   
   .static-menu a {
-    font-size: var(--text-xs);
+    font-size: var(--text-sm);
   }
 }
 
 @media (max-width: 768px) {
-  .static-header {
-    background-color: white;
+  .header-container {
+    grid-template-columns: auto auto;
   }
-  
+
+  .logo-wrapper {
+    grid-column: 1;
+  }
+
   .menu-toggle {
+    grid-column: 2;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
+    justify-content: center;
   }
   
   .static-menu {
     position: fixed;
+    grid-column: unset;
     top: 0;
     right: -100%;
     width: 80%;

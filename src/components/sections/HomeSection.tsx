@@ -138,15 +138,14 @@ const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = 
               onClick={openModal}
               aria-label="Contact us for more information"
               style={{
-                background: 'linear-gradient(to right, #00837f, #241e46)',
+                background: 'rgba(255, 255, 255, 0.01)',
                 color: 'white',
-                border: 'none',
+                border: '1px solid rgba(255, 255, 255, 0.8)',
                 borderRadius: '8px',
                 padding: '16px 32px',
                 fontSize: 'var(--text-xl)',
                 fontWeight: 'var(--font-weight-semibold)',
                 cursor: 'pointer',
-                boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3)',
                 marginTop: 'var(--spacing-8)',
                 transition: 'all 0.3s ease',
                 textTransform: 'uppercase',
@@ -154,18 +153,22 @@ const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = 
                 position: 'relative',
                 zIndex: 3,
                 outline: 'none',
+                textDecoration: 'underline',
+                textDecorationStyle: 'double',
+                textUnderlineOffset: '6px',
+                backdropFilter: 'blur(5px)',
               }}
               onMouseOver={(e) => {
                 const target = e.currentTarget as HTMLButtonElement;
+                target.style.background = 'rgba(255, 255, 255, 0.1)';
+                target.style.border = '1px solid rgba(255, 255, 255, 1)';
                 target.style.transform = 'translateY(-3px)';
-                target.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.4)';
-                target.style.background = 'linear-gradient(to right, #009e99, #2d267a)';
               }}
               onMouseOut={(e) => {
                 const target = e.currentTarget as HTMLButtonElement;
+                target.style.background = 'rgba(255, 255, 255, 0.01)';
+                target.style.border = '1px solid rgba(255, 255, 255, 0.8)';
                 target.style.transform = 'translateY(0)';
-                target.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.3)';
-                target.style.background = 'linear-gradient(to right, #00837f, #241e46)';
               }}
             >
               Get in touch

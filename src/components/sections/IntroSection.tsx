@@ -275,7 +275,8 @@ const IntroSection: React.FC = () => {
               color: '#333',
               lineHeight: '1.6',
               maxWidth: '900px',
-              margin: '0 0 30px',
+              margin: '0 auto 30px',
+              textAlign: 'center'
             }}>
               To request more information about our flagman AHPHT substrates, but also about diamond anvils, lenses, windows, membranes and single-crystal CVD substrates up to 30x30 mm
             </p>
@@ -324,7 +325,7 @@ const IntroSection: React.FC = () => {
         }}>
           <div style={{
             color: 'white',
-            fontSize: isMobile ? 'var(--text-xl)' : 'var(--text-4xl)',
+            fontSize: isMobile ? 'var(--text-xl)' : 'var(--text-3xl)',
             fontWeight: 'var(--font-weight-bold)',
             textAlign: 'center',
             padding: '0 20px',
@@ -342,11 +343,11 @@ const IntroSection: React.FC = () => {
                   color: 'white',
                   whiteSpace: 'normal',
                   overflow: 'hidden'
-                }}>Developed for excellence. Trusted for precision and advanced applications.</p>
+                }}>Developed for excellence. Trusted for precision. Perfect for advanced applications.</p>
               </div>
             ) : (
               <p style={{ margin: '0', color: 'white' }}>
-                Developed for excellence. Trusted for precision and advanced applications.
+                Developed for excellence. Trusted for precision. Perfect for advanced applications.
               </p>
             )}
           </div>
