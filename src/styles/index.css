@@ -13,12 +13,12 @@
 @import './home.css';
 @import './mission.css';
 @import './intro.css';
-@import './whoweare.css';
+@import './bluePrint.css';
 @import './technology.css';
 @import './products.css';
 @import './quality.css';
 @import './contacts.css';
-
+@import './clients.css';
 
 /* Импортируем Font Awesome для иконок */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');

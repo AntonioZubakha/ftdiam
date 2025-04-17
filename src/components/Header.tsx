@@ -64,11 +64,12 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
     const handleScroll = () => {
       const sections = [
         'home',
-        'about',
+        'intro',
+        'technology',
         'products',
-        'applications',
-        'facilities',
-        'diamond',
+        'quality',
+        'clients',
+        'blueprint',
         'contacts'
       ];
       
@@ -118,11 +119,12 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
 
   // Обновленные пункты меню, соответствующие секциям в App.tsx
   const menuItems = [
-    { id: 'mission', label: 'Mission' },
-    { id: 'about', label: 'About' },
+    { id: 'intro', label: 'Advantages' },
     { id: 'technology', label: 'Technology' },
     { id: 'products', label: 'Products' },
-    { id: 'quality', label: 'Quality' },
+    { id: 'quality', label: 'Quality Analysis' },
+    { id: 'clients', label: 'Clients' },
+    { id: 'blueprint', label: 'Blueprint' },
     { id: 'contacts', label: 'Contacts' }
   ];
 

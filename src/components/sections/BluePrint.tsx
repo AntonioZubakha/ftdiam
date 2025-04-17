@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const WhoWeAreSection: React.FC = () => {
+const BluePrint: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
   
   // Check if the screen is mobile-sized
@@ -317,7 +317,10 @@ const WhoWeAreSection: React.FC = () => {
   };
 
   return (
-    <section id="about" style={sectionStyles}>
+    <section 
+      id="blueprint"
+      style={sectionStyles}
+    >
       <div style={containerStyles}>
         <div style={{textAlign: 'center'}}>
           <h2 style={headlineStyles}>
@@ -438,4 +441,4 @@ const WhoWeAreSection: React.FC = () => {
   );
 };
 
-export default WhoWeAreSection; 
+export default BluePrint; 

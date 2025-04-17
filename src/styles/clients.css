@@ -1,0 +1,236 @@
+/* Base styles for the clients section */
+.clients-section {
+  padding: 120px 0;
+  background-color: #ffffff;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(to right, #00837f, #241e46);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  text-align: center;
+  color: #666;
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.client-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.6s ease-out forwards;
+  animation-delay: calc(var(--animation-order) * 0.15s);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  will-change: transform, box-shadow, border-color, background;
+  position: relative;
+  overflow: hidden;
+}
+
+.client-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(0, 131, 127, 0.1), rgba(36, 30, 70, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.client-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.client-card:hover::before {
+  opacity: 1;
+}
+
+.client-card:active {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.client-logo-container {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+}
+
+.client-logo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #00837f, #241e46);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: white;
+  font-weight: bold;
+}
+
+.client-name {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.client-industry {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.client-description {
+  font-size: 0.9rem;
+  color: #777;
+  line-height: 1.5;
+}
+
+.testimonials-section {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.testimonials-section h3 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 2rem;
+  background: linear-gradient(to right, #00837f, #241e46);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.testimonial {
+  background: #fff;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial blockquote {
+  font-size: 1.1rem;
+  color: #555;
+  font-style: italic;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.testimonial cite {
+  font-size: 1rem;
+  color: #666;
+  font-style: normal;
+}
+
+/* Additional animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#clients .client-card {
+  animation: fadeIn 0.6s ease-out forwards;
+  animation-delay: calc(var(--animation-order, 0) * 0.1s);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .clients-section {
+    padding: 60px 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  .clients-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial {
+    padding: 1.5rem;
+  }
+
+  #clients .client-card {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    padding: 1.5rem;
+  }
+
+  .client-card:hover {
+    transform: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media (max-width: 480px) {
+  .clients-section {
+    padding: 40px 0;
+  }
+
+  .section-container {
+    padding: 0 15px;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .client-card {
+    padding: 1.5rem;
+  }
+} 

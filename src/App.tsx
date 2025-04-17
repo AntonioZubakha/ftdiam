@@ -8,7 +8,8 @@ import ProductsSection from './components/sections/ProductsSection'
 import QualitySection from './components/sections/QualitySection'
 import ContactsSection from './components/sections/ContactsSection'
 import MissionSection from './components/sections/MissionSection'
-import WhoWeAreSection from './components/sections/WhoWeAre'
+import BluePrint from './components/sections/BluePrint'
+import ClientsSection from './components/sections/ClientsSection'
 
 // Импорт стилей
 import './styles/app.css'
@@ -18,7 +19,7 @@ import './styles/header.css'
 import './styles/intro.css'
 import './styles/technology.css'
 import './styles/quality.css'
-import './styles/whoweare.css' // Убедимся, что стили импортированы
+import './styles/bluePrint.css' // Убедимся, что стили импортированы
 import './styles/mission.css'
 import './styles/contacts.css'
 import './styles/footer.css'
@@ -26,6 +27,7 @@ import './styles/home.css'
 import './styles/backgrounds.css'
 import './styles/contact-modal.css' // Стили для модального окна Contact
 import './styles/technology-modal.css' // Стили для модального окна Technology
+import './styles/clients.css'
 
 // Main App component
 function App() {
@@ -34,16 +36,16 @@ function App() {
   const [isLoading, setIsLoading] = useState(true)
   
   // Проверка импорта
-  console.log('WhoWeAreSection available:', !!WhoWeAreSection);
+  console.log('BluePrint available:', !!BluePrint);
   
   const sectionsRef = useRef<{ [key: string]: HTMLElement | null }>({
     home: null,
-    mission: null,
-    about: null,
     intro: null,
     technology: null,
     products: null,
     quality: null,
+    clients: null,
+    blueprint: null,
     contacts: null,
   })
   
@@ -97,11 +99,11 @@ function App() {
     sectionsRef.current = {
       home: document.getElementById('home'),
       intro: document.getElementById('intro'),
-      mission: document.getElementById('mission'),
-      about: document.getElementById('about'),
       technology: document.getElementById('technology'),
       products: document.getElementById('products'),
       quality: document.getElementById('quality'),
+      clients: document.getElementById('clients'),
+      blueprint: document.getElementById('blueprint'),
       contacts: document.getElementById('contacts'),
     };
   }, [])
@@ -133,8 +135,8 @@ function App() {
             <TechnologySection />
             <ProductsSection />
             <QualitySection />
-            <MissionSection />
-            <WhoWeAreSection />
+            <ClientsSection />
+            <BluePrint />
             <ContactsSection />
           </main>
 

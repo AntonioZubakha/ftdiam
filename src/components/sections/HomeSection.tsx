@@ -127,8 +127,8 @@ const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = 
               <h2 className="hero-subheadline">FLAWLESS DIAMOND SUBSTRATES</h2>
             </div>
             <div className="text-with-shadow">
-              <div className="text-shadow-element">Produced by Advanced HPHT (AHPHT) technology for cutting-edge applications</div>
-              <p className="hero-description">Produced by Advanced HPHT (AHPHT) technology for cutting-edge applications</p>
+              <div className="text-shadow-element">Produced by Advanced HPHT technology for cutting-edge applications</div>
+              <p className="hero-description">Produced by Advanced HPHT technology for cutting-edge applications</p>
             </div>
             
             {/* Кнопка для открытия модального окна */}
