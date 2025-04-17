@@ -198,14 +198,12 @@
 
 /* Стили для заголовка */
 .hero-subheadline {
-  font-size: var(--text-5xl); /* Используем переменную для размера */
+  font-size: var(--text-5xl);
   margin-bottom: var(--spacing-6);
   position: relative;
   z-index: 3;
   font-weight: var(--font-weight-bold);
   color: var(--white);
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
-  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5));
   letter-spacing: 1px;
 }
 

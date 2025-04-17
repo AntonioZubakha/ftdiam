@@ -124,8 +124,7 @@ const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = 
           <div className="hero-text-background"></div>
           <div className="hero-text">
             <div className="text-with-shadow">
-              <div className="text-shadow-element">Flawless Diamond Substrates</div>
-              <h2 className="hero-subheadline">Flawless Diamond Substrates</h2>
+              <h2 className="hero-subheadline">FLAWLESS DIAMOND SUBSTRATES</h2>
             </div>
             <div className="text-with-shadow">
               <div className="text-shadow-element">Produced by Advanced HPHT (AHPHT) technology for cutting-edge applications</div>
