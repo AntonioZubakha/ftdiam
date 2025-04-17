@@ -118,7 +118,7 @@ const IntroSection: React.FC = () => {
             marginBottom: isMobile ? '1rem' : '1.5rem',
             position: 'relative'
           }}>
-            Top quality IIa diamond substrates. And not only
+            Top quality IIa diamond substrates. And more.
           </h2>
           <p className="section-description" style={{ 
             fontSize: isMobile ? 'var(--text-base)' : 'var(--text-lg)',
@@ -278,7 +278,7 @@ const IntroSection: React.FC = () => {
               margin: '0 auto 30px',
               textAlign: 'center'
             }}>
-              To request more information about our flagman AHPHT substrates, but also about diamond anvils, lenses, windows, membranes and single-crystal CVD substrates up to 30x30 mm
+Learn more about our flagship AHPHT substrates - and explore our range of diamond anvils, lenses, windows, membranes, and large single-crystal CVD substrates up to 30×30 mm.
             </p>
             <button 
               onClick={scrollToContacts}

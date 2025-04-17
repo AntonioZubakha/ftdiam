@@ -202,7 +202,7 @@
   margin-bottom: var(--spacing-6);
   position: relative;
   z-index: 3;
-  font-weight: var(--font-weight-bold);
+  font-weight: normal;
   color: var(--white);
   letter-spacing: 1px;
 }
