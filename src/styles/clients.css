@@ -42,15 +42,15 @@
 .logo-carousel {
   display: flex;
   width: max-content;
-  animation: scrollLogos 120s linear infinite;
+  animation: scrollLogos 40s linear infinite;
 }
 
 /* Отдельный элемент с логотипом */
 .logo-item {
-  width: 500px;
-  height: 330px;
+  width: 250px;
+  height: 165px;
   margin: 0 30px;
-  padding: 30px;
+  padding: 15px;
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
@@ -91,8 +91,8 @@
 /* Адаптивность для разных экранов */
 @media (max-width: 1200px) {
   .logo-item {
-    width: 450px;
-    height: 300px;
+    width: 225px;
+    height: 150px;
     margin: 0 25px;
   }
 }
@@ -104,8 +104,8 @@
   }
   
   .logo-item {
-    width: 380px;
-    height: 250px;
+    width: 190px;
+    height: 125px;
     margin: 0 20px;
   }
 }
@@ -121,10 +121,10 @@
   }
   
   .logo-item {
-    width: 320px;
-    height: 220px;
+    width: 160px;
+    height: 110px;
     margin: 0 15px;
-    padding: 20px;
+    padding: 10px;
   }
 }
 
@@ -142,8 +142,8 @@
   }
   
   .logo-item {
-    width: 280px;
-    height: 180px;
+    width: 140px;
+    height: 90px;
     margin: 0 12px;
   }
 }

@@ -264,7 +264,10 @@ const ProductsSection: React.FC = () => {
               </div>
 
               <div className="spec-list-container">
-                <ul className="spec-list" style={{ opacity: isTransitioning ? 0.5 : 1 }}>
+                <ul className="spec-list" style={{ 
+                  opacity: isTransitioning ? 0.5 : 1,
+                  borderBottom: 'none'
+                }}>
                   {currentProduct.specs.map((spec, index) => (
                     <li key={index} className="spec-item">
                       <span className="gradient-diamond"></span>
