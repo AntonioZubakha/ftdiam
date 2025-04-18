@@ -400,4 +400,124 @@
   .standard-icon i {
     font-size: var(--h4-mobile);
   }
+}
+
+/* Новые стили для карточек в ряд */
+.quality-cards-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 15px;
+  margin: 0 0 30px 0;
+  overflow-x: auto;
+  padding-bottom: 15px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-teal) #f1f1f1;
+  justify-content: center;
+}
+
+.quality-cards-row::-webkit-scrollbar {
+  height: 8px;
+}
+
+.quality-cards-row::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.quality-cards-row::-webkit-scrollbar-thumb {
+  background: var(--primary-teal);
+  border-radius: 4px;
+}
+
+.quality-cards-row::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark-blue);
+}
+
+.spec-block {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  flex: 0 0 calc(20% - 12px);
+  min-width: 200px;
+  max-width: 240px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(0, 131, 127, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.spec-block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  border-color: rgba(0, 131, 127, 0.2);
+}
+
+/* Стили для кнопки запроса документа */
+.request-document-button {
+  background: linear-gradient(135deg, #00837f, #241e46);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 15px 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin: 40px auto 0;
+  display: block;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 350px;
+  width: 100%;
+}
+
+.request-document-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #009c98, #322a5c);
+}
+
+.request-document-button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Медиа-запросы для адаптивности */
+@media screen and (max-width: 992px) {
+  .spec-block {
+    flex: 0 0 calc(33.33% - 10px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .quality-cards-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 15px;
+  }
+  
+  .spec-block {
+    flex: 0 0 230px;
+  }
+  
+  .spec-block-animate.visible {
+    animation: none;
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .spec-block {
+    flex: 0 0 200px;
+  }
+  
+  .request-document-button {
+    font-size: 0.9rem;
+    padding: 12px 20px;
+  }
 } 

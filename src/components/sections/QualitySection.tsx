@@ -17,6 +17,40 @@ const QualitySection: React.FC = () => {
     '/images/photo4.jpg'
   ];
 
+  // Массив данных карточек
+  const cardData = [
+    {
+      image: '/images/photo1.jpg',
+      title: 'Diamond View',
+      highlight: 'No inclusions',
+      description: 'No defects, dislocations <10¹ cm⁻²'
+    },
+    {
+      image: '/images/photo2.jpg',
+      title: 'Polarized Light',
+      highlight: 'Very low strain',
+      description: 'Perfect for optical applications'
+    },
+    {
+      image: '/images/photo5.jpg',
+      title: 'X-Ray Diffraction',
+      highlight: '<50 cm⁻²',
+      description: 'Dislocation density'
+    },
+    {
+      image: '/images/photo3.jpg',
+      title: 'FTIR',
+      highlight: 'Ultra-pure',
+      description: 'Exceptional crystal purity'
+    },
+    {
+      image: '/images/photo4.jpg',
+      title: 'UV-Vis',
+      highlight: 'Low absorbance',
+      description: 'Premium optical quality'
+    }
+  ];
+
   // Предзагрузка изображений
   useEffect(() => {
     const loadImage = (src: string): Promise<void> => {
@@ -92,6 +126,14 @@ const QualitySection: React.FC = () => {
     document.body.style.overflow = '';
   };
 
+  // Обработчик клика по кнопке запроса документа
+  const handleRequestDocument = () => {
+    // Здесь можно добавить открытие формы или модального окна
+    console.log('Запрос документа');
+    // В будущем можно связать с модальным окном ContactModal или создать отдельную форму
+    window.location.href = '#contacts';
+  };
+
   // Определяем стиль с фоновым изображением
   const backgroundStyle = {
     backgroundImage: 'url(/images/gpt.png)',
@@ -121,7 +163,7 @@ const QualitySection: React.FC = () => {
     width: '100%',
     height: '0',
     paddingBottom: '100%',
-    marginBottom: '1.2rem',
+    marginBottom: '1rem',
     overflow: 'hidden',
     borderRadius: '8px',
     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
@@ -139,18 +181,14 @@ const QualitySection: React.FC = () => {
     transition: 'transform 0.3s ease'
   };
 
-  // Новый стиль для липкого заголовка
-  const stickyTitleStyle = {
-    position: isMobile ? 'static' as const : 'sticky' as const,
-    top: '100px',
-    flex: '1',
+  // Новый стиль для заголовка (без липкости)
+  const titleStyle = {
+    position: 'static' as const,
     minWidth: '300px',
-    paddingRight: isMobile ? '0' : '40px',
-    textAlign: isMobile ? 'center' as const : 'left' as const,
-    alignSelf: 'flex-start' as const,
+    textAlign: 'center' as const,
     height: 'fit-content',
-    marginBottom: isMobile ? '30px' : '0',
-    width: isMobile ? '100%' : 'auto'
+    marginBottom: '40px',
+    width: '100%'
   };
 
   return (
@@ -178,20 +216,17 @@ const QualitySection: React.FC = () => {
       }}>
         <div style={{ 
           display: 'flex', 
-          flexDirection: 'row',
-          flexWrap: 'wrap',
+          flexDirection: 'column',
           width: '100%',
           maxWidth: '1400px',
           margin: '0 auto',
-          padding: '0 20px',
-          minHeight: isMobile ? 'auto' : '60vh',
-          justifyContent: isMobile ? 'center' : 'flex-start'
+          padding: '0 20px'
         }}>
-          {/* Левая колонка с заголовком и подзаголовком */}
-          <div style={stickyTitleStyle}>
+          {/* Заголовок и подзаголовок */}
+          <div style={titleStyle}>
             <h2 className="quality-headline gradient-headline" style={{ 
               fontSize: isMobile ? 'var(--section-headline-mobile-size)' : 'var(--section-headline-size)',
-              textAlign: isMobile ? 'center' : 'left',
+              textAlign: 'center',
               marginBottom: isMobile ? '1rem' : '2rem',
               position: 'relative',
               lineHeight: isMobile ? '1.2' : '1.3'
@@ -199,7 +234,7 @@ const QualitySection: React.FC = () => {
               Quality Analysis
             </h2>
             <h3 className="quality-subheadline" style={{ 
-              textAlign: isMobile ? 'center' : 'left',
+              textAlign: 'center',
               marginBottom: isMobile ? '1rem' : '1rem',
               fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
               display: 'inline-block',
@@ -209,185 +244,58 @@ const QualitySection: React.FC = () => {
               Tested. Proven. Exceptional.
             </h3>
             <p className="quality-description" style={{ 
-              textAlign: isMobile ? 'center' : 'left',
+              textAlign: 'center',
               fontSize: isMobile ? 'var(--text-base)' : 'var(--text-lg)',
               lineHeight: '1.6',
-              maxWidth: '100%',
-              margin: '0 0 2rem 0'
+              maxWidth: '800px',
+              margin: '0 auto 2rem auto'
             }}>
               Our diamonds undergo rigorous testing to ensure they meet the highest standards. 
               See the evidence of our flawless quality below.
             </p>
           </div>
           
-          {/* Правая колонка с карточками */}
-          <div style={{ 
-            flex: '1.2',
-            minWidth: isMobile ? '300px' : '350px'
-          }}>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
-              gap: isMobile ? '1rem' : '2rem',
-              margin: 0
-            }}
-            className="quality-card-row"
-            >
+          {/* Карточки в одном ряду */}
+          <div className="quality-cards-row">
+            {cardData.map((card, index) => (
               <div 
-                ref={el => cardRefs.current[0] = el}
-                className={`spec-block spec-block-animate ${visibleCards.includes(0) ? 'visible' : ''}`}
+                key={index}
+                ref={el => cardRefs.current[index] = el}
+                className={`spec-block spec-block-animate ${visibleCards.includes(index) ? 'visible' : ''}`}
                 style={{ padding: isMobile ? '15px' : '20px' }}
               >
                 <div 
-                  style={{...imageContainerStyle, paddingBottom: isMobile ? '90%' : '100%'}}
-                  onClick={() => openModal('/images/photo1.jpg')}
+                  style={{...imageContainerStyle}}
+                  onClick={() => openModal(card.image)}
                 >
-                  <img src="/images/photo1.jpg" alt="Diamond View" style={imageStyle} />
-                </div>
-                <h3 className="spec-name" style={{ fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)' }}>Diamond View</h3>
-                <div style={{
-                  fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
-                  background: 'linear-gradient(to right, #00837f, #241e46)',
-                  WebkitBackgroundClip: 'text',
-                  backgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  margin: '0.5rem 0',
-                  fontWeight: 'bold',
-                  letterSpacing: '0.5px',
-                  display: 'inline-block'
-                }}>No inclusions</div>
-                <p className="spec-description" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>No defects, dislocations &lt;10¹ cm⁻²</p>
-              </div>
-              
-              <div 
-                ref={el => cardRefs.current[1] = el}
-                className={`spec-block spec-block-animate ${visibleCards.includes(1) ? 'visible' : ''}`}
-                style={{ padding: isMobile ? '15px' : '20px' }}
-              >
-                <div 
-                  style={{...imageContainerStyle, paddingBottom: isMobile ? '90%' : '100%'}}
-                  onClick={() => openModal('/images/photo2.jpg')}
-                >
-                  <img src="/images/photo2.jpg" alt="Polarized Light Microscopy" style={imageStyle} />
-                </div>
-                <h3 className="spec-name" style={{ fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)' }}>Polarized Light</h3>
-                <div style={{
-                  fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
-                  background: 'linear-gradient(to right, #00837f, #241e46)',
-                  WebkitBackgroundClip: 'text',
-                  backgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  margin: '0.5rem 0',
-                  fontWeight: 'bold',
-                  letterSpacing: '0.5px',
-                  display: 'inline-block'
-                }}>Very low strain</div>
-                <p className="spec-description" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Perfect for optical applications</p>
-              </div>
-            </div>
-            
-            {/* Средний ряд: X-Ray Diffraction по центру */}
-            <div style={{
-              display: 'flex',
-              justifyContent: 'center',
-              margin: isMobile ? '1rem 0' : '2rem 0'
-            }}>
-              <div 
-                ref={el => cardRefs.current[2] = el}
-                className={`spec-block spec-block-animate ${visibleCards.includes(2) ? 'visible' : ''}`}
-                style={{ 
-                  padding: isMobile ? '15px' : '20px',
-                  width: isMobile ? '100%' : 'calc(((100% - 2rem) / 2))'
-                }}
-              >
-                <div 
-                  style={{...imageContainerStyle, paddingBottom: isMobile ? '90%' : '100%'}}
-                  onClick={() => openModal('/images/photo5.jpg')}
-                >
-                  <img src="/images/photo5.jpg" alt="X-Ray Diffraction Imaging" style={imageStyle} />
-                </div>
-                <h3 className="spec-name" style={{ fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)' }}>X-Ray Diffraction</h3>
-                <div style={{
-                  fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
-                  background: 'linear-gradient(to right, #00837f, #241e46)',
-                  WebkitBackgroundClip: 'text',
-                  backgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  margin: '0.5rem 0',
-                  fontWeight: 'bold',
-                  letterSpacing: '0.5px',
-                  display: 'inline-block'
-                }}>&lt;50 cm⁻²</div>
-                <p className="spec-description" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Dislocation density</p>
-              </div>
-            </div>
-            
-            {/* Нижний ряд: 2 графика */}
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
-              gap: isMobile ? '1rem' : '2rem',
-              margin: isMobile ? '1rem 0 0 0' : '2rem 0 0 0'
-            }}>
-              <div 
-                ref={el => cardRefs.current[3] = el}
-                className={`spec-block spec-block-animate ${visibleCards.includes(3) ? 'visible' : ''}`}
-                style={{ padding: isMobile ? '15px' : '20px' }}
-              >
-                <div 
-                  style={{
-                    ...imageContainerStyle, 
-                    paddingBottom: isMobile ? '75%' : '80%',
-                    marginBottom: '0.8rem',
-                    backgroundImage: 'url(/images/photo3.jpg)',
-                    backgroundPosition: 'center',
-                    backgroundSize: 'contain',
-                    backgroundRepeat: 'no-repeat'
-                  }}
-                  onClick={() => openModal('/images/photo3.jpg')}
-                >
-                </div>
-                <h3 className="spec-name" style={{ fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)' }}>FTIR</h3>
-                <div style={{
-                  fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
-                  background: 'linear-gradient(to right, #00837f, #241e46)',
-                  WebkitBackgroundClip: 'text',
-                  backgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  margin: '0.5rem 0',
-                  fontWeight: 'bold',
-                  letterSpacing: '0.5px',
-                  display: 'inline-block'
-                }}>Ultra-pure</div>
-                <p className="spec-description" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Exceptional crystal purity</p>
-              </div>
-              
-              <div 
-                ref={el => cardRefs.current[4] = el}
-                className={`spec-block spec-block-animate ${visibleCards.includes(4) ? 'visible' : ''}`}
-                style={{ padding: isMobile ? '15px' : '20px' }}
-              >
-                <div 
-                  style={{
-                    ...imageContainerStyle, 
-                    paddingBottom: isMobile ? '75%' : '80%',
-                    marginBottom: '0.8rem'
-                  }}
-                  onClick={() => openModal('/images/photo4.jpg')}
-                >
-                  <img 
-                    src="/images/photo4.jpg" 
-                    alt="UV-Vis" 
-                    style={{
+                  {index === 3 ? (
+                    <div style={{
                       ...imageStyle,
-                      objectFit: 'contain' as const,
-                      padding: '5px'
-                    }} 
-                  />
+                      backgroundImage: `url(${card.image})`,
+                      backgroundPosition: 'center',
+                      backgroundSize: 'contain',
+                      backgroundRepeat: 'no-repeat'
+                    }}></div>
+                  ) : (
+                    <img 
+                      src={card.image} 
+                      alt={card.title} 
+                      style={index === 4 ? {...imageStyle, objectFit: 'contain' as const} : imageStyle} 
+                    />
+                  )}
                 </div>
-                <h3 className="spec-name" style={{ fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)' }}>UV-Vis</h3>
+                <h3 className="spec-name" style={{ 
+                  fontSize: isMobile ? '0.9rem' : '1.1rem',
+                  textAlign: 'center',
+                  margin: '0 0 0.5rem 0',
+                  fontWeight: '600',
+                  minHeight: '2.2rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>{card.title}</h3>
                 <div style={{
-                  fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
+                  fontSize: isMobile ? '1.1rem' : '1.3rem',
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   WebkitBackgroundClip: 'text',
                   backgroundClip: 'text',
@@ -395,12 +303,30 @@ const QualitySection: React.FC = () => {
                   margin: '0.5rem 0',
                   fontWeight: 'bold',
                   letterSpacing: '0.5px',
-                  display: 'inline-block'
-                }}>Low absorbance</div>
-                <p className="spec-description" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Premium optical quality</p>
+                  display: 'block',
+                  textAlign: 'center',
+                  minHeight: '1.6rem'
+                }}>{card.highlight}</div>
+                <p className="spec-description" style={{ 
+                  fontSize: isMobile ? '0.8rem' : '0.9rem',
+                  textAlign: 'center',
+                  margin: '0.5rem 0 0 0',
+                  color: '#666',
+                  lineHeight: '1.4',
+                  minHeight: '2.5rem'
+                }}>{card.description}</p>
               </div>
-            </div>
+            ))}
           </div>
+          
+          {/* Кнопка запроса документа */}
+          <button 
+            className="request-document-button"
+            onClick={handleRequestDocument}
+            aria-label="Request analysis documentation"
+          >
+            Request Analysis Documentation
+          </button>
         </div>
       </div>
 
