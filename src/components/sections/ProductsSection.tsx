@@ -27,7 +27,7 @@ const ProductsSection: React.FC = () => {
   const products = [
     {
       id: 1,
-      title: "Advanced HTHP Diamond Substrates",
+      title: "Advanced HPHT Diamond Substrates",
       image: "/images/photo1.1.png",
       specs: [
         "Type IIa single-crystal plates",
