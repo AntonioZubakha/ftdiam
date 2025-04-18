@@ -59,7 +59,7 @@
   background: var(--primary-dark-blue);
 }
 
-.contact-modal-close {
+.modal-close {
   position: absolute;
   top: 15px;
   right: 15px;
@@ -78,18 +78,18 @@
   transition: all 0.2s ease;
 }
 
-.contact-modal-close:hover {
+.modal-close:hover {
   background: rgba(0, 0, 0, 0.1);
   color: #000;
   transform: rotate(90deg);
 }
 
-.contact-modal-header {
+.modal-header {
   padding: 25px 25px 15px;
   border-bottom: 1px solid #eee;
 }
 
-.contact-modal-header h2 {
+.modal-header h2 {
   margin: 0;
   color: var(--primary-dark-blue);
   font-size: 1.8rem;
@@ -99,7 +99,7 @@
   -webkit-text-fill-color: transparent;
 }
 
-.contact-modal-content {
+.modal-content {
   padding: 25px;
 }
 
@@ -141,14 +141,14 @@
   opacity: 0.7;
 }
 
-.contact-error-text {
+.error-text, .contact-error-text {
   color: #e53935;
   font-size: 0.8rem;
   margin-top: 4px;
   font-weight: 500;
 }
 
-.contact-success-message {
+.success-message {
   text-align: center;
   padding: 2.5rem 2rem;
   background-color: rgba(255, 255, 255, 0.9);
@@ -168,25 +168,26 @@
   }
 }
 
-.contact-success-icon {
+.success-icon {
   font-size: 3rem;
   color: var(--primary-teal);
   margin-bottom: 1rem;
   display: block;
 }
 
-.contact-success-message h3 {
+.success-message h3 {
   color: var(--primary-teal);
   margin-bottom: 1rem;
   font-size: 1.5rem;
 }
 
-.contact-success-message p {
+.success-message p {
   color: var(--primary-dark-blue);
   font-size: 1rem;
+  margin-bottom: 0;
 }
 
-.contact-submit-button {
+.submit-button {
   background: var(--main-gradient);
   color: white;
   border: none;
@@ -205,29 +206,29 @@
   overflow: hidden;
 }
 
-.contact-submit-button:hover {
+.submit-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 15px rgba(0, 131, 127, 0.3);
   background: linear-gradient(to right, #009e99, #2d267a);
 }
 
-.contact-submit-button:active {
+.submit-button:active {
   transform: translateY(0);
   box-shadow: 0 2px 8px rgba(0, 131, 127, 0.2);
 }
 
-.contact-submit-button:disabled {
+.submit-button:disabled {
   cursor: not-allowed;
   opacity: 0.8;
   transform: none !important;
   box-shadow: none !important;
 }
 
-.contact-submit-button.loading {
+.submit-button.loading {
   position: relative;
 }
 
-.contact-submit-button.loading::after {
+.submit-button.loading::after {
   content: '';
   position: absolute;
   top: 0;
@@ -240,10 +241,10 @@
     rgba(255, 255, 255, 0.2), 
     transparent
   );
-  animation: contact-loading-shine 1.5s infinite;
+  animation: loading-shine 1.5s infinite;
 }
 
-@keyframes contact-loading-shine {
+@keyframes loading-shine {
   0% {
     left: -100%;
   }
@@ -255,34 +256,43 @@
 /* Адаптив для мобильных устройств */
 @media (max-width: 576px) {
   .contact-modal-container {
-    max-width: 95%;
+    max-width: calc(100% - 20px);
+    margin: 10px;
+    max-height: calc(100vh - 20px);
   }
   
-  .contact-modal-header h2 {
+  .modal-header h2 {
     font-size: 1.5rem;
   }
   
-  .contact-submit-button {
+  .submit-button {
     padding: 12px 20px;
   }
 }
 
 @media (max-width: 768px) {
-  .contact-modal-container {
-    max-width: 90%;
+  .contact-modal-overlay {
+    padding: 10px;
+    align-items: flex-start;
+    overflow-y: auto;
   }
   
-  .contact-modal-header {
+  .contact-modal-container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  
+  .modal-header {
     padding: 20px 20px 10px;
   }
   
-  .contact-modal-content {
+  .modal-content {
     padding: 20px;
   }
 }
 
 @media (max-width: 480px) {
-  .contact-modal-content {
+  .modal-content {
     padding: 15px;
   }
   
@@ -295,7 +305,15 @@
     padding: 10px 12px;
   }
   
-  .contact-submit-button {
+  .submit-button {
     font-size: 0.9rem;
+  }
+  
+  .modal-close {
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
   }
 } 
