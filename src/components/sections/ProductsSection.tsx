@@ -147,20 +147,9 @@ const ProductsSection: React.FC = () => {
   
   if (!imagesLoaded) {
     return (
-      <section id="products" className="products-section" style={{
-        minHeight: "300px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-      }}>
+      <section id="products" className="products-section loading">
         <div className="loading-indicator">
-          <div style={{ 
-            fontSize: "1.2rem", 
-            color: "#00837f", 
-            textAlign: "center" 
-          }}>
-            Loading products...
-          </div>
+          <div>Loading products...</div>
         </div>
       </section>
     );
@@ -171,9 +160,7 @@ const ProductsSection: React.FC = () => {
       <div className="products-container">
         <div className="products-inner-container">
           <div className="products-headline-container">
-            <h2 className="gradient-headline" style={{ 
-              fontSize: isMobile ? 'var(--section-headline-mobile-size)' : 'var(--section-headline-size)' 
-            }}>
+            <h2 className="gradient-headline">
               High Quality Diamond Products
             </h2>
           </div>
@@ -228,11 +215,7 @@ const ProductsSection: React.FC = () => {
                   disabled={isTransitioning}
                 >
                 </button>
-                <h4 className="product-section-title" style={{ 
-                  opacity: isTransitioning ? 0.5 : 1,
-                  fontSize: isSmallMobile ? '1.5rem' : isMobile ? '1.6rem' : 'var(--h4-desktop)',
-                  fontWeight: isMobile ? 'bold' : '600'
-                }}>
+                <h4 className={`product-section-title ${isTransitioning ? 'transitioning' : ''}`}>
                   {currentProduct.title}
                 </h4>
                 <button 
@@ -249,25 +232,18 @@ const ProductsSection: React.FC = () => {
                 <img 
                   src={currentProduct.image} 
                   alt={currentProduct.title} 
-                  className="product-image"
-                  style={{ 
-                    opacity: isTransitioning ? 0.5 : 1,
-                    transform: isTransitioning ? 'scale(0.95)' : 'scale(1)'
-                  }}
+                  className={`product-image ${isTransitioning ? 'transitioning' : ''}`}
                 />
                 
                 {/* Предзагрузка следующего и предыдущего изображения */}
-                <div style={{ display: 'none' }}>
+                <div className="preload-images">
                   <img src={products[nextIndex].image} alt="Preload next" />
                   <img src={products[prevIndex].image} alt="Preload previous" />
                 </div>
               </div>
 
               <div className="spec-list-container">
-                <ul className="spec-list" style={{ 
-                  opacity: isTransitioning ? 0.5 : 1,
-                  borderBottom: 'none'
-                }}>
+                <ul className={`spec-list ${isTransitioning ? 'transitioning' : ''}`}>
                   {currentProduct.specs.map((spec, index) => (
                     <li key={index} className="spec-item">
                       <span className="gradient-diamond"></span>

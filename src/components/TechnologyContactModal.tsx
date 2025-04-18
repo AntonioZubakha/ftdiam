@@ -8,22 +8,10 @@ interface TechnologyContactModalProps {
 }
 
 const TechnologyContactModal: React.FC<TechnologyContactModalProps> = ({ isOpen, onClose }) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-  });
-  
-  const [errors, setErrors] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-  
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   
   // Блокируем скролл страницы при открытии модального окна
   useEffect(() => {
@@ -55,19 +43,11 @@ const TechnologyContactModal: React.FC<TechnologyContactModalProps> = ({ isOpen,
     if (!isOpen) {
       // Small delay for closing animation
       setTimeout(() => {
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          message: '',
-        });
-        setErrors({
-          name: '',
-          email: '',
-          message: '',
-        });
         setIsSubmitted(false);
         setIsLoading(false);
+        if (formRef.current) {
+          formRef.current.reset();
+        }
       }, 300);
     }
   }, [isOpen]);
@@ -79,67 +59,21 @@ const TechnologyContactModal: React.FC<TechnologyContactModalProps> = ({ isOpen,
     }
   };
   
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-    
-    // Clear error when user types
-    if (errors[name as keyof typeof errors]) {
-      setErrors({
-        ...errors,
-        [name]: '',
-      });
-    }
-  };
-  
-  const validateForm = () => {
-    let isValid = true;
-    const newErrors = { ...errors };
-    
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
-      isValid = false;
-    }
-    
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-      isValid = false;
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email format is invalid';
-      isValid = false;
-    }
-    
-    if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
-      isValid = false;
-    }
-    
-    setErrors(newErrors);
-    return isValid;
-  };
-  
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+    // FormSubmit обрабатывает отправку формы, но мы добавляем свою логику для UI
+    setIsLoading(true);
     
-    if (validateForm()) {
-      // Simulate sending data to server
-      setIsLoading(true);
+    // Через 1.5 секунды после отправки показываем сообщение об успехе
+    // Это только для улучшения UX, т.к. FormSubmit перенаправит на другую страницу
+    setTimeout(() => {
+      setIsLoading(false);
+      setIsSubmitted(true);
       
-      // Here would be the API call to submit the form
+      // Автоматически закрываем модальное окно через 3 секунды
       setTimeout(() => {
-        setIsLoading(false);
-        setIsSubmitted(true);
-        console.log('Form submitted:', formData);
-        
-        // Automatically close modal 3 seconds after successful submission
-        setTimeout(() => {
-          onClose();
-        }, 3000);
-      }, 1000);
-    }
+        onClose();
+      }, 3000);
+    }, 1500);
   };
   
   if (!isOpen) return null;
@@ -160,9 +94,24 @@ const TechnologyContactModal: React.FC<TechnologyContactModalProps> = ({ isOpen,
               <i className="fas fa-check-circle tech-success-icon"></i>
               <h3>Thank you for your request!</h3>
               <p>We will contact you shortly to discuss your quotation requirements.</p>
+              <p className="tech-success-note">
+                <strong>Note:</strong> If this is your first time using our form, please check your email for a confirmation message from FormSubmit.
+              </p>
             </div>
           ) : (
-            <form className="tech-form" onSubmit={handleSubmit}>
+            <form 
+              ref={formRef}
+              className="tech-form" 
+              action="https://formsubmit.co/info@ftdiam.com" 
+              method="POST"
+              onSubmit={handleSubmit}
+            >
+              <input type="hidden" name="_subject" value="Technology Quotation Request from FTDiam Website" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_next" value={`${window.location.href.split('?')[0]}`} />
+              <input type="text" name="_honey" style={{ display: 'none' }} />
+              
               <div className="form-group">
                 <label htmlFor="tech-name">Name</label>
                 <input
@@ -170,11 +119,9 @@ const TechnologyContactModal: React.FC<TechnologyContactModalProps> = ({ isOpen,
                   id="tech-name"
                   name="name"
                   placeholder="Enter your full name"
-                  value={formData.name}
-                  onChange={handleChange}
+                  required
                   disabled={isLoading}
                 />
-                {errors.name && <p className="tech-error-text">{errors.name}</p>}
               </div>
               
               <div className="form-group">
@@ -184,11 +131,9 @@ const TechnologyContactModal: React.FC<TechnologyContactModalProps> = ({ isOpen,
                   id="tech-email"
                   name="email"
                   placeholder="Enter your email address"
-                  value={formData.email}
-                  onChange={handleChange}
+                  required
                   disabled={isLoading}
                 />
-                {errors.email && <p className="tech-error-text">{errors.email}</p>}
               </div>
               
               <div className="form-group">
@@ -198,8 +143,6 @@ const TechnologyContactModal: React.FC<TechnologyContactModalProps> = ({ isOpen,
                   id="tech-phone"
                   name="phone"
                   placeholder="Enter your phone number"
-                  value={formData.phone}
-                  onChange={handleChange}
                   disabled={isLoading}
                 />
               </div>
@@ -211,12 +154,14 @@ const TechnologyContactModal: React.FC<TechnologyContactModalProps> = ({ isOpen,
                   name="message"
                   rows={5}
                   placeholder="Describe your requirements"
-                  value={formData.message}
-                  onChange={handleChange}
+                  required
                   disabled={isLoading}
                 />
-                {errors.message && <p className="tech-error-text">{errors.message}</p>}
               </div>
+              
+              <p className="tech-form-note">
+                * The first message will require a confirmation from FormSubmit
+              </p>
               
               <button 
                 type="submit" 
