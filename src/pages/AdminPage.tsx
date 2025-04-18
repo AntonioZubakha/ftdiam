@@ -10,6 +10,7 @@ const AdminPage: React.FC = () => {
   const [analyticsData, setAnalyticsData] = useState<AdminPageData | null>(null);
   const [loginError, setLoginError] = useState('');
   const [showResetConfirm, setShowResetConfirm] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Check if the user is already authenticated
@@ -17,12 +18,21 @@ const AdminPage: React.FC = () => {
     if (authStatus === 'true') {
       setIsAuthenticated(true);
       loadAnalyticsData();
+    } else {
+      setIsLoading(false);
     }
   }, []);
 
-  const loadAnalyticsData = () => {
-    const data = getAnalyticsData();
-    setAnalyticsData(data);
+  const loadAnalyticsData = async () => {
+    setIsLoading(true);
+    try {
+      const data = await getAnalyticsData();
+      setAnalyticsData(data);
+    } catch (error) {
+      console.error('Error loading analytics data:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleLogin = (e: React.FormEvent) => {
@@ -45,10 +55,17 @@ const AdminPage: React.FC = () => {
     setPassword('');
   };
 
-  const handleResetAnalytics = () => {
-    resetAnalytics();
-    loadAnalyticsData();
-    setShowResetConfirm(false);
+  const handleResetAnalytics = async () => {
+    setIsLoading(true);
+    try {
+      await resetAnalytics();
+      await loadAnalyticsData();
+    } catch (error) {
+      console.error('Error resetting analytics:', error);
+    } finally {
+      setShowResetConfirm(false);
+      setIsLoading(false);
+    }
   };
 
   // Calculate percentage for chart columns
@@ -58,6 +75,17 @@ const AdminPage: React.FC = () => {
     const maxClicks = Math.max(...analyticsData.buttonClicks.map(btn => btn.clicks));
     return maxClicks === 0 ? 0 : (clicks / maxClicks) * 100;
   };
+
+  if (isLoading) {
+    return (
+      <div className="admin-container">
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>Loading data...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="admin-container">

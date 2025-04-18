@@ -64,7 +64,7 @@ const ProductsSection: React.FC = () => {
     },
     {
       id: 4,
-      title: "Type IIa single-crystal plates",
+      title: "CVD single-crystal plates",
       image: "/images/photo1.4.png",
       specs: [
         "Sizes: 3x3 mm to 30x30 mm",
