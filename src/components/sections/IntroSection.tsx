@@ -7,6 +7,7 @@ const IntroSection: React.FC = () => {
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
   const [contentLoaded, setContentLoaded] = useState(false);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [hoveredCardIndex, setHoveredCardIndex] = useState<number | null>(null);
 
   // Проверяем, загружены ли все шрифты и стили
   useEffect(() => {
@@ -80,15 +81,107 @@ const IntroSection: React.FC = () => {
     }
   };
 
+  // Функция для прокрутки к секции продуктов с отслеживанием клика
+  const scrollToProducts = () => {
+    trackButtonClick('intro_explore_more');
+    const productsSection = document.getElementById('products');
+    if (productsSection) {
+      productsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   // Card container styles - изменено для размещения карточек в одну строку
   const cardContainerStyle: React.CSSProperties = {
     display: 'grid',
     gridTemplateColumns: isMobile ? '1fr' : 'repeat(4, 1fr)',
-    gap: isMobile ? '20px' : '30px',
-    maxWidth: '1400px',
+    gap: isMobile ? '10px' : '15px',
+    maxWidth: '1450px',
     textAlign: 'center' as const,
     margin: '3rem auto 4rem',
-    padding: '0 20px',
+    padding: '0 15px',
+  };
+
+  // Style for spec blocks to make them more square-shaped
+  const specBlockStyle: React.CSSProperties = {
+    backgroundColor: 'white',
+    color: '#333',
+    borderRadius: '6px',
+    padding: isMobile ? '20px 15px' : '25px 15px',
+    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+    width: '100%',
+    minHeight: isMobile ? '320px' : '380px',
+    position: 'relative',
+    overflow: 'hidden',
+    cursor: 'default',
+    margin: '0 auto',
+    maxWidth: isMobile ? '100%' : '300px',
+  };
+
+  const specIconStyle: React.CSSProperties = {
+    fontSize: isMobile ? '32px' : '60px',
+    marginBottom: isMobile ? '10px' : '15px',
+    background: 'linear-gradient(to right, #00837f, #241e46)',
+    WebkitBackgroundClip: 'text',
+    backgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    height: isMobile ? '60px' : '80px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  };
+
+  const specNameStyle: React.CSSProperties = {
+    fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)',
+    height: isMobile ? '40px' : '50px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: '10px'
+  };
+
+  const specValueStyle: React.CSSProperties = {
+    fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
+    background: 'linear-gradient(to right, #00837f, #241e46)',
+    WebkitBackgroundClip: 'text',
+    backgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    margin: '0.7rem 0',
+    fontWeight: 'bold',
+    letterSpacing: '0.5px',
+    height: isMobile ? '40px' : '50px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  };
+
+  const specDescriptionStyle: React.CSSProperties = {
+    fontSize: isMobile ? 'calc(var(--text-sm) - 1px)' : 'calc(var(--text-base) - 1px)',
+    textAlign: 'center',
+    height: isMobile ? '80px' : '100px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    overflow: 'visible',
+    lineHeight: '1.3',
+    padding: '0 5px',
+    wordBreak: 'normal'
+  };
+
+  // Специальные стили для третьей карточки с длинным описанием
+  const longDescriptionStyle: React.CSSProperties = {
+    ...specDescriptionStyle,
+    fontSize: isMobile ? 'calc(var(--text-sm) - 2px)' : 'calc(var(--text-base) - 2px)',
+    lineHeight: '1.2',
+  };
+
+  const specBlockHoverStyle: React.CSSProperties = {
+    transform: 'translateY(-5px)',
+    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
   };
 
   return (
@@ -127,10 +220,42 @@ const IntroSection: React.FC = () => {
             fontSize: isMobile ? 'var(--text-base)' : 'var(--text-lg)',
             lineHeight: '1.6',
             maxWidth: '900px',
-            margin: '0 auto 2rem'
+            margin: '0 auto 1.5rem'
           }}>
             Explore the characteristics of best-in class AHPHT diamond plates with our comprehensive range of high-quality single crystal diamond substrates.
           </p>
+          
+          {/* Explore More button */}
+          <button 
+            onClick={scrollToProducts}
+            style={{
+              background: 'linear-gradient(to right, #00837f, #241e46)',
+              color: 'white',
+              border: 'none',
+              borderRadius: '8px',
+              padding: '12px 30px',
+              fontSize: isMobile ? 'var(--text-base)' : 'var(--text-md)',
+              fontWeight: '600',
+              cursor: 'pointer',
+              boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
+              transition: 'all 0.3s ease',
+              marginBottom: '3rem',
+              position: 'relative',
+              zIndex: 5
+            }}
+            onMouseOver={(e) => {
+              const target = e.currentTarget as HTMLButtonElement;
+              target.style.transform = 'translateY(-2px)';
+              target.style.boxShadow = '0 6px 15px rgba(0, 0, 0, 0.25)';
+            }}
+            onMouseOut={(e) => {
+              const target = e.currentTarget as HTMLButtonElement;
+              target.style.transform = 'translateY(0)';
+              target.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)';
+            }}
+          >
+            Explore More
+          </button>
         </div>
 
         {/* Карточки в одну строку */}
@@ -141,121 +266,73 @@ const IntroSection: React.FC = () => {
           <div 
             ref={el => cardRefs.current[0] = el}
             className={`spec-block spec-block-animate ${visibleCards.includes(0) ? 'visible' : ''}`}
+            style={{
+              ...specBlockStyle,
+              ...(hoveredCardIndex === 0 ? specBlockHoverStyle : {}),
+            }}
+            onMouseEnter={() => setHoveredCardIndex(0)}
+            onMouseLeave={() => setHoveredCardIndex(null)}
           >
             <div className="spec-icon">
-              <i className="fas fa-gem" style={{
-                fontSize: isMobile ? '32px' : '60px',
-                marginBottom: isMobile ? '10px' : '15px',
-                background: 'linear-gradient(to right, #00837f, #241e46)',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                display: 'inline-block'
-              }}></i>
+              <i className="fas fa-gem" style={specIconStyle}></i>
             </div>
-            <h3 className="spec-name" style={{ fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)' }}>Technologies</h3>
-            <div style={{
-              fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
-              background: 'linear-gradient(to right, #00837f, #241e46)',
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              margin: '0.7rem 0',
-              fontWeight: 'bold',
-              letterSpacing: '0.5px',
-              display: 'inline-block'
-            }}>AHPHT</div>
-            <p className="spec-description" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Advanced manufacturing methods</p>
+            <h3 className="spec-name" style={specNameStyle}>Technologies</h3>
+            <div style={specValueStyle}>AHPHT</div>
+            <p className="spec-description" style={specDescriptionStyle}>Advanced manufacturing methods</p>
           </div>
           
           <div 
             ref={el => cardRefs.current[1] = el}
             className={`spec-block spec-block-animate ${visibleCards.includes(1) ? 'visible' : ''}`}
+            style={{
+              ...specBlockStyle,
+              ...(hoveredCardIndex === 1 ? specBlockHoverStyle : {}),
+            }}
+            onMouseEnter={() => setHoveredCardIndex(1)}
+            onMouseLeave={() => setHoveredCardIndex(null)}
           >
             <div className="spec-icon">
-              <i className="fas fa-expand-alt" style={{
-                fontSize: isMobile ? '32px' : '60px',
-                marginBottom: isMobile ? '10px' : '15px',
-                background: 'linear-gradient(to right, #00837f, #241e46)',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                display: 'inline-block'
-              }}></i>
+              <i className="fas fa-expand-alt" style={specIconStyle}></i>
             </div>
-            <h3 className="spec-name" style={{ fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)' }}>Sizes</h3>
-            <div style={{
-              fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
-              background: 'linear-gradient(to right, #00837f, #241e46)',
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              margin: '0.7rem 0',
-              fontWeight: 'bold',
-              letterSpacing: '0.5px',
-              display: 'inline-block'
-            }}>Up to 15×15 mm</div>
-            <p className="spec-description" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Perfect for all applications</p>
+            <h3 className="spec-name" style={specNameStyle}>Sizes</h3>
+            <div style={specValueStyle}>Up to 15×15 mm</div>
+            <p className="spec-description" style={specDescriptionStyle}>Perfect for all applications</p>
           </div>
           
           <div 
             ref={el => cardRefs.current[2] = el}
             className={`spec-block spec-block-animate ${visibleCards.includes(2) ? 'visible' : ''}`}
+            style={{
+              ...specBlockStyle,
+              ...(hoveredCardIndex === 2 ? specBlockHoverStyle : {}),
+            }}
+            onMouseEnter={() => setHoveredCardIndex(2)}
+            onMouseLeave={() => setHoveredCardIndex(null)}
           >
             <div className="spec-icon">
-              <i className="fas fa-microscope" style={{
-                fontSize: isMobile ? '32px' : '60px',
-                marginBottom: isMobile ? '10px' : '15px',
-                background: 'linear-gradient(to right, #00837f, #241e46)',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                display: 'inline-block'
-              }}></i>
+              <i className="fas fa-microscope" style={specIconStyle}></i>
             </div>
-            <h3 className="spec-name" style={{ fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)' }}>Dislocation Density</h3>
-            <div style={{
-              fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
-              background: 'linear-gradient(to right, #00837f, #241e46)',
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              margin: '0.7rem 0',
-              fontWeight: 'bold',
-              letterSpacing: '0.5px',
-              display: 'inline-block'
-            }}>10¹ cm⁻²</div>
-            <p className="spec-description" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Ultra-low defect concentration especially for mono-sectorial plates</p>
+            <h3 className="spec-name" style={specNameStyle}>Dislocation Density</h3>
+            <div style={specValueStyle}>10¹ cm⁻²</div>
+            <p className="spec-description" style={longDescriptionStyle}>Ultra-low defect concentration especially for mono-sectorial plates</p>
           </div>
           
           <div 
             ref={el => cardRefs.current[3] = el}
             className={`spec-block spec-block-animate ${visibleCards.includes(3) ? 'visible' : ''}`}
+            style={{
+              ...specBlockStyle,
+              ...(hoveredCardIndex === 3 ? specBlockHoverStyle : {}),
+            }}
+            onMouseEnter={() => setHoveredCardIndex(3)}
+            onMouseLeave={() => setHoveredCardIndex(null)}
           >
             <div className="spec-icon">
-              <i className="fas fa-ruler-combined" style={{
-                fontSize: isMobile ? '32px' : '60px',
-                marginBottom: isMobile ? '10px' : '15px',
-                background: 'linear-gradient(to right, #00837f, #241e46)',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                display: 'inline-block'
-              }}></i>
+              <i className="fas fa-ruler-combined" style={specIconStyle}></i>
             </div>
-            <h3 className="spec-name" style={{ fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)' }}>Surface Perfection</h3>
-            <div style={{
-              fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
-              background: 'linear-gradient(to right, #00837f, #241e46)',
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              margin: '0.7rem 0',
-              fontWeight: 'bold',
-              letterSpacing: '0.5px',
-              display: 'inline-block'
-            }}>Down to 0.5 nm</div>
-            <p className="spec-description" style={{ fontSize: isMobile ? 'var(--text-sm)' : 'var(--text-base)' }}>Exceptional polishing roughness</p>
+            <h3 className="spec-name" style={specNameStyle}>Surface Perfection</h3>
+            <div style={specValueStyle}>Down to 0.5 nm</div>
+            <p className="spec-description" style={specDescriptionStyle}>Exceptional polishing roughness</p>
           </div>
         </div>
         

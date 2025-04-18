@@ -50,12 +50,31 @@
   position: relative;
 }
 
-.contact-info-header {
-  margin-bottom: 25px;
-  text-align: left;
+.contact-info-header, 
+.form-header {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
-.contact-info-header::after {
+.contact-info-header h2,
+.form-header h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 25px 0;
+  background: linear-gradient(to right, #00837f, #241e46);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+}
+
+.contact-info-header::after,
+.form-header::after {
   content: '';
   display: none;
 }
@@ -167,7 +186,7 @@ a.contact-value:hover {
 
 .form-header {
   margin-bottom: 25px;
-  text-align: left;
+  text-align: center;
 }
 
 .form-header::after {
@@ -278,19 +297,6 @@ form {
   font-style: italic;
 }
 
-/* Стили для заголовков */
-.contact-info-header h2,
-.form-header h3 {
-  font-size: 2rem;
-  font-weight: 600;
-  margin: 0 0 25px 0;
-  background: linear-gradient(to right, #00837f, #241e46);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-}
-
 /* Адаптивные стили */
 @media (max-width: 992px) {
   .contacts-section .container {
@@ -328,9 +334,10 @@ form {
     padding: 30px;
   }
   
-  .contact-info-header,
+  .contact-info-header, 
   .form-header {
     margin-bottom: 20px;
+    justify-content: center;
   }
   
   .contact-info-content {
@@ -350,6 +357,7 @@ form {
   .form-header h3 {
     font-size: 1.8rem;
     margin-bottom: 20px;
+    text-align: center;
   }
   
   .contact-info-item:nth-child(2),
@@ -387,7 +395,7 @@ form {
     padding: 20px;
   }
   
-  .contact-info-header,
+  .contact-info-header, 
   .form-header {
     margin-bottom: 15px;
   }
@@ -402,12 +410,14 @@ form {
   .info-title,
   .form-title {
     margin-bottom: 10px;
+    text-align: center;
   }
   
   .contact-info-header h2,
   .form-header h3 {
     font-size: 1.6rem;
     margin-bottom: 15px;
+    text-align: center;
   }
   
   .contact-info-item {

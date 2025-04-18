@@ -36,7 +36,7 @@ const ProductsSection: React.FC = () => {
         "Purity: ≤5 ppb Nitrogen",
         "Dislocations: As low as 10¹ cm⁻²",
         "Surface: Polished up to 0.5 nm Ra",
-        "Customizable: Shapes, orientations ((100), (111), (110), etc.), miscut"
+        "Customization: Shapes, sizes, doping, orientation, miscut,polishing and other specifications based on customerrequirements"
       ]
     },
     {
@@ -64,16 +64,17 @@ const ProductsSection: React.FC = () => {
     },
     {
       id: 4,
-      title: "CVD single-crystal plates",
+      title: "CVD Diamond Substrates",
       image: "/images/photo1.4.png",
       specs: [
+        "Type IIa single-crystal plates",
         "Sizes: 3x3 mm to 30x30 mm",
         "Thickness: 0.3-10 mm",
         "Boron Concentration ≈ 0 ppb",
         "Nitrogen Concentration ≈ 100 ppb",
         "Dislocations density ≈ 10⁵⁻⁷cm⁻²",
         "Surface: Polished up to 0.5 nm Ra",
-        "Customizable: Shapes, orientations ((100), (111), (110), etc.), miscut"
+        "Customization: Shapes, sizes, doping, orientation, miscut,polishing and other specifications based on customerrequirements"
       ]
     }
   ];
@@ -191,43 +192,6 @@ const ProductsSection: React.FC = () => {
                 <h3 className="tailored-solutions-title">
                   Tailored Solutions For Cutting-Edge Applications
                 </h3>
-                <button 
-                  onClick={scrollToContacts}
-                  style={{
-                    background: 'linear-gradient(to right, #00837f, #241e46)',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '8px',
-                    padding: '12px 30px',
-                    fontSize: 'var(--text-base)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                    cursor: 'pointer',
-                    marginTop: '20px',
-                    transition: 'all 0.3s ease',
-                    textTransform: 'uppercase',
-                    letterSpacing: '1px',
-                    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
-                    position: 'relative',
-                    zIndex: 10,
-                    width: '80%',
-                    maxWidth: '300px'
-                  }}
-                  onMouseOver={(e) => {
-                    const target = e.currentTarget as HTMLButtonElement;
-                    target.style.background = 'linear-gradient(to right, #009e99, #2d267a)';
-                    target.style.transform = 'translateY(-2px)';
-                    target.style.boxShadow = '0 6px 15px rgba(0, 0, 0, 0.25)';
-                  }}
-                  onMouseOut={(e) => {
-                    const target = e.currentTarget as HTMLButtonElement;
-                    target.style.background = 'linear-gradient(to right, #00837f, #241e46)';
-                    target.style.transform = 'translateY(0)';
-                    target.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)';
-                  }}
-                  aria-label="Request FTDiam products"
-                >
-                  Request FTDiam Products
-                </button>
               </div>
             </div>
             <div className="media-item image-bottom-left">
@@ -243,51 +207,66 @@ const ProductsSection: React.FC = () => {
           
           {/* Правая часть со слайдером */}
           <div className="product-content">
-            <div className="product-details">
-              <div className="title-nav-container">
-                <button 
-                  className="nav-button"
-                  onClick={handlePrevClick}
-                  aria-label="Previous product"
-                  disabled={isTransitioning}
-                >
-                </button>
-                <h4 className={`product-section-title ${isTransitioning ? 'transitioning' : ''}`}>
-                  {currentProduct.title}
-                </h4>
-                <button 
-                  className="nav-button"
-                  onClick={handleNextClick}
-                  aria-label="Next product"
-                  disabled={isTransitioning}
-                >
-                </button>
-              </div>
-              
-              <div className="product-image-container">
-                {/* Текущее изображение */}
-                <img 
-                  src={currentProduct.image} 
-                  alt={currentProduct.title} 
-                  className={`product-image ${isTransitioning ? 'transitioning' : ''}`}
-                />
+            <div className="product-details-wrapper">
+              <div className="product-details">
+                <div className="title-nav-container">
+                  <button 
+                    className="nav-button"
+                    onClick={handlePrevClick}
+                    aria-label="Previous product"
+                    disabled={isTransitioning}
+                  >
+                  </button>
+                  <h4 className={`product-section-title ${isTransitioning ? 'transitioning' : ''}`}>
+                    {currentProduct.title}
+                  </h4>
+                  <button 
+                    className="nav-button"
+                    onClick={handleNextClick}
+                    aria-label="Next product"
+                    disabled={isTransitioning}
+                  >
+                  </button>
+                </div>
                 
-                {/* Предзагрузка следующего и предыдущего изображения */}
-                <div className="preload-images">
-                  <img src={products[nextIndex].image} alt="Preload next" />
-                  <img src={products[prevIndex].image} alt="Preload previous" />
+                <div className="product-image-container">
+                  {/* Текущее изображение */}
+                  <img 
+                    src={currentProduct.image} 
+                    alt={currentProduct.title} 
+                    className={`product-image ${isTransitioning ? 'transitioning' : ''}`}
+                  />
+                  
+                  {/* Предзагрузка следующего и предыдущего изображения */}
+                  <div className="preload-images">
+                    <img src={products[nextIndex].image} alt="Preload next" />
+                    <img src={products[prevIndex].image} alt="Preload previous" />
+                  </div>
+                </div>
+
+                <div className="product-content-scroll">
+                  <div className="spec-list-container">
+                    <ul className={`spec-list ${isTransitioning ? 'transitioning' : ''}`}>
+                      {currentProduct.specs.map((spec, index) => (
+                        <li key={index} className="spec-item">
+                          <span className="gradient-diamond"></span>
+                          {spec}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
-
-              <div className="spec-list-container">
-                <ul className={`spec-list ${isTransitioning ? 'transitioning' : ''}`}>
-                  {currentProduct.specs.map((spec, index) => (
-                    <li key={index} className="spec-item">
-                      <span className="gradient-diamond"></span>
-                      {spec}
-                    </li>
-                  ))}
-                </ul>
+              
+              {/* Кнопка запроса продуктов внизу слайдера - вынесена за пределы скроллируемой области */}
+              <div className="product-request-button-container">
+                <button 
+                  onClick={scrollToContacts}
+                  className="product-request-button"
+                  aria-label="Request FTDiam products"
+                >
+                  Request FTDiam Products
+                </button>
               </div>
             </div>
           </div>
