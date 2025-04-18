@@ -10,21 +10,21 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
   const [activeSection, setActiveSection] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Используем активный раздел из пропсов, если он доступен
+  // Use active section from props if available
   useEffect(() => {
     if (propActiveSection) {
       setActiveSection(propActiveSection);
     }
   }, [propActiveSection]);
 
-  // Закрытие меню при нажатии Escape - для доступности
+  // Close menu when pressing Escape - for accessibility
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Escape' && menuOpen) {
       setMenuOpen(false);
     }
   }, [menuOpen]);
 
-  // Обработчик клика по пунктам меню
+  // Menu item click handler
   const handleSectionClick = (sectionId: string, e: React.MouseEvent) => {
     e.preventDefault();
     
@@ -38,11 +38,11 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setActiveSection(sectionId);
-      setMenuOpen(false); // Закрываем меню при клике на пункт
+      setMenuOpen(false); // Close menu after clicking
     }
   };
 
-  // Блокировка скролла при открытом меню
+  // Lock scrolling when menu is open
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = 'hidden';
@@ -50,7 +50,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
       document.body.style.overflow = '';
     }
     
-    // Слушатель клавиатуры для доступности
+    // Keyboard listener for accessibility
     window.addEventListener('keydown', handleKeyDown);
     
     return () => {
@@ -59,7 +59,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
     };
   }, [menuOpen, handleKeyDown]);
 
-  // Определение активного раздела при прокрутке
+  // Determine active section on scroll
   useEffect(() => {
     const handleScroll = () => {
       const sections = [
@@ -73,11 +73,11 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
         'contacts'
       ];
       
-      const scrollPosition = window.scrollY + 100; // Смещение для лучшего определения активного раздела
+      const scrollPosition = window.scrollY + 100; // Offset for better active section detection
       
       let activeFound = false;
       
-      // Находим текущий активный раздел
+      // Find current active section
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = document.getElementById(sections[i]);
         if (section && section.offsetTop <= scrollPosition) {
@@ -87,14 +87,14 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
         }
       }
       
-      // Если ни один раздел не активен (например, пользователь в самом верху страницы)
+      // If no section is active (e.g., user is at the very top)
       if (!activeFound) {
         setActiveSection('');
       }
     };
     
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Вызываем при монтировании
+    handleScroll(); // Call on mount
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -105,27 +105,27 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
     setLogoError(true);
   };
   
-  // Функция для управления анимацией появления элементов
+  // Function to manage element appearance animation
   const getAnimationDelay = (index: number) => {
     return {
       animationDelay: `${0.1 + index * 0.05}s`
     };
   };
 
-  // Переключение меню
+  // Toggle menu
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
-  // Обновленные пункты меню, соответствующие секциям в App.tsx
+  // Updated menu items matching sections in App.tsx
   const menuItems = [
-    { id: 'intro', label: 'Advantages' },
-    { id: 'technology', label: 'Technology' },
-    { id: 'products', label: 'Products' },
-    { id: 'quality', label: 'Quality Analysis' },
-    { id: 'clients', label: 'Clients' },
-    { id: 'blueprint', label: 'Blueprint' },
-    { id: 'contacts', label: 'Contacts' }
+    { id: 'intro', label: 'ADVANTAGES' },
+    { id: 'technology', label: 'TECHNOLOGY' },
+    { id: 'products', label: 'PRODUCTS' },
+    { id: 'quality', label: 'QUALITY ANALYSIS' },
+    { id: 'clients', label: 'CLIENTS' },
+    { id: 'blueprint', label: 'BLUEPRINT' },
+    { id: 'contacts', label: 'CONTACTS' }
   ];
 
   return (
@@ -173,7 +173,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
           </ul>
         </nav>
         
-        {/* Оверлей для мобильного меню */}
+        {/* Overlay for mobile menu */}
         {menuOpen && (
           <div 
             className="menu-overlay" 

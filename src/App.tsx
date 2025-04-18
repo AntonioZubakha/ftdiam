@@ -14,7 +14,7 @@ import LoginPage from './pages/LoginPage'
 import AdminPage from './pages/AdminPage'
 import { trackVisitor } from './utils/analytics'
 
-// Импорт стилей
+// Import styles
 import './styles/app.css'
 import './styles/index.css'
 import './styles/base.css'
@@ -31,7 +31,14 @@ import './styles/technology-modal.css'
 import './styles/clients.css'
 import './styles/admin.css'
 
-// Компонент для защищенных маршрутов
+// Declare Google Analytics gtag for TypeScript
+declare global {
+  interface Window {
+    gtag?: (command: string, action: string, params: object) => void;
+  }
+}
+
+// Component for protected routes
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const isAuthenticated = sessionStorage.getItem('ftdiam_admin_auth') === 'true';
   
@@ -42,7 +49,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   return <>{children}</>;
 };
 
-// Основной компонент сайта
+// Main site component
 const MainSite: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isLoading, setIsLoading] = useState(true);
@@ -60,33 +67,55 @@ const MainSite: React.FC = () => {
     contacts: null,
   });
   
-  // Функция для скролла к секции
+  // Function to scroll to section
   const scrollToSection = (sectionId: string) => {
-    const section = sectionsRef.current[sectionId];
+    const section = document.getElementById(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
+      setActiveSection(sectionId);
+      
+      // Update URL hash without causing a scroll
+      window.history.replaceState(null, '', `#${sectionId}`);
+      
+      // Track the navigation event
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'navigation', {
+          'event_category': 'user_interaction',
+          'event_label': `scroll_to_${sectionId}`
+        });
+      }
     }
   };
   
-  // Отслеживание активной секции при скролле
+  // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200;
+      const scrollPosition = window.scrollY + 100; // Use smaller offset for better detection
       
-      const sections = Object.entries(sectionsRef.current)
-        .filter(([_, el]) => el !== null)
-        .sort(([_, a], [__, b]) => {
-          if (!a || !b) return 0;
-          return a.offsetTop - b.offsetTop;
+      // Get all sections as array and sort by their position
+      const sections = [
+        { id: 'home', element: document.getElementById('home') },
+        { id: 'intro', element: document.getElementById('intro') },
+        { id: 'technology', element: document.getElementById('technology') },
+        { id: 'products', element: document.getElementById('products') },
+        { id: 'quality', element: document.getElementById('quality') },
+        { id: 'clients', element: document.getElementById('clients') },
+        { id: 'blueprint', element: document.getElementById('blueprint') },
+        { id: 'contacts', element: document.getElementById('contacts') }
+      ].filter(section => section.element !== null)
+        .sort((a, b) => {
+          if (!a.element || !b.element) return 0;
+          return a.element.offsetTop - b.element.offsetTop;
         });
       
+      // Find the last section that is above current scroll position
       for (let i = sections.length - 1; i >= 0; i--) {
-        const [sectionId, element] = sections[i];
-        if (element && element.offsetTop <= scrollPosition) {
-          if (activeSection !== sectionId) {
-            setActiveSection(sectionId);
-            // Опционально: обновляем URL хеш без скролла
-            window.history.replaceState(null, '', `#${sectionId}`);
+        const section = sections[i];
+        if (section.element && section.element.offsetTop <= scrollPosition) {
+          if (activeSection !== section.id) {
+            setActiveSection(section.id);
+            // Update URL hash without scroll
+            window.history.replaceState(null, '', `#${section.id}`);
           }
           break;
         }
@@ -94,34 +123,31 @@ const MainSite: React.FC = () => {
     };
     
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Инициализация
+    handleScroll(); // Initialize
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [activeSection]);
   
-  // Отслеживание посещений сайта
+  // Track site visits
   useEffect(() => {
     trackVisitor();
   }, []);
   
-  // Присваиваем ссылки на DOM-элементы при монтировании компонентов
+  // Check URL hash on initial load for direct section navigation
   useEffect(() => {
-    sectionsRef.current = {
-      home: document.getElementById('home'),
-      intro: document.getElementById('intro'),
-      technology: document.getElementById('technology'),
-      products: document.getElementById('products'),
-      quality: document.getElementById('quality'),
-      clients: document.getElementById('clients'),
-      blueprint: document.getElementById('blueprint'),
-      contacts: document.getElementById('contacts'),
-    };
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+      // Delay to ensure DOM is fully loaded
+      setTimeout(() => {
+        scrollToSection(hash);
+      }, 500);
+    }
   }, []);
   
   useEffect(() => {
-    // Имитация загрузки для плавной анимации
+    // Simulate loading for smooth animation
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 1000);
