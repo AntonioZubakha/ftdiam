@@ -26,7 +26,7 @@ const ProductsSection: React.FC = () => {
   const products = [
     {
       id: 1,
-      title: "Diamond Substrates",
+      title: "Advanced HTHP Diamond Substrates",
       image: "/images/photo1.1.png",
       specs: [
         "Type IIa single-crystal plates",
@@ -54,7 +54,25 @@ const ProductsSection: React.FC = () => {
       title: "Custom Products",
       image: "/images/photo1.3.png",
       specs: [
-        "Lenses, optical windows and any shape per client specs"
+        "Lenses",
+        "Optical windows",
+        "Membranes",
+        "Rods",
+        "Holders"
+      ]
+    },
+    {
+      id: 4,
+      title: "Type IIa single-crystal plates",
+      image: "/images/photo1.4.png",
+      specs: [
+        "Sizes: 3x3 mm to 30x30 mm",
+        "Thickness: 0.3-10 mm",
+        "Boron Concentration ≈ 0 ppb",
+        "Nitrogen Concentration ≈ 100 ppb",
+        "Dislocations density ≈ 10⁵⁻⁷cm⁻²",
+        "Surface: Polished up to 0.5 nm Ra",
+        "Customizable: Shapes, orientations ((100), (111), (110), etc.), miscut"
       ]
     }
   ];
