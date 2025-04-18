@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import TechnologyContactModal from '../../components/TechnologyContactModal';
+import { trackButtonClick } from '../../utils/analytics';
 
 const TechnologySection: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -18,10 +19,9 @@ const TechnologySection: React.FC = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Функция открытия модального окна
-  const openModal = (e: React.MouseEvent) => {
-    e.preventDefault(); // Предотвращаем любые действия по умолчанию
-    e.stopPropagation(); // Останавливаем всплытие события
+  // Функция открытия модального окна с отслеживанием клика
+  const openModal = () => {
+    trackButtonClick('tech_request_quotation');
     setModalOpen(true);
   };
 

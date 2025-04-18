@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import HomeSection from './components/sections/HomeSection'
@@ -9,6 +10,9 @@ import QualitySection from './components/sections/QualitySection'
 import ContactsSection from './components/sections/ContactsSection'
 import BluePrint from './components/sections/BluePrint'
 import ClientsSection from './components/sections/ClientsSection'
+import LoginPage from './pages/LoginPage'
+import AdminPage from './pages/AdminPage'
+import { trackVisitor } from './utils/analytics'
 
 // Импорт стилей
 import './styles/app.css'
@@ -18,24 +22,34 @@ import './styles/header.css'
 import './styles/intro.css'
 import './styles/technology.css'
 import './styles/quality.css'
-import './styles/bluePrint.css' // Убедимся, что стили импортированы
+import './styles/bluePrint.css'
 import './styles/contacts.css'
 import './styles/footer.css'
 import './styles/home.css'
-import './styles/contact-modal.css' // Стили для модального окна Contact
-import './styles/technology-modal.css' // Стили для модального окна Technology
+import './styles/contact-modal.css'
+import './styles/technology-modal.css'
 import './styles/clients.css'
+import './styles/admin.css'
 
-// Main App component
-function App() {
-  const [activeSection, setActiveSection] = useState('home')
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
+// Компонент для защищенных маршрутов
+const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+  const isAuthenticated = sessionStorage.getItem('ftdiam_admin_auth') === 'true';
   
-  // Проверка импорта
-  console.log('BluePrint available:', !!BluePrint);
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
   
-  const sectionsRef = useRef<{ [key: string]: HTMLElement | null }>({
+  return <>{children}</>;
+};
+
+// Основной компонент сайта
+const MainSite: React.FC = () => {
+  const [activeSection, setActiveSection] = useState('home');
+  const [isLoading, setIsLoading] = useState(true);
+  
+  const sectionsRef = useRef<{
+    [key: string]: HTMLElement | null;
+  }>({
     home: null,
     intro: null,
     technology: null,
@@ -44,53 +58,54 @@ function App() {
     clients: null,
     blueprint: null,
     contacts: null,
-  })
+  });
   
-  const scrollToSection = (section: string) => {
-    setActiveSection(section)
-    const element = document.getElementById(section)
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth'
-      })
-    }
-  }
-  
-  // Функция обработки скролла
-  const handleScroll = () => {
-    const scrollPosition = window.scrollY + window.innerHeight / 3;
-    
-    // Определяем, какая секция сейчас видна
-    for (const section in sectionsRef.current) {
-      const element = sectionsRef.current[section];
-      
-      if (element) {
-        const offsetTop = element.offsetTop;
-        const offsetHeight = element.offsetHeight;
-        
-        if (
-          scrollPosition >= offsetTop &&
-          scrollPosition < offsetTop + offsetHeight
-        ) {
-          setActiveSection(section);
-        }
-      }
+  // Функция для скролла к секции
+  const scrollToSection = (sectionId: string) => {
+    const section = sectionsRef.current[sectionId];
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
+  
+  // Отслеживание активной секции при скролле
   useEffect(() => {
-    // Устанавливаем обработчик события скролла
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 200;
+      
+      const sections = Object.entries(sectionsRef.current)
+        .filter(([_, el]) => el !== null)
+        .sort(([_, a], [__, b]) => {
+          if (!a || !b) return 0;
+          return a.offsetTop - b.offsetTop;
+        });
+      
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const [sectionId, element] = sections[i];
+        if (element && element.offsetTop <= scrollPosition) {
+          if (activeSection !== sectionId) {
+            setActiveSection(sectionId);
+            // Опционально: обновляем URL хеш без скролла
+            window.history.replaceState(null, '', `#${sectionId}`);
+          }
+          break;
+        }
+      }
+    };
+    
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Инициализация
     
-    // Вызываем обработчик первоначально
-    handleScroll();
-    
-    // Очищаем обработчик при размонтировании
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
+  }, [activeSection]);
+  
+  // Отслеживание посещений сайта
+  useEffect(() => {
+    trackVisitor();
   }, []);
-
+  
   // Присваиваем ссылки на DOM-элементы при монтировании компонентов
   useEffect(() => {
     sectionsRef.current = {
@@ -103,17 +118,17 @@ function App() {
       blueprint: document.getElementById('blueprint'),
       contacts: document.getElementById('contacts'),
     };
-  }, [])
-
+  }, []);
+  
   useEffect(() => {
     // Имитация загрузки для плавной анимации
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 1000);
-
+    
     return () => clearTimeout(timer);
   }, []);
-
+  
   return (
     <div className={`app ${isLoading ? 'app-loading' : 'app-loaded'}`}>
       {isLoading ? (
@@ -125,7 +140,7 @@ function App() {
       ) : (
         <>
           <Header activeSection={activeSection} scrollToSection={scrollToSection} />
-
+          
           <main className="no-gap-container" style={{ position: 'relative' }}>
             <HomeSection scrollToSection={scrollToSection} />
             <IntroSection />
@@ -136,12 +151,28 @@ function App() {
             <BluePrint />
             <ContactsSection />
           </main>
-
+          
           <Footer />
         </>
       )}
     </div>
-  )
+  );
+};
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainSite />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/admin" element={
+          <ProtectedRoute>
+            <AdminPage />
+          </ProtectedRoute>
+        } />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App

@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import '../../styles/intro.css';
+import { trackButtonClick } from '../../utils/analytics';
 
 const IntroSection: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -69,8 +71,9 @@ const IntroSection: React.FC = () => {
     zIndex: 0
   };
 
-  // Функция для прокрутки к контактной форме
+  // Функция для прокрутки к секции контактов с отслеживанием клика
   const scrollToContacts = () => {
+    trackButtonClick('intro_contact_us');
     const contactsSection = document.getElementById('contacts');
     if (contactsSection) {
       contactsSection.scrollIntoView({ behavior: 'smooth' });

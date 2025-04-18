@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../../styles/products.css';
+import { trackButtonClick } from '../../utils/analytics';
 
 const ProductsSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -145,6 +146,16 @@ const ProductsSection: React.FC = () => {
   const nextIndex = activeIndex === products.length - 1 ? 0 : activeIndex + 1;
   const prevIndex = activeIndex === 0 ? products.length - 1 : activeIndex - 1;
   
+  // Функция для прокрутки к секции контактов
+  const scrollToContacts = () => {
+    const contactsSection = document.getElementById('contacts');
+    if (contactsSection) {
+      contactsSection.scrollIntoView({ behavior: 'smooth' });
+      // Отслеживаем клик по кнопке
+      trackButtonClick('product_contact_tailored');
+    }
+  };
+  
   if (!imagesLoaded) {
     return (
       <section id="products" className="products-section loading">
@@ -170,34 +181,60 @@ const ProductsSection: React.FC = () => {
           {/* Левая часть с видео и изображениями */}
           <div className="video-container">
             <div className="media-item video-top-left">
-              <video 
-                autoPlay 
-                muted 
-                loop 
-                playsInline
-              >
+              <video autoPlay muted loop playsInline>
                 <source src="/video/1.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
             <div className="media-item image-top-right tailored-solutions-container">
-              <h3 className="tailored-solutions-title">
-                Tailored Solutions For Cutting-Edge Applications
-              </h3>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+                <h3 className="tailored-solutions-title">
+                  Tailored Solutions For Cutting-Edge Applications
+                </h3>
+                <button 
+                  onClick={scrollToContacts}
+                  style={{
+                    background: 'linear-gradient(to right, #00837f, #241e46)',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '8px',
+                    padding: '12px 30px',
+                    fontSize: 'var(--text-base)',
+                    fontWeight: 'var(--font-weight-semibold)',
+                    cursor: 'pointer',
+                    marginTop: '20px',
+                    transition: 'all 0.3s ease',
+                    textTransform: 'uppercase',
+                    letterSpacing: '1px',
+                    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
+                    position: 'relative',
+                    zIndex: 10,
+                    width: '80%',
+                    maxWidth: '300px'
+                  }}
+                  onMouseOver={(e) => {
+                    const target = e.currentTarget as HTMLButtonElement;
+                    target.style.background = 'linear-gradient(to right, #009e99, #2d267a)';
+                    target.style.transform = 'translateY(-2px)';
+                    target.style.boxShadow = '0 6px 15px rgba(0, 0, 0, 0.25)';
+                  }}
+                  onMouseOut={(e) => {
+                    const target = e.currentTarget as HTMLButtonElement;
+                    target.style.background = 'linear-gradient(to right, #00837f, #241e46)';
+                    target.style.transform = 'translateY(0)';
+                    target.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)';
+                  }}
+                  aria-label="Request FTDiam products"
+                >
+                  Request FTDiam Products
+                </button>
+              </div>
             </div>
             <div className="media-item image-bottom-left">
-              <img 
-                src="/images/6565.jpg" 
-                alt="Diamond quality control"
-              />
+              <img src="/images/6565.jpg" alt="Diamond quality control" />
             </div>
             <div className="media-item video-bottom-right">
-              <video 
-                autoPlay 
-                muted 
-                loop 
-                playsInline
-              >
+              <video autoPlay muted loop playsInline>
                 <source src="/video/2.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>

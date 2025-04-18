@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 import '../../styles/home.css';
 import ContactModal from '../../components/ContactModal';
+import { trackButtonClick } from '../../utils/analytics';
 
 const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = ({ scrollToSection }) => {
   const leftVideoRef = useRef<HTMLVideoElement>(null);
@@ -41,10 +42,11 @@ const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = 
     }
   }, []);
 
-  // Функция открытия модального окна
+  // Функция открытия модального окна с отслеживанием клика
   const openModal = (e: React.MouseEvent) => {
     e.preventDefault(); // Предотвращаем любые действия по умолчанию
     e.stopPropagation(); // Останавливаем всплытие события
+    trackButtonClick('home_get_in_touch');
     setModalOpen(true);
   };
 

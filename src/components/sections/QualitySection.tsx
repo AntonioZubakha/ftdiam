@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../../styles/quality.css';
+import { trackButtonClick } from '../../utils/analytics';
 
 const QualitySection: React.FC = () => {
   const [modalImage, setModalImage] = useState<string | null>(null);
@@ -126,12 +127,11 @@ const QualitySection: React.FC = () => {
     document.body.style.overflow = '';
   };
 
-  // Обработчик клика по кнопке запроса документа
-  const handleRequestDocument = () => {
+  // Обработчик клика по кнопке запроса документации с отслеживанием
+  const handleRequestDocumentation = () => {
+    trackButtonClick('request_analysis');
     // Здесь можно добавить открытие формы или модального окна
     console.log('Запрос документа');
-    // В будущем можно связать с модальным окном ContactModal или создать отдельную форму
-    window.location.href = '#contacts';
   };
 
   // Определяем стиль с фоновым изображением
@@ -322,7 +322,7 @@ const QualitySection: React.FC = () => {
           {/* Кнопка запроса документа */}
           <button 
             className="request-document-button"
-            onClick={handleRequestDocument}
+            onClick={handleRequestDocumentation}
             aria-label="Request analysis documentation"
           >
             Request Analysis Documentation
