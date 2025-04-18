@@ -1,336 +1,166 @@
-/* Base styles for the clients section */
+/* Стили для секции клиентов */
+
 .clients-section {
-  padding: 120px 0;
-  background-color: #ffffff;
-  min-height: 60vh;
-  width: 100%;
+  padding: 5rem 0;
+  background-color: var(--white);
   position: relative;
   overflow: hidden;
 }
 
-.clients-section.mobile {
-  padding: 60px 0;
-}
-
+/* Контейнер для всего содержимого */
 .section-container {
-  max-width: 1200px;
+  max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 0 20px;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  text-align: center;
-  margin-bottom: 3rem;
-  background: linear-gradient(to right, #00837f, #241e46);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 600;
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-}
-
-.section-subtitle {
-  font-size: 1.2rem;
-  text-align: center;
-  color: #666;
-  margin-bottom: 3rem;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.clients-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  margin-bottom: 4rem;
-}
-
-.client-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeIn 0.6s ease-out forwards;
-  animation-delay: calc(var(--animation-order, 0) * 0.15s);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(0, 131, 127, 0.1);
-  backdrop-filter: blur(5px);
-  border-radius: 8px;
-  padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  will-change: transform, box-shadow, border-color, background;
+  padding: 0 2rem;
   position: relative;
+}
+
+/* Заголовок секции */
+.section-title {
+  font-size: var(--section-headline-size);
+  text-align: center;
+  margin-bottom: 4rem;
+  background: var(--main-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: var(--font-weight-semibold);
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Контейнер для карусели */
+.carousel-container {
+  width: 100%;
   overflow: hidden;
-  height: 100%;
+  position: relative;
+  margin-bottom: 3rem;
 }
 
-.client-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to right, rgba(0, 131, 127, 0.1), rgba(36, 30, 70, 0.1));
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.client-card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-  border-color: rgba(0, 131, 127, 0.8);
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.client-card:hover::before {
-  opacity: 1;
-}
-
-.client-card:active {
-  transform: translateY(-2px) scale(1.01);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Внутренняя структура карточки */
-.client-card {
-  display: grid;
-  grid-template-rows: auto auto 1fr auto;
-  grid-template-areas:
-    "logo"
-    "name"
-    "industry"
-    "description";
-}
-
-.client-logo-container {
-  grid-area: logo;
-  width: 120px;
-  height: 80px;
-  margin-bottom: 1.5rem;
+/* Карусель логотипов */
+.logo-carousel {
   display: flex;
-  justify-content: center;
+  width: max-content;
+  animation: scrollLogos 120s linear infinite;
+}
+
+/* Отдельный элемент с логотипом */
+.logo-item {
+  width: 500px;
+  height: 330px;
+  margin: 0 30px;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  display: flex;
   align-items: center;
-  justify-self: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.client-logo {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-}
-
-.client-card:hover .client-logo {
+.logo-item:hover {
   transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* Сохраняем старые стили для совместимости */
-.client-logo-placeholder {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, #00837f, #241e46);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  color: white;
-  font-weight: bold;
+/* Стили для логотипа */
+.client-logo {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  filter: grayscale(40%);
+  transition: filter 0.3s ease, transform 0.3s ease;
 }
 
-.client-name {
-  grid-area: name;
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 0.5rem;
-  text-align: center;
-  background: linear-gradient(to right, #00837f, #241e46);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 600;
-  width: 100%;
-  min-height: 3.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.logo-item:hover .client-logo {
+  filter: grayscale(0%);
 }
 
-.client-industry {
-  grid-area: industry;
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 0.5rem;
-  text-align: center;
-  width: 100%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  min-height: 1.5rem;
-  margin-top: auto;
-  padding-bottom: 1rem;
-}
-
-.client-description {
-  grid-area: description;
-  font-size: 0.9rem;
-  color: #777;
-  line-height: 1.5;
-  text-align: center;
-  width: 100%;
-  min-height: 4rem;
-}
-
-.testimonials-section {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-  padding-top: 2rem;
-}
-
-.testimonials-section h3 {
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 2rem;
-  background: linear-gradient(to right, #00837f, #241e46);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.testimonial {
-  background: #fff;
-  border-radius: 8px;
-  padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.testimonial blockquote {
-  font-size: 1.1rem;
-  color: #555;
-  font-style: italic;
-  margin-bottom: 1rem;
-  line-height: 1.6;
-}
-
-.testimonial cite {
-  font-size: 1rem;
-  color: #666;
-  font-style: normal;
-}
-
-/* Additional animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+/* Анимация прокрутки */
+@keyframes scrollLogos {
+  0% {
+    transform: translateX(0);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  100% {
+    transform: translateX(-50%);
   }
 }
 
-/* Responsive styles */
+/* Адаптивность для разных экранов */
 @media (max-width: 1200px) {
-  .clients-grid {
-    grid-template-columns: repeat(3, 1fr);
+  .logo-item {
+    width: 450px;
+    height: 300px;
+    margin: 0 25px;
   }
 }
 
 @media (max-width: 992px) {
-  .clients-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .section-title {
+    font-size: var(--section-headline-tablet-size);
+    margin-bottom: 3rem;
   }
   
-  .client-name {
-    min-height: 3.5rem;
-  }
-  
-  .client-description {
-    min-height: 4.5rem;
+  .logo-item {
+    width: 380px;
+    height: 250px;
+    margin: 0 20px;
   }
 }
 
 @media (max-width: 768px) {
   .clients-section {
-    padding: 60px 0;
+    padding: 4rem 0;
   }
 
   .section-title {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .section-subtitle {
-    font-size: 1rem;
-  }
-
-  .clients-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .client-card {
-    opacity: 1;
-    transform: none;
-    animation: fadeInMobile 0.5s ease-out forwards;
-    animation-delay: calc(var(--animation-order, 0) * 0.1s);
-    height: auto;
-    grid-template-rows: auto auto auto auto;
+    font-size: var(--section-headline-mobile-size);
+    margin-bottom: 2.5rem;
   }
   
-  .client-logo-container {
-    width: 100px;
-    height: 70px;
-    margin-bottom: 1rem;
-  }
-  
-  .client-name, 
-  .client-industry, 
-  .client-description {
-    min-height: 0;
-  }
-  
-  .client-industry {
-    padding-bottom: 0.5rem;
+  .logo-item {
+    width: 320px;
+    height: 220px;
+    margin: 0 15px;
+    padding: 20px;
   }
 }
 
-@keyframes fadeInMobile {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 480px) {
+@media (max-width: 576px) {
   .clients-section {
-    padding: 40px 0;
+    padding: 3rem 0;
   }
 
   .section-container {
-    padding: 0 15px;
+    padding: 0 1.5rem;
   }
 
   .section-title {
-    font-size: 1.75rem;
+    font-size: var(--h2-mobile);
   }
+  
+  .logo-item {
+    width: 280px;
+    height: 180px;
+    margin: 0 12px;
+  }
+}
 
-  .client-card {
-    padding: 1.5rem;
+/* Для пользователей, которые предпочитают уменьшенное движение */
+@media (prefers-reduced-motion: reduce) {
+  .logo-carousel {
+    animation: none;
+  }
+  
+  .carousel-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .logo-item {
+    margin: 10px;
   }
 } 
