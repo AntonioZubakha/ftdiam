@@ -67,14 +67,14 @@ const ProductsSection: React.FC = () => {
       title: "CVD Diamond Substrates",
       image: "/images/photo1.4.png",
       specs: [
-        "Type IIa single-crystal plates",
+        "Single-crystal CVD plates",
         "Sizes: 3x3 mm to 30x30 mm",
         "Thickness: 0.3-10 mm",
         "Boron Concentration ≈ 0 ppb",
         "Nitrogen Concentration ≈ 100 ppb",
         "Dislocations density ≈ 10⁵⁻⁷cm⁻²",
         "Surface: Polished up to 0.5 nm Ra",
-        "Customization: Shapes, sizes, orientation, miscut,polishing and other specifications based on customerrequirements"
+        "Customization: Shapes, sizes, orientation, miscut, polishing and other specifications based on customer requirements"
       ]
     }
   ];
