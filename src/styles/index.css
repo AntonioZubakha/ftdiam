@@ -2,7 +2,6 @@
 
 /* Основные стили и переменные */
 @import './base.css';
-@import './animations.css';
 
 /* Общие компоненты */
 @import './header.css';
@@ -26,8 +25,7 @@ section {
   position: relative;
   margin: 0;
   padding: 0;
-  overflow: visible;
-  z-index: auto; /* Важно для корректного наложения */
+  z-index: var(--z-normal); /* Используем переменную для согласованности */
   clear: both; /* Гарантирует что секция начинается с новой строки */
   width: 100%;
   box-sizing: border-box;

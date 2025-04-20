@@ -27,10 +27,10 @@
 /* Уникальный класс видео-контейнера для домашней секции */
 .home-video-container {
   position: absolute;
-  top: -10px; /* Больший сдвиг вверх */
+  top: 0;
   left: 0;
   width: 100%;
-  height: 110%; /* Значительно увеличиваем высоту */
+  height: 100%;
   overflow: hidden;
   z-index: var(--z-back);
   background-color: var(--black); /* Используем переменную для черного фона */
@@ -110,15 +110,20 @@
   display: none; /* Скрываем маркер центра */
 }
 
+.home-content {
+  position: relative;
+  z-index: var(--z-normal);
+}
+
 .hero-content {
+  position: relative;
+  z-index: var(--z-normal);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: var(--white);
-  position: relative;
-  z-index: 6;
   padding: var(--spacing-8);
   max-width: 1000px;
   width: 100%;
@@ -201,7 +206,7 @@
   font-size: var(--text-5xl);
   margin-bottom: var(--spacing-6);
   position: relative;
-  z-index: 3;
+  z-index: var(--z-normal);
   font-weight: normal;
   color: var(--white);
   letter-spacing: 1px;
@@ -216,7 +221,7 @@
   margin-right: auto;
   color: var(--white);
   position: relative;
-  z-index: 3;
+  z-index: var(--z-normal);
   filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5));
   letter-spacing: 0.5px;
 }
@@ -235,7 +240,7 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   position: relative;
-  z-index: 3;
+  z-index: var(--z-normal);
   outline: none;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -340,4 +345,44 @@
 @keyframes slideUp {
   from { transform: translateY(20px); }
   to { transform: translateY(0); }
+}
+
+.animated-button {
+  position: relative;
+  z-index: var(--z-normal);
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-normal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.scroll-button {
+  position: relative;
+  z-index: var(--z-menu);
+}
+
+.home-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-normal);
+  pointer-events: none;
+}
+
+.hero-headline {
+  z-index: var(--z-normal);
+}
+
+.hero-features {
+  z-index: var(--z-normal);
 } 

@@ -3,16 +3,16 @@
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10000;
+  backdrop-filter: blur(5px);
+  z-index: var(--z-modal);
   padding: 20px;
   box-sizing: border-box;
-  backdrop-filter: blur(3px);
   overflow-y: auto;
 }
 
@@ -68,7 +68,7 @@
   font-size: 24px;
   cursor: pointer;
   color: #555;
-  z-index: 10;
+  z-index: var(--z-modal);
   width: 36px;
   height: 36px;
   display: flex;

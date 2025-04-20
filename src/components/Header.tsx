@@ -9,6 +9,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
   const [logoError, setLogoError] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Use active section from props if available
   useEffect(() => {
@@ -115,6 +116,19 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
   // Toggle menu
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  // Toggle mobile menu
+  const toggleMobileMenu = () => {
+    if (!isMobileMenuOpen) {
+      // При открытии меню блокируем скролл
+      document.body.classList.add('modal-open');
+    } else {
+      // При закрытии меню разблокируем скролл
+      document.body.classList.remove('modal-open');
+    }
+    
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   // Updated menu items matching sections in App.tsx

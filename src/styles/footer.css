@@ -3,27 +3,22 @@
 html, body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
   height: 100%;
   width: 100%;
 }
 
 body {
   position: relative;
-  overflow-y: auto; /* Перемещаем overflow-y на body */
 }
 
 /* Глобальные стили для всех секций */
-section {
-  overflow-x: hidden; /* Только горизонтальный overflow скрываем у секций */
-}
 
 .footer {
   background: linear-gradient(to right, #00837f, #241e46);
   color: #fff;
   padding: 30px 0 15px;
   position: relative;
-  z-index: 10;
+  z-index: var(--z-normal);
   margin-bottom: 0;
   width: 100%;
 }

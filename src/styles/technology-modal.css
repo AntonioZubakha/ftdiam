@@ -9,7 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10000;
+  z-index: var(--z-modal);
   padding: 20px;
   box-sizing: border-box;
   backdrop-filter: blur(3px);
@@ -68,7 +68,7 @@
   font-size: 24px;
   cursor: pointer;
   color: #555;
-  z-index: 10;
+  z-index: var(--z-modal);
   width: 36px;
   height: 36px;
   display: flex;
