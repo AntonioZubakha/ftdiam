@@ -91,10 +91,8 @@ const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = 
                 loop
                 style={{ 
                   objectFit: 'cover',
-                  width: '110%', // Увеличиваем размер на 10% для большего растяжения
-                  height: '110%',
-                  left: '-5%', // Центрируем видео
-                  top: '-5%',
+                  width: '100%',
+                  height: '100%',
                   position: 'absolute'
                 }} 
               >
@@ -110,6 +108,12 @@ const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = 
                 muted 
                 playsInline 
                 loop
+                style={{ 
+                  objectFit: 'cover',
+                  width: '100%',
+                  height: '100%',
+                  position: 'absolute'
+                }}
               >
                 <source src="/video/tech.mp4" type="video/mp4" />
               </video>

@@ -1,17 +1,15 @@
 /* Стили для домашней секции */
 .home-section {
-  height: 101vh;
+  height: 101vh; /* Точно 100vh, без дополнительных пикселей */
   min-height: 600px;
   padding: 0;
-  /* Убираем отступ, так как хедер теперь прозрачный */
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
-  margin-bottom: -2px; /* Отрицательный отступ для устранения пробела */
-  background-color: var(--black); /* Используем переменную для черного фона */
-  border-bottom: 5px solid var(--black); /* Используем переменную для границы */
+  margin-bottom: 0; /* Нулевой отступ */
+  border-bottom: none; /* Убираем границу */
 }
 
 .home-section .content-wrapper {
@@ -33,47 +31,39 @@
   height: 100%;
   overflow: hidden;
   z-index: var(--z-back);
-  background-color: var(--black); /* Используем переменную для черного фона */
 }
 
-/* Добавляем дополнительный оверлей внизу видео-контейнера для перекрытия белой линии */
-.home-video-container::before {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  width: 100%;
-  height: 20px;
-  background-color: var(--black);
-  z-index: 4;
+/* Удаляем все псевдоэлементы с перекрытиями */
+.home-video-container::before,
+.home-section::after,
+.split-screen::after,
+.mobile-screen::after {
+  display: none;
 }
 
 /* Стили для разделенного экрана */
 .split-screen {
   display: flex;
   width: 100%;
-  height: 110%; /* Значительно увеличиваем высоту */
+  height: 100%;
   position: relative;
   overflow: hidden;
-  background-color: var(--black); /* Используем переменную для черного фона */
 }
 
 .split-screen-left,
 .split-screen-right {
   position: relative;
   width: 50%;
-  height: 110%; /* Значительно увеличиваем высоту */
+  height: 100%;
   overflow: hidden;
-  background-color: var(--black); /* Используем переменную для черного фона */
 }
 
 /* Стили для мобильного видео (полный экран) */
 .mobile-screen {
   width: 100%;
-  height: 110%; /* Значительно увеличиваем высоту */
+  height: 100%;
   position: relative;
   overflow: hidden;
-  background-color: var(--black); /* Используем переменную для черного фона */
 }
 
 .background-video {
@@ -81,20 +71,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 110%; /* Значительно увеличиваем высоту */
+  height: 100%;
   object-fit: cover;
-  margin-bottom: -5px; /* Отрицательный отступ для устранения пробела */
-}
-
-.home-video-container::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 115%; /* Еще больше увеличиваем затемнение */
-  background: rgba(0, 0, 0, 0.3);
-  z-index: 3;
 }
 
 /* Центральный маркер для отладки (невидимый на продакшн) */

@@ -282,4 +282,14 @@ body::before {
   .static-menu a {
     font-size: var(--text-base);
   }
+}
+
+/*=============== HEADER ===============*/
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: var(--transition);
+  z-index: var(--z-fixed);
 } 
