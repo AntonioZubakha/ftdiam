@@ -15,30 +15,25 @@ const Footer: React.FC = () => {
           <div className="footer-col">
             <h3 className="footer-heading">Navigation</h3>
             <ul className="footer-links">
-              <li><a href="#about">Our Blueprint</a></li>
-              <li><a href="#technology">Advanced HPHT</a></li>
-              <li><a href="#products">Products</a></li>
+              <li><a href="#advantages">ADVANTAGES</a></li>
+              <li><a href="#technology">TECHNOLOGY</a></li>
+              <li><a href="#products">PRODUCTS</a></li>
+              <li><a href="#quality">QUALITY ANALYSIS</a></li>
+              <li><a href="#blueprint">BLUEPRINT</a></li>
             </ul>
           </div>
 
-          <div className="footer-col">
-            <h3 className="footer-heading">Links</h3>
-            <ul className="footer-links">
-              <li><a href="#quality">Quality Analysis</a></li>
-              <li><a href="#contacts">Contacts</a></li>
-              <li><a href="https://www.linkedin.com/company/ftdiam" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faLinkedin} style={{ marginRight: '8px', width: '16px' }} />
-                LinkedIn
-              </a></li>
-            </ul>
-          </div>
           
           <div className="footer-col">
             <h3 className="footer-heading">Contact Us</h3>
             <ul className="footer-contact">
-              <li><a href="mailto:info@ftdiam.com"><FontAwesomeIcon icon={faEnvelope} />info@ftdiam.com</a></li>
-              <li><a href="tel:+16172752599"><FontAwesomeIcon icon={faPhone} />+1 617 275 2599</a></li>
-              <li><a href="#address"><FontAwesomeIcon icon={faMapMarkerAlt} />220 Park Ave PMB 83131, NY 10003</a></li>
+              <li><a href="mailto:info@ftdiam.com"><FontAwesomeIcon icon={faEnvelope} /> info@ftdiam.com</a></li>
+              <li><a href="tel:+16172752599"><FontAwesomeIcon icon={faPhone} /> +1 617 275 2599</a></li>
+              <li><a href="https://www.linkedin.com/company/ftdiam" target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon icon={faLinkedin} style={{ marginRight: '8px', width: '16px' }} />
+                LinkedIn
+              </a></li>
+              <li><a href="#address"><FontAwesomeIcon icon={faMapMarkerAlt} /> 220 Park Ave PMB 83131, NY 10003</a></li>
             </ul>
           </div>
         </div>

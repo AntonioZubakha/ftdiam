@@ -159,9 +159,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                 />
               </div>
               
-              <p className="form-note">
-                * The first message will require a confirmation from FormSubmit
-              </p>
+
               
               <button 
                 type="submit" 

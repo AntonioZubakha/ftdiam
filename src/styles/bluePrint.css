@@ -9,8 +9,8 @@ section.blueprint-section {
 
 section.blueprint-section::after {
   content: '';
-  display: block;
-  height: 150px; /* Дополнительное пространство внизу */
+  display: none; /* Убираем блок, создающий дополнительное пространство */
+  height: 0; /* Убираем высоту */
   width: 100%;
   position: relative;
   pointer-events: none;
@@ -18,7 +18,7 @@ section.blueprint-section::after {
 
 /* Фикс проблемы с отступами между секциями */
 section.blueprint-section + section {
-  margin-top: 200px !important;
+  margin-top: 80px !important; /* Уменьшен отступ до следующей секции */
 }
 
 /* ID-специфичные стили для нормальной работы навигации */
@@ -29,9 +29,9 @@ section.blueprint-section + section {
 /* Общие стили для раздела */
 .who-we-are-section {
   background-color: white;
-  padding: 120px 0;
+  padding: 80px 0 80px 0; /* Уменьшен padding */
   position: relative;
-  margin: 100px 0 200px 0; /* Значительно увеличен нижний отступ */
+  margin: 0; /* Убран большой margin */
   /* Добавим небольшие разделители для четкого отделения секций */
   border-bottom: 1px solid #f0f0f0;
 }
@@ -270,10 +270,17 @@ section.blueprint-section + section {
   .info-column {
     padding-left: 0;
     padding-top: 0 !important;
+    text-align: center;
   }
   
   .block-title {
     font-size: var(--h3-mobile);
+    text-align: center;
+    width: 100%;
+  }
+  
+  .block-content {
+    text-align: center;
   }
   
   .founder-grid {

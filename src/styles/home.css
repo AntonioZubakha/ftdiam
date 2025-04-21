@@ -10,6 +10,21 @@
   overflow: hidden;
   margin-bottom: 0; /* Нулевой отступ */
   border-bottom: none; /* Убираем границу */
+  background-image: url('/images/Home.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.home-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(76, 219, 238, 0.02); /* Очень слабый темный оверлей для большей прозрачности */
+  z-index: 1;
 }
 
 .home-section .content-wrapper {
@@ -22,71 +37,7 @@
   z-index: 5;
 }
 
-/* Уникальный класс видео-контейнера для домашней секции */
-.home-video-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: var(--z-back);
-}
-
-/* Удаляем все псевдоэлементы с перекрытиями */
-.home-video-container::before,
-.home-section::after,
-.split-screen::after,
-.mobile-screen::after {
-  display: none;
-}
-
-/* Стили для разделенного экрана */
-.split-screen {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-.split-screen-left,
-.split-screen-right {
-  position: relative;
-  width: 50%;
-  height: 100%;
-  overflow: hidden;
-}
-
-/* Стили для мобильного видео (полный экран) */
-.mobile-screen {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-.background-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Центральный маркер для отладки (невидимый на продакшн) */
-.center-marker {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 2px;
-  height: 100%;
-  background-color: rgba(255, 0, 0, 0.8);
-  z-index: var(--z-menu);
-  pointer-events: none;
-  display: none; /* Скрываем маркер центра */
-}
+/* Удаляем стили для видео, так как оно больше не используется */
 
 .home-content {
   position: relative;
@@ -101,54 +52,34 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: var(--white);
   padding: var(--spacing-8);
   max-width: 1000px;
   width: 100%;
   animation: fadeIn 1.5s ease;
-  margin-top: 70px; /* Добавляем отступ, чтобы контент не перекрывался с прозрачным хедером */
 }
 
-.hero-text {
-  width: 100%;
-  position: relative;
-  padding: var(--spacing-6) 0;
+/* Главный заголовок - крупный */
+.main-headline {
+  font-size: var(--text-6xl);
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: var(--spacing-4);
+  animation: fadeIn 1.2s ease-out, slideUp 1s ease-out;
 }
 
-/* Градиентный фон за текстом */
-.hero-text-background {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 70%);
-  z-index: 1;
-  pointer-events: none;
-}
-
-.hero-text::before {
-  display: none; /* Скрываем верхнее подчеркивание */
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.8), rgba(255,255,255,0));
-}
-
-.hero-text::after {
-  display: none; /* Скрываем нижнее подчеркивание */
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.8), rgba(255,255,255,0));
+/* Подзаголовок - существенно мельче главного заголовка */
+.sub-headline {
+  font-size: var(--text-lg);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+  margin-bottom: var(--spacing-8);
+  animation: fadeIn 1.2s ease-out, slideUp 1s ease-out;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  white-space: pre-line;
 }
 
 /* Стили для контейнера текста с тенью */
@@ -160,48 +91,28 @@
   margin-bottom: var(--spacing-8);
 }
 
-/* Стили для тени текста */
-.text-shadow-element {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  width: 100%;
-  z-index: 1;
-  color: rgba(0, 0, 0, 0.7);
-  filter: blur(8px);
-  opacity: 0.8;
-  font-size: inherit;
-  font-weight: inherit;
-  white-space: nowrap;
-  text-shadow: 
-    0 0 10px rgba(0, 0, 0, 0.6),
-    0 0 20px rgba(0, 0, 0, 0.4);
-  transform: scale(1.02); /* Слегка увеличиваем размер тени */
-}
-
-/* Стили для заголовка */
+/* Стили для заголовка с градиентом */
 .hero-subheadline {
   font-size: var(--text-5xl);
   margin-bottom: var(--spacing-6);
   position: relative;
   z-index: var(--z-normal);
-  font-weight: normal;
-  color: var(--white);
+  font-weight: bold;
   letter-spacing: 1px;
 }
 
-/* Стили для описания */
+/* Стили для описания с градиентом */
 .hero-description {
-  font-size: var(--text-3xl); /* Используем переменную для размера */
+  font-size: var(--text-xl); /* Еще уменьшаем размер с text-2xl до text-xl */
   margin-bottom: var(--spacing-4);
-  max-width: 800px;
+  max-width: 600px; /* Уменьшаем максимальную ширину еще сильнее */
   margin-left: auto;
   margin-right: auto;
-  color: var(--white);
   position: relative;
   z-index: var(--z-normal);
-  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5));
   letter-spacing: 0.5px;
+  font-weight: 500;
+  line-height: 1.4; /* Сохраняем межстрочный интервал для лучшей читаемости */
 }
 
 /* Стили для кнопки */
@@ -214,7 +125,6 @@
   font-size: var(--text-xl);
   font-weight: var(--font-weight-semibold);
   cursor: pointer;
-  margin-top: var(--spacing-8);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   position: relative;
@@ -238,12 +148,12 @@
 
 /* Медиа-запросы */
 @media (max-width: 1024px) {
-  .hero-subheadline {
-    font-size: var(--h1-tablet);
+  .main-headline {
+    font-size: var(--text-5xl);
   }
   
-  .hero-description {
-    font-size: var(--h2-tablet);
+  .sub-headline {
+    font-size: var(--text-base);
   }
   
   .hero-button {
@@ -253,33 +163,18 @@
 }
 
 @media (max-width: 768px) {
-  /* На мобильных устройствах видео размещаем друг над другом */
-  .split-screen {
-    flex-direction: column;
-  }
-  
-  .split-screen-left,
-  .split-screen-right {
-    width: 100%;
-    height: 50%;
-  }
-  
   .hero-content {
-    margin-top: 0;
     padding: var(--spacing-6);
   }
   
-  .hero-subheadline {
-    font-size: var(--h1-mobile);
+  .main-headline {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--spacing-3);
   }
   
-  .hero-description {
-    font-size: var(--h2-mobile);
-  }
-  
-  .text-backdrop {
-    padding: var(--spacing-3) var(--spacing-5);
-    max-width: 90%;
+  .sub-headline {
+    font-size: var(--text-sm);
+    margin-bottom: var(--spacing-6);
   }
   
   .hero-button {
@@ -290,22 +185,18 @@
 }
 
 @media (max-width: 480px) {
-  .hero-subheadline {
-    font-size: var(--h1-mobile);
+  .main-headline {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--spacing-2);
   }
   
-  .hero-description {
-    font-size: var(--h3-mobile);
+  .sub-headline {
+    font-size: var(--text-xs);
+    margin-bottom: var(--spacing-4);
   }
   
   .hero-content {
-    margin-top: 0;
     padding: var(--spacing-4);
-  }
-  
-  .text-backdrop {
-    padding: var(--spacing-2) var(--spacing-4);
-    max-width: 95%;
   }
   
   .hero-button {

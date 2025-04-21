@@ -4,6 +4,7 @@ import '../../styles/clients.css';
 const ClientsSection: React.FC = () => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   
   // Client logos array - keeping the same image paths
   const clientLogos = [
@@ -31,9 +32,18 @@ const ClientsSection: React.FC = () => {
     
     mediaQuery.addEventListener('change', handleReducedMotionChange);
     
+    // Check if the screen is mobile-sized
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile(); // Initial check
+    window.addEventListener('resize', checkMobile);
+    
     // Clean up
     return () => {
       mediaQuery.removeEventListener('change', handleReducedMotionChange);
+      window.removeEventListener('resize', checkMobile);
     };
   }, []);
   
@@ -47,7 +57,8 @@ const ClientsSection: React.FC = () => {
             className="logo-carousel" 
             ref={carouselRef}
             style={{ 
-              animationPlayState: prefersReducedMotion ? 'paused' : 'running' 
+              animationPlayState: prefersReducedMotion ? 'paused' : 'running',
+              gap: isMobile ? '25px' : 'inherit'
             }}
           >
             {allLogos.map((client, index) => (
@@ -56,6 +67,10 @@ const ClientsSection: React.FC = () => {
                   src={client.logo} 
                   alt={client.alt} 
                   className="client-logo" 
+                  style={{
+                    maxWidth: isMobile ? '95%' : '90%',
+                    maxHeight: isMobile ? '95%' : '90%'
+                  }}
                 />
               </div>
             ))}

@@ -39,7 +39,9 @@ const BluePrint: React.FC = () => {
     WebkitTextFillColor: 'transparent' as const,
     marginBottom: '1rem',
     fontWeight: 'var(--font-weight-semibold)' as const,
-    display: 'inline-block'
+    display: 'inline-block',
+    width: isMobile ? '100%' : 'auto',
+    textAlign: isMobile ? 'center' as const : 'left' as const
   };
 
   // Стили для контейнеров фотографий

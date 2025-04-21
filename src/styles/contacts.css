@@ -101,17 +101,13 @@
 
 .contact-info-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 15px;
   position: relative;
-  padding-left: 55px;
-  min-height: 40px;
-  margin: 0;
+  margin: 0 0 20px 0;
 }
 
-.contact-info-item:nth-child(2),
-.contact-info-item:nth-child(3) {
-  margin-top: 0;
+.contact-info-item:last-child {
   margin-bottom: 0;
 }
 
@@ -126,8 +122,7 @@
   color: #fff;
   font-size: 16px;
   flex-shrink: 0;
-  position: absolute;
-  left: 0;
+  margin-top: 0;
 }
 
 .contact-text {
@@ -135,20 +130,18 @@
   flex-direction: column;
   position: relative;
   z-index: 1;
-  margin-left: 0;
-  padding-left: 0;
   flex: 1;
 }
 
-/* Для адреса, где может быть больше текста */
-/* .contact-info-item:nth-child(3) .contact-text {
-  min-width: 220px;
-} */
+.contact-label-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
 
 .contact-label {
   font-size: 14px;
   font-weight: 600;
-  margin-bottom: 2px;
   color: #00837f;
   text-align: left;
 }

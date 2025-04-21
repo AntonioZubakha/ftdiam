@@ -16,7 +16,7 @@ html, body {
 
 /* Стили для загрузочного индикатора */
 .products-section.loading {
-  min-height: 300px;
+  min-height: 350px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,7 +51,7 @@ html, body {
 
 .products-headline-container {
   text-align: center;
-  margin: 120px 0 80px 0;
+  margin: 80px 0 80px 0;
 }
 
 .gradient-headline {
@@ -250,7 +250,7 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 300px;
+  height: 350px;
   margin-bottom: var(--spacing-10);
   position: relative;
   overflow: hidden;
@@ -308,7 +308,7 @@ html, body {
   color: var(--text-color);
   line-height: 1.4;
   position: relative;
-  padding-left: var(--spacing-6);
+  padding-left: calc(var(--spacing-6) + 30px);
   transition: none;
   border-bottom: none;
   word-break: break-word;
@@ -320,7 +320,7 @@ html, body {
 
 .gradient-diamond {
   position: absolute;
-  left: 0;
+  left: 30px;
   top: 6px;
   width: 8px;
   height: 8px;
@@ -421,7 +421,7 @@ html, body {
   width: 100%;
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: 65px;
   padding: 0;
   margin: 0;
   border-top: none;
@@ -514,7 +514,7 @@ html, body {
 
 @media screen and (max-width: 768px) {
   .products-section {
-    padding: 120px 0 140px 0;
+    padding: 80 0 140px 0;
     overflow-x: hidden;
   }
   
@@ -580,7 +580,7 @@ html, body {
   .product-request-button-container {
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: 0px;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -612,7 +612,7 @@ html, body {
 
 @media (max-width: 576px) {
   .products-section {
-    padding: 100px 0 120px 0;
+    padding: 80px 0 80px 0;
     overflow-x: hidden;
   }
   
@@ -685,7 +685,7 @@ html, body {
   .product-request-button-container {
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: 0px;
     width: 100%;
     margin: 0;
     padding: 0;

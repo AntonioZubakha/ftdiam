@@ -94,7 +94,7 @@ const IntroSection: React.FC = () => {
   const cardContainerStyle: React.CSSProperties = {
     display: 'grid',
     gridTemplateColumns: isMobile ? '1fr' : 'repeat(4, 1fr)',
-    gap: isMobile ? '10px' : '15px',
+    gap: isMobile ? '10px' : '25px',
     maxWidth: '1450px',
     textAlign: 'center' as const,
     margin: '3rem auto 4rem',
@@ -106,7 +106,7 @@ const IntroSection: React.FC = () => {
     backgroundColor: 'white',
     color: '#333',
     borderRadius: '6px',
-    padding: isMobile ? '20px 15px' : '25px 15px',
+    padding: isMobile ? '25px 20px' : '20px 15px',
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
     display: 'flex',
     flexDirection: 'column',
@@ -114,69 +114,72 @@ const IntroSection: React.FC = () => {
     alignItems: 'center',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
     width: '100%',
-    minHeight: isMobile ? '320px' : '380px',
+    minHeight: isMobile ? '340px' : '330px',
     position: 'relative',
     overflow: 'hidden',
     cursor: 'default',
     margin: '0 auto',
-    maxWidth: isMobile ? '100%' : '300px',
+    maxWidth: isMobile ? '100%' : '290px',
+    aspectRatio: isMobile ? 'auto' : '1/1.05',
   };
 
   const specIconStyle: React.CSSProperties = {
-    fontSize: isMobile ? '32px' : '60px',
-    marginBottom: isMobile ? '10px' : '15px',
+    fontSize: isMobile ? '45px' : '55px',
+    marginBottom: isMobile ? '15px' : '15px',
     background: 'linear-gradient(to right, #00837f, #241e46)',
     WebkitBackgroundClip: 'text',
     backgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
-    height: isMobile ? '60px' : '80px',
+    height: isMobile ? '70px' : '70px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
   };
 
   const specNameStyle: React.CSSProperties = {
-    fontSize: isMobile ? 'var(--h4-mobile)' : 'var(--h4-desktop)',
-    height: isMobile ? '40px' : '50px',
+    fontSize: isMobile ? 'calc(var(--h4-mobile) + 2px)' : 'var(--h4-desktop)',
+    height: isMobile ? '45px' : '40px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: '10px'
+    marginBottom: '10px',
+    fontWeight: isMobile ? '600' : '600'
   };
 
   const specValueStyle: React.CSSProperties = {
-    fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
+    fontSize: isMobile ? 'calc(var(--h3-mobile) + 2px)' : 'var(--h3-desktop)',
     background: 'linear-gradient(to right, #00837f, #241e46)',
     WebkitBackgroundClip: 'text',
     backgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
-    margin: '0.7rem 0',
+    margin: '0.5rem 0 0.7rem',
     fontWeight: 'bold',
     letterSpacing: '0.5px',
-    height: isMobile ? '40px' : '50px',
+    height: isMobile ? '50px' : '45px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
   };
 
   const specDescriptionStyle: React.CSSProperties = {
-    fontSize: isMobile ? 'calc(var(--text-sm) - 1px)' : 'calc(var(--text-base) - 1px)',
+    color: '#555',
     textAlign: 'center',
-    height: isMobile ? '80px' : '100px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    overflow: 'visible',
-    lineHeight: '1.3',
-    padding: '0 5px',
-    wordBreak: 'normal'
+    marginBottom: 'var(--spacing-3)',
+    fontWeight: '400',
+    opacity: '0.95',
+    fontSize: isMobile ? 'var(--text-base)' : 'calc(var(--text-base) - 1px)',
+    transition: 'all 0.3s ease',
   };
 
   // Специальные стили для третьей карточки с длинным описанием
   const longDescriptionStyle: React.CSSProperties = {
-    ...specDescriptionStyle,
-    fontSize: isMobile ? 'calc(var(--text-sm) - 2px)' : 'calc(var(--text-base) - 2px)',
-    lineHeight: '1.2',
+    color: '#555',
+    textAlign: 'center',
+    marginBottom: 'var(--spacing-3)',
+    fontWeight: '400',
+    opacity: '0.90',
+    fontSize: isMobile ? 'var(--text-base)' : 'calc(var(--text-base) - 2px)',
+    transition: 'all 0.3s ease',
   };
 
   const specBlockHoverStyle: React.CSSProperties = {
@@ -190,8 +193,8 @@ const IntroSection: React.FC = () => {
       className="intro-section" 
       style={{ 
         backgroundColor: 'transparent',
-        marginTop: isMobile ? '40px' : '150px',
-        paddingTop: isMobile ? '40px' : '150px',
+        marginTop: isMobile ? '40px' : '60px',
+        paddingTop: isMobile ? '40px' : '60px',
         paddingBottom: '0',
         minHeight: isMobile ? 'auto' : '80vh',
         visibility: contentLoaded ? 'visible' : 'hidden', // Скрываем секцию до загрузки контента

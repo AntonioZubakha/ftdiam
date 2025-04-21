@@ -36,7 +36,7 @@ const ProductsSection: React.FC = () => {
         "Purity: ≤5 ppb Nitrogen",
         "Dislocations: As low as 10¹ cm⁻²",
         "Surface: Polished up to 0.5 nm Ra",
-        "Customization: Shapes, sizes, doping, orientation, miscut, polishing and other specifications based on customer requirements"
+        "Customization: Shapes, sizes, doping, orientation, miscut, polishing, etc."
       ]
     },
     {
@@ -74,7 +74,7 @@ const ProductsSection: React.FC = () => {
         "Nitrogen Concentration ≈ 100 ppb",
         "Dislocations density ≈ 10⁵⁻⁷cm⁻²",
         "Surface: Polished up to 0.5 nm Ra",
-        "Customization: Shapes, sizes, orientation, miscut, polishing and other specifications based on customer requirements"
+        "Customization: Shapes, sizes, doping, orientation, miscut, polishing, etc."
       ]
     }
   ];

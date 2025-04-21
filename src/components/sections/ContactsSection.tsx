@@ -46,7 +46,9 @@ const ContactsSection = () => {
                   <FontAwesomeIcon icon={faEnvelope} />
                 </div>
                 <div className="contact-text">
-                  <span className="contact-label">Email</span>
+                  <div className="contact-label-row">
+                    <span className="contact-label">Email</span>
+                  </div>
                   <a href="mailto:info@ftdiam.com" className="contact-value">
                     info@ftdiam.com
                   </a>
@@ -58,7 +60,9 @@ const ContactsSection = () => {
                   <FontAwesomeIcon icon={faPhone} />
                 </div>
                 <div className="contact-text">
-                  <span className="contact-label">Phone</span>
+                  <div className="contact-label-row">
+                    <span className="contact-label">Phone</span>
+                  </div>
                   <a href="tel:+16172752599" className="contact-value">
                     +1 617 275 2599
                   </a>
@@ -70,7 +74,9 @@ const ContactsSection = () => {
                   <FontAwesomeIcon icon={faLinkedin} />
                 </div>
                 <div className="contact-text">
-                  <span className="contact-label">LinkedIn</span>
+                  <div className="contact-label-row">
+                    <span className="contact-label">LinkedIn</span>
+                  </div>
                   <a 
                     href="https://www.linkedin.com/company/ftdiam" 
                     target="_blank" 
@@ -87,7 +93,9 @@ const ContactsSection = () => {
                   <FontAwesomeIcon icon={faLocationDot} />
                 </div>
                 <div className="contact-text">
-                  <span className="contact-label">Address</span>
+                  <div className="contact-label-row">
+                    <span className="contact-label">Address</span>
+                  </div>
                   <p className="contact-value">
                     220 Park Ave PMB 83131<br />
                     New York, NY 10003, USA
@@ -145,7 +153,7 @@ const ContactsSection = () => {
                 </div>
                 
                 <p className="form-note">
-                  * The first message will require a confirmation from FormSubmit
+
                 </p>
                 
                 <button type="submit" className="contact-submit-button">

@@ -7,7 +7,12 @@ const QualitySection: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
   const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [slideOffset, setSlideOffset] = useState(0);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
   const scrollToContacts = () => {
     const contactsSection = document.getElementById('contacts');
@@ -124,6 +129,68 @@ const QualitySection: React.FC = () => {
     };
   }, [imagesLoaded]);
   
+  // Функция для перехода к определенному слайду
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+    if (sliderRef.current) {
+      sliderRef.current.style.transform = `translateX(-${index * 100}%)`;
+    }
+  };
+
+  // Функция для перехода к предыдущему слайду
+  const prevSlide = () => {
+    const newIndex = currentSlide === 0 ? cardData.length - 1 : currentSlide - 1;
+    goToSlide(newIndex);
+  };
+
+  // Функция для перехода к следующему слайду
+  const nextSlide = () => {
+    const newIndex = currentSlide === cardData.length - 1 ? 0 : currentSlide + 1;
+    goToSlide(newIndex);
+  };
+  
+  // Обработчики для свайпа на мобильных устройствах
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsDragging(true);
+    setStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || !sliderRef.current) return;
+    
+    const currentX = e.touches[0].clientX;
+    const diff = currentX - startX;
+    const containerWidth = sliderRef.current.clientWidth;
+    const percentMoved = (diff / containerWidth) * 100;
+    
+    // Ограничиваем движение слайдера
+    const newOffset = Math.max(
+      Math.min(percentMoved, currentSlide === 0 ? 20 : 0),
+      currentSlide === cardData.length - 1 ? -20 : -100
+    );
+    
+    setSlideOffset(newOffset);
+    sliderRef.current.style.transform = `translateX(calc(-${currentSlide * 100}% + ${newOffset}%))`;
+  };
+
+  const handleTouchEnd = () => {
+    if (!isDragging || !sliderRef.current) return;
+    
+    setIsDragging(false);
+    
+    // Если сдвиг был достаточно большим, переходим к следующему/предыдущему слайду
+    if (slideOffset > 20) {
+      prevSlide();
+    } else if (slideOffset < -20) {
+      nextSlide();
+    } else {
+      // Возвращаем слайдер в исходное положение
+      sliderRef.current.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+    
+    setSlideOffset(0);
+  };
+  
   // Открытие изображения в модальном окне
   const openModal = (imageSrc: string) => {
     setModalImage(imageSrc);
@@ -200,14 +267,174 @@ const QualitySection: React.FC = () => {
     width: '100%'
   };
 
+  // Рендер карточек для десктопной версии
+  const renderDesktopCards = () => {
+    return cardData.map((card, index) => (
+      <div 
+        key={index}
+        ref={el => cardRefs.current[index] = el}
+        className={`spec-block spec-block-animate ${visibleCards.includes(index) ? 'visible' : ''}`}
+        style={{ 
+          padding: '20px',
+        }}
+      >
+        <div 
+          style={{...imageContainerStyle}}
+          onClick={() => openModal(card.image)}
+        >
+          {index === 3 ? (
+            <div style={{
+              ...imageStyle,
+              backgroundImage: `url(${card.image})`,
+              backgroundPosition: 'center',
+              backgroundSize: 'contain',
+              backgroundRepeat: 'no-repeat'
+            }}></div>
+          ) : (
+            <img 
+              src={card.image} 
+              alt={card.title} 
+              style={index === 4 ? {...imageStyle, objectFit: 'contain' as const} : imageStyle} 
+            />
+          )}
+        </div>
+        <h3 className="spec-name" style={{ 
+          fontSize: '1.1rem',
+          textAlign: 'center',
+          margin: '0 0 0.5rem 0',
+          fontWeight: '600',
+          minHeight: '2.2rem',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}>{card.title}</h3>
+        <div style={{
+          fontSize: '1.3rem',
+          background: 'linear-gradient(to right, #00837f, #241e46)',
+          WebkitBackgroundClip: 'text',
+          backgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          margin: '0.5rem 0',
+          fontWeight: 'bold',
+          letterSpacing: '0.5px',
+          display: 'block',
+          textAlign: 'center',
+          minHeight: '1.6rem'
+        }}>{card.highlight}</div>
+        <p className="spec-description" style={{ 
+          fontSize: '0.9rem',
+          textAlign: 'center',
+          margin: '0.5rem 0 0 0',
+          color: '#666',
+          lineHeight: '1.4',
+          minHeight: '2.5rem'
+        }}>{card.description}</p>
+      </div>
+    ));
+  };
+
+  // Рендер мобильного слайдера
+  const renderMobileSlider = () => {
+    return (
+      <>
+        <div className="slider-arrows">
+          <button 
+            className="slider-arrow" 
+            onClick={prevSlide}
+            aria-label="Previous slide"
+          >
+          </button>
+          <button 
+            className="slider-arrow" 
+            onClick={nextSlide}
+            aria-label="Next slide"
+          >
+          </button>
+        </div>
+        
+        <div 
+          className="mobile-slider"
+          ref={sliderRef}
+          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          {cardData.map((card, index) => (
+            <div 
+              key={index}
+              ref={el => cardRefs.current[index] = el}
+              className={`spec-block spec-block-animate ${visibleCards.includes(index) ? 'visible' : ''}`}
+              style={{ 
+                padding: '15px',
+              }}
+            >
+              <div 
+                style={{...imageContainerStyle}}
+                onClick={() => openModal(card.image)}
+              >
+                {index === 3 ? (
+                  <div style={{
+                    ...imageStyle,
+                    backgroundImage: `url(${card.image})`,
+                    backgroundPosition: 'center',
+                    backgroundSize: 'contain',
+                    backgroundRepeat: 'no-repeat'
+                  }}></div>
+                ) : (
+                  <img 
+                    src={card.image} 
+                    alt={card.title} 
+                    style={index === 4 ? {...imageStyle, objectFit: 'contain' as const} : imageStyle} 
+                  />
+                )}
+              </div>
+              <h3 className="spec-name" style={{ 
+                fontSize: '0.9rem',
+                textAlign: 'center',
+                margin: '0 0 0.5rem 0',
+                fontWeight: '600',
+                minHeight: 'auto',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>{card.title}</h3>
+              <div style={{
+                fontSize: '1.1rem',
+                background: 'linear-gradient(to right, #00837f, #241e46)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                margin: '0.5rem 0',
+                fontWeight: 'bold',
+                letterSpacing: '0.5px',
+                display: 'block',
+                textAlign: 'center',
+                minHeight: 'auto'
+              }}>{card.highlight}</div>
+              <p className="spec-description" style={{ 
+                fontSize: '0.8rem',
+                textAlign: 'center',
+                margin: '0.5rem 0 0 0',
+                color: '#666',
+                lineHeight: '1.4',
+                minHeight: 'auto'
+              }}>{card.description}</p>
+            </div>
+          ))}
+        </div>
+      </>
+    );
+  };
+
   return (
     <section 
       id="quality" 
       className="quality-section" 
       style={{ 
         backgroundColor: 'transparent',
-        paddingTop: isMobile ? '40px' : '120px',
-        paddingBottom: isMobile ? '40px' : '120px',
+        paddingTop: isMobile ? '40px' : '50px',
+        paddingBottom: isMobile ? '40px' : '50px',
         position: 'relative',
         minHeight: isMobile ? 'auto' : '80vh',
         visibility: imagesLoaded ? 'visible' : 'hidden' // Скрываем секцию до загрузки изображений
@@ -264,70 +491,9 @@ const QualitySection: React.FC = () => {
             </p>
           </div>
           
-          {/* Карточки в одном ряду */}
+          {/* Карточки в одном ряду с мобильным слайдером */}
           <div className="quality-cards-row">
-            {cardData.map((card, index) => (
-              <div 
-                key={index}
-                ref={el => cardRefs.current[index] = el}
-                className={`spec-block spec-block-animate ${visibleCards.includes(index) ? 'visible' : ''}`}
-                style={{ 
-                  padding: isMobile ? '15px' : '20px',
-                }}
-              >
-                <div 
-                  style={{...imageContainerStyle}}
-                  onClick={() => openModal(card.image)}
-                >
-                  {index === 3 ? (
-                    <div style={{
-                      ...imageStyle,
-                      backgroundImage: `url(${card.image})`,
-                      backgroundPosition: 'center',
-                      backgroundSize: 'contain',
-                      backgroundRepeat: 'no-repeat'
-                    }}></div>
-                  ) : (
-                    <img 
-                      src={card.image} 
-                      alt={card.title} 
-                      style={index === 4 ? {...imageStyle, objectFit: 'contain' as const} : imageStyle} 
-                    />
-                  )}
-                </div>
-                <h3 className="spec-name" style={{ 
-                  fontSize: isMobile ? '0.9rem' : '1.1rem',
-                  textAlign: 'center',
-                  margin: '0 0 0.5rem 0',
-                  fontWeight: '600',
-                  minHeight: isMobile ? 'auto' : '2.2rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>{card.title}</h3>
-                <div style={{
-                  fontSize: isMobile ? '1.1rem' : '1.3rem',
-                  background: 'linear-gradient(to right, #00837f, #241e46)',
-                  WebkitBackgroundClip: 'text',
-                  backgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  margin: '0.5rem 0',
-                  fontWeight: 'bold',
-                  letterSpacing: '0.5px',
-                  display: 'block',
-                  textAlign: 'center',
-                  minHeight: isMobile ? 'auto' : '1.6rem'
-                }}>{card.highlight}</div>
-                <p className="spec-description" style={{ 
-                  fontSize: isMobile ? '0.8rem' : '0.9rem',
-                  textAlign: 'center',
-                  margin: '0.5rem 0 0 0',
-                  color: '#666',
-                  lineHeight: '1.4',
-                  minHeight: isMobile ? 'auto' : '2.5rem'
-                }}>{card.description}</p>
-              </div>
-            ))}
+            {isMobile ? renderMobileSlider() : renderDesktopCards()}
           </div>
           
           {/* Кнопка запроса документа */}
