@@ -271,7 +271,9 @@ const QualitySection: React.FC = () => {
                 key={index}
                 ref={el => cardRefs.current[index] = el}
                 className={`spec-block spec-block-animate ${visibleCards.includes(index) ? 'visible' : ''}`}
-                style={{ padding: isMobile ? '15px' : '20px' }}
+                style={{ 
+                  padding: isMobile ? '15px' : '20px',
+                }}
               >
                 <div 
                   style={{...imageContainerStyle}}
@@ -298,7 +300,7 @@ const QualitySection: React.FC = () => {
                   textAlign: 'center',
                   margin: '0 0 0.5rem 0',
                   fontWeight: '600',
-                  minHeight: '2.2rem',
+                  minHeight: isMobile ? 'auto' : '2.2rem',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center'
@@ -314,7 +316,7 @@ const QualitySection: React.FC = () => {
                   letterSpacing: '0.5px',
                   display: 'block',
                   textAlign: 'center',
-                  minHeight: '1.6rem'
+                  minHeight: isMobile ? 'auto' : '1.6rem'
                 }}>{card.highlight}</div>
                 <p className="spec-description" style={{ 
                   fontSize: isMobile ? '0.8rem' : '0.9rem',
@@ -322,7 +324,7 @@ const QualitySection: React.FC = () => {
                   margin: '0.5rem 0 0 0',
                   color: '#666',
                   lineHeight: '1.4',
-                  minHeight: '2.5rem'
+                  minHeight: isMobile ? 'auto' : '2.5rem'
                 }}>{card.description}</p>
               </div>
             ))}

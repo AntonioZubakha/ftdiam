@@ -128,18 +128,67 @@ body::before {
   border: none;
   padding: var(--spacing-2);
   cursor: pointer;
-  z-index: var(--z-menu);
+  z-index: var(--z-fixed);
   justify-self: end;
-  margin-right: 10px;
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.menu-toggle:active {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .menu-toggle span {
   display: block;
-  width: 24px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
   height: 2px;
-  margin: 4px 0;
-  background: var(--main-gradient);
-  transition: all var(--transition-fast);
+  background: var(--primary-teal);
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease;
+}
+
+.menu-toggle span:nth-child(1) {
+  top: 13px;
+}
+
+.menu-toggle span:nth-child(2) {
+  top: 18px;
+}
+
+.menu-toggle span:nth-child(3) {
+  top: 23px;
+}
+
+/* Стили для открытого гамбургер-меню */
+.menu-toggle span.open:nth-child(1) {
+  transform: translateX(-50%) rotate(45deg);
+  top: 18px;
+}
+
+.menu-toggle span.open:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle span.open:nth-child(3) {
+  transform: translateX(-50%) rotate(-45deg);
+  top: 18px;
+}
+
+/* Menu overlay для мобильного меню */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: calc(var(--z-menu) - 1);
 }
 
 /* Prefers reduced motion - соблюдаем доступность */
@@ -158,32 +207,6 @@ body::before {
   .static-menu a:hover {
     transform: none;
   }
-}
-
-/* Menu overlay для мобильного меню */
-.menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  z-index: calc(var(--z-menu) - 1);
-}
-
-/* Стили для открытого гамбургер-меню */
-.menu-toggle span.open:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
-}
-
-.menu-toggle span.open:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle span.open:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg);
 }
 
 /* Media queries */
@@ -205,11 +228,12 @@ body::before {
 @media (max-width: 768px) {
   .static-header {
     min-width: 280px;
+    height: 60px;
   }
 
   .header-container {
     grid-template-columns: auto auto;
-    padding: 0 10px;
+    padding: 0 15px;
   }
 
   .logo-wrapper {
@@ -230,13 +254,13 @@ body::before {
     grid-column: unset;
     top: 0;
     right: -100%;
-    width: min(80%, 300px);
+    width: min(75%, 280px);
     height: 100vh;
     background-color: white;
-    padding: var(--spacing-16) var(--spacing-4) var(--spacing-4);
-    transition: right var(--transition-normal);
+    padding: 70px 20px 30px;
+    transition: right 0.3s ease;
     z-index: var(--z-menu);
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    box-shadow: -3px 0 15px rgba(0, 0, 0, 0.08);
     overflow-y: auto;
   }
   
@@ -246,41 +270,101 @@ body::before {
   
   .static-menu ul {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
     height: auto;
-    gap: var(--spacing-4);
+    gap: 16px;
   }
   
   .static-menu li {
     width: 100%;
     height: auto;
+    text-align: center;
   }
   
   .static-menu a {
     display: block;
     width: 100%;
-    padding: var(--spacing-2) 0;
-    font-size: var(--text-lg);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 8px 0;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    font-weight: var(--font-weight-medium);
+    text-align: center;
+    letter-spacing: 0.3px;
+  }
+  
+  .static-menu a.active {
+    position: relative;
+    font-weight: var(--font-weight-semibold);
+  }
+  
+  .static-menu a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 2px;
+    background: var(--main-gradient);
   }
 }
 
 @media (max-width: 480px) {
+  .static-header {
+    height: 55px;
+  }
+  
   .header-logo {
-    height: 30px;
+    height: 28px;
   }
   
   .placeholder-logo {
     font-size: var(--text-lg);
   }
   
+  .menu-toggle {
+    width: 34px;
+    height: 34px;
+  }
+  
   .menu-toggle span {
-    width: 20px;
+    width: 18px;
+  }
+  
+  .menu-toggle span:nth-child(1) {
+    top: 12px;
+  }
+
+  .menu-toggle span:nth-child(2) {
+    top: 17px;
+  }
+
+  .menu-toggle span:nth-child(3) {
+    top: 22px;
+  }
+  
+  .menu-toggle span.open:nth-child(1),
+  .menu-toggle span.open:nth-child(3) {
+    top: 17px;
+  }
+  
+  .static-menu {
+    width: min(75%, 250px);
+    padding: 60px 15px 20px;
+  }
+  
+  .static-menu ul {
+    gap: 10px;
   }
   
   .static-menu a {
-    font-size: var(--text-base);
+    font-size: 14px;
+    padding: 6px 0;
+  }
+  
+  .static-menu a.active::after {
+    width: 25px;
   }
 }
 

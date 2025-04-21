@@ -494,13 +494,22 @@
 
 @media screen and (max-width: 768px) {
   .quality-cards-row {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 15px;
+    flex-wrap: wrap;
+    overflow-x: visible;
+    justify-content: center;
+    gap: 12px;
+    padding-bottom: 0;
   }
   
   .spec-block {
-    flex: 0 0 230px;
+    flex: 0 0 calc(50% - 8px);
+    max-width: calc(50% - 8px);
+    min-width: unset;
+  }
+  
+  .spec-block:nth-child(5) {
+    flex: 0 0 calc(50% - 8px);
+    margin: 12px auto 0;
   }
   
   .spec-block-animate.visible {
@@ -512,12 +521,24 @@
 }
 
 @media screen and (max-width: 576px) {
+  .quality-cards-row {
+    gap: 10px;
+  }
+  
   .spec-block {
-    flex: 0 0 200px;
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .spec-block:nth-child(5) {
+    flex: 0 0 100%;
+    margin: 0;
   }
   
   .request-document-button {
     font-size: 0.9rem;
     padding: 12px 20px;
+    margin-top: 20px;
   }
 } 

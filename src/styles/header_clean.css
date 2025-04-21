@@ -1,0 +1,372 @@
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:1:/* Header styles */
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:2:.static-header {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:3:  position: absolute;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:4:  top: 0;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:5:  left: 0;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:6:  right: 0;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:7:  width: 100%;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:8:  height: 70px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:9:  background-color: white;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:10:  z-index: var(--z-fixed);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:11:  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:12:  min-width: 320px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:13:  overflow: visible;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:14:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:15:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:16:/* Добавляем белый фон над хедером */
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:17:/* Удаляем ненужную белую полосу в верхней части экрана 
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:19:  content: '';
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:20:  position: fixed;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:21:  top: 0;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:22:  left: 0;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:23:  right: 0;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:24:  height: 10px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:25:  background-color: white;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:26:  z-index: var(--z-fixed);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:27:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:28:*/
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:29:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:30:.header-container {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:31:  position: relative;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:32:  width: 100%;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:33:  height: 100%;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:34:  display: grid;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:35:  grid-template-columns: 200px 1fr 50px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:36:  align-items: center;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:37:  max-width: 1920px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:38:  margin: 0 auto;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:39:  padding: 0 20px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:40:  box-sizing: border-box;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:41:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:42:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:43:/* Логотип слева */
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:44:.logo-wrapper {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:45:  grid-column: 1;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:46:  height: 100%;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:47:  display: flex;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:48:  align-items: center;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:49:  z-index: 1;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:50:  min-width: 120px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:51:  padding: 0 10px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:52:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:53:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:54:.header-logo {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:55:  height: 35px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:56:  width: auto;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:57:  object-fit: contain;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:58:  max-width: 100%;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:59:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:60:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:61:/* Placeholder logo styling */
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:62:.placeholder-logo {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:63:  font-size: var(--text-xl);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:64:  font-weight: var(--font-weight-bold);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:65:  color: var(--primary-dark-blue);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:66:  background: var(--main-gradient);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:67:  -webkit-background-clip: text;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:68:  background-clip: text;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:69:  -webkit-text-fill-color: transparent;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:70:  padding: var(--spacing-1) var(--spacing-2);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:71:  letter-spacing: 1px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:72:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:73:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:74:/* Меню в центре */
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:75:.static-menu {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:76:  grid-column: 2;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:77:  width: 100%;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:78:  height: 100%;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:79:  display: flex;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:80:  justify-content: center;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:81:  align-items: center;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:82:  overflow: visible;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:83:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:84:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:85:.static-menu ul {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:86:  display: flex;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:87:  list-style: none;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:88:  margin: 0;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:89:  padding: 0;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:90:  height: 100%;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:91:  align-items: center;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:92:  gap: clamp(1rem, 2vw, var(--spacing-16));
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:93:  flex-wrap: nowrap;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:94:  justify-content: center;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:95:  min-width: min-content;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:96:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:97:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:98:.static-menu li {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:99:  height: 100%;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:100:  display: flex;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:101:  align-items: center;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:102:  position: relative;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:103:  white-space: nowrap;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:104:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:105:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:106:.static-menu a {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:107:  background: var(--main-gradient);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:108:  -webkit-background-clip: text;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:109:  background-clip: text;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:110:  -webkit-text-fill-color: transparent;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:111:  font-size: clamp(0.75rem, 1vw, var(--text-lg));
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:112:  font-weight: var(--font-weight-semibold);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:113:  text-decoration: none;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:114:  padding: var(--spacing-1) 0;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:115:  position: relative;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:116:  letter-spacing: 0.5px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:117:  white-space: nowrap;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:118:  text-transform: uppercase;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:119:  outline: none;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:120:  transition: transform 0.3s ease;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:121:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:122:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:123:/* Гамбургер меню справа */
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:124:.menu-toggle {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:125:  grid-column: 3;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:126:  display: none;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:127:  background: none;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:128:  border: none;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:129:  padding: var(--spacing-2);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:130:  cursor: pointer;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:131:  z-index: var(--z-fixed);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:132:  justify-self: end;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:133:  position: relative;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:134:  width: 36px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:135:  height: 36px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:136:  border-radius: 50%;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:137:  transition: background-color 0.2s ease;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:138:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:139:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:140:.menu-toggle:active {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:141:  background-color: rgba(0, 0, 0, 0.1);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:142:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:143:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:144:.menu-toggle span {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:145:  display: block;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:146:  position: absolute;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:147:  left: 50%;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:148:  transform: translateX(-50%);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:149:  width: 20px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:150:  height: 2px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:151:  background: var(--primary-teal);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:152:  border-radius: 2px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:153:  transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:154:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:155:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:156:.menu-toggle span:nth-child(1) {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:157:  top: 13px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:158:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:159:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:160:.menu-toggle span:nth-child(2) {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:161:  top: 18px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:162:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:163:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:164:.menu-toggle span:nth-child(3) {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:165:  top: 23px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:166:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:167:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:168:/* Стили для открытого гамбургер-меню */
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:169:.menu-toggle span.open:nth-child(1) {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:170:  transform: translateX(-50%) rotate(45deg);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:171:  top: 18px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:172:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:173:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:174:.menu-toggle span.open:nth-child(2) {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:175:  opacity: 0;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:176:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:177:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:178:.menu-toggle span.open:nth-child(3) {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:179:  transform: translateX(-50%) rotate(-45deg);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:180:  top: 18px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:181:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:182:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:183:/* Menu overlay для мобильного меню */
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:184:.menu-overlay {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:185:  position: fixed;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:186:  top: 0;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:187:  left: 0;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:188:  width: 100%;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:189:  height: 100%;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:190:  background-color: rgba(0, 0, 0, 0.3);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:191:  z-index: calc(var(--z-menu) - 1);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:192:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:193:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:194:/* Prefers reduced motion - соблюдаем доступность */
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:195:@media (prefers-reduced-motion: reduce) {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:196:  .static-header,
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:197:  .header-container {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:198:    transition: none;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:199:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:200:  
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:201:  .static-menu a {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:202:    transition: none;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:203:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:204:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:205:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:206:/* Media queries */
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:207:@media (max-width: 1024px) {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:208:  .header-container {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:209:    grid-template-columns: 150px 1fr 50px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:210:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:211:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:212:  .static-menu ul {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:213:    gap: clamp(0.5rem, 1vw, var(--spacing-4));
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:214:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:215:  
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:216:  .static-menu a {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:217:    font-size: clamp(0.7rem, 0.9vw, var(--text-sm));
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:218:    letter-spacing: 0.3px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:219:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:220:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:221:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:222:@media (max-width: 768px) {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:223:  .static-header {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:224:    min-width: 280px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:225:    height: 60px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:226:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:227:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:228:  .header-container {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:229:    grid-template-columns: auto auto;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:230:    padding: 0 15px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:231:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:232:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:233:  .logo-wrapper {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:234:    min-width: 100px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:235:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:236:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:237:  .menu-toggle {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:238:    grid-column: 2;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:239:    display: flex;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:240:    flex-direction: column;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:241:    align-items: center;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:242:    justify-content: center;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:243:    margin-left: auto;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:244:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:245:  
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:246:  .static-menu {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:247:    position: fixed;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:248:    grid-column: unset;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:249:    top: 0;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:250:    right: -100%;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:251:    width: min(75%, 280px);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:252:    height: 100vh;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:253:    background-color: white;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:254:    padding: 70px 20px 30px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:255:    transition: right 0.3s ease;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:256:    z-index: var(--z-menu);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:257:    box-shadow: -3px 0 15px rgba(0, 0, 0, 0.08);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:258:    overflow-y: auto;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:259:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:260:  
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:261:  .static-menu.open {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:262:    right: 0;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:263:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:264:  
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:265:  .static-menu ul {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:266:    flex-direction: column;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:267:    align-items: center;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:268:    width: 100%;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:269:    height: auto;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:270:    gap: 16px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:271:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:272:  
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:273:  .static-menu li {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:274:    width: 100%;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:275:    height: auto;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:276:    text-align: center;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:277:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:278:  
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:279:  .static-menu a {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:280:    display: block;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:281:    width: 100%;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:282:    padding: 8px 0;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:283:    font-size: 15px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:284:    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:285:    font-weight: var(--font-weight-medium);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:286:    text-align: center;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:287:    letter-spacing: 0.3px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:288:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:289:  
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:290:  .static-menu a.active {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:291:    position: relative;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:292:    font-weight: var(--font-weight-semibold);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:293:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:294:  
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:295:  .static-menu a.active::after {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:296:    content: '';
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:297:    position: absolute;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:298:    bottom: -1px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:299:    left: 50%;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:300:    transform: translateX(-50%);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:301:    width: 30px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:302:    height: 2px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:303:    background: var(--main-gradient);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:304:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:305:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:306:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:307:@media (max-width: 480px) {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:308:  .static-header {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:309:    height: 55px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:310:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:311:  
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:312:  .header-logo {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:313:    height: 28px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:314:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:315:  
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:316:  .placeholder-logo {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:317:    font-size: var(--text-lg);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:318:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:319:  
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:320:  .menu-toggle {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:321:    width: 34px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:322:    height: 34px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:323:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:324:  
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:325:  .menu-toggle span {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:326:    width: 18px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:327:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:328:  
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:329:  .menu-toggle span:nth-child(1) {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:330:    top: 12px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:331:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:332:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:333:  .menu-toggle span:nth-child(2) {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:334:    top: 17px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:335:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:336:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:337:  .menu-toggle span:nth-child(3) {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:338:    top: 22px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:339:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:340:  
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:341:  .menu-toggle span.open:nth-child(1),
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:342:  .menu-toggle span.open:nth-child(3) {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:343:    top: 17px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:344:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:345:  
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:346:  .static-menu {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:347:    width: min(75%, 250px);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:348:    padding: 60px 15px 20px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:349:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:350:  
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:351:  .static-menu ul {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:352:    gap: 10px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:353:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:354:  
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:355:  .static-menu a {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:356:    font-size: 14px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:357:    padding: 6px 0;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:358:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:359:  
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:360:  .static-menu a.active::after {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:361:    width: 25px;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:362:  }
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:363:}
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:364:
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:365:/*=============== HEADER ===============*/
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:366:.header {
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:367:  width: 100%;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:368:  position: fixed;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:369:  top: 0;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:370:  left: 0;
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:371:  transition: var(--transition);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:372:  z-index: var(--z-fixed);
+D:\ftdiam\ftd\ftdiam\src\styles\header.css:373:} 

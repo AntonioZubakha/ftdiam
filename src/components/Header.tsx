@@ -9,7 +9,6 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
   const [logoError, setLogoError] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Use active section from props if available
   useEffect(() => {
@@ -46,16 +45,16 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
   // Lock scrolling when menu is open
   useEffect(() => {
     if (menuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.classList.add('modal-open');
     } else {
-      document.body.style.overflow = '';
+      document.body.classList.remove('modal-open');
     }
     
     // Keyboard listener for accessibility
     window.addEventListener('keydown', handleKeyDown);
     
     return () => {
-      document.body.style.overflow = '';
+      document.body.classList.remove('modal-open');
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [menuOpen, handleKeyDown]);
@@ -105,30 +104,10 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
   const handleLogoError = () => {
     setLogoError(true);
   };
-  
-  // Function to manage element appearance animation
-  const getAnimationDelay = (index: number) => {
-    return {
-      animationDelay: `${0.1 + index * 0.05}s`
-    };
-  };
 
   // Toggle menu
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
-  };
-
-  // Toggle mobile menu
-  const toggleMobileMenu = () => {
-    if (!isMobileMenuOpen) {
-      // При открытии меню блокируем скролл
-      document.body.classList.add('modal-open');
-    } else {
-      // При закрытии меню разблокируем скролл
-      document.body.classList.remove('modal-open');
-    }
-    
-    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   // Updated menu items matching sections in App.tsx
@@ -145,7 +124,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
   return (
     <header className="static-header">
       <div className="header-container">
-        <div className="logo-wrapper fade-in">
+        <div className="logo-wrapper">
           <a href="#home" onClick={(e) => handleSectionClick('home', e)}>
             {!logoError ? (
               <img 
@@ -164,7 +143,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
           className="menu-toggle" 
           onClick={toggleMenu}
           aria-expanded={menuOpen}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}
         >
           <span className={menuOpen ? "open" : ""}></span>
           <span className={menuOpen ? "open" : ""}></span>
@@ -173,8 +152,8 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
         
         <nav className={`static-menu ${menuOpen ? 'open' : ''}`}>
           <ul>
-            {menuItems.map((item, index) => (
-              <li key={item.id} style={getAnimationDelay(index)} className="fade-in">
+            {menuItems.map((item) => (
+              <li key={item.id}>
                 <a 
                   href={`#${item.id}`}
                   onClick={(e) => handleSectionClick(item.id, e)}
