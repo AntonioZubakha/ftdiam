@@ -32,7 +32,6 @@ const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = 
               letterSpacing: '1px',
               marginBottom: '1.5rem',
               textAlign: 'center',
-              textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)',
               color: 'white'
             }}
           >
@@ -51,7 +50,6 @@ const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = 
               maxWidth: '800px',
               marginLeft: 'auto',
               marginRight: 'auto',
-              textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)',
               color: 'white'
             }}
           >
