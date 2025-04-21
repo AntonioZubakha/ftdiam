@@ -250,8 +250,8 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 350px;
-  margin-bottom: var(--spacing-10);
+  height: 325px;
+  margin-bottom: var(--spacing-4);
   position: relative;
   overflow: hidden;
   z-index: var(--z-normal); /* Устанавливаем z-index для контейнера */
@@ -308,7 +308,7 @@ html, body {
   color: var(--text-color);
   line-height: 1.4;
   position: relative;
-  padding-left: calc(var(--spacing-6) + 30px);
+  padding-left: calc(var(--spacing-6) + 40px);
   transition: none;
   border-bottom: none;
   word-break: break-word;
@@ -320,7 +320,7 @@ html, body {
 
 .gradient-diamond {
   position: absolute;
-  left: 30px;
+  left: 40px;
   top: 6px;
   width: 8px;
   height: 8px;
@@ -510,6 +510,10 @@ html, body {
   .product-details-wrapper {
     padding-bottom: 70px;
   }
+
+  .product-image-container {
+    margin-bottom: var(--spacing-4); /* Уменьшаем отступ для планшетов */
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -607,6 +611,10 @@ html, body {
 
   .spec-list-container {
     padding-right: 3px; /* Меньший отступ на мобильных */
+  }
+
+  .product-image-container {
+    margin-bottom: var(--spacing-3); /* Уменьшаем отступ для мобильных */
   }
 }
 
@@ -712,6 +720,10 @@ html, body {
 
   .spec-list-container {
     padding-right: 2px; /* Еще меньший отступ на малых экранах */
+  }
+
+  .product-image-container {
+    margin-bottom: var(--spacing-2); /* Минимальный отступ для маленьких экранов */
   }
 }
 

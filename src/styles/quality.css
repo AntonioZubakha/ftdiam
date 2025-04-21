@@ -135,6 +135,42 @@
   .quality-item-description {
     font-size: var(--text-sm);
   }
+  
+  /* Уменьшаем размер карточек на 20% для средних разрешений */
+  .spec-block {
+    flex: 0 0 calc(33.33% - 10px);
+    max-width: 192px; /* 240px * 0.8 = 192px */
+    min-width: 160px; /* 200px * 0.8 = 160px */
+    display: inline-flex;
+    vertical-align: top;
+    /* Фиксируем размеры карточек для планшетов */
+    width: 192px;
+    height: 340px;
+  }
+  
+  /* Обеспечиваем, чтобы карточки оставались в строку */
+  .quality-cards-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 100%;
+    gap: 15px;
+    overflow-x: auto; /* Добавляем прокрутку, если контент не помещается */
+    -webkit-overflow-scrolling: touch; /* Для плавной прокрутки на iOS */
+  }
+  
+  /* Принудительно сохраняем горизонтальное расположение */
+  .spec-block {
+    flex: 0 0 calc(33.33% - 10px);
+    max-width: 192px; /* Уменьшено на 20% от 240px */
+    min-width: 160px; /* Уменьшено на 20% от 200px */
+    display: inline-flex;
+    vertical-align: top;
+    /* Фиксируем размеры карточек для планшетов */
+    width: 192px;
+    height: 340px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -199,6 +235,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* Сбрасываем фиксированную высоту для мобильного режима */
+    height: auto;
+    min-height: 320px;
   }
   
   .spec-block:nth-child(5) {
@@ -466,6 +505,10 @@
   scrollbar-width: thin;
   scrollbar-color: var(--primary-teal) #f1f1f1;
   justify-content: center;
+  width: 100%;
+  /* Добавляем свойства, чтобы заставить карточки оставаться в строку даже при зуме */
+  white-space: nowrap;
+  box-sizing: border-box;
 }
 
 .quality-cards-row::-webkit-scrollbar {
@@ -499,6 +542,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  /* Добавляем свойства для поддержки inline-block режима */
+  display: inline-flex;
+  vertical-align: top;
+  white-space: normal;
+  /* Фиксируем размеры карточек */
+  width: 240px;
+  height: 360px;
+  box-sizing: border-box;
 }
 
 .spec-block:hover {
@@ -542,6 +593,8 @@
 @media screen and (max-width: 992px) {
   .spec-block {
     flex: 0 0 calc(33.33% - 10px);
+    max-width: 192px; /* Уменьшено на 20% от 240px */
+    min-width: 160px; /* Уменьшено на 20% от 200px */
   }
 }
 

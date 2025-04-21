@@ -5,6 +5,7 @@ import { trackButtonClick } from '../../utils/analytics';
 const QualitySection: React.FC = () => {
   const [modalImage, setModalImage] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -88,16 +89,18 @@ const QualitySection: React.FC = () => {
       });
   }, []);
 
-  // Check if the screen is mobile-sized
+  // Check if the screen is mobile-sized or tablet-sized
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+    const checkScreenSize = () => {
+      const width = window.innerWidth;
+      setIsMobile(width <= 768);
+      setIsTablet(width > 768 && width <= 992);
     };
     
-    checkMobile(); // Initial check
-    window.addEventListener('resize', checkMobile);
+    checkScreenSize(); // Initial check
+    window.addEventListener('resize', checkScreenSize);
     
-    return () => window.removeEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
   // Добавляем наблюдатель за каждой карточкой только после загрузки изображений
@@ -149,7 +152,7 @@ const QualitySection: React.FC = () => {
     goToSlide(newIndex);
   };
   
-  // Обработчики для свайпа на мобильных устройствах
+  // Обработчики для свайпа на мобильных устройствах и планшетах
   const handleTouchStart = (e: React.TouchEvent) => {
     setIsDragging(true);
     setStartX(e.touches[0].clientX);
@@ -189,6 +192,66 @@ const QualitySection: React.FC = () => {
     }
     
     setSlideOffset(0);
+  };
+  
+  // Обработчики для мыши (для планшета)
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setStartX(e.clientX);
+    
+    if (sliderRef.current) {
+      sliderRef.current.style.cursor = 'grabbing';
+    }
+    
+    // Предотвращаем выделение текста при перетаскивании
+    e.preventDefault();
+  };
+  
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !sliderRef.current) return;
+    
+    const currentX = e.clientX;
+    const diff = currentX - startX;
+    const containerWidth = sliderRef.current.clientWidth;
+    const percentMoved = (diff / containerWidth) * 100;
+    
+    // Ограничиваем движение слайдера
+    const newOffset = Math.max(
+      Math.min(percentMoved, currentSlide === 0 ? 20 : 0),
+      currentSlide === cardData.length - 1 ? -20 : -100
+    );
+    
+    setSlideOffset(newOffset);
+    sliderRef.current.style.transform = `translateX(calc(-${currentSlide * 100}% + ${newOffset}%))`;
+  };
+  
+  const handleMouseUp = () => {
+    if (!isDragging || !sliderRef.current) return;
+    
+    setIsDragging(false);
+    
+    if (sliderRef.current) {
+      sliderRef.current.style.cursor = 'grab';
+    }
+    
+    // Если сдвиг был достаточно большим, переходим к следующему/предыдущему слайду
+    if (slideOffset > 20) {
+      prevSlide();
+    } else if (slideOffset < -20) {
+      nextSlide();
+    } else {
+      // Возвращаем слайдер в исходное положение
+      sliderRef.current.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+    
+    setSlideOffset(0);
+  };
+  
+  // Обработчик выхода мыши за пределы слайдера
+  const handleMouseLeave = () => {
+    if (isDragging) {
+      handleMouseUp();
+    }
   };
   
   // Открытие изображения в модальном окне
@@ -333,8 +396,39 @@ const QualitySection: React.FC = () => {
     ));
   };
 
-  // Рендер мобильного слайдера
-  const renderMobileSlider = () => {
+  // Рендер слайдера для мобильных и планшетов
+  const renderSlider = () => {
+    // Определяем стиль для карточек в зависимости от типа устройства
+    const cardStyle = isMobile ? {
+      padding: '15px'
+    } : {
+      padding: '18px'
+    };
+    
+    const titleStyle = isMobile ? {
+      fontSize: '0.9rem',
+      minHeight: 'auto'
+    } : {
+      fontSize: '1rem',
+      minHeight: '40px'
+    };
+    
+    const highlightStyle = isMobile ? {
+      fontSize: '1.1rem',
+      minHeight: 'auto'
+    } : {
+      fontSize: '1.2rem',
+      minHeight: '34px'
+    };
+    
+    const descriptionStyle = isMobile ? {
+      fontSize: '0.8rem',
+      minHeight: 'auto'
+    } : {
+      fontSize: '0.9rem',
+      minHeight: '44px'
+    };
+    
     return (
       <>
         <div className="slider-arrows">
@@ -355,19 +449,24 @@ const QualitySection: React.FC = () => {
         <div 
           className="mobile-slider"
           ref={sliderRef}
-          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          style={{ 
+            transform: `translateX(-${currentSlide * 100}%)`,
+            cursor: isDragging ? 'grabbing' : 'grab'
+          }}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseLeave}
         >
           {cardData.map((card, index) => (
             <div 
               key={index}
               ref={el => cardRefs.current[index] = el}
               className={`spec-block spec-block-animate ${visibleCards.includes(index) ? 'visible' : ''}`}
-              style={{ 
-                padding: '15px',
-              }}
+              style={cardStyle}
             >
               <div 
                 style={{...imageContainerStyle}}
@@ -390,17 +489,16 @@ const QualitySection: React.FC = () => {
                 )}
               </div>
               <h3 className="spec-name" style={{ 
-                fontSize: '0.9rem',
+                ...titleStyle,
                 textAlign: 'center',
                 margin: '0 0 0.5rem 0',
                 fontWeight: '600',
-                minHeight: 'auto',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center'
               }}>{card.title}</h3>
               <div style={{
-                fontSize: '1.1rem',
+                ...highlightStyle,
                 background: 'linear-gradient(to right, #00837f, #241e46)',
                 WebkitBackgroundClip: 'text',
                 backgroundClip: 'text',
@@ -409,20 +507,32 @@ const QualitySection: React.FC = () => {
                 fontWeight: 'bold',
                 letterSpacing: '0.5px',
                 display: 'block',
-                textAlign: 'center',
-                minHeight: 'auto'
+                textAlign: 'center'
               }}>{card.highlight}</div>
               <p className="spec-description" style={{ 
-                fontSize: '0.8rem',
+                ...descriptionStyle,
                 textAlign: 'center',
                 margin: '0.5rem 0 0 0',
                 color: '#666',
-                lineHeight: '1.4',
-                minHeight: 'auto'
+                lineHeight: '1.4'
               }}>{card.description}</p>
             </div>
           ))}
         </div>
+        
+        {/* Индикаторы слайдов для планшетов */}
+        {isTablet && (
+          <div className="slider-indicators">
+            {cardData.map((_, index) => (
+              <button
+                key={index}
+                className={`slider-indicator ${currentSlide === index ? 'active' : ''}`}
+                onClick={() => goToSlide(index)}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        )}
       </>
     );
   };
@@ -433,8 +543,8 @@ const QualitySection: React.FC = () => {
       className="quality-section" 
       style={{ 
         backgroundColor: 'transparent',
-        paddingTop: isMobile ? '40px' : '50px',
-        paddingBottom: isMobile ? '40px' : '50px',
+        paddingTop: isMobile ? '40px' : isTablet ? '50px' : '50px',
+        paddingBottom: isMobile ? '40px' : isTablet ? '50px' : '50px',
         position: 'relative',
         minHeight: isMobile ? 'auto' : '80vh',
         visibility: imagesLoaded ? 'visible' : 'hidden' // Скрываем секцию до загрузки изображений
@@ -461,9 +571,9 @@ const QualitySection: React.FC = () => {
           {/* Заголовок и подзаголовок */}
           <div style={titleStyle}>
             <h2 className="quality-headline gradient-headline" style={{ 
-              fontSize: isMobile ? 'var(--section-headline-mobile-size)' : 'var(--section-headline-size)',
+              fontSize: isMobile ? 'var(--section-headline-mobile-size)' : isTablet ? 'var(--section-headline-tablet-size)' : 'var(--section-headline-size)',
               textAlign: 'center',
-              marginBottom: isMobile ? '1rem' : '2rem',
+              marginBottom: isMobile ? '1rem' : isTablet ? '1.5rem' : '2rem',
               position: 'relative',
               lineHeight: isMobile ? '1.2' : '1.3'
             }}>
@@ -471,8 +581,8 @@ const QualitySection: React.FC = () => {
             </h2>
             <h3 className="quality-subheadline" style={{ 
               textAlign: 'center',
-              marginBottom: isMobile ? '1rem' : '1rem',
-              fontSize: isMobile ? 'var(--h3-mobile)' : 'var(--h3-desktop)',
+              marginBottom: isMobile ? '1rem' : isTablet ? '1rem' : '1rem',
+              fontSize: isMobile ? 'var(--h3-mobile)' : isTablet ? 'var(--h3-tablet)' : 'var(--h3-desktop)',
               display: 'inline-block',
               width: '100%',
               lineHeight: '1.3'
@@ -481,7 +591,7 @@ const QualitySection: React.FC = () => {
             </h3>
             <p className="quality-description" style={{ 
               textAlign: 'center',
-              fontSize: isMobile ? 'var(--text-base)' : 'var(--text-lg)',
+              fontSize: isMobile ? 'var(--text-base)' : isTablet ? 'var(--text-base)' : 'var(--text-lg)',
               lineHeight: '1.6',
               maxWidth: '800px',
               margin: '0 auto 2rem auto'
@@ -492,8 +602,8 @@ const QualitySection: React.FC = () => {
           </div>
           
           {/* Карточки в одном ряду с мобильным слайдером */}
-          <div className="quality-cards-row">
-            {isMobile ? renderMobileSlider() : renderDesktopCards()}
+          <div className={`quality-cards-row ${isMobile || isTablet ? 'slider-container' : ''}`}>
+            {isMobile || isTablet ? renderSlider() : renderDesktopCards()}
           </div>
           
           {/* Кнопка запроса документа */}
@@ -501,6 +611,9 @@ const QualitySection: React.FC = () => {
             className="request-document-button"
             onClick={scrollToContacts}
             aria-label="Request analysis documentation"
+            style={{
+              marginTop: isMobile ? '20px' : isTablet ? '30px' : '40px'
+            }}
           >
             Request Analysis Documentation
           </button>

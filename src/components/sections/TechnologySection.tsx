@@ -47,22 +47,24 @@ const TechnologySection: React.FC = () => {
           // Мобильная верстка (вертикальная)
           <>
             <div className="technology-headline-container" style={{
-              textAlign: 'left',
+              textAlign: 'center',
               marginBottom: '40px',
               padding: '0 20px'
             }}>
               <h2 className="technology-headline gradient-headline" style={{ 
                 fontSize: 'var(--section-headline-mobile-size)',
-                textAlign: 'left',
+                textAlign: 'center',
                 marginBottom: '20px',
-                maxWidth: '95%'
+                maxWidth: '95%',
+                margin: '0 auto 20px'
               }}>Advanced HPHT Technology</h2>
               <p style={{
                 fontSize: 'var(--text-base)',
                 lineHeight: '1.6',
                 color: 'var(--dark-gray)',
                 maxWidth: '100%',
-                marginBottom: '20px'
+                marginBottom: '20px',
+                textAlign: 'center'
               }}>
                 AHPHT technology was developed through extensive R&D. We have established a unique HPHT growing method that includes:
               </p>
@@ -71,7 +73,10 @@ const TechnologySection: React.FC = () => {
                 lineHeight: '1.6',
                 color: 'var(--dark-gray)',
                 paddingLeft: '20px',
-                marginBottom: '20px'
+                marginBottom: '20px',
+                textAlign: 'left',
+                maxWidth: '300px',
+                margin: '0 auto 20px'
               }}>
                 <li>Customized software that allows us to control temperature, pressure, humidity, and other parameters during the growth process.</li>
                 <li>The use of specially prepared materials, resulting in precise control over boron and nitrogen content.</li>

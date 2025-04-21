@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import '../../styles/home.css';
 import ContactModal from '../../components/ContactModal';
 import { trackButtonClick } from '../../utils/analytics';
@@ -6,6 +6,12 @@ import { trackButtonClick } from '../../utils/analytics';
 const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = ({ scrollToSection }) => {
   const sectionRef = useRef<HTMLElement>(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Animation effect when component mounts
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   // Функция открытия модального окна с отслеживанием клика
   const openModal = (e: React.MouseEvent) => {
@@ -21,52 +27,41 @@ const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = 
   };
 
   return (
-    <section id="home" className="section home-section" ref={sectionRef}>
-      <div className="content-wrapper">
-        <div className="hero-content">
-          <h1 
-            className="main-headline gradient-headline"
-            style={{
-              fontSize: '3rem',
-              fontWeight: 'bold',
-              letterSpacing: '1px',
-              marginBottom: '1.5rem',
-              textAlign: 'center',
-              color: 'white'
-            }}
-          >
-            FLAWLESS DIAMOND SUBSTRATES
-          </h1>
+    <section id="home" className="home-section" ref={sectionRef}>
+      <div className={`home-container ${isLoaded ? 'loaded' : ''}`}>
+        <div className="content-area">
+          <div className="title-area">
+            <h1 className="site-title">
+              <div className="heading-wrapper">
+                <span className="title-line gradient-headline no-wrap">FLAWLESS DIAMOND</span>
+                <span className="title-line gradient-headline">SUBSTRATES</span>
+              </div>
+            </h1>
+            
+            <p className="site-tagline">
+              Produced by Advanced HPHT technology<br />
+              for cutting-edge applications
+            </p>
+            
+            <button 
+              className="action-button"
+              onClick={openModal}
+              aria-label="Contact us for more information"
+            >
+              GET IN TOUCH
+            </button>
+          </div>
           
-          <p 
-            className="sub-headline gradient-headline"
-            style={{
-              fontSize: '1.5rem',
-              fontWeight: '500',
-              letterSpacing: '0.5px',
-              lineHeight: '1.5',
-              marginBottom: '2rem',
-              textAlign: 'center',
-              maxWidth: '800px',
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              color: 'white'
-            }}
-          >
-            Produced by Advanced HPHT technology for cutting-edge applications
-          </p>
-          
-          <button 
-            className="hero-button" 
-            onClick={openModal}
-            aria-label="Contact us for more information"
-          >
-            GET IN TOUCH
-          </button>
+          <div className="image-area">
+            <img 
+              src="/images/333.png" 
+              alt="Diamond substrates visualization" 
+              className="feature-image"
+            />
+          </div>
         </div>
       </div>
       
-      {/* Модальное окно с контактной формой */}
       <ContactModal isOpen={modalOpen} onClose={closeModal} />
     </section>
   );

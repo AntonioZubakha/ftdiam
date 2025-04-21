@@ -256,12 +256,15 @@ body::before {
     right: -100%;
     width: min(75%, 280px);
     height: 100vh;
-    background-color: white;
-    padding: 70px 20px 30px;
+    background: linear-gradient(135deg, #00837f, #241e46);
+    padding: 15px 20px 30px;
     transition: right 0.3s ease;
     z-index: var(--z-menu);
-    box-shadow: -3px 0 15px rgba(0, 0, 0, 0.08);
+    box-shadow: -3px 0 15px rgba(0, 0, 0, 0.2);
     overflow-y: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
   
   .static-menu.open {
@@ -273,7 +276,9 @@ body::before {
     align-items: center;
     width: 100%;
     height: auto;
-    gap: 16px;
+    gap: 20px;
+    margin-top: 0;
+    padding-top: 0;
   }
   
   .static-menu li {
@@ -285,12 +290,18 @@ body::before {
   .static-menu a {
     display: block;
     width: 100%;
-    padding: 8px 0;
-    font-size: 15px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    padding: 10px 0;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     font-weight: var(--font-weight-medium);
     text-align: center;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.5px;
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: white;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   }
   
   .static-menu a.active {
@@ -306,7 +317,7 @@ body::before {
     transform: translateX(-50%);
     width: 30px;
     height: 2px;
-    background: var(--main-gradient);
+    background: white;
   }
 }
 
@@ -351,7 +362,7 @@ body::before {
   
   .static-menu {
     width: min(75%, 250px);
-    padding: 60px 15px 20px;
+    padding: 10px 15px 20px;
   }
   
   .static-menu ul {

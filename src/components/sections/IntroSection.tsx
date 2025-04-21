@@ -4,6 +4,8 @@ import { trackButtonClick } from '../../utils/analytics';
 
 const IntroSection: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+  const [isWideScreen, setIsWideScreen] = useState(false);
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
   const [contentLoaded, setContentLoaded] = useState(false);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -20,16 +22,19 @@ const IntroSection: React.FC = () => {
     });
   }, []);
   
-  // Check if the screen is mobile-sized
+  // Check if the screen is mobile-sized, tablet-sized or wide-screen
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+    const checkScreenSize = () => {
+      const width = window.innerWidth;
+      setIsMobile(width <= 768);
+      setIsTablet(width > 768 && width <= 992);
+      setIsWideScreen(width >= 1600);
     };
     
-    checkMobile(); // Initial check
-    window.addEventListener('resize', checkMobile);
+    checkScreenSize(); // Initial check
+    window.addEventListener('resize', checkScreenSize);
     
-    return () => window.removeEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
   // Добавляем наблюдатель за каждой карточкой только после полной загрузки контента
@@ -90,12 +95,12 @@ const IntroSection: React.FC = () => {
     }
   };
 
-  // Card container styles - изменено для размещения карточек в одну строку
+  // Card container styles - изменено для размещения карточек на разных экранах
   const cardContainerStyle: React.CSSProperties = {
     display: 'grid',
-    gridTemplateColumns: isMobile ? '1fr' : 'repeat(4, 1fr)',
-    gap: isMobile ? '10px' : '25px',
-    maxWidth: '1450px',
+    gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
+    gap: isMobile ? '10px' : isTablet ? '20px' : isWideScreen ? '50px' : '40px',
+    maxWidth: isWideScreen ? '1600px' : '1450px',
     textAlign: 'center' as const,
     margin: '3rem auto 4rem',
     padding: '0 15px',
@@ -106,7 +111,7 @@ const IntroSection: React.FC = () => {
     backgroundColor: 'white',
     color: '#333',
     borderRadius: '6px',
-    padding: isMobile ? '25px 20px' : '20px 15px',
+    padding: isMobile ? '25px 20px' : isTablet ? '20px 20px' : isWideScreen ? '35px 30px' : '30px 25px',
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
     display: 'flex',
     flexDirection: 'column',
@@ -114,40 +119,41 @@ const IntroSection: React.FC = () => {
     alignItems: 'center',
     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
     width: '100%',
-    minHeight: isMobile ? '340px' : '330px',
+    minHeight: isMobile ? '340px' : isTablet ? '350px' : isWideScreen ? '420px' : '400px',
     position: 'relative',
     overflow: 'hidden',
     cursor: 'default',
     margin: '0 auto',
-    maxWidth: isMobile ? '100%' : '290px',
-    aspectRatio: isMobile ? 'auto' : '1/1.05',
+    maxWidth: isMobile ? '100%' : isTablet ? '100%' : '100%',
+    aspectRatio: isMobile ? 'auto' : isTablet ? 'auto' : '1/1.2',
   };
 
   const specIconStyle: React.CSSProperties = {
-    fontSize: isMobile ? '45px' : '55px',
-    marginBottom: isMobile ? '15px' : '15px',
+    fontSize: isMobile ? '45px' : isTablet ? '50px' : isWideScreen ? '60px' : '55px',
+    marginBottom: isMobile ? '15px' : isTablet ? '15px' : isWideScreen ? '25px' : '20px',
     background: 'linear-gradient(to right, #00837f, #241e46)',
     WebkitBackgroundClip: 'text',
     backgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
-    height: isMobile ? '70px' : '70px',
+    height: isMobile ? '60px' : isTablet ? '70px' : isWideScreen ? '90px' : '80px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
   };
 
   const specNameStyle: React.CSSProperties = {
-    fontSize: isMobile ? 'calc(var(--h4-mobile) + 2px)' : 'var(--h4-desktop)',
-    height: isMobile ? '45px' : '40px',
+    fontSize: isMobile ? 'calc(var(--h4-mobile) + 2px)' : isTablet ? 'var(--h4-tablet)' : 'var(--h4-desktop)',
+    height: isMobile ? '45px' : isTablet ? '50px' : isWideScreen ? '70px' : '60px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: '10px',
-    fontWeight: isMobile ? '600' : '600'
+    fontWeight: isMobile ? '600' : '600',
+    width: '100%'
   };
 
   const specValueStyle: React.CSSProperties = {
-    fontSize: isMobile ? 'calc(var(--h3-mobile) + 2px)' : 'var(--h3-desktop)',
+    fontSize: isMobile ? 'calc(var(--h3-mobile) + 2px)' : isTablet ? 'var(--h3-tablet)' : 'var(--h3-desktop)',
     background: 'linear-gradient(to right, #00837f, #241e46)',
     WebkitBackgroundClip: 'text',
     backgroundClip: 'text',
@@ -155,10 +161,11 @@ const IntroSection: React.FC = () => {
     margin: '0.5rem 0 0.7rem',
     fontWeight: 'bold',
     letterSpacing: '0.5px',
-    height: isMobile ? '50px' : '45px',
+    height: isMobile ? '50px' : isTablet ? '55px' : isWideScreen ? '70px' : '60px',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    width: '100%'
   };
 
   const specDescriptionStyle: React.CSSProperties = {
@@ -167,8 +174,15 @@ const IntroSection: React.FC = () => {
     marginBottom: 'var(--spacing-3)',
     fontWeight: '400',
     opacity: '0.95',
-    fontSize: isMobile ? 'var(--text-base)' : 'calc(var(--text-base) - 1px)',
+    fontSize: isMobile ? 'var(--text-base)' : isTablet ? 'var(--text-base)' : 'calc(var(--text-base) - 1px)',
     transition: 'all 0.3s ease',
+    height: 'auto',
+    minHeight: isMobile ? 'auto' : isTablet ? '60px' : isWideScreen ? '80px' : '70px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    lineHeight: '1.4'
   };
 
   // Специальные стили для третьей карточки с длинным описанием
@@ -178,8 +192,15 @@ const IntroSection: React.FC = () => {
     marginBottom: 'var(--spacing-3)',
     fontWeight: '400',
     opacity: '0.90',
-    fontSize: isMobile ? 'var(--text-base)' : 'calc(var(--text-base) - 2px)',
+    fontSize: isMobile ? 'var(--text-base)' : isTablet ? 'calc(var(--text-base) - 1px)' : 'calc(var(--text-base) - 1px)',
     transition: 'all 0.3s ease',
+    height: 'auto',
+    minHeight: isMobile ? 'auto' : isTablet ? '80px' : isWideScreen ? '100px' : '90px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    lineHeight: '1.5',
+    width: '100%'
   };
 
   const specBlockHoverStyle: React.CSSProperties = {
@@ -208,19 +229,19 @@ const IntroSection: React.FC = () => {
         {/* Центрированный заголовок и подзаголовок */}
         <div style={{
           textAlign: 'center',
-          maxWidth: '1400px',
+          maxWidth: isWideScreen ? '1600px' : '1400px',
           margin: '0 auto',
           padding: '0 20px',
         }}>
           <h2 className="headline gradient-headline" style={{ 
-            fontSize: isMobile ? 'var(--section-headline-mobile-size)' : 'var(--section-headline-size)',
-            marginBottom: isMobile ? '1rem' : '1.5rem',
+            fontSize: isMobile ? 'var(--section-headline-mobile-size)' : isTablet ? 'var(--section-headline-tablet-size)' : 'var(--section-headline-size)',
+            marginBottom: isMobile ? '1rem' : isTablet ? '1.2rem' : '1.5rem',
             position: 'relative'
           }}>
             Top quality IIa diamond substrates. And more.
           </h2>
           <p className="section-description" style={{ 
-            fontSize: isMobile ? 'var(--text-base)' : 'var(--text-lg)',
+            fontSize: isMobile ? 'var(--text-base)' : isTablet ? 'var(--text-base)' : 'var(--text-lg)',
             lineHeight: '1.6',
             maxWidth: '900px',
             margin: '0 auto 1.5rem'
@@ -237,7 +258,7 @@ const IntroSection: React.FC = () => {
               border: 'none',
               borderRadius: '8px',
               padding: '12px 30px',
-              fontSize: isMobile ? 'var(--text-base)' : 'var(--text-md)',
+              fontSize: isMobile ? 'var(--text-base)' : isTablet ? 'var(--text-base)' : 'var(--text-md)',
               fontWeight: '600',
               cursor: 'pointer',
               boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
@@ -342,22 +363,22 @@ const IntroSection: React.FC = () => {
         {/* Новый блок с дополнительной информацией и кнопкой */}
         <div style={{
           textAlign: 'center',
-          maxWidth: '1200px',
+          maxWidth: isWideScreen ? '1600px' : '1200px',
           margin: '0 auto 60px',
           padding: '0 20px',
         }}>
           <div style={{
             background: 'rgba(0, 131, 127, 0.05)',
-            padding: '40px',
+            padding: isMobile ? '30px 20px' : isTablet ? '35px 30px' : isWideScreen ? '50px 40px' : '40px',
             borderRadius: '10px',
             boxShadow: '0 4px 10px rgba(0, 0, 0, 0.05)',
             border: '1px solid rgba(0, 131, 127, 0.1)',
           }}>
             <p style={{
-              fontSize: isMobile ? 'var(--text-base)' : 'var(--text-lg)',
+              fontSize: isMobile ? 'var(--text-base)' : isTablet ? 'var(--text-base)' : 'var(--text-lg)',
               color: '#333',
               lineHeight: '1.6',
-              maxWidth: '900px',
+              maxWidth: isWideScreen ? '1200px' : '900px',
               margin: '0 auto 30px',
               textAlign: 'center'
             }}>
@@ -371,7 +392,7 @@ Learn more about our flagship AHPHT substrates - and explore our range of diamon
                 border: 'none',
                 borderRadius: '8px',
                 padding: '14px 35px',
-                fontSize: isMobile ? 'var(--text-base)' : 'var(--text-lg)',
+                fontSize: isMobile ? 'var(--text-base)' : isTablet ? 'var(--text-base)' : 'var(--text-lg)',
                 fontWeight: '600',
                 cursor: 'pointer',
                 boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
@@ -396,29 +417,29 @@ Learn more about our flagship AHPHT substrates - and explore our range of diamon
         {/* Новый блок с текстом на градиентном фоне */}
         <div style={{
           width: '100%',
-          height: isMobile ? '110px' : '100px',
+          height: isMobile ? '110px' : isTablet ? '100px' : '100px',
           background: 'linear-gradient(to right, #00837f, #241e46)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: isMobile ? 'flex-start' : 'center',
-          marginTop: isMobile ? '20px' : '40px',
-          marginBottom: isMobile ? '40px' : '100px',
+          marginTop: isMobile ? '20px' : isTablet ? '30px' : '40px',
+          marginBottom: isMobile ? '40px' : isTablet ? '70px' : '100px',
           position: 'relative',
           zIndex: 2
         }}>
           <div style={{
             color: 'white',
-            fontSize: isMobile ? 'var(--text-xl)' : 'var(--text-3xl)',
+            fontSize: isMobile ? 'var(--text-xl)' : isTablet ? 'var(--text-2xl)' : 'var(--text-3xl)',
             fontWeight: 'var(--font-weight-bold)',
             textAlign: 'center',
             padding: '0 20px',
-            maxWidth: '1400px',
+            maxWidth: isWideScreen ? '1600px' : '1400px',
             margin: '0 auto',
             letterSpacing: '0.5px',
             lineHeight: '1.3',
             width: '100%'
           }}>
-            {isMobile ? (
+            {isMobile || isTablet ? (
               <div style={{ textAlign: 'center', width: '100%' }}>
                 <p style={{ 
                   margin: '0', 
