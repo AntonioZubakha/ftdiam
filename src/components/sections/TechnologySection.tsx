@@ -37,7 +37,7 @@ const TechnologySection: React.FC = () => {
       ref={sectionRef}
       style={{ 
         backgroundColor: '#fff',
-        padding: isMobile ? '60px 0' : '120px 0',
+        padding: isMobile ? '60px 0' : '20px 0',
         transition: 'padding 0.3s ease',
         position: 'relative' // Make sure the section can contain absolute elements
       }}

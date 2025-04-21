@@ -8,6 +8,15 @@ const QualitySection: React.FC = () => {
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const scrollToContacts = () => {
+    const contactsSection = document.getElementById('contacts');
+    if (contactsSection) {
+      contactsSection.scrollIntoView({ behavior: 'smooth' });
+      // Отслеживаем клик по кнопке
+      trackButtonClick('product_contact_tailored');
+    }
+  };
   
   // Массив путей к изображениям
   const imagePaths = [
@@ -322,7 +331,7 @@ const QualitySection: React.FC = () => {
           {/* Кнопка запроса документа */}
           <button 
             className="request-document-button"
-            onClick={handleRequestDocumentation}
+            onClick={scrollToContacts}
             aria-label="Request analysis documentation"
           >
             Request Analysis Documentation

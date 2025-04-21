@@ -190,7 +190,7 @@ const IntroSection: React.FC = () => {
       className="intro-section" 
       style={{ 
         backgroundColor: 'transparent',
-        marginTop: isMobile ? '60px' : '150px',
+        marginTop: isMobile ? '40px' : '150px',
         paddingTop: isMobile ? '40px' : '150px',
         paddingBottom: '0',
         minHeight: isMobile ? 'auto' : '80vh',
