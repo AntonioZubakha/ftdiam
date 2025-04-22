@@ -85,13 +85,108 @@ const TechnologySection: React.FC = () => {
                 marginBottom: '20px',
                 textAlign: 'left',
                 maxWidth: '300px',
-                margin: '0 auto 20px'
+                margin: '0 auto 20px',
+                listStyle: 'none'
               }}>
-                <li>Customized software that allows us to control temperature, pressure, humidity, and other parameters during the growth process.</li>
-                <li>The use of specially prepared materials, resulting in precise control over boron and nitrogen content.</li>
-                <li>Upgraded press machines.</li>
-                <li>Customized mechanical structure of a cubic cell.</li>
-                <li>Long term dynamically controlled growth process.</li>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  marginBottom: '8px',
+                  paddingLeft: '5px'
+                }}>
+                  <span style={{
+                    width: '10px',
+                    height: '10px',
+                    background: 'linear-gradient(to right, #00837f, #241e46)',
+                    transform: 'rotate(45deg)',
+                    marginRight: '10px',
+                    marginTop: '6px',
+                    flexShrink: 0,
+                    display: 'inline-block',
+                    position: 'relative',
+                    borderRadius: '2px'
+                  }}></span>
+                  Customized software that allows us to control temperature, pressure, humidity, and other parameters during the growth process.
+                </li>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  marginBottom: '8px',
+                  paddingLeft: '5px'
+                }}>
+                  <span style={{
+                    width: '10px',
+                    height: '10px',
+                    background: 'linear-gradient(to right, #00837f, #241e46)',
+                    transform: 'rotate(45deg)',
+                    marginRight: '10px',
+                    marginTop: '6px',
+                    flexShrink: 0,
+                    display: 'inline-block',
+                    position: 'relative',
+                    borderRadius: '2px'
+                  }}></span>
+                  The use of specially prepared materials, resulting in precise control over boron and nitrogen content.
+                </li>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  marginBottom: '8px',
+                  paddingLeft: '5px'
+                }}>
+                  <span style={{
+                    width: '10px',
+                    height: '10px',
+                    background: 'linear-gradient(to right, #00837f, #241e46)',
+                    transform: 'rotate(45deg)',
+                    marginRight: '10px',
+                    marginTop: '6px',
+                    flexShrink: 0,
+                    display: 'inline-block',
+                    position: 'relative',
+                    borderRadius: '2px'
+                  }}></span>
+                  Upgraded press machines.
+                </li>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  marginBottom: '8px',
+                  paddingLeft: '5px'
+                }}>
+                  <span style={{
+                    width: '10px',
+                    height: '10px',
+                    background: 'linear-gradient(to right, #00837f, #241e46)',
+                    transform: 'rotate(45deg)',
+                    marginRight: '10px',
+                    marginTop: '6px',
+                    flexShrink: 0,
+                    display: 'inline-block',
+                    position: 'relative',
+                    borderRadius: '2px'
+                  }}></span>
+                  Customized mechanical structure of a cubic cell.
+                </li>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  paddingLeft: '5px'
+                }}>
+                  <span style={{
+                    width: '10px',
+                    height: '10px',
+                    background: 'linear-gradient(to right, #00837f, #241e46)',
+                    transform: 'rotate(45deg)',
+                    marginRight: '10px',
+                    marginTop: '6px',
+                    flexShrink: 0,
+                    display: 'inline-block',
+                    position: 'relative',
+                    borderRadius: '2px'
+                  }}></span>
+                  Long term dynamically controlled growth process.
+                </li>
               </ul>
               <button 
                 onClick={scrollToContacts}
@@ -247,7 +342,7 @@ const TechnologySection: React.FC = () => {
             }}>
               <h2 className="technology-headline gradient-headline" style={{ 
                 fontSize: 'var(--section-headline-size)',
-                textAlign: 'left',
+                textAlign: 'center',
                 marginBottom: '30px'
               }}>Advanced HPHT Technology</h2>
               <p style={{
@@ -265,13 +360,108 @@ const TechnologySection: React.FC = () => {
                 color: 'var(--dark-gray)',
                 maxWidth: '98%',
                 marginBottom: '30px',
-                paddingLeft: '20px'
+                paddingLeft: '20px',
+                listStyle: 'none'
               }}>
-                <li>Customized software that allows us to control temperature, pressure, humidity, and other parameters during the growth process.</li>
-                <li>The use of specially prepared materials, resulting in precise control over boron and nitrogen content.</li>
-                <li>Upgraded press machines.</li>
-                <li>Customized mechanical structure of a cubic cell.</li>
-                <li>Long term dynamically controlled growth process.</li>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  marginBottom: '10px',
+                  paddingLeft: '5px'
+                }}>
+                  <span style={{
+                    width: '12px',
+                    height: '12px',
+                    background: 'linear-gradient(to right, #00837f, #241e46)',
+                    transform: 'rotate(45deg)',
+                    marginRight: '12px',
+                    marginTop: '7px',
+                    flexShrink: 0,
+                    display: 'inline-block',
+                    position: 'relative',
+                    borderRadius: '2px'
+                  }}></span>
+                  Customized software that allows us to control temperature, pressure, humidity, and other parameters during the growth process.
+                </li>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  marginBottom: '10px',
+                  paddingLeft: '5px'
+                }}>
+                  <span style={{
+                    width: '12px',
+                    height: '12px',
+                    background: 'linear-gradient(to right, #00837f, #241e46)',
+                    transform: 'rotate(45deg)',
+                    marginRight: '12px',
+                    marginTop: '7px',
+                    flexShrink: 0,
+                    display: 'inline-block',
+                    position: 'relative',
+                    borderRadius: '2px'
+                  }}></span>
+                  The use of specially prepared materials, resulting in precise control over boron and nitrogen content.
+                </li>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  marginBottom: '10px',
+                  paddingLeft: '5px'
+                }}>
+                  <span style={{
+                    width: '12px',
+                    height: '12px',
+                    background: 'linear-gradient(to right, #00837f, #241e46)',
+                    transform: 'rotate(45deg)',
+                    marginRight: '12px',
+                    marginTop: '7px',
+                    flexShrink: 0,
+                    display: 'inline-block',
+                    position: 'relative',
+                    borderRadius: '2px'
+                  }}></span>
+                  Upgraded press machines.
+                </li>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  marginBottom: '10px',
+                  paddingLeft: '5px'
+                }}>
+                  <span style={{
+                    width: '12px',
+                    height: '12px',
+                    background: 'linear-gradient(to right, #00837f, #241e46)',
+                    transform: 'rotate(45deg)',
+                    marginRight: '12px',
+                    marginTop: '7px',
+                    flexShrink: 0,
+                    display: 'inline-block',
+                    position: 'relative',
+                    borderRadius: '2px'
+                  }}></span>
+                  Customized mechanical structure of a cubic cell.
+                </li>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  paddingLeft: '5px'
+                }}>
+                  <span style={{
+                    width: '12px',
+                    height: '12px',
+                    background: 'linear-gradient(to right, #00837f, #241e46)',
+                    transform: 'rotate(45deg)',
+                    marginRight: '12px',
+                    marginTop: '7px',
+                    flexShrink: 0,
+                    display: 'inline-block',
+                    position: 'relative',
+                    borderRadius: '2px'
+                  }}></span>
+                  Long term dynamically controlled growth process.
+                </li>
               </ul>
               <button 
                 onClick={scrollToContacts}
@@ -288,7 +478,10 @@ const TechnologySection: React.FC = () => {
                   marginTop: '40px',
                   transition: 'all 0.3s ease',
                   textTransform: 'uppercase',
-                  letterSpacing: '1px'
+                  letterSpacing: '1px',
+                  display: 'block',
+                  marginLeft: 'auto',
+                  marginRight: 'auto'
                 }}
                 onMouseOver={(e) => {
                   const target = e.currentTarget as HTMLButtonElement;
