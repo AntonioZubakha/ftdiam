@@ -615,7 +615,7 @@ const QualitySection: React.FC = () => {
               marginTop: isMobile ? '20px' : isTablet ? '30px' : '40px'
             }}
           >
-            Request Analysis Documentation
+            REQUEST ANALYSIS DOCUMENTATION
           </button>
         </div>
       </div>

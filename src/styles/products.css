@@ -291,7 +291,7 @@ html, body {
 }
 
 .product-section-title.transitioning {
-  opacity: 0.5;
+  opacity: 1;
 }
 
 /* Product Images 
@@ -321,8 +321,8 @@ html, body {
 }
 
 .product-image.transitioning {
-  opacity: 0;
-  transform: scale(0.95);
+  opacity: 1;
+  transform: scale(1);
 }
 
 .product-image:hover {
@@ -351,8 +351,8 @@ html, body {
 }
 
 .spec-list.transitioning {
-  opacity: 0;
-  transform: translateX(-10px);
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .spec-item {
@@ -360,10 +360,7 @@ html, body {
   align-items: center;
   padding: var(--spacing-2) var(--spacing-6);
   padding-left: var(--spacing-12);
-  background-color: var(--white);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  transition: transform var(--transition-fast);
   cursor: default;
   position: relative;
   gap: var(--spacing-3);
@@ -371,7 +368,6 @@ html, body {
 
 .spec-item:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
 }
 
 .gradient-diamond {
@@ -395,17 +391,14 @@ html, body {
 ----------------------------------------------- */
 .nav-button {
   background: transparent;
-  border: none;
+  border: 1px solid var(--primary-dark-blue);
   cursor: pointer;
-  color: var(--primary-color);
-  font-size: var(--text-xl);
   width: 40px;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  transition: color var(--transition-fast), transform var(--transition-fast);
   z-index: var(--z-normal);
   padding: 0;
   margin: 0 var(--spacing-1);
@@ -432,12 +425,11 @@ html, body {
 }
 
 .nav-button:hover {
-  color: var(--secondary-color);
-  transform: scale(1.1);
+  background-color: var(--primary-dark-blue);
 }
 
 .nav-button:hover::after {
-  color: var(--primary-teal);
+  color: var(--white);
 }
 
 .nav-button:active {
@@ -445,29 +437,7 @@ html, body {
 }
 
 .nav-button::before {
-  content: '';
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  background: var(--main-gradient);
-  border-radius: var(--radius-round);
-  z-index: -1;
-  opacity: 0.15;
-  transition: opacity var(--transition-fast), transform var(--transition-fast);
-  transform: scale(0.8);
-}
-
-.nav-button:first-of-type::before {
-  transform-origin: left center;
-}
-
-.nav-button:last-of-type::before {
-  transform-origin: right center;
-}
-
-.nav-button:hover::before {
-  opacity: 0.3;
-  transform: scale(1);
+  content: none;
 }
 
 .slider-controls {

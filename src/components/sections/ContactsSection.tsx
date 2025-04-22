@@ -157,7 +157,7 @@ const ContactsSection = () => {
                 </p>
                 
                 <button type="submit" className="contact-submit-button">
-                  Send message
+                  SEND MESSAGE
                 </button>
               </form>
             )}

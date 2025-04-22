@@ -360,60 +360,6 @@ const IntroSection: React.FC = () => {
           </div>
         </div>
         
-        {/* Новый блок с дополнительной информацией и кнопкой */}
-        <div style={{
-          textAlign: 'center',
-          maxWidth: isWideScreen ? '1600px' : '1200px',
-          margin: '0 auto 60px',
-          padding: '0 20px',
-        }}>
-          <div style={{
-            background: 'rgba(0, 131, 127, 0.05)',
-            padding: isMobile ? '30px 20px' : isTablet ? '35px 30px' : isWideScreen ? '50px 40px' : '40px',
-            borderRadius: '10px',
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.05)',
-            border: '1px solid rgba(0, 131, 127, 0.1)',
-          }}>
-            <p style={{
-              fontSize: isMobile ? 'var(--text-base)' : isTablet ? 'var(--text-base)' : 'var(--text-lg)',
-              color: '#333',
-              lineHeight: '1.6',
-              maxWidth: isWideScreen ? '1200px' : '900px',
-              margin: '0 auto 30px',
-              textAlign: 'center'
-            }}>
-Learn more about our flagship AHPHT substrates - and explore our range of diamond anvils, lenses, windows, membranes, and large single-crystal CVD substrates up to 30×30 mm.
-            </p>
-            <button 
-              onClick={scrollToContacts}
-              style={{
-                background: 'linear-gradient(to right, #00837f, #241e46)',
-                color: 'white',
-                border: 'none',
-                borderRadius: '8px',
-                padding: '14px 35px',
-                fontSize: isMobile ? 'var(--text-base)' : isTablet ? 'var(--text-base)' : 'var(--text-lg)',
-                fontWeight: '600',
-                cursor: 'pointer',
-                boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
-                transition: 'all 0.3s ease',
-              }}
-              onMouseOver={(e) => {
-                const target = e.currentTarget as HTMLButtonElement;
-                target.style.transform = 'translateY(-2px)';
-                target.style.boxShadow = '0 6px 15px rgba(0, 0, 0, 0.25)';
-              }}
-              onMouseOut={(e) => {
-                const target = e.currentTarget as HTMLButtonElement;
-                target.style.transform = 'translateY(0)';
-                target.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)';
-              }}
-            >
-              Contact Us
-            </button>
-          </div>
-        </div>
-        
         {/* Новый блок с текстом на градиентном фоне */}
         <div style={{
           width: '100%',

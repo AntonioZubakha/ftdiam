@@ -91,100 +91,160 @@ const TechnologySection: React.FC = () => {
                 <li style={{
                   display: 'flex',
                   alignItems: 'flex-start',
-                  marginBottom: '8px',
-                  paddingLeft: '5px'
-                }}>
-                  <span style={{
+                  marginBottom: '10px',
+                  padding: '8px 24px 8px var(--spacing-6)',
+                  cursor: 'default',
+                  position: 'relative'
+                }}
+                onMouseOver={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(0)';
+                }}
+                >
+                  <div style={{
                     width: '10px',
                     height: '10px',
+                    minWidth: '10px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
                     transform: 'rotate(45deg)',
-                    marginRight: '10px',
+                    marginRight: '24px',
                     marginTop: '6px',
                     flexShrink: 0,
-                    display: 'inline-block',
+                    display: 'block',
                     position: 'relative',
                     borderRadius: '2px'
-                  }}></span>
+                  }}></div>
                   Customized software that allows us to control temperature, pressure, humidity, and other parameters during the growth process.
                 </li>
                 <li style={{
                   display: 'flex',
                   alignItems: 'flex-start',
-                  marginBottom: '8px',
-                  paddingLeft: '5px'
-                }}>
-                  <span style={{
+                  marginBottom: '10px',
+                  padding: '8px 24px 8px var(--spacing-6)',
+                  cursor: 'default',
+                  position: 'relative'
+                }}
+                onMouseOver={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(0)';
+                }}
+                >
+                  <div style={{
                     width: '10px',
                     height: '10px',
+                    minWidth: '10px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
                     transform: 'rotate(45deg)',
-                    marginRight: '10px',
+                    marginRight: '24px',
                     marginTop: '6px',
                     flexShrink: 0,
-                    display: 'inline-block',
+                    display: 'block',
                     position: 'relative',
                     borderRadius: '2px'
-                  }}></span>
+                  }}></div>
                   The use of specially prepared materials, resulting in precise control over boron and nitrogen content.
                 </li>
                 <li style={{
                   display: 'flex',
                   alignItems: 'flex-start',
-                  marginBottom: '8px',
-                  paddingLeft: '5px'
-                }}>
-                  <span style={{
+                  marginBottom: '10px',
+                  padding: '8px 24px 8px var(--spacing-6)',
+                  cursor: 'default',
+                  position: 'relative'
+                }}
+                onMouseOver={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(0)';
+                }}
+                >
+                  <div style={{
                     width: '10px',
                     height: '10px',
+                    minWidth: '10px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
                     transform: 'rotate(45deg)',
-                    marginRight: '10px',
+                    marginRight: '24px',
                     marginTop: '6px',
                     flexShrink: 0,
-                    display: 'inline-block',
+                    display: 'block',
                     position: 'relative',
                     borderRadius: '2px'
-                  }}></span>
+                  }}></div>
                   Upgraded press machines.
                 </li>
                 <li style={{
                   display: 'flex',
                   alignItems: 'flex-start',
-                  marginBottom: '8px',
-                  paddingLeft: '5px'
-                }}>
-                  <span style={{
+                  marginBottom: '10px',
+                  padding: '8px 24px 8px var(--spacing-6)',
+                  cursor: 'default',
+                  position: 'relative'
+                }}
+                onMouseOver={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(0)';
+                }}
+                >
+                  <div style={{
                     width: '10px',
                     height: '10px',
+                    minWidth: '10px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
                     transform: 'rotate(45deg)',
-                    marginRight: '10px',
+                    marginRight: '24px',
                     marginTop: '6px',
                     flexShrink: 0,
-                    display: 'inline-block',
+                    display: 'block',
                     position: 'relative',
                     borderRadius: '2px'
-                  }}></span>
+                  }}></div>
                   Customized mechanical structure of a cubic cell.
                 </li>
                 <li style={{
                   display: 'flex',
                   alignItems: 'flex-start',
-                  paddingLeft: '5px'
-                }}>
-                  <span style={{
+                  padding: '8px 24px 8px var(--spacing-6)',
+                  cursor: 'default',
+                  position: 'relative'
+                }}
+                onMouseOver={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(0)';
+                }}
+                >
+                  <div style={{
                     width: '10px',
                     height: '10px',
+                    minWidth: '10px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
                     transform: 'rotate(45deg)',
-                    marginRight: '10px',
+                    marginRight: '24px',
                     marginTop: '6px',
                     flexShrink: 0,
-                    display: 'inline-block',
+                    display: 'block',
                     position: 'relative',
                     borderRadius: '2px'
-                  }}></span>
+                  }}></div>
                   Long term dynamically controlled growth process.
                 </li>
               </ul>
@@ -367,99 +427,159 @@ const TechnologySection: React.FC = () => {
                   display: 'flex',
                   alignItems: 'flex-start',
                   marginBottom: '10px',
-                  paddingLeft: '5px'
-                }}>
-                  <span style={{
-                    width: '12px',
-                    height: '12px',
+                  padding: '8px 24px 8px var(--spacing-6)',
+                  cursor: 'default',
+                  position: 'relative'
+                }}
+                onMouseOver={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(0)';
+                }}
+                >
+                  <div style={{
+                    width: '10px',
+                    height: '10px',
+                    minWidth: '10px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
                     transform: 'rotate(45deg)',
-                    marginRight: '12px',
-                    marginTop: '7px',
+                    marginRight: '24px',
+                    marginTop: '6px',
                     flexShrink: 0,
-                    display: 'inline-block',
+                    display: 'block',
                     position: 'relative',
                     borderRadius: '2px'
-                  }}></span>
+                  }}></div>
                   Customized software that allows us to control temperature, pressure, humidity, and other parameters during the growth process.
                 </li>
                 <li style={{
                   display: 'flex',
                   alignItems: 'flex-start',
                   marginBottom: '10px',
-                  paddingLeft: '5px'
-                }}>
-                  <span style={{
-                    width: '12px',
-                    height: '12px',
+                  padding: '8px 24px 8px var(--spacing-6)',
+                  cursor: 'default',
+                  position: 'relative'
+                }}
+                onMouseOver={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(0)';
+                }}
+                >
+                  <div style={{
+                    width: '10px',
+                    height: '10px',
+                    minWidth: '10px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
                     transform: 'rotate(45deg)',
-                    marginRight: '12px',
-                    marginTop: '7px',
+                    marginRight: '24px',
+                    marginTop: '6px',
                     flexShrink: 0,
-                    display: 'inline-block',
+                    display: 'block',
                     position: 'relative',
                     borderRadius: '2px'
-                  }}></span>
+                  }}></div>
                   The use of specially prepared materials, resulting in precise control over boron and nitrogen content.
                 </li>
                 <li style={{
                   display: 'flex',
                   alignItems: 'flex-start',
                   marginBottom: '10px',
-                  paddingLeft: '5px'
-                }}>
-                  <span style={{
-                    width: '12px',
-                    height: '12px',
+                  padding: '8px 24px 8px var(--spacing-6)',
+                  cursor: 'default',
+                  position: 'relative'
+                }}
+                onMouseOver={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(0)';
+                }}
+                >
+                  <div style={{
+                    width: '10px',
+                    height: '10px',
+                    minWidth: '10px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
                     transform: 'rotate(45deg)',
-                    marginRight: '12px',
-                    marginTop: '7px',
+                    marginRight: '24px',
+                    marginTop: '6px',
                     flexShrink: 0,
-                    display: 'inline-block',
+                    display: 'block',
                     position: 'relative',
                     borderRadius: '2px'
-                  }}></span>
+                  }}></div>
                   Upgraded press machines.
                 </li>
                 <li style={{
                   display: 'flex',
                   alignItems: 'flex-start',
                   marginBottom: '10px',
-                  paddingLeft: '5px'
-                }}>
-                  <span style={{
-                    width: '12px',
-                    height: '12px',
+                  padding: '8px 24px 8px var(--spacing-6)',
+                  cursor: 'default',
+                  position: 'relative'
+                }}
+                onMouseOver={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(0)';
+                }}
+                >
+                  <div style={{
+                    width: '10px',
+                    height: '10px',
+                    minWidth: '10px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
                     transform: 'rotate(45deg)',
-                    marginRight: '12px',
-                    marginTop: '7px',
+                    marginRight: '24px',
+                    marginTop: '6px',
                     flexShrink: 0,
-                    display: 'inline-block',
+                    display: 'block',
                     position: 'relative',
                     borderRadius: '2px'
-                  }}></span>
+                  }}></div>
                   Customized mechanical structure of a cubic cell.
                 </li>
                 <li style={{
                   display: 'flex',
                   alignItems: 'flex-start',
-                  paddingLeft: '5px'
-                }}>
-                  <span style={{
-                    width: '12px',
-                    height: '12px',
+                  padding: '8px 24px 8px var(--spacing-6)',
+                  cursor: 'default',
+                  position: 'relative'
+                }}
+                onMouseOver={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(0)';
+                }}
+                >
+                  <div style={{
+                    width: '10px',
+                    height: '10px',
+                    minWidth: '10px',
                     background: 'linear-gradient(to right, #00837f, #241e46)',
                     transform: 'rotate(45deg)',
-                    marginRight: '12px',
-                    marginTop: '7px',
+                    marginRight: '24px',
+                    marginTop: '6px',
                     flexShrink: 0,
-                    display: 'inline-block',
+                    display: 'block',
                     position: 'relative',
                     borderRadius: '2px'
-                  }}></span>
+                  }}></div>
                   Long term dynamically controlled growth process.
                 </li>
               </ul>
