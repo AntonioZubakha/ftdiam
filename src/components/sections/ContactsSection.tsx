@@ -42,9 +42,9 @@ const ContactsSection = () => {
             </div>
             <div className="contact-info-content">
               <div className="contact-info-item">
-                <div className="contact-icon">
+                <a href="mailto:info@ftdiam.com" className="contact-icon">
                   <FontAwesomeIcon icon={faEnvelope} />
-                </div>
+                </a>
                 <div className="contact-text">
                   <div className="contact-label-row">
                     <span className="contact-label">Email</span>
@@ -56,9 +56,9 @@ const ContactsSection = () => {
               </div>
               
               <div className="contact-info-item">
-                <div className="contact-icon">
+                <a href="tel:+16172752599" className="contact-icon">
                   <FontAwesomeIcon icon={faPhone} />
-                </div>
+                </a>
                 <div className="contact-text">
                   <div className="contact-label-row">
                     <span className="contact-label">Phone</span>
@@ -70,9 +70,14 @@ const ContactsSection = () => {
               </div>
               
               <div className="contact-info-item">
-                <div className="contact-icon">
+                <a 
+                  href="https://www.linkedin.com/company/ftdiam" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="contact-icon"
+                >
                   <FontAwesomeIcon icon={faLinkedin} />
-                </div>
+                </a>
                 <div className="contact-text">
                   <div className="contact-label-row">
                     <span className="contact-label">LinkedIn</span>
@@ -89,17 +94,27 @@ const ContactsSection = () => {
               </div>
             
               <div className="contact-info-item">
-                <div className="contact-icon">
+                <a 
+                  href="https://www.google.com/maps/search/?api=1&query=220+Park+Ave+PMB+83131+New+York+NY+10003+USA" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="contact-icon"
+                >
                   <FontAwesomeIcon icon={faLocationDot} />
-                </div>
+                </a>
                 <div className="contact-text">
                   <div className="contact-label-row">
                     <span className="contact-label">Address</span>
                   </div>
-                  <p className="contact-value">
+                  <a 
+                    href="https://www.google.com/maps/search/?api=1&query=220+Park+Ave+PMB+83131+New+York+NY+10003+USA" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="contact-value"
+                  >
                     220 Park Ave PMB 83131<br />
                     New York, NY 10003, USA
-                  </p>
+                  </a>
                 </div>
               </div>
             </div>

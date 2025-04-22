@@ -125,6 +125,30 @@
   margin-top: 0;
 }
 
+/* Добавим стили для иконок как ссылок */
+a.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #00837f, #241e46);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 0;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+a.contact-icon:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #009e99, #2d267a);
+  color: #fff;
+}
+
 .contact-text {
   display: flex;
   flex-direction: column;
