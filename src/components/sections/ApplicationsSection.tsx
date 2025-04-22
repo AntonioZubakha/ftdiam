@@ -150,14 +150,14 @@ const ApplicationsSection: React.FC = () => {
     marginBottom: 'var(--spacing-3)',
     fontWeight: '400',
     opacity: '0.95',
-    fontSize: isMobile ? 'var(--text-base)' : isTablet ? 'var(--text-base)' : 'calc(var(--text-base) - 1px)',
+    fontSize: isMobile ? 'calc(var(--text-base) - 1px)' : isTablet ? 'calc(var(--text-base) - 1px)' : 'calc(var(--text-base) - 2px)',
     transition: 'all 0.3s ease',
-    minHeight: isMobile ? 'auto' : isTablet ? '60px' : isWideScreen ? '80px' : '70px',
+    minHeight: isMobile ? 'auto' : isTablet ? '80px' : isWideScreen ? '100px' : '90px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    lineHeight: '1.4'
+    lineHeight: '1.5'
   };
 
   const specBlockHoverStyle: React.CSSProperties = {
@@ -169,42 +169,42 @@ const ApplicationsSection: React.FC = () => {
   const applications = [
     {
       title: "Quantum photonics",
-      description: "Very low background fluorescence",
+      description: "Ultra-low background fluorescence for enhanced signal purity",
       icon: "fas fa-lightbulb" // Лампочка для фотоники
     },
     {
       title: "Quantum sensors",
-      description: "Neglectable background noise",
+      description: "Negligible background noise for high-sensitivity detection",
       icon: "fas fa-wave-square" // Волна для сенсоров
     },
     {
       title: "Quantum computing",
-      description: "Longer T2 coherence",
+      description: "Extended T₂ coherence times for more stable qubit performance",
       icon: "fas fa-laptop-code" // Компьютер для квантовых вычислений
     },
     {
-      title: "Laser optics and windows",
-      description: "Low scattering and absorption",
+      title: "Laser optics & windows",
+      description: "Minimal scattering and absorption for superior optical clarity",
       icon: "fas fa-sun" // Солнце вместо лазера (лучи света)
     },
     {
       title: "Homoepitaxial growth",
-      description: "Close-to-zero inherited defects",
+      description: "Near-zero inherited defects for high-quality crystal development",
       icon: "fas fa-layer-group" // Слои для эпитаксиального роста
     },
     {
-      title: "X-ray and UV detectors",
-      description: "More efficient charge collection",
+      title: "X-ray & UV detectors",
+      description: "Improved charge collection efficiency for higher sensitivity",
       icon: "fas fa-radiation" // Радиация для детекторов
     },
     {
       title: "Power electronics",
-      description: "Lower amount of electrical breakdown points",
+      description: "Fewer electrical breakdown points for greater device reliability",
       icon: "fas fa-bolt" // Молния для силовой электроники
     },
     {
       title: "High-frequency electronics",
-      description: "High career mobility",
+      description: "High carrier mobility enabling fast, efficient signal transmission",
       icon: "fas fa-broadcast-tower" // Башня для высокочастотной электроники
     }
   ];
@@ -247,7 +247,7 @@ const ApplicationsSection: React.FC = () => {
             maxWidth: '900px',
             margin: '0 auto 1.5rem'
           }}>
-            AHPHT diamond substrates are created to meet the stringent demands of cutting-edge industries, delivering application-specific benefits across diverse high-tech domains
+            AHPHT diamond substrates are produced to meet the stringent requirements of next-generation technologies, offering application-specific advantages across a wide range of advanced industries.
           </p>
         </div>
 
