@@ -1,6 +1,6 @@
 /* Стили для секции клиентов */
 
-/* Используем более специфичный селектор с !important для преодоления базовых стилей */
+/* Специфичный селектор для секции */
 section.clients-section {
   padding: 5rem 0 !important;
   margin: 2rem 0 !important;
@@ -9,12 +9,13 @@ section.clients-section {
   overflow: hidden;
 }
 
-/* Контейнер для всего содержимого */
+/* Контейнер для содержимого */
 .section-container {
   max-width: var(--container-max-width);
   margin: 0 auto;
   padding: 0 2rem;
   position: relative;
+  overflow: hidden;
 }
 
 /* Заголовок секции */
@@ -32,68 +33,88 @@ section.clients-section {
   width: 100%;
 }
 
-/* Контейнер для карусели */
-.carousel-container {
-  width: 100%;
-  overflow: hidden;
+/* Logo Slider */
+.logo-slider {
+  width: 100%; 
+  height: 165px;
   position: relative;
-  margin-bottom: 3rem;
+  overflow: hidden;
+  margin: 0 auto 3rem;
+  cursor: grab;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: pan-y;
 }
 
-/* Карусель логотипов */
-.logo-carousel {
+.logo-slider.active {
+  cursor: grabbing !important;
+}
+
+.logo-slide-track {
   display: flex;
-  width: max-content;
-  animation: scrollLogos 40s linear infinite;
+  width: calc(250px * 24); /* Width * slides count * 3 */
+  animation: scroll 30s linear infinite;
 }
 
-/* Отдельный элемент с логотипом */
-.logo-item {
+/* Остановка анимации при перетаскивании */
+.logo-slide-track.grabbing {
+  cursor: grabbing !important;
+}
+
+.logo-slide {
   width: 250px;
   height: 165px;
-  margin: 0 30px;
-  padding: 15px;
-  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease;
+  padding: 0 25px;
+  flex-shrink: 0;
+  overflow: hidden;
 }
 
-.logo-item:hover {
-  transform: scale(1.05);
-}
-
-/* Стили для логотипа */
-.client-logo {
-  max-width: 90%;
-  max-height: 90%;
+.logo-slide img {
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
   filter: grayscale(40%);
   transition: filter 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-drag: none;
 }
 
-.logo-item:hover .client-logo {
+.logo-slide:hover img {
   filter: grayscale(0%);
   transform: scale(1.05);
 }
 
-/* Анимация прокрутки */
-@keyframes scrollLogos {
+/* Базовая анимация прокрутки */
+@keyframes scroll {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-250px * 8));
   }
 }
 
-/* Адаптивность для разных экранов */
+/* Media Queries */
 @media (max-width: 1200px) {
-  .logo-item {
+  .logo-slide {
     width: 225px;
-    height: 150px;
-    margin: 0 25px;
+  }
+  
+  .logo-slide-track {
+    width: calc(225px * 24);
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-225px * 8));
+    }
   }
 }
 
@@ -103,17 +124,29 @@ section.clients-section {
     margin-bottom: 3rem;
   }
   
-  .logo-item {
-    width: 190px;
-    height: 125px;
-    margin: 0 20px;
+  .logo-slide {
+    width: 200px;
+    padding: 0 20px;
+  }
+  
+  .logo-slide-track {
+    width: calc(200px * 24);
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-200px * 8));
+    }
   }
 }
 
 @media (max-width: 768px) {
-  section.clients-section {
-    padding: 5rem 0 !important;
-    margin: 2rem 0 !important;
+  .clients-section {
+    padding: 4rem 0;
+    overflow: hidden;
   }
 
   .section-title {
@@ -121,63 +154,57 @@ section.clients-section {
     margin-bottom: 2.5rem;
   }
   
-  .logo-item {
-    width: 240px;
-    height: 170px;
-    margin: 0 20px;
-    padding: 10px;
-  }
-
-  .client-logo {
-    max-width: 95%;
-    max-height: 95%;
-    filter: grayscale(20%);
+  .logo-slide {
+    width: 180px;
+    padding: 0 15px;
   }
   
-  @keyframes scrollLogos {
+  .logo-slide-track {
+    width: calc(180px * 24);
+  }
+  
+  @keyframes scroll {
     0% {
       transform: translateX(0);
     }
     100% {
-      transform: translateX(-100%);
+      transform: translateX(calc(-180px * 8));
     }
   }
 }
 
 @media (max-width: 576px) {
-  section.clients-section {
-    padding: 4rem 0 !important;
-    margin: 1.5rem 0 !important;
-  }
-
   .section-container {
     padding: 0 1.5rem;
+    overflow: hidden;
   }
 
   .section-title {
     font-size: var(--h2-mobile);
   }
   
-  .logo-item {
-    width: 220px;
-    height: 160px;
-    margin: 0 18px;
+  .logo-slide {
+    width: 160px;
+    padding: 0 10px;
+  }
+  
+  .logo-slide-track {
+    width: calc(160px * 24);
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-160px * 8));
+    }
   }
 }
 
-/* Для пользователей, которые предпочитают уменьшенное движение */
-@media (prefers-reduced-motion: reduce) {
-  .logo-carousel {
-    animation: none;
-  }
-  
-  .carousel-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .logo-item {
-    margin: 10px;
+/* Предпочтения для пользователей с ограниченным движением */
+@media (prefers-reduced-motion) {
+  .logo-slide-track {
+    animation: none !important;
   }
 } 

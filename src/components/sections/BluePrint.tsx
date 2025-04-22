@@ -66,12 +66,13 @@ const BluePrint: React.FC = () => {
   // Стили для сетки основателей
   const founderGridStyle = {
     display: 'flex' as const,
-    flexDirection: 'row' as const,
+    flexDirection: isMobile ? 'column' as const : 'row' as const,
     justifyContent: 'center' as const,
     gap: isMobile ? '30px' : '60px',
-    flexWrap: 'nowrap' as const,
+    flexWrap: isMobile ? 'wrap' as const : 'nowrap' as const,
     width: '100%',
-    marginTop: '20px'
+    marginTop: '20px',
+    alignItems: isMobile ? 'center' as const : 'flex-start' as const
   };
 
   return (
