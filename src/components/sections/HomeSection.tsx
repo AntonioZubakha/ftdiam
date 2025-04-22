@@ -85,7 +85,7 @@ const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = 
           
           <div className="image-area">
             <img 
-              src="/images/333.png" 
+              src="/images/photo1.1.png" 
               alt="Diamond substrates visualization" 
               className="feature-image"
             />

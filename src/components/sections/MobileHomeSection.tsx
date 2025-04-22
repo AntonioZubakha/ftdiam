@@ -24,7 +24,7 @@ const MobileHomeSection: React.FC<{ scrollToSection: (sectionId: string) => void
           {/* Изображение первым для мобильной версии */}
           <div className="image-area mobile-image-area">
             <img 
-              src="/images/333.png" 
+              src="/images/photo1.1.png" 
               alt="Diamond substrates visualization" 
               className="feature-image mobile-feature-image"
             />

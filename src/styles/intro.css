@@ -39,7 +39,7 @@
 .intro-section .specs-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--spacing-10);
+  gap: var(--spacing-6);
   margin: var(--spacing-12) auto;
   max-width: 1450px;
   padding: 0 var(--spacing-4);
@@ -78,13 +78,14 @@
 .intro-section .spec-block {
   position: relative;
   overflow: hidden;
-  min-height: 400px;
-  padding: var(--spacing-8) var(--spacing-6);
+  min-height: 350px;
+  padding: var(--spacing-6) var(--spacing-5);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  aspect-ratio: 1/1;
 }
 
 .intro-section .spec-block::after {
@@ -108,9 +109,9 @@
 /* Specific styles for spec blocks in the intro section */
 .intro-section .spec-icon {
   width: auto;
-  height: 80px;
+  height: 70px;
   font-size: var(--h1-desktop);
-  margin-bottom: var(--spacing-6);
+  margin-bottom: var(--spacing-5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -121,7 +122,7 @@
   text-align: center;
   font-size: var(--h4-desktop);
   font-weight: var(--font-weight-semibold);
-  min-height: 60px;
+  min-height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -132,7 +133,7 @@
   text-align: center;
   font-size: calc(var(--text-base) - 1px);
   margin-top: var(--spacing-2);
-  min-height: 70px;
+  min-height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -141,7 +142,7 @@
 }
 
 .intro-section .spec-block:nth-child(3) .spec-description {
-  min-height: 90px;
+  min-height: 80px;
   font-size: calc(var(--text-base) - 1px);
   line-height: 1.5;
 }
@@ -160,16 +161,16 @@
 @media (min-width: 1600px) {
   .intro-section .specs-grid {
     max-width: 1600px;
-    gap: var(--spacing-12);
+    gap: var(--spacing-8);
   }
   
   .intro-section .spec-block {
-    min-height: 420px;
-    padding: var(--spacing-10) var(--spacing-8);
+    min-height: 380px;
+    padding: var(--spacing-8) var(--spacing-6);
   }
   
   .intro-section .spec-icon {
-    height: 90px;
+    height: 80px;
     font-size: var(--h1-desktop);
   }
 }
@@ -177,27 +178,27 @@
 /* Media Queries */
 @media (max-width: 1400px) {
   .intro-section .specs-grid {
-    gap: var(--spacing-8);
+    gap: var(--spacing-5);
   }
   
   .intro-section .spec-block {
-    min-height: 380px;
+    min-height: 340px;
   }
 }
 
 @media (max-width: 1200px) {
   .intro-section .specs-grid {
-    gap: var(--spacing-6);
+    gap: var(--spacing-4);
   }
   
   .intro-section .spec-block {
-    min-height: 370px;
-    padding: var(--spacing-6) var(--spacing-5);
+    min-height: 330px;
+    padding: var(--spacing-5) var(--spacing-4);
   }
   
   .intro-section .spec-icon {
-    height: 75px;
-    margin-bottom: var(--spacing-5);
+    height: 65px;
+    margin-bottom: var(--spacing-4);
     font-size: var(--h1-desktop);
   }
 }
@@ -209,32 +210,33 @@
   
   .intro-section .specs-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-5);
+    gap: var(--spacing-4);
   }
   
   .intro-section .spec-icon {
-    height: 70px;
+    height: 60px;
     font-size: var(--h2-desktop);
-    margin-bottom: var(--spacing-4);
+    margin-bottom: var(--spacing-3);
   }
   
   .intro-section .spec-name {
     font-size: var(--h4-tablet);
-    min-height: 48px;
+    min-height: 45px;
   }
   
   .intro-section .spec-description {
     font-size: var(--text-sm);
-    min-height: 60px;
+    min-height: 55px;
   }
   
   .intro-section .spec-block {
-    min-height: 300px;
-    padding: var(--spacing-5) var(--spacing-4);
+    min-height: 280px;
+    padding: var(--spacing-4) var(--spacing-3);
+    aspect-ratio: 1/1.1;
   }
   
   .intro-section .spec-block:nth-child(3) .spec-description {
-    min-height: 75px;
+    min-height: 70px;
   }
 }
 
@@ -245,7 +247,7 @@
   
   .intro-section .specs-grid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-4);
+    gap: var(--spacing-3);
   }
   
   .section-description {
@@ -253,7 +255,7 @@
   }
   
   .intro-section .spec-icon {
-    height: 60px;
+    height: 55px;
     font-size: var(--h2-tablet);
     margin-bottom: var(--spacing-3);
   }
@@ -269,6 +271,11 @@
   .intro-section h3 {
     font-size: var(--h4-tablet);
   }
+
+  .intro-section .spec-block {
+    aspect-ratio: auto;
+    min-height: 250px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -283,7 +290,7 @@
   }
   
   .intro-section .spec-icon {
-    height: 50px;
+    height: 45px;
     font-size: var(--h2-mobile);
     margin-bottom: var(--spacing-2);
   }
@@ -296,12 +303,16 @@
     font-size: var(--h4-mobile);
     margin-bottom: var(--spacing-1);
   }
+
+  .intro-section .spec-block {
+    min-height: 220px;
+  }
 }
 
 @media (min-resolution: 120dpi) {
   .intro-section .spec-block {
-    min-height: 350px;
-    padding: var(--spacing-5) var(--spacing-4);
+    min-height: 310px;
+    padding: var(--spacing-4) var(--spacing-3);
   }
   
   .intro-section .spec-description {
@@ -317,9 +328,9 @@
   }
   
   .intro-section .spec-icon {
-    height: 70px;
+    height: 60px;
     font-size: var(--h2-desktop);
-    margin-bottom: var(--spacing-4);
+    margin-bottom: var(--spacing-3);
   }
 }
 
