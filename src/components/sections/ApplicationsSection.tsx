@@ -170,42 +170,42 @@ const ApplicationsSection: React.FC = () => {
     {
       title: "Quantum photonics",
       description: "Ultra-low background fluorescence for enhanced signal purity",
-      icon: "fas fa-lightbulb" // Лампочка для фотоники
+      icon: "fas fa-atom"
     },
     {
       title: "Quantum sensors",
       description: "Negligible background noise for high-sensitivity detection",
-      icon: "fas fa-wave-square" // Волна для сенсоров
+      icon: "fas fa-satellite"
     },
     {
       title: "Quantum computing",
       description: "Extended T₂ coherence times for more stable qubit performance",
-      icon: "fas fa-laptop-code" // Компьютер для квантовых вычислений
+      icon: "fas fa-microchip"
     },
     {
       title: "Laser optics & windows",
       description: "Minimal scattering and absorption for superior optical clarity",
-      icon: "fas fa-sun" // Солнце вместо лазера (лучи света)
+      icon: "fas fa-bullseye"
     },
     {
       title: "Homoepitaxial growth",
       description: "Near-zero inherited defects for high-quality crystal development",
-      icon: "fas fa-layer-group" // Слои для эпитаксиального роста
+      icon: "fas fa-gem"
     },
     {
       title: "X-ray & UV detectors",
       description: "Improved charge collection efficiency for higher sensitivity",
-      icon: "fas fa-radiation" // Радиация для детекторов
+      icon: "fas fa-radiation"
     },
     {
       title: "Power electronics",
       description: "Fewer electrical breakdown points for greater device reliability",
-      icon: "fas fa-bolt" // Молния для силовой электроники
+      icon: "fas fa-bolt"
     },
     {
       title: "High-frequency electronics",
       description: "High carrier mobility enabling fast, efficient signal transmission",
-      icon: "fas fa-broadcast-tower" // Башня для высокочастотной электроники
+      icon: "fas fa-broadcast-tower"
     }
   ];
 
