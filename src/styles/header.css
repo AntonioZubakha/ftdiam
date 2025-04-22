@@ -250,7 +250,7 @@ div[class*="logo-wrapper"], .corner-logo {
   }
 
   .static-menu ul {
-    gap: clamp(var(--spacing-2), 1vw, var(--spacing-4));
+    gap: clamp(var(--spacing-4), 1vw, var(--spacing-4));
   }
   
   .static-menu a {

@@ -190,7 +190,9 @@ const ProductsSection: React.FC = () => {
             <div className="media-item image-top-right tailored-solutions-container">
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
                 <h3 className="tailored-solutions-title">
-                  Tailored Solutions For Cutting-Edge Applications
+                  Tailored Solutions<br />
+                  For Cutting-Edge<br />
+                  Applications
                 </h3>
               </div>
             </div>

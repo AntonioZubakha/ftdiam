@@ -671,106 +671,16 @@ const TechnologySection: React.FC = () => {
                 flex: '0 0 45%',
                 display: 'grid',
                 gridTemplateColumns: 'repeat(1, 1fr)',
-                gap: '25px'
+                gap: '45px'
               }}>
                 <div className="advantage-card" style={{ 
-                  padding: '35px 30px',
+                  padding: '30px 25px',
                   backgroundColor: '#fff',
-                  borderRadius: '18px',
+                  borderRadius: '15px',
                   boxShadow: '0 15px 35px rgba(0, 0, 0, 0.05)',
                   border: '2px solid rgba(0, 131, 127, 0.08)',
                   transition: 'all 0.4s ease',
-                  width: '340px',
-                  height: '180px',
-                  margin: '0 auto',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  position: 'relative',
-                  overflow: 'hidden'
-                }} onMouseOver={(e) => {
-                  const target = e.currentTarget as HTMLDivElement;
-                  target.style.transform = 'translateY(-5px)';
-                  target.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.1)';
-                }} onMouseOut={(e) => {
-                  const target = e.currentTarget as HTMLDivElement;
-                  target.style.transform = 'translateY(0)';
-                  target.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.05)';
-                }}>
-                  <div className="advantage-icon" style={{ 
-                    marginBottom: '15px',
-                    textAlign: 'center'
-                  }}>
-                    <i className="fas fa-arrow-trend-down" style={{
-                      fontSize: '50px',
-                      background: 'linear-gradient(to right, #00837f, #241e46)',
-                      WebkitBackgroundClip: 'text',
-                      backgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      display: 'inline-block'
-                    }}></i>
-                  </div>
-                  <h3 className="advantage-title gradient-subheadline" style={{ 
-                    fontSize: '1.6rem',
-                    marginBottom: '5px',
-                    textAlign: 'center'
-                  }}>Ultra low dislocations density (10¹ cm⁻²)</h3>
-                </div>
-                
-                <div className="advantage-card" style={{ 
-                  padding: '35px 30px',
-                  backgroundColor: '#fff',
-                  borderRadius: '18px',
-                  boxShadow: '0 15px 35px rgba(0, 0, 0, 0.05)',
-                  border: '2px solid rgba(0, 131, 127, 0.08)',
-                  transition: 'all 0.4s ease',
-                  width: '340px',
-                  height: '150',
-                  margin: '0 auto',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  position: 'relative',
-                  overflow: 'hidden'
-                }} onMouseOver={(e) => {
-                  const target = e.currentTarget as HTMLDivElement;
-                  target.style.transform = 'translateY(-5px)';
-                  target.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.1)';
-                }} onMouseOut={(e) => {
-                  const target = e.currentTarget as HTMLDivElement;
-                  target.style.transform = 'translateY(0)';
-                  target.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.05)';
-                }}>
-                  <div className="advantage-icon" style={{ 
-                    marginBottom: '15px',
-                    textAlign: 'center'
-                  }}>
-                    <i className="fas fa-flask" style={{
-                      fontSize: '50px',
-                      background: 'linear-gradient(to right, #00837f, #241e46)',
-                      WebkitBackgroundClip: 'text',
-                      backgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      display: 'inline-block'
-                    }}></i>
-                  </div>
-                  <h3 className="advantage-title gradient-subheadline" style={{ 
-                    fontSize: '1.6rem',
-                    marginBottom: '5px',
-                    textAlign: 'center'
-                  }}>No Nitrogen</h3>
-                </div>
-                
-                <div className="advantage-card" style={{ 
-                  padding: '35px 30px',
-                  backgroundColor: '#fff',
-                  borderRadius: '18px',
-                  boxShadow: '0 15px 35px rgba(0, 0, 0, 0.05)',
-                  border: '2px solid rgba(0, 131, 127, 0.08)',
-                  transition: 'all 0.4s ease',
-                  width: '340px',
+                  width: '330px',
                   height: '140px',
                   margin: '0 auto',
                   display: 'flex',
@@ -789,11 +699,11 @@ const TechnologySection: React.FC = () => {
                   target.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.05)';
                 }}>
                   <div className="advantage-icon" style={{ 
-                    marginBottom: '15px',
+                    marginBottom: '12px',
                     textAlign: 'center'
                   }}>
-                    <i className="fas fa-compress" style={{
-                      fontSize: '50px',
+                    <i className="fas fa-arrow-trend-down" style={{
+                      fontSize: '42px',
                       background: 'linear-gradient(to right, #00837f, #241e46)',
                       WebkitBackgroundClip: 'text',
                       backgroundClip: 'text',
@@ -802,8 +712,98 @@ const TechnologySection: React.FC = () => {
                     }}></i>
                   </div>
                   <h3 className="advantage-title gradient-subheadline" style={{ 
-                    fontSize: '1.6rem',
-                    marginBottom: '5px',
+                    fontSize: '1.4rem',
+                    marginBottom: '0',
+                    textAlign: 'center'
+                  }}>Ultra low dislocations density (10¹ cm⁻²)</h3>
+                </div>
+                
+                <div className="advantage-card" style={{ 
+                  padding: '30px 25px',
+                  backgroundColor: '#fff',
+                  borderRadius: '15px',
+                  boxShadow: '0 15px 35px rgba(0, 0, 0, 0.05)',
+                  border: '2px solid rgba(0, 131, 127, 0.08)',
+                  transition: 'all 0.4s ease',
+                  width: '330px',
+                  height: '140px',
+                  margin: '0 auto',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  position: 'relative',
+                  overflow: 'hidden'
+                }} onMouseOver={(e) => {
+                  const target = e.currentTarget as HTMLDivElement;
+                  target.style.transform = 'translateY(-5px)';
+                  target.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.1)';
+                }} onMouseOut={(e) => {
+                  const target = e.currentTarget as HTMLDivElement;
+                  target.style.transform = 'translateY(0)';
+                  target.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.05)';
+                }}>
+                  <div className="advantage-icon" style={{ 
+                    marginBottom: '12px',
+                    textAlign: 'center'
+                  }}>
+                    <i className="fas fa-flask" style={{
+                      fontSize: '42px',
+                      background: 'linear-gradient(to right, #00837f, #241e46)',
+                      WebkitBackgroundClip: 'text',
+                      backgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      display: 'inline-block'
+                    }}></i>
+                  </div>
+                  <h3 className="advantage-title gradient-subheadline" style={{ 
+                    fontSize: '1.4rem',
+                    marginBottom: '0',
+                    textAlign: 'center'
+                  }}>No Nitrogen</h3>
+                </div>
+                
+                <div className="advantage-card" style={{ 
+                  padding: '30px 25px',
+                  backgroundColor: '#fff',
+                  borderRadius: '15px',
+                  boxShadow: '0 15px 35px rgba(0, 0, 0, 0.05)',
+                  border: '2px solid rgba(0, 131, 127, 0.08)',
+                  transition: 'all 0.4s ease',
+                  width: '330px',
+                  height: '140px',
+                  margin: '0 auto',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  position: 'relative',
+                  overflow: 'hidden'
+                }} onMouseOver={(e) => {
+                  const target = e.currentTarget as HTMLDivElement;
+                  target.style.transform = 'translateY(-5px)';
+                  target.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.1)';
+                }} onMouseOut={(e) => {
+                  const target = e.currentTarget as HTMLDivElement;
+                  target.style.transform = 'translateY(0)';
+                  target.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.05)';
+                }}>
+                  <div className="advantage-icon" style={{ 
+                    marginBottom: '12px',
+                    textAlign: 'center'
+                  }}>
+                    <i className="fas fa-compress" style={{
+                      fontSize: '42px',
+                      background: 'linear-gradient(to right, #00837f, #241e46)',
+                      WebkitBackgroundClip: 'text',
+                      backgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      display: 'inline-block'
+                    }}></i>
+                  </div>
+                  <h3 className="advantage-title gradient-subheadline" style={{ 
+                    fontSize: '1.4rem',
+                    marginBottom: '0',
                     textAlign: 'center'
                   }}>Very low strain</h3>
                 </div>

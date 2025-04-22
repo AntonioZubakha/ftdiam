@@ -58,60 +58,72 @@ const TabletHomeSection: React.FC<{ scrollToSection: (sectionId: string) => void
     >
       <div className="home-container tablet-home-container">
         <div className="content-area tablet-content-area">
-          {/* Image first for portrait tablet layout, or side by side for landscape */}
-          <div className="image-area tablet-image-area">
-            <img 
-              src="/images/333.png" 
-              alt="Diamond substrates visualization" 
-              className="feature-image tablet-feature-image"
-            />
-          </div>
-          
-          <div className="title-area tablet-title-area">
-            <h1 className="site-title tablet-site-title">
-              <div className="heading-wrapper">
-                <span className="title-line gradient-headline">FLAWLESS DIAMOND</span>
-                <span className="title-line gradient-headline">SUBSTRATES</span>
+          {/* В портретном режиме для планшета первым идет изображение, в ландшафтном - соблюдаем порядок как в десктопе */}
+          {!isLandscape ? (
+            <>
+              <div className="image-area tablet-image-area">
+                <img 
+                  src="/images/333.png" 
+                  alt="Diamond substrates visualization" 
+                  className="feature-image tablet-feature-image"
+                />
               </div>
-            </h1>
-            
-            <p className="site-tagline tablet-site-tagline">
-              Produced by Advanced HPHT technology<br />
-              for cutting-edge applications
-            </p>
-            
-            <button 
-              className="action-button tablet-action-button"
-              onClick={scrollToContacts}
-              aria-label="Contact us for more information"
-              style={{
-                background: 'linear-gradient(to right, #00837f, #241e46)',
-                color: 'white',
-                border: 'none',
-                borderRadius: '8px',
-                padding: '12px 30px',
-                fontSize: 'var(--text-base)',
-                fontWeight: '600',
-                cursor: 'pointer',
-                boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
-                transition: 'all 0.3s ease',
-                position: 'relative',
-                zIndex: 5
-              }}
-              onMouseOver={(e) => {
-                const target = e.currentTarget as HTMLButtonElement;
-                target.style.transform = 'translateY(-2px)';
-                target.style.boxShadow = '0 6px 15px rgba(0, 0, 0, 0.25)';
-              }}
-              onMouseOut={(e) => {
-                const target = e.currentTarget as HTMLButtonElement;
-                target.style.transform = 'translateY(0)';
-                target.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)';
-              }}
-            >
-              GET IN TOUCH
-            </button>
-          </div>
+              
+              <div className="title-area tablet-title-area">
+                <h1 className="site-title tablet-site-title">
+                  <div className="heading-wrapper">
+                    <span className="title-line gradient-headline">FLAWLESS DIAMOND</span>
+                    <span className="title-line gradient-headline">SUBSTRATES</span>
+                  </div>
+                </h1>
+                
+                <p className="site-tagline tablet-site-tagline">
+                  Produced by Advanced HPHT technology<br />
+                  for cutting-edge applications
+                </p>
+                
+                <button 
+                  className="action-button tablet-action-button"
+                  onClick={scrollToContacts}
+                  aria-label="Contact us for more information"
+                >
+                  GET IN TOUCH
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="title-area tablet-title-area">
+                <h1 className="site-title tablet-site-title">
+                  <div className="heading-wrapper">
+                    <span className="title-line gradient-headline">FLAWLESS DIAMOND</span>
+                    <span className="title-line gradient-headline">SUBSTRATES</span>
+                  </div>
+                </h1>
+                
+                <p className="site-tagline tablet-site-tagline">
+                  Produced by Advanced HPHT technology<br />
+                  for cutting-edge applications
+                </p>
+                
+                <button 
+                  className="action-button tablet-action-button"
+                  onClick={scrollToContacts}
+                  aria-label="Contact us for more information"
+                >
+                  GET IN TOUCH
+                </button>
+              </div>
+              
+              <div className="image-area tablet-image-area">
+                <img 
+                  src="/images/333.png" 
+                  alt="Diamond substrates visualization" 
+                  className="feature-image tablet-feature-image"
+                />
+              </div>
+            </>
+          )}
         </div>
       </div>
     </section>

@@ -1,357 +1,147 @@
-/* Основные стили для домашней секции */
+/* Стили для основной (десктопной) версии компонента HomeSection */
+
 .home-section {
   width: 100%;
-  height: 100vh;
-  min-height: 550px;
-  position: relative;
-  background-color: transparent;
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin: 0;
+  background-color: var(--white);
   padding: 0;
   overflow: hidden;
-  font-family: var(--primary-font);
+  position: relative;
 }
 
-/* Контейнер для содержимого */
 .home-container {
   width: 100%;
   max-width: var(--container-max-width);
   margin: 0 auto;
-  position: relative;
-  z-index: 2;
-  padding: 0 var(--spacing-4);
+  padding: 0 var(--spacing-8);
   display: flex;
   align-items: center;
-  justify-content: center;
-  min-height: 100%;
+  min-height: 100vh;
 }
 
-/* Структура основного контента */
 .content-area {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-12);
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
 }
 
-/* Область заголовка и текста */
 .title-area {
-  width: 45%;
-  padding-right: var(--spacing-8);
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  max-width: 550px;
 }
 
-/* Заголовок и его стилизация */
 .site-title {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: var(--spacing-6);
+  font-size: var(--h1-desktop);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  margin-bottom: var(--spacing-4);
+  width: 100%;
 }
 
-/* Обертка для заголовка */
 .heading-wrapper {
   display: flex;
   flex-direction: column;
-  width: 100%;
 }
 
-/* Стилизация строки заголовка, совместимая с базовыми стилями */
-.home-section .title-line {
-  font-size: var(--h1-desktop) !important; /* Использование переменной из base.css */
-  font-weight: var(--font-weight-bold);
-  line-height: 1.2;
+.title-line {
   display: block;
-  margin: 0;
-  padding: 0;
-  text-align: left;
+  margin-bottom: var(--spacing-2);
+  font-size: 3rem;
+  line-height: 1.1;
 }
 
-/* Стиль предотвращения переноса для строки с Flawless Diamond */
-.home-section .no-wrap {
-  white-space: nowrap !important;
-  display: inline-block;
-  font-size: var(--h1-desktop) !important;
-}
-
-/* Стилизация подзаголовка */
 .site-tagline {
   font-size: var(--text-xl);
-  color: var(--primary-teal);
-  font-weight: var(--font-weight-medium);
-  line-height: 1.5;
-  margin-bottom: var(--spacing-8);
+  line-height: 1.6;
+  color: var(--dark-gray);
+  margin-bottom: var(--spacing-5);
+  max-width: 90%;
 }
 
-/* Стилизация кнопки */
 .action-button {
-  background: var(--main-gradient);
+  align-self: flex-start;
+  transition: var(--transition-normal);
+  background: linear-gradient(to right, var(--primary-teal), var(--primary-dark-blue));
   color: var(--white);
-  font-family: var(--primary-font);
-  font-size: var(--text-lg);
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: var(--spacing-4) var(--spacing-8);
   border: none;
   border-radius: var(--radius-lg);
+  padding: 12px 30px;
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
-  transition: all var(--transition-normal);
-  box-shadow: var(--shadow-md);
   position: relative;
-  overflow: hidden;
-}
-
-.action-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: all var(--transition-slow);
+  z-index: 5;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .action-button:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
-  background: var(--main-gradient-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
 }
 
-.action-button:hover::before {
-  left: 100%;
+.action-button:not(:hover) {
+  transform: translateY(0);
 }
 
-.action-button:active {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
-}
-
-/* Область изображения */
 .image-area {
-  width: 55%;
+  flex: 1;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  max-width: 600px;
 }
 
-/* Стилизация изображения с контролем размеров */
 .feature-image {
-  max-width: 95%;
-  max-height: 75vh;
+  max-width: 100%;
+  height: auto;
   object-fit: contain;
 }
 
-/* ======== АДАПТИВНЫЕ СТИЛИ ======== */
-
-/* Очень большие экраны */
-@media (min-width: 1921px) {
-  .home-section .title-line,
-  .home-section .no-wrap {
-    font-size: calc(var(--h1-desktop) * 1.2) !important;
-  }
-  
-  .site-tagline {
-    font-size: calc(var(--text-xl) * 1.2);
-  }
-  
-  .action-button {
-    padding: var(--spacing-4) var(--spacing-10);
-    font-size: calc(var(--text-lg) * 1.1);
-  }
-  
-  .content-area {
-    max-width: 1600px;
-  }
+/* Стили для градиентного текста заголовка */
+.gradient-headline {
+  background: var(--main-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  color: transparent;
 }
 
-/* Большие экраны */
-@media (max-width: 1440px) {
-  .home-section .title-line,
-  .home-section .no-wrap {
-    font-size: calc(var(--h1-desktop) * 0.9) !important;
-  }
-  
-  .site-tagline {
-    font-size: var(--text-lg);
-  }
-  
-  .action-button {
-    padding: var(--spacing-3) var(--spacing-8);
-  }
-  
-  .feature-image {
-    max-height: 70vh;
-  }
-}
-
-/* Средние экраны */
-@media (max-width: 1200px) {
-  .home-section .title-line,
-  .home-section .no-wrap {
-    font-size: var(--h1-tablet) !important;
-    letter-spacing: -0.5px;
-  }
-  
-  .site-tagline {
-    font-size: var(--text-lg);
-    margin-bottom: var(--spacing-6);
-  }
-  
-  .title-area {
-    padding-right: var(--spacing-4);
-    width: 50%;
-  }
-  
-  .image-area {
-    width: 50%;
-  }
-  
-  .feature-image {
-    max-height: 65vh;
-  }
-  
-  .action-button {
-    font-size: var(--text-base);
-  }
-}
-
-/* Планшеты и малые ноутбуки - убираем существующие стили, так как теперь используем отдельный компонент */
-@media (max-width: 992px) {
-  /* Этот медиа-запрос уже не нужен для home.css, так как мы используем TabletHomeSection */
-  /* Оставляем пустым для возможных будущих обновлений */
-}
-
-/* Планшеты стандартные - убираем существующие стили */
-@media (max-width: 768px) {
-  /* Этот медиа-запрос уже не нужен для home.css, так как мы используем MobileHomeSection */
-  /* Оставляем пустым для возможных будущих обновлений */
-}
-
-/* Мобильные устройства - убираем существующие стили */
-@media (max-width: 576px) {
-  /* Этот медиа-запрос уже не нужен для home.css, так как мы используем MobileHomeSection */
-  /* Оставляем пустым для возможных будущих обновлений */
-}
-
-/* Маленькие мобильные устройства - убираем существующие стили */
-@media (max-width: 480px) {
-  /* Этот медиа-запрос уже не нужен для home.css, так как мы используем MobileHomeSection */
-  /* Оставляем пустым для возможных будущих обновлений */
-}
-
-/* Очень маленькие устройства - убираем существующие стили */
-@media (max-width: 375px) {
-  /* Этот медиа-запрос уже не нужен для home.css, так как мы используем MobileHomeSection */
-  /* Оставляем пустым для возможных будущих обновлений */
-}
-
-/* Стили для различных масштабов (zoom) */
-@media (min-resolution: 120dpi) {
-  /* 125% zoom */
-  .home-section .title-line,
-  .home-section .no-wrap {
-    font-size: calc(var(--h1-desktop) * 0.85) !important;
-  }
-}
-
-@media (min-resolution: 144dpi) {
-  /* 150% zoom */
-  .home-section .title-line,
-  .home-section .no-wrap {
-    font-size: calc(var(--h1-desktop) * 0.75) !important;
-  }
-}
-
-@media (min-resolution: 168dpi) {
-  /* 175% zoom */
-  .home-section .title-line,
-  .home-section .no-wrap {
-    font-size: calc(var(--h1-desktop) * 0.65) !important;
-  }
-}
-
-@media (min-resolution: 192dpi) {
-  /* 200% zoom - кардинально меняем макет для лучшей видимости */
-  .home-section {
-    height: auto;
-    min-height: 100vh;
-    padding: var(--spacing-8) 0;
-  }
-  
-  .home-container {
-    padding: 0 var(--spacing-2);
-  }
-  
-  .content-area {
-    flex-direction: column-reverse;
-    max-width: 100%;
-    gap: var(--spacing-4);
-  }
-  
-  .title-area, 
-  .image-area {
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
-  }
-  
-  .home-section .title-line,
-  .home-section .no-wrap {
-    font-size: calc(var(--h1-tablet) * 0.8) !important;
-    line-height: 1.2;
-    text-align: center !important;
-  }
-  
+/* Адаптивные стили для меньших десктопных экранов */
+@media (max-width: 1366px) {
   .site-title {
-    margin-bottom: var(--spacing-2);
-    align-items: center;
+    font-size: calc(var(--h1-desktop) - 0.5rem);
+  }
+  
+  .title-line {
+    font-size: 2.5rem;
   }
   
   .site-tagline {
-    font-size: var(--text-base);
-    margin-bottom: var(--spacing-4);
-    text-align: center;
+    font-size: var(--text-lg);
   }
   
-  .feature-image {
-    max-width: 85%;
-    max-height: 50vh;
-  }
-  
-  /* Уменьшаем высоту секции */
-  .home-section {
-    min-height: auto;
-  }
-  
-  @media (max-width: 992px) {
-    .home-container {
-      min-height: auto;
-    }
+  .content-area {
+    gap: var(--spacing-8);
   }
 }
 
-/* Fix для Safari */
-@supports (-webkit-touch-callout: none) {
-  .home-section {
-    height: -webkit-fill-available;
+@media (max-width: 1200px) {
+  .content-area {
+    gap: var(--spacing-6);
   }
-}
-
-/* Специальные стили для iPhone с челкой */
-@supports (padding-top: env(safe-area-inset-top)) {
-  @media (max-width: 992px) {
-    .home-container {
-      padding-top: calc(env(safe-area-inset-top) + 1rem);
-      padding-bottom: calc(env(safe-area-inset-bottom) + 1rem);
-    }
+  
+  .title-area, .image-area {
+    max-width: 50%;
   }
 } 
