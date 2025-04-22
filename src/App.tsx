@@ -7,6 +7,7 @@ import IntroSection from './components/sections/IntroSection'
 import TechnologySection from './components/sections/TechnologySection'
 import ProductsSection from './components/sections/ProductsSection'
 import QualitySection from './components/sections/QualitySection'
+import ApplicationsSection from './components/sections/ApplicationsSection'
 import ContactsSection from './components/sections/ContactsSection'
 import BluePrint from './components/sections/BluePrint'
 import ClientsSection from './components/sections/ClientsSection'
@@ -62,6 +63,7 @@ const MainSite: React.FC = () => {
     technology: null,
     products: null,
     quality: null,
+    applications: null,
     clients: null,
     blueprint: null,
     contacts: null,
@@ -99,6 +101,7 @@ const MainSite: React.FC = () => {
         { id: 'technology', element: document.getElementById('technology') },
         { id: 'products', element: document.getElementById('products') },
         { id: 'quality', element: document.getElementById('quality') },
+        { id: 'applications', element: document.getElementById('applications') },
         { id: 'clients', element: document.getElementById('clients') },
         { id: 'blueprint', element: document.getElementById('blueprint') },
         { id: 'contacts', element: document.getElementById('contacts') }
@@ -173,6 +176,7 @@ const MainSite: React.FC = () => {
             <TechnologySection />
             <ProductsSection />
             <QualitySection />
+            <ApplicationsSection />
             <ClientsSection />
             <BluePrint />
             <ContactsSection />

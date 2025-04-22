@@ -68,6 +68,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
         'technology',
         'products',
         'quality',
+        'applications',
         'clients',
         'blueprint',
         'contacts'
@@ -116,6 +117,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
     { id: 'technology', label: 'TECHNOLOGY' },
     { id: 'products', label: 'PRODUCTS' },
     { id: 'quality', label: 'QUALITY ANALYSIS' },
+    { id: 'applications', label: 'APPLICATIONS' },
     { id: 'clients', label: 'CLIENTS' },
     { id: 'blueprint', label: 'BLUEPRINT' },
     { id: 'contacts', label: 'CONTACTS' }
