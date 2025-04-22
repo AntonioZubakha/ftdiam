@@ -1,48 +1,48 @@
 /* IntroSection Styles */
 
 .intro-section {
-  padding-top: 50px;
-  padding-bottom: 0px;
+  padding-top: var(--spacing-12);
+  padding-bottom: 0;
   position: relative;
   overflow: visible;
   min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-dark);
-  background-color: white;
+  color: var(--text-color);
+  background-color: var(--white);
 }
 
 .intro-section .content-wrapper {
   position: relative;
   z-index: var(--z-normal);
-  max-width: 1200px;
+  max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 var(--spacing-5);
   text-align: center;
   overflow: visible;
 }
 
 .intro-section .headline {
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-8);
   color: var(--primary-dark-blue);
 }
 
 .section-description {
   max-width: 800px;
-  margin: 0 auto 2rem;
+  margin: 0 auto var(--spacing-8);
   font-size: var(--text-lg);
-  color: var(--text-dark);
+  color: var(--text-color);
 }
 
 /* Стили для сетки спецификаций в интро */
 .intro-section .specs-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
-  margin: 3rem auto;
+  gap: var(--spacing-10);
+  margin: var(--spacing-12) auto;
   max-width: 1450px;
-  padding: 0 15px;
+  padding: 0 var(--spacing-4);
 }
 
 /* Анимация для появления карточек */
@@ -79,7 +79,7 @@
   position: relative;
   overflow: hidden;
   min-height: 400px;
-  padding: 30px 25px;
+  padding: var(--spacing-8) var(--spacing-6);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -97,7 +97,7 @@
   background: radial-gradient(circle, rgba(0, 131, 127, 0.3) 0%, rgba(0, 131, 127, 0) 70%);
   border-radius: 50%;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: opacity var(--transition-normal);
   z-index: 0;
 }
 
@@ -109,18 +109,18 @@
 .intro-section .spec-icon {
   width: auto;
   height: 80px;
-  font-size: 55px;
-  margin-bottom: 1.8rem;
+  font-size: var(--h1-desktop);
+  margin-bottom: var(--spacing-6);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .intro-section .spec-name {
-  margin-bottom: 0.7rem;
+  margin-bottom: var(--spacing-2);
   text-align: center;
   font-size: var(--h4-desktop);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   min-height: 60px;
   display: flex;
   align-items: center;
@@ -131,7 +131,7 @@
 .intro-section .spec-description {
   text-align: center;
   font-size: calc(var(--text-base) - 1px);
-  margin-top: 0.7rem;
+  margin-top: var(--spacing-2);
   min-height: 70px;
   display: flex;
   align-items: center;
@@ -148,7 +148,7 @@
 
 .intro-section h3 {
   color: var(--primary-dark-blue);
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--spacing-2);
   font-size: var(--h4-desktop);
 }
 
@@ -160,24 +160,24 @@
 @media (min-width: 1600px) {
   .intro-section .specs-grid {
     max-width: 1600px;
-    gap: 50px;
+    gap: var(--spacing-12);
   }
   
   .intro-section .spec-block {
     min-height: 420px;
-    padding: 35px 30px;
+    padding: var(--spacing-10) var(--spacing-8);
   }
   
   .intro-section .spec-icon {
     height: 90px;
-    font-size: 60px;
+    font-size: var(--h1-desktop);
   }
 }
 
 /* Media Queries */
 @media (max-width: 1400px) {
   .intro-section .specs-grid {
-    gap: 30px;
+    gap: var(--spacing-8);
   }
   
   .intro-section .spec-block {
@@ -187,73 +187,65 @@
 
 @media (max-width: 1200px) {
   .intro-section .specs-grid {
-    gap: 25px;
+    gap: var(--spacing-6);
   }
   
   .intro-section .spec-block {
     min-height: 370px;
-    padding: 25px 20px;
+    padding: var(--spacing-6) var(--spacing-5);
   }
   
   .intro-section .spec-icon {
     height: 75px;
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--spacing-5);
+    font-size: var(--h1-desktop);
   }
 }
 
 @media (max-width: 992px) {
   .intro-section {
-    padding: 160px 0 80px 0;
+    padding-top: var(--spacing-8);
   }
   
   .intro-section .specs-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: var(--spacing-5);
   }
   
   .intro-section .spec-icon {
-    font-size: 50px;
-    margin-bottom: 1.2rem;
     height: 70px;
+    font-size: var(--h2-desktop);
+    margin-bottom: var(--spacing-4);
   }
   
   .intro-section .spec-name {
     font-size: var(--h4-tablet);
-    height: auto;
-    min-height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-height: 48px;
   }
   
   .intro-section .spec-description {
-    font-size: var(--text-base);
-    height: auto;
+    font-size: var(--text-sm);
     min-height: 60px;
-    margin-top: 0.7rem;
   }
-
-  /* Ensure cards have enough height on tablet */
+  
   .intro-section .spec-block {
-    min-height: 350px;
-    padding: 20px;
+    min-height: 300px;
+    padding: var(--spacing-5) var(--spacing-4);
   }
-
-  /* Specific styles for the third card with longer text */
+  
   .intro-section .spec-block:nth-child(3) .spec-description {
-    font-size: calc(var(--text-base) - 1px);
-    min-height: 80px;
+    min-height: 75px;
   }
 }
 
 @media (max-width: 768px) {
   .intro-section {
-    padding: 140px 0 60px 0;
+    padding-top: var(--spacing-6);
   }
   
   .intro-section .specs-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
   }
   
   .section-description {
@@ -261,17 +253,17 @@
   }
   
   .intro-section .spec-icon {
-    font-size: 45px;
-    margin-bottom: 1rem;
     height: 60px;
+    font-size: var(--h2-tablet);
+    margin-bottom: var(--spacing-3);
   }
   
   .intro-section .spec-name {
-    font-size: var(--h4-tablet);
+    min-height: unset;
   }
   
   .intro-section .spec-description {
-    font-size: calc(var(--text-sm) - 1px);
+    min-height: unset;
   }
   
   .intro-section h3 {
@@ -281,18 +273,19 @@
 
 @media (max-width: 576px) {
   .intro-section {
-    padding: 120px 0 40px 0;
+    padding-top: var(--spacing-5);
   }
   
   .intro-section .specs-grid {
-    grid-template-columns: 1fr !important;
-    gap: 15px;
-    margin: 2rem 0 0;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-3);
+    margin: var(--spacing-5) auto;
   }
   
   .intro-section .spec-icon {
-    font-size: 40px;
     height: 50px;
+    font-size: var(--h2-mobile);
+    margin-bottom: var(--spacing-2);
   }
   
   .intro-section .spec-name {
@@ -301,31 +294,32 @@
   
   .intro-section h3 {
     font-size: var(--h4-mobile);
+    margin-bottom: var(--spacing-1);
   }
 }
 
-/* High Zoom Support */
 @media (min-resolution: 120dpi) {
   .intro-section .spec-block {
-    min-height: 420px;
-    padding: 30px 25px;
+    min-height: 350px;
+    padding: var(--spacing-5) var(--spacing-4);
   }
   
   .intro-section .spec-description {
-    min-height: 80px;
+    font-size: calc(var(--text-sm) + 1px);
   }
   
   .intro-section .spec-block:nth-child(3) .spec-description {
-    min-height: 100px;
+    font-size: calc(var(--text-sm) + 1px);
   }
   
   .intro-section .spec-name {
-    min-height: 70px;
+    font-size: var(--h4-tablet);
   }
   
   .intro-section .spec-icon {
-    height: 80px;
-    margin-bottom: 1.5rem;
+    height: 70px;
+    font-size: var(--h2-desktop);
+    margin-bottom: var(--spacing-4);
   }
 }
 
@@ -336,11 +330,9 @@
 
 .background-animation {
   position: absolute;
-  width: 100%;
-  height: 100%;
   top: 0;
   left: 0;
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  width: 100%;
+  height: 100%;
   z-index: var(--z-back);
 } 

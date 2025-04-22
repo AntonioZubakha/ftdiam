@@ -103,7 +103,7 @@
 }
 
 .mobile-site-tagline {
-  font-size: 1rem;
+  font-size: var(--text-base);
   color: var(--primary-teal);
   font-weight: var(--font-weight-medium);
   line-height: 1.4;
@@ -113,18 +113,18 @@
 }
 
 .mobile-action-button {
-  background: linear-gradient(to right, var(--primary-teal), var(--primary-dark-blue));
-  color: white;
+  background: var(--main-gradient);
+  color: var(--white);
   font-family: var(--primary-font);
-  font-size: 0.95rem;
+  font-size: var(--text-sm);
   font-weight: var(--font-weight-semibold);
   letter-spacing: 1px;
   text-transform: uppercase;
-  padding: 10px 24px;
+  padding: var(--spacing-2) var(--spacing-6);
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-md);
   position: relative;
   overflow: hidden;
   white-space: nowrap;
@@ -132,13 +132,13 @@
 
 .mobile-action-button:active {
   transform: translateY(1px);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-sm);
 }
 
 /* Стили для разных размеров мобильных экранов */
 @media (max-width: 480px) {
   .mobile-home-section {
-    padding: 60px 0 30px;
+    padding: var(--spacing-16) 0 var(--spacing-8);
   }
   
   .mobile-site-title .title-line {
@@ -146,13 +146,13 @@
   }
   
   .mobile-site-tagline {
-    font-size: 0.9rem;
+    font-size: var(--text-sm);
     margin-bottom: var(--spacing-4);
   }
   
   .mobile-action-button {
-    font-size: 0.9rem;
-    padding: 9px 22px;
+    font-size: var(--text-sm);
+    padding: var(--spacing-2) var(--spacing-5);
   }
   
   .mobile-feature-image {
@@ -162,22 +162,22 @@
 
 @media (max-width: 375px) {
   .mobile-home-section {
-    padding: 50px 0 20px;
+    padding: var(--spacing-12) 0 var(--spacing-5);
   }
   
   .mobile-site-title .title-line {
-    font-size: calc(var(--h3-mobile));
+    font-size: var(--h3-mobile);
   }
   
   .mobile-site-tagline {
-    font-size: 0.85rem;
+    font-size: var(--text-xs);
     line-height: 1.3;
     margin-bottom: var(--spacing-3);
   }
   
   .mobile-action-button {
-    font-size: 0.85rem;
-    padding: 8px 20px;
+    font-size: var(--text-xs);
+    padding: var(--spacing-2) var(--spacing-5);
   }
   
   .mobile-feature-image {
@@ -196,46 +196,56 @@
   }
   
   .mobile-site-tagline {
-    font-size: 0.85rem;
+    font-size: var(--text-xs);
     margin-bottom: var(--spacing-3);
   }
   
   .mobile-feature-image {
-    max-height: 25vh;
+    max-height: 30vh;
   }
 }
 
-/* Анимации */
 @keyframes mobileSlideUp {
-  from {
+  0% {
+    transform: translateY(20px);
     opacity: 0;
-    transform: translateY(15px);
   }
-  to {
-    opacity: 1;
+  100% {
     transform: translateY(0);
+    opacity: 1;
   }
 }
 
-/* Добавляем анимации для элементов */
 .mobile-image-area {
+  animation: mobileSlideUp 0.8s ease-out forwards 0.2s;
   opacity: 0;
-  animation: mobileSlideUp 0.8s ease forwards 0.3s;
 }
 
 .mobile-site-title {
+  animation: mobileSlideUp 0.8s ease-out forwards 0.4s;
   opacity: 0;
-  animation: mobileSlideUp 0.8s ease forwards 0.5s;
 }
 
 .mobile-site-tagline {
+  animation: mobileSlideUp 0.8s ease-out forwards 0.6s;
   opacity: 0;
-  animation: mobileSlideUp 0.8s ease forwards 0.7s;
 }
 
 .mobile-action-button {
+  animation: mobileSlideUp 0.8s ease-out forwards 0.8s;
   opacity: 0;
-  animation: mobileSlideUp 0.8s ease forwards 0.9s;
+}
+
+@media (prefers-reduced-motion) {
+  .mobile-home-section {
+    padding: var(--spacing-16) 0 var(--spacing-8);
+  }
+}
+
+@media (orientation: landscape) and (max-width: 900px) {
+  .mobile-home-section {
+    padding: var(--spacing-12) 0;
+  }
 }
 
 /* Fix для Safari */

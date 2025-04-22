@@ -1,9 +1,9 @@
 /* Основные стили для секции Technology */
 .technology-section {
-  padding: 160px 0 150px 0;
+  padding: var(--spacing-40) 0 var(--spacing-36) 0;
   position: relative;
   overflow: hidden;
-  background-color: #f9f9f9;
+  background-color: var(--light-gray);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -12,7 +12,7 @@
 .technology-container {
   max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 var(--spacing-5);
   position: relative;
   z-index: 1;
 }
@@ -20,13 +20,13 @@
 /* Стили для заголовков */
 .technology-headline-container {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: var(--spacing-16);
 }
 
 .technology-headline {
   font-size: var(--section-headline-size);
   color: var(--primary-color);
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-8);
   position: relative;
   display: inline-block;
   letter-spacing: var(--section-headline-letter-spacing);
@@ -35,13 +35,13 @@
 
 .technology-subheading {
   font-size: var(--h3-desktop);
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-4);
 }
 
 .technology-subtitle {
-  font-size: 20px;
-  font-weight: 500;
-  color: #555;
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-medium);
+  color: var(--gray);
   margin-bottom: 0;
 }
 
@@ -49,8 +49,8 @@
 .technology-overview {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  margin-bottom: 60px;
+  gap: var(--spacing-10);
+  margin-bottom: var(--spacing-16);
   align-items: center;
 }
 
@@ -63,7 +63,7 @@
 .technology-image {
   width: 100%;
   height: auto;
-  border-radius: 8px;
+  border-radius: var(--border-radius-md);
   box-shadow: var(--shadow-md);
   transition: transform 0.3s ease-in-out;
 }
@@ -81,8 +81,8 @@
 
 .technology-description h3 {
   font-size: var(--h3-desktop);
-  margin-bottom: 20px;
-  font-weight: 600;
+  margin-bottom: var(--spacing-5);
+  font-weight: var(--font-weight-semibold);
 }
 
 .technology-text {
@@ -96,27 +96,27 @@
 
 /* Секция преимуществ */
 .technology-advantages {
-  margin-top: 40px;
+  margin-top: var(--spacing-10);
 }
 
 .advantages-title {
-  font-size: 28px;
-  font-weight: 600;
-  margin-bottom: 30px;
+  font-size: var(--h3-desktop);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-8);
   text-align: center;
 }
 
 .advantages-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: var(--spacing-8);
 }
 
 .advantage-card {
-  background: #fff;
-  padding: 25px;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  background: var(--white);
+  padding: var(--spacing-6);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
   border: 1px solid rgba(0, 0, 0, 0.03);
@@ -124,13 +124,13 @@
 
 .advantage-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-lg);
   border-color: rgba(0, 131, 127, 0.1);
 }
 
 .advantage-icon {
   height: 60px;
-  margin-bottom: 15px;
+  margin-bottom: var(--spacing-4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -143,13 +143,13 @@
 
 .advantage-title {
   font-size: var(--h4-desktop);
-  font-weight: 600;
-  color: #241e46;
-  margin-bottom: 12px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--dark-blue);
+  margin-bottom: var(--spacing-3);
 }
 
 .advantage-card p {
-  color: #555;
+  color: var(--gray);
   font-size: var(--text-base);
   line-height: 1.5;
   margin: 0;
@@ -157,7 +157,7 @@
 
 /* Класс для градиентного текста */
 .gradient-text {
-  background: linear-gradient(to right, #00837f, #241e46);
+  background: var(--main-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -167,7 +167,7 @@
 /* Адаптивные стили */
 @media (max-width: 992px) {
   .technology-section {
-    padding: 80px 0;
+    padding: var(--spacing-20) 0;
   }
   
   .technology-headline {
@@ -198,7 +198,7 @@
 
 @media (max-width: 768px) {
   .technology-section {
-    padding: 60px 0;
+    padding: var(--spacing-16) 0;
   }
   
   .technology-headline {
@@ -211,7 +211,7 @@
   
   .technology-overview {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: var(--spacing-8);
   }
   
   .technology-description {
@@ -245,11 +245,7 @@
 
 @media (max-width: 576px) {
   .technology-section {
-    padding: 50px 0;
-  }
-  
-  .technology-headline {
-    font-size: var(--section-headline-mobile-size);
+    padding: var(--spacing-12) 0;
   }
   
   .technology-subheading {
@@ -258,15 +254,15 @@
   
   .advantages-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: var(--spacing-6);
   }
   
   .advantage-card {
-    padding: 20px;
+    padding: var(--spacing-5);
   }
   
   .tech-highlight {
-    min-width: 100%;
+    padding: var(--spacing-5);
   }
 
   .technology-description h3 {
@@ -295,66 +291,62 @@
 }
 
 .tech-section-separator {
-  height: 80px;
-  width: 100%;
-  background-color: transparent;
-  margin-top: -80px;
+  height: var(--spacing-16);
+  margin: var(--spacing-10) 0;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Дополнительные стили для подсветки особенностей */
+/* Дополнительные элементы для технологической секции */
 .tech-highlights {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-6);
 }
 
 .tech-highlight {
-  flex: 1;
-  min-width: 200px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
+  background: var(--white);
+  padding: var(--spacing-6);
+  border-radius: var(--border-radius-md);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
+  text-align: center;
 }
 
 .tech-highlight:hover {
   transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
 }
 
 .tech-highlight i {
-  font-size: 28px;
-  background: var(--main-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 10px;
+  font-size: var(--icon-size-lg);
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-3);
   display: inline-block;
+  transition: all 0.3s ease;
 }
 
 .tech-highlight h4 {
-  margin: 0 0 10px 0;
-  font-size: var(--text-lg);
-  color: var(--primary-color);
+  font-size: var(--h4-desktop);
+  margin-bottom: var(--spacing-2);
+  color: var(--dark-blue);
 }
 
 .tech-highlight p {
-  margin: 0;
   font-size: var(--text-sm);
-  line-height: 1.5;
-  color: #555;
+  color: var(--gray);
+  margin: 0;
 }
 
+/* Ключевые моменты технологии */
 .tech-points {
-  margin-top: 20px;
+  margin-top: var(--spacing-10);
 }
 
 .tech-point {
-  margin-bottom: 30px;
-  position: relative;
-  padding-left: 30px;
+  margin-bottom: var(--spacing-6);
+  padding-left: var(--spacing-4);
+  border-left: 3px solid var(--primary-color);
 }
 
 .tech-point:last-child {
@@ -362,24 +354,21 @@
 }
 
 .tech-point h3 {
-  margin: 0 0 8px 0;
-  font-size: var(--h3-desktop);
-  color: var(--primary-color);
+  font-size: var(--h4-desktop);
+  color: var(--dark-blue);
+  margin-bottom: var(--spacing-2);
   font-weight: var(--font-weight-semibold);
 }
 
 .tech-point p {
-  margin: 0;
   font-size: var(--text-base);
-  line-height: 1.6;
-  color: #555;
-} 
+  color: var(--gray);
+  line-height: 1.5;
+  margin: 0;
+}
 
 .section-container {
-  position: relative;
-  z-index: var(--z-normal);
   max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 0 var(--spacing-4);
-  width: 100%;
+  padding: 0 var(--spacing-5);
 } 

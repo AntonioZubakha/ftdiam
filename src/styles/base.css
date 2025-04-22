@@ -28,6 +28,7 @@
   
   /* Шрифты */
   --primary-font: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --secondary-font: 'Montserrat', sans-serif;
   --heading-font: 'Montserrat', sans-serif;
   
   /* Размеры шрифтов */
@@ -37,7 +38,7 @@
   --text-lg: 1.125rem;  /* 18px */
   --text-xl: 1.25rem;   /* 20px */
   --text-2xl: 1.5rem;   /* 24px */
-  --text-3xl: 1.7rem; /* 30px */
+  --text-3xl: 1.7rem;   /* 30px */
   --text-4xl: 2.25rem;  /* 36px */
   --text-5xl: 3rem;     /* 48px */
 
@@ -68,10 +69,10 @@
   --section-headline-tablet-size: var(--h1-tablet);     /* размер главных заголовков на планшетах */
   --section-headline-mobile-size: var(--h1-mobile);     /* размер главных заголовков на мобильных */
   --section-subheadline-size: var(--h2-desktop);        /* размер подзаголовков секций */
-  --section-headline-letter-spacing: 0.5px;/* межбуквенное расстояние для заголовков */
-  --section-headline-after-width: 50px;    /* ширина подчеркивания заголовков */
-  --section-headline-after-height: 3px;    /* высота подчеркивания заголовков */
-  --section-headline-margin: 3rem;         /* отступ снизу для заголовков */
+  --section-headline-letter-spacing: 0.5px;             /* межбуквенное расстояние для заголовков */
+  --section-headline-after-width: 50px;                 /* ширина подчеркивания заголовков */
+  --section-headline-after-height: 3px;                 /* высота подчеркивания заголовков */
+  --section-headline-margin: 3rem;                      /* отступ снизу для заголовков */
   
   /* Градиент для текста и элементов */
   --main-gradient: linear-gradient(to right, var(--primary-teal), var(--primary-dark-blue));
@@ -79,24 +80,26 @@
   
   /* Spacing */
   --spacing-0: 0;
-  --spacing-1: 0.25rem;
-  --spacing-2: 0.5rem;
-  --spacing-3: 0.75rem;
-  --spacing-4: 1rem;
-  --spacing-5: 1.25rem;
-  --spacing-6: 1.5rem;
-  --spacing-8: 2rem;
-  --spacing-10: 2.5rem;
-  --spacing-12: 3rem;
-  --spacing-16: 4rem;
-  --spacing-20: 5rem;
-  --spacing-24: 6rem;
-  --spacing-32: 8rem;
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 3rem;
+  --spacing-1: 0.25rem;  /* 4px */
+  --spacing-2: 0.5rem;   /* 8px */
+  --spacing-3: 0.75rem;  /* 12px */
+  --spacing-4: 1rem;     /* 16px */
+  --spacing-5: 1.25rem;  /* 20px */
+  --spacing-6: 1.5rem;   /* 24px */
+  --spacing-8: 2rem;     /* 32px */
+  --spacing-10: 2.5rem;  /* 40px */
+  --spacing-12: 3rem;    /* 48px */
+  --spacing-16: 4rem;    /* 64px */
+  --spacing-20: 5rem;    /* 80px */
+  --spacing-24: 6rem;    /* 96px */
+  --spacing-32: 8rem;    /* 128px */
+  
+  /* Альтернативные названия для spacing, используемые в проекте */
+  --spacing-xs: 0.5rem;  /* Аналог spacing-2 */
+  --spacing-sm: 1rem;    /* Аналог spacing-4 */
+  --spacing-md: 1.5rem;  /* Аналог spacing-6 */
+  --spacing-lg: 2rem;    /* Аналог spacing-8 */
+  --spacing-xl: 3rem;    /* Аналог spacing-12 */
   
   /* Вес шрифтов - унифицировано */
   --font-weight-light: 300;
@@ -114,14 +117,15 @@
   
   /* Размеры и отступы */
   --container-max-width: 1200px;
-  --header-height: 80px;
+  --header-height: 80px;  /* Высота хедера */
+  --mobile-header-height: 70px;  /* Высота хедера на мобильных */
   --sidebar-width: 280px;
   
   /* Border Radius - унифицировано */
-  --radius-sm: 0.125rem;
-  --radius-md: 0.25rem;
-  --radius-lg: 0.5rem;
-  --radius-xl: 1rem;
+  --radius-sm: 0.125rem;  /* 2px */
+  --radius-md: 0.25rem;   /* 4px */
+  --radius-lg: 0.5rem;    /* 8px */
+  --radius-xl: 1rem;      /* 16px */
   --radius-round: 50%;
   
   /* Временные параметры для анимаций - унифицировано */
@@ -132,7 +136,7 @@
   /* Z-index */
   --z-back: -1;       /* Фоновые элементы */
   --z-normal: 1;      /* Обычные элементы */
-  --z-menu: 900;      /* Меню и навигация - сделал больше */
+  --z-menu: 900;      /* Меню и навигация */
   --z-fixed: 1000;    /* Фиксированные элементы, в том числе хедер */
   --z-modal: 2000;    /* Модальные окна */
   --z-popover: 3000;  /* Всплывающие подсказки, выпадающие меню */
@@ -143,23 +147,24 @@
   --pulse-animation: pulse 3s infinite ease-in-out;
   --fade-animation: fadeIn 0.5s ease-in-out;
   --slide-animation: slideIn 0.5s ease-in-out;
+  
+  /* Breakpoints для медиа-запросов */
+  --breakpoint-xs: 375px;   /* Очень маленькие мобильные */
+  --breakpoint-sm: 480px;   /* Малые мобильные */
+  --breakpoint-md: 576px;   /* Мобильные */
+  --breakpoint-lg: 768px;   /* Планшеты */
+  --breakpoint-xl: 992px;   /* Малые ноутбуки */
+  --breakpoint-xxl: 1200px; /* Ноутбуки */
+  --breakpoint-xxxl: 1440px; /* Большие экраны */
 }
 
 * {
   box-sizing: border-box;
 }
 
-/* Убираем отступы между секциями */
-section {
-  position: relative;
-  z-index: 1;
-}
-
-section + section {
-  margin-top: 0 !important;
-}
-
+/* Базовые стили элементов */
 html {
+  box-sizing: border-box;
   scroll-behavior: smooth;
   font-size: 16px;
   width: 100%;
@@ -175,9 +180,27 @@ body {
   overflow-x: hidden;
   color: var(--dark-gray);
   background-color: var(--white);
-  font-family: 'Raleway', sans-serif;
+  font-family: var(--primary-font), sans-serif;
   line-height: 1.5;
   font-weight: var(--font-weight-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Базовые стили для секций */
+section {
+  position: relative;
+  z-index: var(--z-normal);
+  clear: both; /* Гарантирует что секция начинается с новой строки */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 100vw;
+}
+
+section + section {
+  margin-top: 0 !important;
 }
 
 /* Стилизация скроллбара для всего проекта */
@@ -207,12 +230,14 @@ body {
   scrollbar-color: var(--primary-teal) #f1f1f1;
 }
 
+/* Типографика */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--heading-font);
   font-weight: var(--font-weight-semibold);
   line-height: 1.2;
   color: var(--primary-dark-blue);
   margin-bottom: 1rem;
+  margin-top: 0;
 }
 
 h1 {
@@ -246,6 +271,7 @@ h6 {
 }
 
 p {
+  margin-top: 0;
   margin-bottom: 1rem;
 }
 
@@ -265,6 +291,7 @@ button {
   border: none;
   outline: none;
   background: none;
+  padding: 0;
 }
 
 img {
@@ -273,6 +300,17 @@ img {
   display: block;
 }
 
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style-position: inside;
+}
+
+figure {
+  margin: 0;
+}
+
+/* Базовые стили заголовков */
 .headline {
   font-size: var(--section-headline-size);
   margin-bottom: var(--section-headline-margin);
@@ -315,6 +353,7 @@ img {
   display: inline-block;
 }
 
+/* Стиль для описаний секций */
 .section-description {
   font-size: 1.1rem;
   color: var(--dark-gray);
@@ -324,6 +363,63 @@ img {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Стили для контейнера контента */
+.content-wrapper {
+  position: relative;
+  z-index: var(--z-normal);
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-8);
+  text-align: center;
+}
+
+/* Стиль для центрирования заголовков внутри content-wrapper */
+.content-wrapper > h2.headline {
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+}
+
+/* Стиль для секций с описанием */
+.content-wrapper > .section-description {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Контейнер для страниц */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-4);
+}
+
+/* Контейнер без отступов между секциями */
+.no-gap-container {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Делаем, чтобы секции в контейнере не накладывались друг на друга */
+.no-gap-container > section {
+  position: relative;
+  display: block;
+  width: 100%;
+  z-index: var(--z-normal);
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+}
+
+/* Для стандартных секций */
+.section {
+  padding: 5rem 0;
+  position: relative;
 }
 
 /* Адаптивность */
@@ -355,6 +451,10 @@ img {
   h6 {
     font-size: var(--h6-tablet);
   }
+  
+  .content-wrapper {
+    padding: 0 var(--spacing-6);
+  }
 }
 
 @media (max-width: 768px) {
@@ -393,11 +493,19 @@ img {
   .section-description {
     font-size: var(--text-base);
   }
+  
+  .content-wrapper {
+    padding: 0 var(--spacing-4);
+  }
 }
 
 @media (max-width: 480px) {
   .headline {
     font-size: var(--section-headline-mobile-size);
+  }
+  
+  .section {
+    padding: 3rem 0;
   }
   
   h1 {
@@ -422,6 +530,10 @@ img {
 
   h6 {
     font-size: var(--h6-mobile);
+  }
+  
+  .content-wrapper {
+    padding: 0 var(--spacing-2);
   }
 }
 
@@ -447,553 +559,20 @@ textarea:focus {
   }
 }
 
-/* Утилиты */
-.container {
-  width: 100%;
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-/* Контейнер без отступов между секциями */
-.no-gap-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.no-gap-container > section {
-  margin: 0 !important;
-}
-
-.no-gap-container > section + section {
-  margin-top: -2px !important;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-left {
-  text-align: left;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.flex {
-  display: flex;
-}
-
-.flex-col {
-  flex-direction: column;
-}
-
-.items-center {
-  align-items: center;
-}
-
-.justify-center {
-  justify-content: center;
-}
-
-.justify-between {
-  justify-content: space-between;
-}
-
-.gap-sm {
-  gap: var(--spacing-2);
-}
-
-.gap-md {
-  gap: var(--spacing-4);
-}
-
-.gap-lg {
-  gap: var(--spacing-8);
-}
-
-.w-full {
-  width: 100%;
-}
-
-.h-full {
-  height: 100%;
-}
-
-.rounded {
-  border-radius: var(--border-radius);
-}
-
-.rounded-lg {
-  border-radius: var(--border-radius-lg);
-}
-
-.shadow {
-  box-shadow: var(--shadow);
-}
-
-.shadow-md {
-  box-shadow: var(--shadow-md);
-}
-
-.shadow-lg {
-  box-shadow: var(--shadow-lg);
-}
-
-.hidden {
-  display: none;
-}
-
-.mt-1 { margin-top: var(--spacing-1); }
-.mt-2 { margin-top: var(--spacing-2); }
-.mt-4 { margin-top: var(--spacing-4); }
-.mt-8 { margin-top: var(--spacing-8); }
-
-.mb-1 { margin-bottom: var(--spacing-1); }
-.mb-2 { margin-bottom: var(--spacing-2); }
-.mb-4 { margin-bottom: var(--spacing-4); }
-.mb-8 { margin-bottom: var(--spacing-8); }
-
-.p-2 { padding: var(--spacing-2); }
-.p-4 { padding: var(--spacing-4); }
-.p-8 { padding: var(--spacing-8); }
-
-/* Global Base Styles */
-html {
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-  font-size: 16px;
-}
-
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: var(--primary-font);
-  line-height: 1.5;
-  color: var(--text-color);
-  background-color: var(--white);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 0 0 1rem;
-  font-family: var(--heading-font);
-  font-weight: var(--font-weight-bold);
-  line-height: 1.2;
-  color: var(--primary-color);
-}
-
-p {
-  margin: 0 0 1rem;
-}
-
-a {
-  color: var(--secondary-color);
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-a:hover {
-  color: var(--primary-color);
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-button {
-  cursor: pointer;
-  font-family: var(--primary-font);
-}
-
-ul, ol {
-  margin: 0;
-  padding: 0;
-  list-style-position: inside;
-}
-
-figure {
-  margin: 0;
-}
-
-/* Containers */
-.container {
-  width: 100%;
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.content-wrapper {
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  padding: 0 20px;
-  position: relative;
-  z-index: 1;
-}
-
-/* Section Styles */
-.section {
-  padding: 5rem 0;
-  position: relative;
-}
-
-/* Headline Styles */
-.headline {
-  font-size: var(--section-headline-size);
-  margin-bottom: var(--section-headline-margin);
-  text-align: center;
-  color: var(--primary-color);
-  letter-spacing: var(--section-headline-letter-spacing);
-  font-weight: var(--font-weight-semibold);
-  position: relative;
-}
-
-.section-description {
-  max-width: 800px;
-  margin: 0 auto 3rem;
-  text-align: center;
-  font-size: 1.1rem;
-  color: var(--dark-gray);
-}
-
-/* Common utility classes */
-.text-center {
-  text-align: center;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.text-left {
-  text-align: left;
-}
-
-/* Flexbox helpers */
-.flex {
-  display: flex;
-}
-
-.flex-column {
-  flex-direction: column;
-}
-
-.flex-row {
-  flex-direction: row;
-}
-
-.items-center {
-  align-items: center;
-}
-
-.items-start {
-  align-items: flex-start;
-}
-
-.items-end {
-  align-items: flex-end;
-}
-
-.justify-center {
-  justify-content: center;
-}
-
-.justify-between {
-  justify-content: space-between;
-}
-
-.justify-around {
-  justify-content: space-around;
-}
-
-.flex-wrap {
-  flex-wrap: wrap;
-}
-
-.flex-1 {
-  flex: 1;
-}
-
-/* Margin and padding utility classes */
-.m-0 { margin: 0; }
-.mx-auto { margin-left: auto; margin-right: auto; }
-.mt-0 { margin-top: 0; }
-.mt-1 { margin-top: 0.25rem; }
-.mt-2 { margin-top: 0.5rem; }
-.mt-3 { margin-top: 1rem; }
-.mt-4 { margin-top: 1.5rem; }
-.mt-5 { margin-top: 3rem; }
-.mb-0 { margin-bottom: 0; }
-.mb-1 { margin-bottom: 0.25rem; }
-.mb-2 { margin-bottom: 0.5rem; }
-.mb-3 { margin-bottom: 1rem; }
-.mb-4 { margin-bottom: 1.5rem; }
-.mb-5 { margin-bottom: 3rem; }
-
-.p-0 { padding: 0; }
-.p-1 { padding: 0.25rem; }
-.p-2 { padding: 0.5rem; }
-.p-3 { padding: 1rem; }
-.p-4 { padding: 1.5rem; }
-.p-5 { padding: 3rem; }
-
-/* Width utility classes */
-.w-full { width: 100%; }
-.w-half { width: 50%; }
-.w-auto { width: auto; }
-
-/* Height utility classes */
-.h-full { height: 100%; }
-.h-screen { height: 100vh; }
-.h-auto { height: auto; }
-
-/* Display utility classes */
-.block { display: block; }
-.inline-block { display: inline-block; }
-.inline { display: inline; }
-.hidden { display: none; }
-
-/* Position utility classes */
-.relative { position: relative; }
-.absolute { position: absolute; }
-.fixed { position: fixed; }
-.sticky { position: sticky; }
-
-/* Overflow utility classes */
-.overflow-hidden { overflow: hidden; }
-.overflow-auto { overflow: auto; }
-.overflow-scroll { overflow: scroll; }
-
-/* Text utility classes */
-.uppercase { text-transform: uppercase; }
-.lowercase { text-transform: lowercase; }
-.capitalize { text-transform: capitalize; }
-.truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* Border utility classes */
-.border { border: 1px solid var(--light-gray); }
-.border-t { border-top: 1px solid var(--light-gray); }
-.border-r { border-right: 1px solid var(--light-gray); }
-.border-b { border-bottom: 1px solid var(--light-gray); }
-.border-l { border-left: 1px solid var(--light-gray); }
-.rounded { border-radius: var(--radius-md); }
-.rounded-lg { border-radius: var(--radius-lg); }
-.rounded-full { border-radius: 9999px; }
-
-/* Font utility classes */
-.font-light { font-weight: var(--font-weight-light); }
-.font-normal { font-weight: var(--font-weight-normal); }
-.font-medium { font-weight: var(--font-weight-medium); }
-.font-semibold { font-weight: var(--font-weight-semibold); }
-.font-bold { font-weight: var(--font-weight-bold); }
-
-/* Gradient text utility class */
-.gradient-text {
-  background: linear-gradient(to right, #00837f, #241e46);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-}
-
-/* Responsive utility classes */
-@media (max-width: 992px) {
-  html {
-    font-size: 15px;
-  }
-  
-  .headline {
-    font-size: var(--section-headline-tablet-size);
-  }
-}
-
-@media (max-width: 768px) {
-  html {
-    font-size: 14px;
-  }
-  
-  .headline {
-    font-size: var(--section-headline-mobile-size);
-  }
-  
-  h1 {
-    font-size: var(--h1-mobile);
-  }
-  
-  h2 {
-    font-size: var(--h2-mobile);
-  }
-  
-  h3 {
-    font-size: var(--h3-mobile);
-  }
-  
-  h4 {
-    font-size: var(--h4-mobile);
-  }
-
-  h5 {
-    font-size: var(--h5-mobile);
-  }
-
-  h6 {
-    font-size: var(--h6-mobile);
-  }
-  
-  .section-description {
-    font-size: var(--text-base);
-  }
-}
-
-@media (max-width: 576px) {
-  html {
-    font-size: 13px;
-  }
-  
-  .headline {
-    font-size: var(--section-headline-mobile-size);
-    margin-bottom: 2rem;
-  }
-  
-  .section {
-    padding: 3rem 0;
-  }
-}
-
-/* Gradient headline class */
-.gradient-headline {
-  background: var(--main-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-}
-
-/* Перенесено из layout.css */
-/* Стили для контейнера контента */
-.content-wrapper {
-  position: relative;
-  z-index: 2;
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  padding: 0 2rem;
-  text-align: center;
-}
-
-/* Стиль для центрирования заголовков внутри content-wrapper */
-.content-wrapper > h2.headline {
-  margin-left: auto;
-  margin-right: auto;
-  display: inline-block;
-}
-
-/* Стиль для секций с описанием */
-.content-wrapper > .section-description {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.section-description {
-  max-width: 800px;
-  margin: 0 auto 3rem;
-  text-align: center;
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: var(--dark-gray);
-}
-
-/* Утилитарные классы для макета */
-.grid {
-  display: grid;
-}
-
-.grid-2-cols {
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-}
-
-.grid-3-cols {
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-
-.grid-4-cols {
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-}
-
-/* Контейнер без отступов для секций */
-.no-gap-container {
-  position: relative;
-  width: 100%;
-  overflow: visible;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Делаем, чтобы секции в контейнере не накладывались друг на друга */
-.no-gap-container > section {
-  position: relative;
-  display: block;
-  width: 100%;
-  z-index: 1;
-  overflow: visible;
-  margin: 0;
-  padding: 0;
-}
-
-/* Медиа-запросы для адаптивности */
-@media (max-width: 1024px) {
-  .grid-4-cols {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .section-description {
-    font-size: var(--text-base);
-  }
-  
-  .grid-2-cols,
-  .grid-3-cols {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 480px) {
-  .grid-4-cols {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Удаляем классы анимации для мобильных устройств */
+/* Стили для анимации элементов */
 .fade-in-section {
-  opacity: 1;
-  transform: none;
-  transition: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .fade-in-section.is-visible {
   opacity: 1;
-  transform: none;
+  transform: translateY(0);
 }
 
-/* Для десктопа элементы сразу видимы */
-@media (min-width: 769px) {
+/* Отключаем анимацию для десктопа и пользователей с предпочтением уменьшенного движения */
+@media (min-width: 769px), (prefers-reduced-motion: reduce) {
   .fade-in-section {
     opacity: 1 !important;
     transform: none !important;
@@ -1007,4 +586,172 @@ body.modal-open {
   width: 100%;
   height: 100%;
   touch-action: none;
+}
+
+/* Сетка */
+.grid {
+  display: grid;
+}
+
+.grid-2-cols {
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-8);
+}
+
+.grid-3-cols {
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-8);
+}
+
+.grid-4-cols {
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-8);
+}
+
+/* Медиа-запросы для сетки */
+@media (max-width: 1200px) {
+  .grid-4-cols {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-6);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-2-cols,
+  .grid-3-cols {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-4-cols {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+  }
+  
+  .grid-2-cols,
+  .grid-3-cols {
+    gap: var(--spacing-4);
+  }
+}
+
+/* Утилитарные классы */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-row { flex-direction: row; }
+.flex-wrap { flex-wrap: wrap; }
+.flex-nowrap { flex-wrap: nowrap; }
+.flex-1 { flex: 1; }
+
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+.justify-start { justify-content: flex-start; }
+.justify-end { justify-content: flex-end; }
+
+.gap-xs { gap: var(--spacing-xs); }
+.gap-sm { gap: var(--spacing-sm); }
+.gap-md { gap: var(--spacing-md); }
+.gap-lg { gap: var(--spacing-lg); }
+.gap-xl { gap: var(--spacing-xl); }
+
+.w-full { width: 100%; }
+.w-half { width: 50%; }
+.w-auto { width: auto; }
+
+.h-full { height: 100%; }
+.h-screen { height: 100vh; }
+.h-auto { height: auto; }
+
+.overflow-hidden { overflow: hidden; }
+.overflow-auto { overflow: auto; }
+.overflow-visible { overflow: visible; }
+.overflow-scroll { overflow: scroll; }
+
+.hidden { display: none; }
+.block { display: block; }
+.inline-block { display: inline-block; }
+.inline { display: inline; }
+
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+
+/* Отступы */
+.m-0 { margin: 0; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: var(--spacing-1); }
+.mt-2 { margin-top: var(--spacing-2); }
+.mt-3 { margin-top: var(--spacing-3); }
+.mt-4 { margin-top: var(--spacing-4); }
+.mt-5 { margin-top: var(--spacing-5); }
+.mt-8 { margin-top: var(--spacing-8); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: var(--spacing-1); }
+.mb-2 { margin-bottom: var(--spacing-2); }
+.mb-3 { margin-bottom: var(--spacing-3); }
+.mb-4 { margin-bottom: var(--spacing-4); }
+.mb-5 { margin-bottom: var(--spacing-5); }
+.mb-8 { margin-bottom: var(--spacing-8); }
+
+.ml-1 { margin-left: var(--spacing-1); }
+.ml-2 { margin-left: var(--spacing-2); }
+.mr-1 { margin-right: var(--spacing-1); }
+.mr-2 { margin-right: var(--spacing-2); }
+
+.p-0 { padding: 0; }
+.p-1 { padding: var(--spacing-1); }
+.p-2 { padding: var(--spacing-2); }
+.p-3 { padding: var(--spacing-3); }
+.p-4 { padding: var(--spacing-4); }
+.p-5 { padding: var(--spacing-5); }
+.p-8 { padding: var(--spacing-8); }
+
+/* Границы */
+.border { border: 1px solid var(--light-gray); }
+.border-t { border-top: 1px solid var(--light-gray); }
+.border-r { border-right: 1px solid var(--light-gray); }
+.border-b { border-bottom: 1px solid var(--light-gray); }
+.border-l { border-left: 1px solid var(--light-gray); }
+
+.rounded { border-radius: var(--radius-md); }
+.rounded-sm { border-radius: var(--radius-sm); }
+.rounded-lg { border-radius: var(--radius-lg); }
+.rounded-xl { border-radius: var(--radius-xl); }
+.rounded-full { border-radius: 9999px; }
+
+/* Тени */
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow { box-shadow: var(--shadow); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-xl { box-shadow: var(--shadow-xl); }
+
+/* Шрифты */
+.font-light { font-weight: var(--font-weight-light); }
+.font-normal { font-weight: var(--font-weight-normal); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-bold { font-weight: var(--font-weight-bold); }
+
+/* Текст */
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.capitalize { text-transform: capitalize; }
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 } 

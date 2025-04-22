@@ -14,9 +14,9 @@ body {
 /* Глобальные стили для всех секций */
 
 .footer {
-  background: linear-gradient(to right, #00837f, #241e46);
-  color: #fff;
-  padding: 30px 0 15px;
+  background: var(--main-gradient);
+  color: var(--white);
+  padding: var(--spacing-8) 0 var(--spacing-4);
   position: relative;
   z-index: var(--z-normal);
   margin-bottom: 0;
@@ -24,9 +24,9 @@ body {
 }
 
 .footer-container {
-  max-width: 1200px;
+  max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 var(--spacing-8);
   width: 100%;
   box-sizing: border-box;
   display: flex;
@@ -46,7 +46,7 @@ body {
 .footer-col {
   flex: 1;
   min-width: 160px;
-  margin-bottom: 5px;
+  margin-bottom: var(--spacing-1);
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -60,7 +60,7 @@ body {
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  padding-top: 18px; /* Выравнивание с заголовками других колонок */
+  padding-top: var(--spacing-4); /* Выравнивание с заголовками других колонок */
 }
 
 .footer-logo {
@@ -69,20 +69,20 @@ body {
 }
 
 .footer-about {
-  margin-top: 1rem;
+  margin-top: var(--spacing-4);
   line-height: 1.5;
-  color: #e0e0e0;
-  font-size: 0.95rem;
-  margin-bottom: 8px;
+  color: var(--light-gray);
+  font-size: var(--text-sm);
+  margin-bottom: var(--spacing-2);
   opacity: 0.9;
   max-width: 250px;
 }
 
 .footer-heading {
-  color: #ffffff;
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  font-weight: 600;
+  color: var(--white);
+  font-size: var(--text-lg);
+  margin-bottom: var(--spacing-4);
+  font-weight: var(--font-weight-semibold);
   position: relative;
   display: inline-block;
   width: 100%;
@@ -108,7 +108,7 @@ body {
 }
 
 .footer-links li {
-  margin-bottom: 12px;
+  margin-bottom: var(--spacing-3);
   height: auto;
   display: flex;
   align-items: center;
@@ -119,11 +119,11 @@ body {
 }
 
 .footer-links a {
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
   opacity: 0.8;
-  transition: opacity 0.3s;
-  font-size: 0.95rem;
+  transition: opacity var(--transition-normal);
+  font-size: var(--text-sm);
   display: inline-block;
   line-height: 1.2;
 }
@@ -135,7 +135,7 @@ body {
 
 .footer-contact {
   line-height: 1.2;
-  font-size: 0.95rem;
+  font-size: var(--text-sm);
   opacity: 0.8;
   list-style: none;
   padding: 0;
@@ -143,7 +143,7 @@ body {
 }
 
 .footer-contact li {
-  margin-bottom: 12px;
+  margin-bottom: var(--spacing-3);
   display: flex;
   align-items: center;
   height: auto;
@@ -154,9 +154,9 @@ body {
 }
 
 .footer-contact li a {
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
-  transition: opacity 0.3s;
+  transition: opacity var(--transition-normal);
   display: flex;
   align-items: center;
   width: 100%;
@@ -168,8 +168,8 @@ body {
 }
 
 .footer-contact i {
-  margin-right: 10px;
-  font-size: 14px;
+  margin-right: var(--spacing-2);
+  font-size: var(--text-sm);
   color: rgba(255, 255, 255, 0.7);
   display: inline-flex;
   align-items: center;
@@ -181,15 +181,15 @@ body {
 
 /* Добавляем отступ справа для иконок FontAwesome */
 .footer-contact svg {
-  margin-right: 10px;
+  margin-right: var(--spacing-2);
 }
 
 .footer-bottom {
-  margin-top: 25px;
-  padding-top: 10px;
+  margin-top: var(--spacing-6);
+  padding-top: var(--spacing-2);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
-  font-size: 0.8rem;
+  font-size: var(--text-xs);
   opacity: 0.7;
   width: 100%;
 }
@@ -210,11 +210,11 @@ body {
 
 /* Ensure consistent styling between navigation and contact links */
 .footer-links a, .footer-contact li a {
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
   opacity: 0.8;
-  transition: opacity 0.3s;
-  font-size: 0.95rem;
+  transition: opacity var(--transition-normal);
+  font-size: var(--text-sm);
 }
 
 .footer-links a:hover, .footer-contact li a:hover {
@@ -231,14 +231,14 @@ body {
   .footer-col {
     flex: 1 1 40%;
     min-width: 200px;
-    margin-bottom: 20px;
+    margin-bottom: var(--spacing-5);
   }
   
   .footer-info {
     flex: 1 1 100%;
     max-width: 100%;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: var(--spacing-8);
     padding-top: 0;
   }
   
@@ -249,11 +249,11 @@ body {
 
 @media (max-width: 768px) {
   .footer {
-    padding: 20px 0 10px;
+    padding: var(--spacing-5) 0 var(--spacing-2);
   }
   
   .footer-container {
-    padding: 0 1.2rem;
+    padding: 0 var(--spacing-4);
     align-items: center;
   }
   
@@ -267,14 +267,14 @@ body {
     flex: 0 1 45%;
     min-width: 140px;
     margin-right: 0;
-    margin-bottom: 15px;
+    margin-bottom: var(--spacing-4);
   }
   
   .footer-info {
     flex: 0 0 100%;
     max-width: none;
     margin-right: 0;
-    margin-bottom: 15px;
+    margin-bottom: var(--spacing-4);
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -286,12 +286,12 @@ body {
   
   .footer-heading {
     margin-top: 0;
-    margin-bottom: 1rem;
+    margin-bottom: var(--spacing-4);
   }
   
   .footer-about {
     text-align: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--spacing-2);
     max-width: 100%;
   }
   
@@ -302,11 +302,11 @@ body {
 
 @media (max-width: 576px) {
   .footer {
-    padding: 15px 0 10px;
+    padding: var(--spacing-4) 0 var(--spacing-2);
   }
   
   .footer-container {
-    padding: 0 0.7rem;
+    padding: 0 var(--spacing-2);
     align-items: center;
   }
   
@@ -323,7 +323,7 @@ body {
   }
   
   .footer-info {
-    margin-bottom: 10px;
+    margin-bottom: var(--spacing-2);
   }
   
   .footer-logo {

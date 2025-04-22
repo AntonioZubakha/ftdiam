@@ -18,23 +18,28 @@
 @import './clients.css';
 @import './mobile-home.css';
 @import './tablet-home.css';
+@import './admin.css';
+@import './app.css';
+@import './contact-modal.css';
 
 /* Импортируем Font Awesome для иконок */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
 
-/* Базовые стили для секций */
-section {
-  position: relative;
-  margin: 0;
-  padding: 0;
-  z-index: var(--z-normal); /* Используем переменную для согласованности */
-  clear: both; /* Гарантирует что секция начинается с новой строки */
-  width: 100%;
-  box-sizing: border-box;
-  max-width: 100vw;
-}
+/* 
+ * Базовые стили для секций перенесены в base.css 
+ * для обеспечения единой точки определения стилей
+ */
 
 /* Полностью отключаем правило отрицательного margin */
 /* section:not(:first-child) {
   margin-top: -2px !important;
 } */ 
+
+/* Стандартизация использования цветов и размеров 
+ * Все CSS файлы должны использовать переменные из base.css:
+ * - Для цветов: var(--primary-color), var(--secondary-color), var(--accent-color), и т.д.
+ * - Для размеров шрифтов: var(--text-xs), var(--text-sm), var(--text-base), и т.д.
+ * - Для заголовков: var(--h1-desktop), var(--h2-desktop), и т.д. с учетом адаптивных размеров
+ * - Для отступов: var(--spacing-*) вместо жестко заданных значений
+ * - Для теней: var(--shadow-*) для обеспечения консистентного внешнего вида
+ */ 

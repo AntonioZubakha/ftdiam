@@ -1,5 +1,7 @@
-/* Стили для планшетной версии домашней секции */
+/* Tablet Home Section Styles
+----------------------------------------------- */
 
+/* Base Styles */
 .tablet-home-section {
   width: 100%;
   min-height: 100vh;
@@ -27,12 +29,14 @@
   z-index: 1;
 }
 
+/* Container Layout
+----------------------------------------------- */
 .tablet-home-container {
   width: 100%;
   max-width: 100%;
   padding: 0 var(--spacing-4);
   position: relative;
-  z-index: 2;
+  z-index: var(--z-normal);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,7 +57,8 @@
   min-height: 80vh;
 }
 
-/* Порядок элементов: изображение сверху, текст снизу для планшетов */
+/* Image Area
+----------------------------------------------- */
 .tablet-image-area {
   width: 100%;
   max-width: 550px;
@@ -72,6 +77,8 @@
   margin: 0 auto;
 }
 
+/* Title and Content Area
+----------------------------------------------- */
 .tablet-title-area {
   width: 100%;
   max-width: 650px;
@@ -109,8 +116,8 @@
 }
 
 .tablet-site-tagline {
-  font-size: 1.1rem;
-  color: var(--primary-teal);
+  font-size: var(--text-lg);
+  color: var(--secondary-color);
   font-weight: var(--font-weight-medium);
   line-height: 1.5;
   text-align: center;
@@ -120,31 +127,41 @@
   margin-right: auto;
 }
 
+/* Action Button
+----------------------------------------------- */
 .tablet-action-button {
-  background: linear-gradient(to right, var(--primary-teal), var(--primary-dark-blue));
-  color: white;
+  background: var(--main-gradient);
+  color: var(--white);
   font-family: var(--primary-font);
-  font-size: 1rem;
+  font-size: var(--text-base);
   font-weight: var(--font-weight-semibold);
   letter-spacing: 1px;
   text-transform: uppercase;
-  padding: 12px 28px;
+  padding: var(--spacing-3) var(--spacing-6);
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-md);
   position: relative;
   overflow: hidden;
   white-space: nowrap;
   margin: 0 auto;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-normal);
+}
+
+.tablet-action-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  background: var(--main-gradient-hover);
 }
 
 .tablet-action-button:active {
   transform: translateY(1px);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-sm);
 }
 
-/* Анимации для планшетной версии */
+/* Animations
+----------------------------------------------- */
 @keyframes tabletSlideUp {
   from {
     opacity: 0;
@@ -156,7 +173,7 @@
   }
 }
 
-/* Добавляем анимации для элементов */
+/* Animation Applications */
 .tablet-home-section .tablet-image-area {
   opacity: 0;
   animation: tabletSlideUp 0.8s ease forwards 0.3s;
@@ -177,7 +194,8 @@
   animation: tabletSlideUp 0.8s ease forwards 0.9s;
 }
 
-/* Landscape планшеты */
+/* Landscape Layout
+----------------------------------------------- */
 .tablet-home-section.landscape .tablet-content-area {
   flex-direction: row;
   align-items: center;
@@ -220,7 +238,8 @@
   margin: 0;
 }
 
-/* Специальные стили для iPad */
+/* iPad Specific Styles
+----------------------------------------------- */
 .tablet-home-section.ipad {
   height: 100vh;
   min-height: 100vh;
@@ -238,7 +257,7 @@
 
 .tablet-home-section.ipad .tablet-content-area {
   gap: var(--spacing-10);
-  padding: 2rem 0;
+  padding: var(--spacing-8) 0;
   justify-content: space-evenly;
   min-height: 85vh;
 }
@@ -248,12 +267,11 @@
 }
 
 .tablet-home-section.ipad .tablet-feature-image {
-  max-height: 45vh;
-  max-width: 90%;
+  max-height: 40vh;
 }
 
 .tablet-home-section.ipad .tablet-title-area {
-  margin-top: 0;
+  max-width: 600px;
 }
 
 .tablet-home-section.ipad .tablet-site-title {
@@ -261,40 +279,42 @@
 }
 
 .tablet-home-section.ipad .tablet-site-tagline {
+  font-size: var(--text-xl);
   margin-bottom: var(--spacing-6);
-  font-size: 1.15rem;
 }
 
 .tablet-home-section.ipad .tablet-action-button {
-  padding: 14px 30px;
-  font-size: 1.05rem;
+  padding: var(--spacing-4) var(--spacing-8);
 }
 
-/* Landscape iPad */
+/* iPad Landscape Specific Styles */
 .tablet-home-section.ipad.landscape .tablet-content-area {
   flex-direction: row;
-  justify-content: center;
-  gap: var(--spacing-8);
-  min-height: 65vh;
-  padding: 0 var(--spacing-2);
+  gap: var(--spacing-10);
+  padding: var(--spacing-6) var(--spacing-4);
+  min-height: 75vh;
+  max-width: 1100px;
 }
 
 .tablet-home-section.ipad.landscape .tablet-feature-image {
-  max-height: 60vh;
+  max-height: 50vh;
   max-width: 90%;
 }
 
 .tablet-home-section.ipad.landscape .tablet-image-area {
+  width: 50%;
   margin-bottom: 0;
 }
 
-/* Fix для Safari на iPad */
-@supports (-webkit-touch-callout: none) {
+/* Small Tablet Adjustments 
+----------------------------------------------- */
+@media (max-width: 768px) and (min-width: 576px) {
   .tablet-home-section.ipad {
-    height: -webkit-fill-available;
+    height: auto;
   }
-  
+
   .tablet-home-section.ipad .tablet-home-container {
-    height: -webkit-fill-available;
+    padding: var(--spacing-6) var(--spacing-4);
+    height: auto;
   }
 } 

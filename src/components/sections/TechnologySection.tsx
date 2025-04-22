@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import TechnologyContactModal from '../../components/TechnologyContactModal';
 import { trackButtonClick } from '../../utils/analytics';
 
 const TechnologySection: React.FC = () => {
@@ -19,7 +18,17 @@ const TechnologySection: React.FC = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Функция открытия модального окна с отслеживанием клика
+  // Обновленная функция для скролла к секции контактов по аналогии с ProductsSection
+  const scrollToContacts = () => {
+    const contactsSection = document.getElementById('contacts');
+    if (contactsSection) {
+      contactsSection.scrollIntoView({ behavior: 'smooth' });
+      // Отслеживаем клик по кнопке
+      trackButtonClick('tech_scroll_to_contacts');
+    }
+  };
+
+  // Функция открытия модального окна (оставлена для обратной совместимости)
   const openModal = () => {
     trackButtonClick('tech_request_quotation');
     setModalOpen(true);
@@ -85,7 +94,7 @@ const TechnologySection: React.FC = () => {
                 <li>Long term dynamically controlled growth process.</li>
               </ul>
               <button 
-                onClick={openModal}
+                onClick={scrollToContacts}
                 style={{
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   color: 'white',
@@ -265,7 +274,7 @@ const TechnologySection: React.FC = () => {
                 <li>Long term dynamically controlled growth process.</li>
               </ul>
               <button 
-                onClick={openModal}
+                onClick={scrollToContacts}
                 style={{
                   background: 'linear-gradient(to right, #00837f, #241e46)',
                   color: 'white',
@@ -438,8 +447,7 @@ const TechnologySection: React.FC = () => {
         )}
       </div>
       
-      {/* Специализированное модальное окно для секции Technology */}
-      <TechnologyContactModal isOpen={modalOpen} onClose={closeModal} />
+      {/* Модальное окно оставлено для обратной совместимости */}
     </section>
   );
 };

@@ -27,7 +27,6 @@ import './styles/contacts.css'
 import './styles/footer.css'
 import './styles/home.css'
 import './styles/contact-modal.css'
-import './styles/technology-modal.css'
 import './styles/clients.css'
 import './styles/admin.css'
 

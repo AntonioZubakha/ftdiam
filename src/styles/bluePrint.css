@@ -1,137 +1,138 @@
-/* Специальные стили для секции Blueprint с высоким приоритетом */
+/* 
+ * BluePrint Page Styles
+ * Standardized according to base.css variables and styling conventions
+ */
+
+/* ----- Main Section Styles ----- */
 section.blueprint-section {
-  margin-top: 50px !important;
-  margin-bottom: 50px !important;
-  padding-top: 50px !important;
-  padding-bottom: 50px !important;
   position: relative;
+  padding: var(--spacing-24) 0;
+  margin: var(--spacing-24) 0 var(--spacing-32) 0;
+  overflow: hidden;
 }
 
 section.blueprint-section::after {
   content: '';
-  display: none; /* Убираем блок, создающий дополнительное пространство */
-  height: 0; /* Убираем высоту */
-  width: 100%;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-back);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.05;
   pointer-events: none;
 }
 
-/* Фикс проблемы с отступами между секциями */
 section.blueprint-section + section {
-  margin-top: 80px !important; /* Уменьшен отступ до следующей секции */
+  margin-top: 0;
 }
 
-/* ID-специфичные стили для нормальной работы навигации */
+/* ----- Blueprint Container ----- */
 #blueprint {
-  scroll-margin-top: 80px; /* Отступ для нормального скролла с учетом высоты хедера */
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-4);
 }
 
-/* Общие стили для раздела */
+/* ----- Who We Are Section ----- */
 .who-we-are-section {
-  background-color: white;
-  padding: 80px 0 80px 0; /* Уменьшен padding */
   position: relative;
-  margin: 0; /* Убран большой margin */
-  /* Добавим небольшие разделители для четкого отделения секций */
-  border-bottom: 1px solid #f0f0f0;
+  padding: var(--spacing-24) 0;
+  margin: var(--spacing-24) 0 var(--spacing-32) 0;
+  background-color: var(--white);
+  z-index: var(--z-normal);
 }
 
 .who-we-are-container {
   max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 0 20px;
-  text-align: center; /* Центрируем заголовок */
+  padding: 0 var(--spacing-4);
+  position: relative;
+  z-index: var(--z-normal);
 }
 
-/* Стили для заголовка */
 .who-we-are-section .headline {
   font-size: var(--section-headline-size);
-  color: var(--primary-color);
-  margin-bottom: var(--section-headline-margin);
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-  letter-spacing: var(--section-headline-letter-spacing);
   font-weight: var(--font-weight-semibold);
+  color: var(--primary-dark-blue);
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+  position: relative;
 }
 
-/* Основной контент BluePrint */
+.who-we-are-section .headline::after {
+  content: '';
+  display: block;
+  width: var(--section-headline-after-width);
+  height: var(--section-headline-after-height);
+  background: var(--main-gradient);
+  margin: var(--spacing-4) auto 0;
+}
+
+/* ----- Content Layout ----- */
 .blueprint-content-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-12);
-  width: 100%;
-  margin-top: var(--spacing-12); /* Увеличен отступ от заголовка */
-  padding-left: 0; /* Убран отступ слева */
-  text-align: left;
-  align-items: flex-start; /* Выравниваем сетку по верхнему краю */
+  gap: var(--spacing-8);
+  margin-top: var(--spacing-8);
+  padding-left: 0;
 }
 
-/* Левая колонка с фаундерами */
+/* ----- Founder Column ----- */
 .founder-column {
-  width: 100%;
-  padding-right: var(--spacing-8); /* Добавлен отступ справа */
-  margin-top: 35px !important; /* Отрицательный margin для поднятия фаундеров выше */
-  padding-top: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+  padding-right: var(--spacing-8);
+  top: -80px; /* Optical correction for layout balance */
   position: relative;
-  top: -30px !important; /* Дополнительное смещение вверх */
 }
 
 .founder-grid {
-  display: flex !important; /* Принудительно используем flex вместо grid */
+  display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  gap: 100px !important; /* Фиксированный отступ между фаундерами */
-  align-items: flex-start;
+  gap: 100px; /* Specific large gap needed for founder blocks spacing */
+  flex-wrap: wrap;
 }
 
-/* Стили для блоков основателей */
 .founder-block {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 220px !important; /* Фиксированная ширина */
-  height: auto !important; /* Высота по контенту */
+  max-width: 250px;
 }
 
 .founder-photo {
-  width: 220px;
-  height: 260px;
-  margin-bottom: var(--spacing-md);
+  width: 200px;
+  height: 200px;
+  border-radius: var(--radius-round);
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative; /* Добавлено для позиционирования */
+  box-shadow: var(--shadow-lg);
+  margin-bottom: var(--spacing-4);
+  position: relative;
 }
 
 .founder-photo img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center;
+  object-fit: cover;
+  transition: transform var(--transition-normal);
 }
 
-/* Специальные стили для выравнивания фото */
-.founder-photo img {
-  position: absolute; /* Абсолютное позиционирование для точного контроля */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto; /* Автоматическое выравнивание */
+.founder-photo:hover img {
+  transform: scale(1.05);
 }
 
 .founder-details {
-  width: 100%;
+  padding: var(--spacing-2) 0;
 }
 
 .founder-name {
-  font-size: var(--text-xl);
-  margin: 0 0 var(--spacing-xs) 0;
-  white-space: nowrap;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-lg);
   background: var(--main-gradient);
   -webkit-background-clip: text;
   background-clip: text;
@@ -146,7 +147,7 @@ section.blueprint-section + section {
   -webkit-text-fill-color: transparent;
   font-weight: var(--font-weight-semibold);
   font-size: var(--text-base);
-  margin: var(--spacing-sm) 0;
+  margin: var(--spacing-2) 0;
   display: block;
 }
 
@@ -157,23 +158,23 @@ section.blueprint-section + section {
   margin: 0;
 }
 
-/* Правая колонка с информацией */
+/* ----- Info Column ----- */
 .info-column {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-12);
-  padding-left: var(--spacing-md); /* Добавлен отступ слева */
-  padding-top: 50px !important; /* Принудительно опускаем правую колонку */
+  padding-left: var(--spacing-4);
+  padding-top: var(--spacing-12) !important; /* Necessary offset for design balance */
 }
 
 .info-block {
   width: 100%;
 }
 
-/* Стили для заголовков блоков в инфо-колонке */
+/* ----- Block Titles and Content ----- */
 .block-title {
   font-size: var(--h3-desktop);
-  margin: 0 0 var(--spacing-md) 0;
+  margin: 0 0 var(--spacing-4) 0;
   font-weight: var(--font-weight-semibold);
   background: var(--main-gradient);
   -webkit-background-clip: text;
@@ -183,7 +184,6 @@ section.blueprint-section + section {
   position: relative;
 }
 
-/* Удаляем подчеркивание для подзаголовков */
 .info-block .block-title::after {
   content: none;
 }
@@ -195,16 +195,16 @@ section.blueprint-section + section {
 }
 
 .block-content p {
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-2);
 }
 
 .block-content p:last-child {
   margin-bottom: 0;
 }
 
-/* Стили для блока истории */
+/* ----- History Block ----- */
 .history-block .block-content p {
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-4);
   position: relative;
   padding-left: 0;
 }
@@ -216,15 +216,15 @@ section.blueprint-section + section {
   -webkit-text-fill-color: transparent;
   font-weight: var(--font-weight-bold);
   display: inline-block;
-  margin-right: var(--spacing-xs);
+  margin-right: var(--spacing-1);
 }
 
-/* Отступ между About Us и Our Mission */
+/* ----- About Block ----- */
 .about-block {
-  margin-bottom: 30px;
+  margin-bottom: var(--spacing-8);
 }
 
-/* Адаптивная верстка */
+/* ----- Responsive Styles ----- */
 @media (max-width: 992px) {
   .who-we-are-section {
     padding: var(--spacing-16) 0;
@@ -232,17 +232,17 @@ section.blueprint-section + section {
   }
   
   .blueprint-content-layout {
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-md);
+    gap: var(--spacing-4);
+    margin-top: var(--spacing-4);
   }
   
   .founder-column {
-    padding-right: var(--spacing-md);
-    top: 0 !important; /* Сбрасываем смещение на планшете */
+    padding-right: var(--spacing-4);
+    top: 0 !important; /* Reset offset on tablet */
   }
   
   .info-column {
-    padding-left: var(--spacing-sm);
+    padding-left: var(--spacing-2);
   }
   
   .block-title {
@@ -310,6 +310,7 @@ section.blueprint-section + section {
   }
 }
 
+/* ----- Typography Helpers ----- */
 .whoweare-headline {
   font-size: var(--section-headline-size);
   margin-bottom: var(--spacing-lg);
