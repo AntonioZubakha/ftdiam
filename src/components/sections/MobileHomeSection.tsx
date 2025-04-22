@@ -21,7 +21,10 @@ const MobileHomeSection: React.FC<{ scrollToSection: (sectionId: string) => void
     <section id="home" className="home-section mobile-home-section" ref={sectionRef}>
       <div className="home-container mobile-home-container">
         <div className="content-area mobile-content-area">
-          {/* Изображение первым для мобильной версии */}
+          {/* Logo or spacing at top */}
+          <div className="mobile-top-space"></div>
+          
+          {/* Изображение с корректированной позицией */}
           <div className="image-area mobile-image-area">
             <img 
               src="/images/photo1.1.png" 
