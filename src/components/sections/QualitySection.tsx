@@ -602,8 +602,8 @@ const QualitySection: React.FC = () => {
           </div>
           
           {/* Карточки в одном ряду с мобильным слайдером */}
-          <div className={`quality-cards-row ${isMobile || isTablet ? 'slider-container' : ''}`}>
-            {isMobile || isTablet ? renderSlider() : renderDesktopCards()}
+          <div className={`quality-cards-row ${isMobile ? 'slider-container' : ''}`}>
+            {isMobile ? renderSlider() : renderDesktopCards()}
           </div>
           
           {/* Кнопка запроса документа */}

@@ -1,40 +1,39 @@
 /* Основные стили для секции Quality */
 .quality-section {
-  padding: 200px 0;
-  background-color: #fff;
+  padding: var(--spacing-24) 0;
+  background-color: var(--white);
   position: relative;
-  /* overflow: hidden; */ /* Удаляем свойство, блокирующее липкость */
   width: 100%;
 }
 
 .quality-container {
-  max-width: 1200px;
+  max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 var(--spacing-5);
   text-align: center;
 }
 
-/* Стили для заголовка */
+/* Стили для заголовков */
 .quality-headline {
   font-size: var(--section-headline-size);
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-8);
 }
 
 .quality-subheading {
   font-size: var(--h3-desktop);
-  background: linear-gradient(to right, #00837f, #241e46);
+  background: var(--main-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-4);
   display: inline-block;
 }
 
 .quality-description {
   font-size: var(--text-lg);
-  color: #666;
+  color: var(--dark-gray);
   max-width: 800px;
-  margin: 0 auto 4rem;
+  margin: 0 auto var(--spacing-16);
   line-height: 1.6;
 }
 
@@ -43,16 +42,17 @@
   line-height: 1.6;
 }
 
+/* Сетка и строки */
 .quality-grid {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: var(--spacing-12);
 }
 
 .quality-row {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: var(--spacing-8);
 }
 
 .quality-row-graphs {
@@ -69,6 +69,7 @@
   height: 300px;
 }
 
+/* Элементы качества */
 .quality-item {
   flex: 1;
   max-width: 350px;
@@ -80,10 +81,10 @@
 .quality-image-container {
   width: 100%;
   height: 250px;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--spacing-6);
   overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
 }
 
 .quality-image {
@@ -94,26 +95,256 @@
 
 .quality-item-title {
   font-size: var(--h4-desktop);
-  color: #333;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
+  color: var(--primary-dark-blue);
+  margin-bottom: var(--spacing-2);
+  font-weight: var(--font-weight-semibold);
 }
 
 .quality-item-description {
   font-size: var(--text-base);
-  color: #666;
+  color: var(--dark-gray);
   line-height: 1.4;
 }
 
 .quality-card-title {
   font-size: var(--h4-desktop);
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-2);
+}
+
+/* Карточки спецификаций */
+.quality-cards-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--spacing-4);
+  margin: 0 0 var(--spacing-8) 0;
+  padding-bottom: var(--spacing-4);
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.spec-block {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  flex: 0 0 auto;
+  min-width: 200px;
+  max-width: 240px;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  border: 1px solid rgba(0, 131, 127, 0.05);
+  display: inline-flex;
+  vertical-align: top;
+  white-space: normal;
+  width: 240px;
+  height: 360px;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-4);
+}
+
+.spec-block:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Стандарты качества */
+.quality-standards {
+  margin-top: var(--spacing-16);
+  padding: var(--spacing-12);
+  background: linear-gradient(to right, rgba(0, 131, 127, 0.03), rgba(36, 30, 70, 0.03));
+  border-radius: var(--radius-lg);
+}
+
+.quality-standards h3 {
+  text-align: center;
+  font-size: var(--h3-desktop);
+  color: var(--primary-dark-blue);
+  margin-bottom: var(--spacing-10);
+  position: relative;
+  padding-bottom: var(--spacing-4);
+}
+
+.quality-standards h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--main-gradient);
+}
+
+.standards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-8);
+}
+
+.standard-item {
+  background: var(--white);
+  padding: var(--spacing-6) var(--spacing-8);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(0, 131, 127, 0.05);
+}
+
+.standard-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.standard-icon {
+  margin-right: var(--spacing-6);
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(0, 131, 127, 0.1), rgba(36, 30, 70, 0.1));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.standard-icon i {
+  font-size: var(--h4-desktop);
+  background: var(--main-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.standard-item p {
+  margin: 0;
+  color: var(--dark-gray);
+  line-height: 1.5;
+  font-size: var(--text-base);
+}
+
+.standard-item p strong {
+  color: var(--primary-dark-blue);
+  font-weight: var(--font-weight-semibold);
+  display: block;
+  margin-bottom: var(--spacing-1);
+}
+
+/* Мобильный слайдер */
+.mobile-slider {
+  display: flex;
+  transition: transform 0.4s ease;
+  width: 100%;
+  touch-action: pan-y;
+  align-items: center;
+}
+
+/* Slider controls */
+.slider-arrows {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 5;
+  justify-content: space-between;
+  padding: 0 15px;
+}
+
+.slider-arrow {
+  background: rgba(255, 255, 255, 0.8);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  border: none;
+  pointer-events: auto;
+  margin: 0 var(--spacing-3);
+  position: relative;
+  overflow: hidden;
+}
+
+.slider-arrow::after {
+  content: '';
+  display: block;
+  width: 9px;
+  height: 9px;
+  border-style: solid;
+  border-width: 2px 2px 0 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: var(--primary-teal);
+}
+
+.slider-arrow:first-child::after {
+  transform: translate(-40%, -50%) rotate(-135deg);
+}
+
+.slider-arrow:last-child::after {
+  transform: translate(-60%, -50%) rotate(45deg);
+}
+
+/* Кнопка запроса документа */
+.request-document-button {
+  background: var(--main-gradient);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-4) var(--spacing-6);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.5px;
+  margin: var(--spacing-10) auto 0;
+  display: block;
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  max-width: 350px;
+  width: 100%;
+}
+
+.request-document-button:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  background: var(--main-gradient-hover);
+}
+
+.request-document-button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-md);
 }
 
 /* Медиа-запросы для адаптивности */
+@media screen and (max-width: 1440px) {
+  .spec-block {
+    width: 220px;
+    height: 340px;
+    min-width: 180px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .spec-block {
+    width: 200px;
+    height: 330px;
+    min-width: 160px;
+    padding: var(--spacing-3);
+  }
+}
+
 @media screen and (max-width: 992px) {
   .quality-section {
-    padding: 160px 0;
+    padding: var(--spacing-20) 0;
   }
 
   .quality-headline {
@@ -136,40 +367,27 @@
     font-size: var(--text-sm);
   }
   
-  /* Уменьшаем размер карточек на 20% для средних разрешений */
-  .spec-block {
-    flex: 0 0 calc(33.33% - 10px);
-    max-width: 192px; /* 240px * 0.8 = 192px */
-    min-width: 160px; /* 200px * 0.8 = 160px */
-    display: inline-flex;
-    vertical-align: top;
-    /* Фиксируем размеры карточек для планшетов */
-    width: 192px;
-    height: 340px;
-  }
-  
-  /* Обеспечиваем, чтобы карточки оставались в строку */
   .quality-cards-row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: center;
-    width: 100%;
-    gap: 15px;
-    overflow-x: auto; /* Добавляем прокрутку, если контент не помещается */
-    -webkit-overflow-scrolling: touch; /* Для плавной прокрутки на iOS */
+    gap: var(--spacing-3);
   }
   
-  /* Принудительно сохраняем горизонтальное расположение */
   .spec-block {
-    flex: 0 0 calc(33.33% - 10px);
-    max-width: 192px; /* Уменьшено на 20% от 240px */
-    min-width: 160px; /* Уменьшено на 20% от 200px */
-    display: inline-flex;
-    vertical-align: top;
-    /* Фиксируем размеры карточек для планшетов */
-    width: 192px;
-    height: 340px;
+    width: 170px;
+    height: 310px;
+    min-width: 150px;
+    padding: var(--spacing-2);
+    margin-bottom: var(--spacing-3);
+    font-size: var(--text-sm);
+  }
+  
+  .standard-icon i {
+    font-size: var(--h4-tablet);
+  }
+  
+  .quality-standards h3 {
+    font-size: var(--h3-tablet);
   }
 }
 
@@ -190,14 +408,6 @@
     height: 250px;
   }
 
-  .quality-headline {
-    font-size: var(--section-headline-tablet-size);
-  }
-
-  .quality-subheading {
-    font-size: var(--h3-tablet);
-  }
-
   .quality-card-title {
     font-size: var(--h4-tablet);
   }
@@ -209,53 +419,37 @@
   .quality-cards-row {
     flex-wrap: nowrap;
     overflow-x: hidden;
-    justify-content: center;
     gap: 0;
     padding-bottom: 0;
     position: relative;
-    width: 100%;
-  }
-  
-  /* Мобильный слайдер */
-  .mobile-slider {
-    display: flex;
-    transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
-    width: 100%;
-    touch-action: pan-y;
-    will-change: transform;
-    align-items: center;
   }
   
   .spec-block {
     flex: 0 0 100%;
     max-width: 100%;
     min-width: 100%;
-    margin-bottom: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* Сбрасываем фиксированную высоту для мобильного режима */
+    width: 100%;
     height: auto;
     min-height: 320px;
+    font-size: var(--text-base);
+    padding: var(--spacing-3);
   }
-  
-  .spec-block:nth-child(5) {
-    flex: 0 0 100%;
-    margin: 0;
-  }
-  
+
+  /* Показываем стрелки только на мобильных устройствах */
   .slider-arrows {
     display: flex;
-    justify-content: space-between;
-    position: absolute;
-    top: 35%;
-    transform: translateY(-50%);
-    z-index: 5;
-    width: 100%;
-    pointer-events: none;
+    top: 215px;
   }
-  
+
+  /* Стили для мобильного слайдера */
+  .mobile-slider {
+    display: flex;
+    transition: transform 0.4s ease;
+    width: 100%;
+    touch-action: pan-y;
+    align-items: center;
+  }
+
   .slider-arrow {
     background: rgba(255, 255, 255, 0.8);
     width: 32px;
@@ -265,15 +459,14 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
     border: none;
     pointer-events: auto;
-    margin: 0 12px;
-    transition: all 0.2s ease;
+    margin: 0 var(--spacing-3);
     position: relative;
     overflow: hidden;
   }
-  
+
   .slider-arrow::after {
     content: '';
     display: block;
@@ -284,33 +477,25 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    color: #00837f;
+    color: var(--primary-teal);
   }
-  
+
   .slider-arrow:first-child::after {
     transform: translate(-40%, -50%) rotate(-135deg);
   }
-  
+
   .slider-arrow:last-child::after {
     transform: translate(-60%, -50%) rotate(45deg);
   }
   
-  .slider-arrow:hover, .slider-arrow:active {
-    transform: scale(1.05);
+  .slider-arrow:hover {
     background: rgba(255, 255, 255, 0.9);
-  }
-  
-  .spec-block-animate.visible {
-    animation: none;
-    opacity: 1;
-    transform: translateX(0);
-    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
   }
 }
 
 @media screen and (max-width: 576px) {
   .quality-section {
-    padding: 120px 0;
+    padding: var(--spacing-16) 0;
   }
 
   .quality-headline {
@@ -336,287 +521,37 @@
   .quality-item-description {
     font-size: var(--text-sm);
   }
-}
-
-@media (max-width: 480px) {
-  .quality-headline {
-    font-size: var(--section-headline-mobile-size);
-  }
-
-  .quality-subheading {
-    font-size: var(--h3-mobile);
-  }
-
-  .quality-card-title {
-    font-size: var(--h4-mobile);
+  
+  .request-document-button {
+    font-size: var(--text-sm);
+    padding: var(--spacing-3) var(--spacing-5);
+    margin-top: var(--spacing-5);
   }
   
-  .quality-method {
-    padding: 1.8rem;
-  }
-  
-  .quality-method-image {
-    height: 160px;
+  .quality-standards {
+    padding: var(--spacing-4);
   }
   
   .standard-item {
-    padding: 1.5rem;
+    padding: var(--spacing-4);
   }
   
   .standard-icon {
     width: 40px;
     height: 40px;
-    margin-right: 1rem;
+    margin-right: var(--spacing-4);
   }
   
   .standard-icon i {
-    font-size: var(--text-xl);
+    font-size: var(--h4-mobile);
   }
   
-  .quality-standards {
-    padding: 1.5rem;
-  }
-}
-
-/* Стандарты качества */
-.quality-standards {
-  margin-top: 4rem;
-  padding: 3rem;
-  background: linear-gradient(to right, rgba(0, 131, 127, 0.03), rgba(36, 30, 70, 0.03));
-  border-radius: 10px;
-}
-
-.quality-standards h3 {
-  text-align: center;
-  font-size: var(--h3-desktop);
-  color: var(--primary-dark-blue);
-  margin-bottom: 2.5rem;
-  position: relative;
-  padding-bottom: 1rem;
-}
-
-.quality-standards h3::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(to right, #00837f, #241e46);
-}
-
-.standards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.standard-item {
-  background: #fff;
-  padding: 1.8rem 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  border: 1px solid rgba(0, 131, 127, 0.05);
-}
-
-.standard-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 131, 127, 0.2);
-}
-
-.standard-icon {
-  margin-right: 1.5rem;
-  flex-shrink: 0;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgba(0, 131, 127, 0.1), rgba(36, 30, 70, 0.1));
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s ease;
-}
-
-.standard-icon i {
-  font-size: var(--h4-desktop);
-  background: linear-gradient(135deg, #00837f, #241e46);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.standard-item:hover .standard-icon {
-  transform: scale(1.1);
-  background: linear-gradient(135deg, rgba(0, 131, 127, 0.15), rgba(36, 30, 70, 0.15));
-}
-
-.standard-item p {
-  margin: 0;
-  color: var(--dark-gray);
-  line-height: 1.5;
-  font-size: var(--text-base);
-}
-
-.standard-item p strong {
-  color: var(--primary-dark-blue);
-  font-weight: 600;
-  display: block;
-  margin-bottom: 0.3rem;
-}
-
-/* Анимация для появления карточек */
-@keyframes slideInFromRight {
-  0% {
-    transform: translateX(50px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-/* Базовые стили для карточек с анимацией */
-.spec-block-animate {
-  opacity: 0;
-  transform: translateX(50px);
-  will-change: transform, opacity;
-  backface-visibility: hidden;
-  perspective: 1000px;
-}
-
-.spec-block-animate.visible {
-  animation: slideInFromRight 0.6s ease-out forwards;
-}
-
-/* Новые стили для карточек в ряд */
-.quality-cards-row {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 15px;
-  margin: 0 0 30px 0;
-  overflow-x: auto;
-  padding-bottom: 15px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--primary-teal) #f1f1f1;
-  justify-content: center;
-  width: 100%;
-  /* Добавляем свойства, чтобы заставить карточки оставаться в строку даже при зуме */
-  white-space: nowrap;
-  box-sizing: border-box;
-}
-
-.quality-cards-row::-webkit-scrollbar {
-  height: 8px;
-}
-
-.quality-cards-row::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 4px;
-}
-
-.quality-cards-row::-webkit-scrollbar-thumb {
-  background: var(--primary-teal);
-  border-radius: 4px;
-}
-
-.quality-cards-row::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-dark-blue);
-}
-
-.spec-block {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  flex: 0 0 calc(20% - 12px);
-  min-width: 200px;
-  max-width: 240px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid rgba(0, 131, 127, 0.05);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* Добавляем свойства для поддержки inline-block режима */
-  display: inline-flex;
-  vertical-align: top;
-  white-space: normal;
-  /* Фиксируем размеры карточек */
-  width: 240px;
-  height: 360px;
-  box-sizing: border-box;
-}
-
-.spec-block:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-  border-color: rgba(0, 131, 127, 0.2);
-}
-
-/* Стили для кнопки запроса документа */
-.request-document-button {
-  background: linear-gradient(135deg, #00837f, #241e46);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 15px 25px;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  margin: 40px auto 0;
-  display: block;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  max-width: 350px;
-  width: 100%;
-}
-
-.request-document-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  background: linear-gradient(135deg, #009c98, #322a5c);
-}
-
-.request-document-button:active {
-  transform: translateY(0);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Медиа-запросы для адаптивности */
-@media screen and (max-width: 992px) {
-  .spec-block {
-    flex: 0 0 calc(33.33% - 10px);
-    max-width: 192px; /* Уменьшено на 20% от 240px */
-    min-width: 160px; /* Уменьшено на 20% от 200px */
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .quality-cards-row {
-    gap: 0;
+  .quality-standards h3 {
+    font-size: var(--h3-mobile);
   }
   
-  .spec-block {
-    flex: 0 0 100%;
-    max-width: 100%;
-    margin-bottom: 0;
-  }
-  
-  .spec-block:nth-child(5) {
-    flex: 0 0 100%;
-    margin: 0;
-  }
-  
-  .request-document-button {
-    font-size: 0.9rem;
-    padding: 12px 20px;
-    margin-top: 20px;
+  /* Adjust slider arrows for smaller screens */
+  .slider-arrows {
+    top: 170px;
   }
 } 

@@ -278,7 +278,7 @@ const IntroSection: React.FC = () => {
               target.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)';
             }}
           >
-            Explore More
+            EXPLORE MORE
           </button>
         </div>
 
