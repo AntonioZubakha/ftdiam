@@ -238,7 +238,7 @@ const IntroSection: React.FC = () => {
             marginBottom: isMobile ? '1rem' : isTablet ? '1.2rem' : '1.5rem',
             position: 'relative'
           }}>
-            Top Quality IIa Diamond Substrates and More
+            Top Quality IIa Diamond Substrates
           </h2>
           <p className="section-description" style={{ 
             fontSize: isMobile ? 'var(--text-base)' : isTablet ? 'var(--text-base)' : 'var(--text-lg)',

@@ -175,7 +175,8 @@ const ApplicationsSection: React.FC = () => {
     {
       title: "Quantum sensors",
       description: "Negligible background noise for high-sensitivity detection",
-      icon: "fas fa-satellite"
+      icon: "", // Пустая строка для использования кастомного изображения
+      customImage: "/images/quantum.png" // Путь к кастомному изображению
     },
     {
       title: "Quantum computing",
@@ -272,7 +273,19 @@ const ApplicationsSection: React.FC = () => {
               onMouseLeave={() => setHoveredCardIndex(null)}
             >
               <div className="spec-icon">
-                <i className={app.icon} style={specIconStyle}></i>
+                {app.customImage ? (
+                  <div style={{
+                    position: 'relative',
+                    width: isMobile ? '59px' : isTablet ? '66px' : isWideScreen ? '79px' : '73px',
+                    height: isMobile ? '59px' : isTablet ? '66px' : isWideScreen ? '79px' : '73px',
+                    background: 'linear-gradient(to right, #00837f, #241e46)',
+                    WebkitMask: `url(${app.customImage}) no-repeat center / contain`,
+                    mask: `url(${app.customImage}) no-repeat center / contain`,
+                    marginBottom: isMobile ? '15px' : isTablet ? '15px' : isWideScreen ? '25px' : '20px',
+                  }}></div>
+                ) : (
+                  <i className={app.icon} style={specIconStyle}></i>
+                )}
               </div>
               <h3 className="spec-name" style={specNameStyle}>{app.title}</h3>
               <p className="spec-description" style={specDescriptionStyle}>{app.description}</p>

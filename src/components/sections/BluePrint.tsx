@@ -94,7 +94,7 @@ const BluePrint: React.FC = () => {
                   <h3 className="founder-name">Dmitry Semchenko</h3>
                   <div className="founder-title">CTO</div>
                   <p className="founder-bio">
-                    Serial entrepreneur with over 8 years in high-quality diamond material. Holder of AHPHT technology.
+                  Serial entrepreneur with 8+ years in in diamond substrates business and R&D. Holder of AHPHT technology.
                   </p>
                 </div>
               </div>
@@ -111,7 +111,8 @@ const BluePrint: React.FC = () => {
                   <h3 className="founder-name">Daniil Kurganov</h3>
                   <div className="founder-title">CEO</div>
                   <p className="founder-bio">
-                    15+ years in management, technical sales and business development worldwide. Experienced leader.
+                  15+ years in management, technical sales and business development worldwide. Serial enterpreneur.
+
                   </p>
                 </div>
               </div>
@@ -123,7 +124,7 @@ const BluePrint: React.FC = () => {
               <h3 style={blockTitleStyles}>About Us</h3>
               <div className="block-content">
                 <p>
-                  FTDiam is a US-based deep-tech start-up in advanced materials sector. We are revolutionizing the industry with the unique Advanced HPHT (AHPHT) technology. Since our inception, we've been dedicated to producing the highest-quality single-crystal diamond substrates for advanced applications.
+                  FTDiam is a US-based deep-tech start-up in advanced materials sector. We are revolutionizing the industry with the unique Advanced HPHT (AHPHT) technology. Since our inception, we've been dedicated to producing the highest-quality single-crystal diamond substrates for cutting-edge applications.
                 </p>
               </div>
             </div>
