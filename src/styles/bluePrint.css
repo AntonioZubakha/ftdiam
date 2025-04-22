@@ -51,6 +51,7 @@ section.blueprint-section + section {
   padding: 0 var(--spacing-4);
   position: relative;
   z-index: var(--z-normal);
+  text-align: center;
 }
 
 .who-we-are-section .headline {
@@ -78,23 +79,28 @@ section.blueprint-section + section {
   gap: var(--spacing-8);
   margin-top: var(--spacing-8);
   padding-left: 0;
+  text-align: left;
 }
 
 /* ----- Founder Column ----- */
 .founder-column {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-12);
+  gap: var(--spacing-8);
   padding-right: var(--spacing-8);
-  top: -80px; /* Optical correction for layout balance */
   position: relative;
+  width: 100%;
+  margin-top: -20px;
 }
 
 .founder-grid {
   display: flex;
   flex-direction: row;
-  gap: 100px; /* Specific large gap needed for founder blocks spacing */
-  flex-wrap: wrap;
+  gap: 60px;
+  flex-wrap: nowrap;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .founder-block {
@@ -102,7 +108,8 @@ section.blueprint-section + section {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 250px;
+  width: 220px;
+  flex-shrink: 0;
 }
 
 .founder-photo {
@@ -164,7 +171,7 @@ section.blueprint-section + section {
   flex-direction: column;
   gap: var(--spacing-12);
   padding-left: var(--spacing-4);
-  padding-top: var(--spacing-12) !important; /* Necessary offset for design balance */
+  padding-top: var(--spacing-12) !important;
 }
 
 .info-block {
@@ -238,7 +245,11 @@ section.blueprint-section + section {
   
   .founder-column {
     padding-right: var(--spacing-4);
-    top: 0 !important; /* Reset offset on tablet */
+    top: 0 !important;
+  }
+  
+  .founder-grid {
+    gap: 20px;
   }
   
   .info-column {
@@ -285,7 +296,8 @@ section.blueprint-section + section {
   
   .founder-grid {
     justify-content: center;
-    gap: 50px !important;
+    flex-wrap: wrap;
+    gap: 40px !important;
   }
 }
 

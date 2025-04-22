@@ -27,7 +27,8 @@ const BluePrint: React.FC = () => {
     position: 'relative' as const,
     fontWeight: '600' as const,
     letterSpacing: '0.5px',
-    display: 'inline-block'
+    display: 'block',
+    width: '100%'
   };
 
   // Common styles for block titles (About Us and Our Mission)
@@ -46,9 +47,9 @@ const BluePrint: React.FC = () => {
 
   // Стили для контейнеров фотографий
   const founderPhotoContainerStyle = {
-    width: '220px', 
-    height: '230px', 
-    marginBottom: '20px',
+    width: '200px',
+    height: '220px',
+    marginBottom: '15px',
     display: 'flex' as const,
     alignItems: 'flex-end' as const,
     justifyContent: 'center' as const,
@@ -57,9 +58,20 @@ const BluePrint: React.FC = () => {
 
   // Стили для фотографий
   const founderImageStyle = {
-    width: '220px',
+    width: '200px',
     objectFit: 'contain' as const,
     objectPosition: 'bottom' as const
+  };
+  
+  // Стили для сетки основателей
+  const founderGridStyle = {
+    display: 'flex' as const,
+    flexDirection: 'row' as const,
+    justifyContent: 'center' as const,
+    gap: isMobile ? '30px' : '60px',
+    flexWrap: 'nowrap' as const,
+    width: '100%',
+    marginTop: '20px'
   };
 
   return (
@@ -69,7 +81,7 @@ const BluePrint: React.FC = () => {
         
         <div className="blueprint-content-layout">
           <div className="founder-column">
-            <div className="founder-grid">
+            <div className="founder-grid" style={founderGridStyle}>
               <div className="founder-block">
                 <div style={founderPhotoContainerStyle}>
                   <img 
