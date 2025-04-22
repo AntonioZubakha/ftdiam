@@ -715,7 +715,7 @@ const TechnologySection: React.FC = () => {
                     fontSize: '1.6rem',
                     marginBottom: '5px',
                     textAlign: 'center'
-                  }}>Ultra low dislocations number (10¹ cm⁻²)</h3>
+                  }}>Ultra low dislocations density (10¹ cm⁻²)</h3>
                 </div>
                 
                 <div className="advantage-card" style={{ 
