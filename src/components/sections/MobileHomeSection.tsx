@@ -5,12 +5,6 @@ import { trackButtonClick } from '../../utils/analytics';
 
 const MobileHomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = ({ scrollToSection }) => {
   const sectionRef = useRef<HTMLElement>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  // Animation effect when component mounts
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
 
   // Функция для скролла к разделу контактов
   const scrollToContacts = (e: React.MouseEvent) => {
@@ -25,7 +19,7 @@ const MobileHomeSection: React.FC<{ scrollToSection: (sectionId: string) => void
 
   return (
     <section id="home" className="home-section mobile-home-section" ref={sectionRef}>
-      <div className={`home-container mobile-home-container ${isLoaded ? 'loaded' : ''}`}>
+      <div className="home-container mobile-home-container">
         <div className="content-area mobile-content-area">
           {/* Изображение первым для мобильной версии */}
           <div className="image-area mobile-image-area">

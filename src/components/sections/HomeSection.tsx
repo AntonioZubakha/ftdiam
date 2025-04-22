@@ -14,7 +14,6 @@ const SCREEN_SIZES = {
 
 const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = ({ scrollToSection }) => {
   const sectionRef = useRef<HTMLElement>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
   const [screenSize, setScreenSize] = useState<'mobile' | 'tablet' | 'desktop'>('desktop');
 
   // Check screen size and set appropriate view
@@ -34,11 +33,6 @@ const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = 
     window.addEventListener('resize', checkScreenSize);
     
     return () => window.removeEventListener('resize', checkScreenSize);
-  }, []);
-
-  // Animation effect when component mounts
-  useEffect(() => {
-    setIsLoaded(true);
   }, []);
 
   // Функция для скролла к разделу контактов
@@ -65,7 +59,7 @@ const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = 
   // Для десктопа используем стандартную версию
   return (
     <section id="home" className="home-section" ref={sectionRef}>
-      <div className={`home-container ${isLoaded ? 'loaded' : ''}`}>
+      <div className="home-container">
         <div className="content-area">
           <div className="title-area">
             <h1 className="site-title">
@@ -115,7 +109,7 @@ const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = 
           
           <div className="image-area">
             <img 
-              src="/images/333.png" 
+              src="/images/photo1.1.png" 
               alt="Diamond substrates visualization" 
               className="feature-image"
             />

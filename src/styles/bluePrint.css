@@ -6,9 +6,17 @@
 /* ----- Main Section Styles ----- */
 section.blueprint-section {
   position: relative;
-  padding: var(--spacing-24) 0;
-  margin: var(--spacing-24) 0 var(--spacing-32) 0;
+  padding: var(--spacing-16) 0;
+  margin: var(--spacing-16) 0 var(--spacing-16) 0;
   overflow: hidden;
+  background-color: var(--white);
+  z-index: var(--z-normal);
+}
+
+/* Удаляем избыточный отступ */
+section#blueprint {
+  margin-bottom: var(--spacing-16) !important;
+  padding-bottom: 0 !important;
 }
 
 section.blueprint-section::after {
@@ -36,16 +44,8 @@ section.blueprint-section + section {
   padding: 0 var(--spacing-4);
 }
 
-/* ----- Who We Are Section ----- */
-.who-we-are-section {
-  position: relative;
-  padding: var(--spacing-24) 0;
-  margin: var(--spacing-24) 0 var(--spacing-32) 0;
-  background-color: var(--white);
-  z-index: var(--z-normal);
-}
-
-.who-we-are-container {
+/* ----- Blueprint Container ----- */
+.blueprint-container {
   max-width: var(--container-max-width);
   margin: 0 auto;
   padding: 0 var(--spacing-4);
@@ -54,7 +54,7 @@ section.blueprint-section + section {
   text-align: center;
 }
 
-.who-we-are-section .headline {
+.blueprint-section .headline {
   font-size: var(--section-headline-size);
   font-weight: var(--font-weight-semibold);
   color: var(--primary-dark-blue);
@@ -63,7 +63,7 @@ section.blueprint-section + section {
   position: relative;
 }
 
-.who-we-are-section .headline::after {
+.blueprint-section .headline::after {
   content: '';
   display: block;
   width: var(--section-headline-after-width);
@@ -233,7 +233,7 @@ section.blueprint-section + section {
 
 /* ----- Responsive Styles ----- */
 @media (max-width: 992px) {
-  .who-we-are-section {
+  .blueprint-section {
     padding: var(--spacing-16) 0;
     margin: var(--spacing-16) 0 var(--spacing-24) 0;
   }
@@ -262,7 +262,7 @@ section.blueprint-section + section {
 }
 
 @media (max-width: 768px) {
-  .who-we-are-section {
+  .blueprint-section {
     padding: var(--spacing-12) 0;
     margin: var(--spacing-12) 0 var(--spacing-20) 0;
   }
@@ -302,7 +302,7 @@ section.blueprint-section + section {
 }
 
 @media (max-width: 576px) {
-  .who-we-are-section {
+  .blueprint-section {
     padding: var(--spacing-12) 0;
   }
   
@@ -323,28 +323,28 @@ section.blueprint-section + section {
 }
 
 /* ----- Typography Helpers ----- */
-.whoweare-headline {
+.blueprint-headline {
   font-size: var(--section-headline-size);
   margin-bottom: var(--spacing-lg);
 }
 
-.whoweare-description {
+.blueprint-description {
   font-size: var(--text-lg);
   line-height: 1.6;
 }
 
-.whoweare-text {
+.blueprint-text {
   font-size: var(--text-base);
   line-height: 1.6;
 }
 
-.whoweare-subheading {
+.blueprint-subheading {
   font-size: var(--text-xl);
   margin-bottom: var(--spacing-md);
 }
 
 @media (max-width: 480px) {
-  .whoweare-headline {
+  .blueprint-headline {
     font-size: var(--section-headline-mobile-size);
   }
 } 

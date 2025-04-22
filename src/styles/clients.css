@@ -80,7 +80,6 @@ section.clients-section {
   transition: filter 0.3s ease, transform 0.3s ease;
   pointer-events: none;
   -webkit-user-drag: none;
-  user-drag: none;
 }
 
 .logo-slide:hover img {

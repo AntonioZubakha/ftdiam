@@ -6,7 +6,6 @@ import { trackButtonClick } from '../../utils/analytics';
 
 const TabletHomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = ({ scrollToSection }) => {
   const sectionRef = useRef<HTMLElement>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
   const [isLandscape, setIsLandscape] = useState(false);
   const [deviceType, setDeviceType] = useState<string>('');
 
@@ -40,11 +39,6 @@ const TabletHomeSection: React.FC<{ scrollToSection: (sectionId: string) => void
     };
   }, []);
 
-  // Animation effect when component mounts
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
-
   // Функция для скролла к разделу контактов
   const scrollToContacts = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -62,7 +56,7 @@ const TabletHomeSection: React.FC<{ scrollToSection: (sectionId: string) => void
       className={`home-section tablet-home-section ${isLandscape ? 'landscape' : ''} ${deviceType}`}
       ref={sectionRef}
     >
-      <div className={`home-container tablet-home-container ${isLoaded ? 'loaded' : ''}`}>
+      <div className="home-container tablet-home-container">
         <div className="content-area tablet-content-area">
           {/* Image first for portrait tablet layout, or side by side for landscape */}
           <div className="image-area tablet-image-area">

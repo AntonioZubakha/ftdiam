@@ -76,8 +76,8 @@ const BluePrint: React.FC = () => {
   };
 
   return (
-    <section className="who-we-are-section blueprint-section" id="blueprint">
-      <div className="who-we-are-container">
+    <section className="blueprint-section" id="blueprint">
+      <div className="blueprint-container">
         <h2 style={headlineStyles}>Blueprint</h2>
         
         <div className="blueprint-content-layout">

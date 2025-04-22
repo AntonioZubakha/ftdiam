@@ -123,43 +123,56 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
     { id: 'contacts', label: 'CONTACTS' }
   ];
 
+  // New header layout with simpler structure
   return (
-    <header className="static-header">
-      <div className="header-container">
-        <div className="logo-wrapper">
-          <a href="#home" onClick={(e) => handleSectionClick('home', e)}>
-            {!logoError ? (
-              <img 
-                src="/images/Logo.png" 
-                alt="FTD Logo" 
-                className="header-logo" 
-                onError={handleLogoError} 
-              />
-            ) : (
-              <span className="placeholder-logo">FTD</span>
-            )}
-          </a>
-        </div>
-        
-        <button 
-          className="menu-toggle" 
-          onClick={toggleMenu}
-          aria-expanded={menuOpen}
-          aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}
+    <header className="new-header">
+      {/* Logo in left corner with absolute positioning */}
+      <div className="corner-logo logo-wrapper">
+        <a 
+          href="#home" 
+          onClick={(e) => handleSectionClick('home', e)} 
+          className="logo-link"
         >
-          <span className={menuOpen ? "open" : ""}></span>
-          <span className={menuOpen ? "open" : ""}></span>
-          <span className={menuOpen ? "open" : ""}></span>
-        </button>
-        
-        <nav className={`static-menu ${menuOpen ? 'open' : ''}`}>
-          <ul>
+          {!logoError ? (
+            <img 
+              src="/images/Logo.png" 
+              alt="FTD Logo" 
+              className="header-logo"
+              onError={handleLogoError} 
+            />
+          ) : (
+            <span className="placeholder-logo">FTD</span>
+          )}
+        </a>
+      </div>
+      
+      {/* Navigation centered in the header */}
+      <div className="new-nav-container">
+        <nav className={`new-menu ${menuOpen ? 'open' : ''}`}>
+          <ul
+            style={{
+              display: 'flex',
+              listStyle: 'none',
+              margin: 0,
+              padding: 0,
+              gap: 'clamp(1rem, 2vw, 2rem)'
+            }}
+          >
             {menuItems.map((item) => (
               <li key={item.id}>
                 <a 
                   href={`#${item.id}`}
                   onClick={(e) => handleSectionClick(item.id, e)}
                   className={activeSection === item.id ? 'active' : ''}
+                  style={{
+                    background: 'linear-gradient(to right, #00837f, #241e46)',
+                    WebkitBackgroundClip: 'text',
+                    backgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                    whiteSpace: 'nowrap'
+                  }}
                 >
                   {item.label}
                 </a>
@@ -167,16 +180,68 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
             ))}
           </ul>
         </nav>
-        
-        {/* Overlay for mobile menu */}
-        {menuOpen && (
-          <div 
-            className="menu-overlay" 
-            onClick={() => setMenuOpen(false)}
-            aria-hidden="true"
-          ></div>
-        )}
       </div>
+      
+      {/* Mobile menu toggle */}
+      <button 
+        className="new-menu-toggle"
+        onClick={toggleMenu}
+        aria-expanded={menuOpen}
+        aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}
+        style={{
+          display: 'none', // Hide by default, show on mobile via CSS
+          position: 'absolute',
+          right: '16px',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+          zIndex: 2000
+        }}
+      >
+        <span className={menuOpen ? "open" : ""} style={{
+          display: 'block',
+          width: '20px',
+          height: '2px',
+          background: '#00837f',
+          marginBottom: '4px',
+          transition: '0.3s ease'
+        }}></span>
+        <span className={menuOpen ? "open" : ""} style={{
+          display: 'block',
+          width: '20px',
+          height: '2px',
+          background: '#00837f',
+          marginBottom: '4px',
+          transition: '0.3s ease'
+        }}></span>
+        <span className={menuOpen ? "open" : ""} style={{
+          display: 'block',
+          width: '20px',
+          height: '2px',
+          background: '#00837f',
+          transition: '0.3s ease'
+        }}></span>
+      </button>
+      
+      {/* Mobile menu overlay */}
+      {menuOpen && (
+        <div 
+          className="menu-overlay" 
+          onClick={() => setMenuOpen(false)}
+          aria-hidden="true"
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.3)',
+            zIndex: 899
+          }}
+        ></div>
+      )}
     </header>
   );
 };

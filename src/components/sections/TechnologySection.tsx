@@ -671,7 +671,7 @@ const TechnologySection: React.FC = () => {
                 flex: '0 0 45%',
                 display: 'grid',
                 gridTemplateColumns: 'repeat(1, 1fr)',
-                gap: '35px'
+                gap: '25px'
               }}>
                 <div className="advantage-card" style={{ 
                   padding: '35px 30px',
@@ -726,7 +726,7 @@ const TechnologySection: React.FC = () => {
                   border: '2px solid rgba(0, 131, 127, 0.08)',
                   transition: 'all 0.4s ease',
                   width: '340px',
-                  height: '180px',
+                  height: '150',
                   margin: '0 auto',
                   display: 'flex',
                   flexDirection: 'column',
@@ -771,7 +771,7 @@ const TechnologySection: React.FC = () => {
                   border: '2px solid rgba(0, 131, 127, 0.08)',
                   transition: 'all 0.4s ease',
                   width: '340px',
-                  height: '180px',
+                  height: '140px',
                   margin: '0 auto',
                   display: 'flex',
                   flexDirection: 'column',
