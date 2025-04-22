@@ -1,0 +1,109 @@
+import { useRef, useState, useEffect } from 'react';
+import '../../styles/home.css';
+import '../../styles/mobile-home.css';
+import '../../styles/tablet-home.css';
+import ContactModal from '../../components/ContactModal';
+import { trackButtonClick } from '../../utils/analytics';
+
+const TabletHomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = ({ scrollToSection }) => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLandscape, setIsLandscape] = useState(false);
+  const [deviceType, setDeviceType] = useState<string>('');
+
+  // Check orientation and device type
+  useEffect(() => {
+    const checkOrientationAndDevice = () => {
+      setIsLandscape(window.innerWidth > window.innerHeight);
+      
+      // Identify iPad
+      const isIPad = /iPad/.test(navigator.userAgent) || 
+                     (/Macintosh/.test(navigator.userAgent) && 'ontouchend' in document);
+      
+      // iPad Air specific dimensions (approximately)
+      const isIPadAir = (window.innerWidth === 820 && window.innerHeight === 1180) || 
+                        (window.innerWidth === 1180 && window.innerHeight === 820);
+      
+      if (isIPad || isIPadAir) {
+        setDeviceType('ipad');
+      } else {
+        setDeviceType('other-tablet');
+      }
+    };
+    
+    checkOrientationAndDevice(); // Initial check
+    window.addEventListener('resize', checkOrientationAndDevice);
+    window.addEventListener('orientationchange', checkOrientationAndDevice);
+    
+    return () => {
+      window.removeEventListener('resize', checkOrientationAndDevice);
+      window.removeEventListener('orientationchange', checkOrientationAndDevice);
+    };
+  }, []);
+
+  // Animation effect when component mounts
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  // Функция открытия модального окна с отслеживанием клика
+  const openModal = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    trackButtonClick('home_get_in_touch');
+    setModalOpen(true);
+  };
+
+  // Функция закрытия модального окна
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  return (
+    <section 
+      id="home" 
+      className={`home-section tablet-home-section ${isLandscape ? 'landscape' : ''} ${deviceType}`}
+      ref={sectionRef}
+    >
+      <div className={`home-container tablet-home-container ${isLoaded ? 'loaded' : ''}`}>
+        <div className="content-area tablet-content-area">
+          {/* Image first for portrait tablet layout, or side by side for landscape */}
+          <div className="image-area tablet-image-area">
+            <img 
+              src="/images/333.png" 
+              alt="Diamond substrates visualization" 
+              className="feature-image tablet-feature-image"
+            />
+          </div>
+          
+          <div className="title-area tablet-title-area">
+            <h1 className="site-title tablet-site-title">
+              <div className="heading-wrapper">
+                <span className="title-line gradient-headline">FLAWLESS DIAMOND</span>
+                <span className="title-line gradient-headline">SUBSTRATES</span>
+              </div>
+            </h1>
+            
+            <p className="site-tagline tablet-site-tagline">
+              Produced by Advanced HPHT technology<br />
+              for cutting-edge applications
+            </p>
+            
+            <button 
+              className="action-button tablet-action-button"
+              onClick={openModal}
+              aria-label="Contact us for more information"
+            >
+              GET IN TOUCH
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <ContactModal isOpen={modalOpen} onClose={closeModal} />
+    </section>
+  );
+};
+
+export default TabletHomeSection; 
