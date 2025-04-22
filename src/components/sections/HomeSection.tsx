@@ -2,7 +2,6 @@ import { useRef, useState, useEffect } from 'react';
 import '../../styles/home.css';
 import '../../styles/mobile-home.css';
 import '../../styles/tablet-home.css';
-import ContactModal from '../../components/ContactModal';
 import { trackButtonClick } from '../../utils/analytics';
 import MobileHomeSection from './MobileHomeSection';
 import TabletHomeSection from './TabletHomeSection';
@@ -15,7 +14,6 @@ const SCREEN_SIZES = {
 
 const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = ({ scrollToSection }) => {
   const sectionRef = useRef<HTMLElement>(null);
-  const [modalOpen, setModalOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [screenSize, setScreenSize] = useState<'mobile' | 'tablet' | 'desktop'>('desktop');
 
@@ -43,17 +41,15 @@ const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = 
     setIsLoaded(true);
   }, []);
 
-  // Функция открытия модального окна с отслеживанием клика
-  const openModal = (e: React.MouseEvent) => {
+  // Функция для скролла к разделу контактов
+  const scrollToContacts = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     trackButtonClick('home_get_in_touch');
-    setModalOpen(true);
-  };
-
-  // Функция закрытия модального окна
-  const closeModal = () => {
-    setModalOpen(false);
+    const contactsSection = document.getElementById('contacts');
+    if (contactsSection) {
+      contactsSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   // Для мобильных устройств используем мобильную версию компонента
@@ -86,7 +82,7 @@ const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = 
             
             <button 
               className="action-button"
-              onClick={openModal}
+              onClick={scrollToContacts}
               aria-label="Contact us for more information"
             >
               GET IN TOUCH
@@ -102,8 +98,6 @@ const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = 
           </div>
         </div>
       </div>
-      
-      <ContactModal isOpen={modalOpen} onClose={closeModal} />
     </section>
   );
 };
