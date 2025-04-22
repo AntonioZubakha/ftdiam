@@ -8,24 +8,44 @@ const Footer: React.FC = () => {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-main">
-          <div className="footer-col footer-info">
-            <img src="/images/Logo_white.png" alt="FTDiam Logo" className="footer-logo" />
+          <div className="footer-col footer-info" style={{ 
+            display: 'flex',
+            alignItems: 'flex-start',
+            marginRight: '40px',
+            height: '100%',
+            paddingTop: '0',
+            marginTop: '-20px'
+          }}>
+            <img 
+              src="/images/Logo_white.png" 
+              alt="FTDiam Logo" 
+              className="footer-logo" 
+              style={{ 
+                width: '220px', 
+                height: 'auto', 
+                objectFit: 'contain',
+                marginTop: '0'
+              }} 
+            />
           </div>
           
           <div className="footer-col">
-            <h3 className="footer-heading">Navigation</h3>
             <ul className="footer-links">
               <li><a href="#advantages">ADVANTAGES</a></li>
               <li><a href="#technology">TECHNOLOGY</a></li>
               <li><a href="#products">PRODUCTS</a></li>
+            </ul>
+          </div>
+          
+          <div className="footer-col">
+            <ul className="footer-links">
               <li><a href="#quality">QUALITY ANALYSIS</a></li>
+              <li><a href="#applications">APPLICATIONS</a></li>
               <li><a href="#blueprint">BLUEPRINT</a></li>
             </ul>
           </div>
-
           
           <div className="footer-col">
-            <h3 className="footer-heading">Contact Us</h3>
             <ul className="footer-contact">
               <li><a href="mailto:info@ftdiam.com"><FontAwesomeIcon icon={faEnvelope} /> info@ftdiam.com</a></li>
               <li><a href="tel:+16172752599"><FontAwesomeIcon icon={faPhone} /> +1 617 275 2599</a></li>

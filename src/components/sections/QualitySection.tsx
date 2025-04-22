@@ -612,7 +612,29 @@ const QualitySection: React.FC = () => {
             onClick={scrollToContacts}
             aria-label="Request analysis documentation"
             style={{
+              background: 'linear-gradient(to right, #00837f, #241e46)',
+              color: 'white',
+              border: 'none',
+              borderRadius: '8px',
+              padding: '12px 30px',
+              fontSize: isMobile ? 'var(--text-base)' : isTablet ? 'var(--text-base)' : 'var(--text-md)',
+              fontWeight: '600',
+              cursor: 'pointer',
+              boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
+              transition: 'all 0.3s ease',
+              position: 'relative',
+              zIndex: 5,
               marginTop: isMobile ? '20px' : isTablet ? '30px' : '40px'
+            }}
+            onMouseOver={(e) => {
+              const target = e.currentTarget as HTMLButtonElement;
+              target.style.transform = 'translateY(-2px)';
+              target.style.boxShadow = '0 6px 15px rgba(0, 0, 0, 0.25)';
+            }}
+            onMouseOut={(e) => {
+              const target = e.currentTarget as HTMLButtonElement;
+              target.style.transform = 'translateY(0)';
+              target.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)';
             }}
           >
             REQUEST ANALYSIS DOCUMENTATION
