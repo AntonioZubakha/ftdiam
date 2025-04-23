@@ -75,21 +75,17 @@ const TechnologySection: React.FC = () => {
                 position: 'relative'
               }}>
                 <p style={{
-                  fontSize: 'var(--h4-desktop)',
-                  lineHeight: '1.5',
-                  fontWeight: '500',
+                  fontSize: 'var(--text-xl)',
+                  lineHeight: '1.6',
+                  fontWeight: '400',
                   margin: '0',
                   textAlign: 'left',
-                  background: 'linear-gradient(to right, #00837f, #241e46)',
-                  WebkitBackgroundClip: 'text',
-                  backgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  display: 'inline-block',
+                  color: 'var(--dark-gray)',
                   maxWidth: '90%',
                   padding: '0',
                   position: 'relative'
                 }}>
-                  AHPHT technology was developed through extensive R&D. We have established a unique HPHT growing method that includes:
+                  AHPHT technology was developed through extensive R&D. We have established a unique HPHT growing methods.
                 </p>
               </div>
               <ul style={{
@@ -137,7 +133,7 @@ const TechnologySection: React.FC = () => {
                     boxShadow: '0 2px 8px rgba(0, 131, 127, 0.2)',
                     transition: 'all 0.3s ease'
                   }}></div>
-                  Customized software that allows us to control temperature, pressure, humidity, and other parameters during the growth process.
+                  Special know-how raw materials.
                 </li>
                 <li style={{
                   display: 'flex',
@@ -174,6 +170,78 @@ const TechnologySection: React.FC = () => {
                     transition: 'all 0.3s ease'
                   }}></div>
                   The use of specially prepared materials, resulting in precise control over boron and nitrogen content.
+                </li>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  marginBottom: '10px',
+                  padding: '8px 0',
+                  cursor: 'default',
+                  position: 'relative',
+                  paddingLeft: '4px'
+                }}
+                onMouseOver={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(0)';
+                }}
+                >
+                  <div style={{
+                    width: '12px',
+                    height: '12px',
+                    minWidth: '12px',
+                    background: 'linear-gradient(135deg, #00837f, #241e46)',
+                    transform: 'rotate(45deg)',
+                    marginRight: '15px',
+                    marginLeft: '0',
+                    marginTop: '6px',
+                    flexShrink: 0,
+                    display: 'block',
+                    position: 'relative',
+                    borderRadius: '3px',
+                    boxShadow: '0 2px 8px rgba(0, 131, 127, 0.2)',
+                    transition: 'all 0.3s ease'
+                  }}></div>
+                  Specially developed automation system that allows us to control temperature, pressure, humidity, and other parameters.
+                </li>
+                <li style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  marginBottom: '10px',
+                  padding: '8px 0',
+                  cursor: 'default',
+                  position: 'relative',
+                  paddingLeft: '4px'
+                }}
+                onMouseOver={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(-2px)';
+                }}
+                onMouseOut={(e) => {
+                  const target = e.currentTarget as HTMLLIElement;
+                  target.style.transform = 'translateY(0)';
+                }}
+                >
+                  <div style={{
+                    width: '12px',
+                    height: '12px',
+                    minWidth: '12px',
+                    background: 'linear-gradient(135deg, #00837f, #241e46)',
+                    transform: 'rotate(45deg)',
+                    marginRight: '15px',
+                    marginLeft: '0',
+                    marginTop: '6px',
+                    flexShrink: 0,
+                    display: 'block',
+                    position: 'relative',
+                    borderRadius: '3px',
+                    boxShadow: '0 2px 8px rgba(0, 131, 127, 0.2)',
+                    transition: 'all 0.3s ease'
+                  }}></div>
+                  Custom software solution operating in sync with the automation system enabling optimized control.
                 </li>
                 <li style={{
                   display: 'flex',
@@ -301,7 +369,7 @@ const TechnologySection: React.FC = () => {
                 border: '1px solid rgba(0, 131, 127, 0.1)',
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                 textAlign: 'center',
-                height: '150px', // Фиксированная высота
+                height: '170px', // Фиксированная высота
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -321,7 +389,7 @@ const TechnologySection: React.FC = () => {
                 <h3 className="advantage-title gradient-subheadline" style={{ 
                   fontSize: '1.3rem', // Уменьшил с var(--h4-mobile) до фиксированного значения
                   marginBottom: '5px'
-                }}>Ultra low dislocations density (10¹ cm⁻²)</h3>
+                }}>Ultra low dislocation density (10¹ cm⁻²)</h3>
               </div>
               
               <div className="advantage-card" style={{ 
@@ -332,7 +400,7 @@ const TechnologySection: React.FC = () => {
                 border: '1px solid rgba(0, 131, 127, 0.1)',
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                 textAlign: 'center',
-                height: '150px',
+                height: '170px',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -363,7 +431,7 @@ const TechnologySection: React.FC = () => {
                 border: '1px solid rgba(0, 131, 127, 0.1)',
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                 textAlign: 'center',
-                height: '150px',
+                height: '170px',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -457,21 +525,17 @@ const TechnologySection: React.FC = () => {
                   position: 'relative'
                 }}>
                   <p style={{
-                    fontSize: 'var(--h4-desktop)',
-                    lineHeight: '1.5',
-                    fontWeight: '500',
+                    fontSize: 'var(--text-xl)',
+                    lineHeight: '1.6',
+                    fontWeight: '400',
                     margin: '0',
                     textAlign: 'left',
-                    background: 'linear-gradient(to right, #00837f, #241e46)',
-                    WebkitBackgroundClip: 'text',
-                    backgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    display: 'inline-block',
+                    color: 'var(--dark-gray)',
                     maxWidth: '90%',
                     padding: '0',
                     position: 'relative'
                   }}>
-                    AHPHT technology was developed through extensive R&D. We have established a unique HPHT growing method that includes:
+                    AHPHT technology was developed through extensive R&D. We have established a unique HPHT growing methods.
                   </p>
                 </div>
                 <ul style={{
@@ -518,7 +582,7 @@ const TechnologySection: React.FC = () => {
                       boxShadow: '0 2px 8px rgba(0, 131, 127, 0.2)',
                       transition: 'all 0.3s ease'
                     }}></div>
-                    Customized software that allows us to control temperature, pressure, humidity, and other parameters during the growth process.
+                    Special know-how raw materials.
                   </li>
                   <li style={{
                     display: 'flex',
@@ -555,6 +619,78 @@ const TechnologySection: React.FC = () => {
                       transition: 'all 0.3s ease'
                     }}></div>
                     The use of specially prepared materials, resulting in precise control over boron and nitrogen content.
+                  </li>
+                  <li style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    marginBottom: '10px',
+                    padding: '8px 0',
+                    cursor: 'default',
+                    position: 'relative',
+                    paddingLeft: '4px'
+                  }}
+                  onMouseOver={(e) => {
+                    const target = e.currentTarget as HTMLLIElement;
+                    target.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseOut={(e) => {
+                    const target = e.currentTarget as HTMLLIElement;
+                    target.style.transform = 'translateY(0)';
+                  }}
+                  >
+                    <div style={{
+                      width: '12px',
+                      height: '12px',
+                      minWidth: '12px',
+                      background: 'linear-gradient(135deg, #00837f, #241e46)',
+                      transform: 'rotate(45deg)',
+                      marginRight: '15px',
+                      marginLeft: '0',
+                      marginTop: '6px',
+                      flexShrink: 0,
+                      display: 'block',
+                      position: 'relative',
+                      borderRadius: '3px',
+                      boxShadow: '0 2px 8px rgba(0, 131, 127, 0.2)',
+                      transition: 'all 0.3s ease'
+                    }}></div>
+                    Specially developed automation system that allows us to control temperature, pressure, humidity, and other parameters.
+                  </li>
+                  <li style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    marginBottom: '10px',
+                    padding: '8px 0',
+                    cursor: 'default',
+                    position: 'relative',
+                    paddingLeft: '4px'
+                  }}
+                  onMouseOver={(e) => {
+                    const target = e.currentTarget as HTMLLIElement;
+                    target.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseOut={(e) => {
+                    const target = e.currentTarget as HTMLLIElement;
+                    target.style.transform = 'translateY(0)';
+                  }}
+                  >
+                    <div style={{
+                      width: '12px',
+                      height: '12px',
+                      minWidth: '12px',
+                      background: 'linear-gradient(135deg, #00837f, #241e46)',
+                      transform: 'rotate(45deg)',
+                      marginRight: '15px',
+                      marginLeft: '0',
+                      marginTop: '6px',
+                      flexShrink: 0,
+                      display: 'block',
+                      position: 'relative',
+                      borderRadius: '3px',
+                      boxShadow: '0 2px 8px rgba(0, 131, 127, 0.2)',
+                      transition: 'all 0.3s ease'
+                    }}></div>
+                    Custom software solution operating in sync with the automation system enabling optimized control.
                   </li>
                   <li style={{
                     display: 'flex',
@@ -681,7 +817,7 @@ const TechnologySection: React.FC = () => {
                   border: '2px solid rgba(0, 131, 127, 0.08)',
                   transition: 'all 0.4s ease',
                   width: '330px',
-                  height: '140px',
+                  height: '170px',
                   margin: '0 auto',
                   display: 'flex',
                   flexDirection: 'column',
@@ -715,7 +851,7 @@ const TechnologySection: React.FC = () => {
                     fontSize: '1.4rem',
                     marginBottom: '0',
                     textAlign: 'center'
-                  }}>Ultra low dislocations density (10¹ cm⁻²)</h3>
+                  }}>Ultra low dislocation density (10¹ cm⁻²)</h3>
                 </div>
                 
                 <div className="advantage-card" style={{ 
@@ -726,7 +862,7 @@ const TechnologySection: React.FC = () => {
                   border: '2px solid rgba(0, 131, 127, 0.08)',
                   transition: 'all 0.4s ease',
                   width: '330px',
-                  height: '140px',
+                  height: '170px',
                   margin: '0 auto',
                   display: 'flex',
                   flexDirection: 'column',
@@ -771,7 +907,7 @@ const TechnologySection: React.FC = () => {
                   border: '2px solid rgba(0, 131, 127, 0.08)',
                   transition: 'all 0.4s ease',
                   width: '330px',
-                  height: '140px',
+                  height: '170px',
                   margin: '0 auto',
                   display: 'flex',
                   flexDirection: 'column',

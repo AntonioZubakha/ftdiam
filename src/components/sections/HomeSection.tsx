@@ -1,15 +1,9 @@
-import { useRef, useState, useEffect } from 'react';
+import { FC } from 'react';
 import '../../styles/home.css';
 import { trackButtonClick } from '../../utils/analytics';
 
-const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = ({ scrollToSection }) => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [screenSize, setScreenSize] = useState<'mobile' | 'tablet' | 'desktop'>('desktop');
-
-  // Функция для скролла к разделу контактов
-  const scrollToContacts = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
+const HomeSection: FC = () => {
+  const handleContactClick = () => {
     trackButtonClick('home_get_in_touch');
     const contactsSection = document.getElementById('contacts');
     if (contactsSection) {
@@ -18,54 +12,34 @@ const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = 
   };
 
   return (
-    <section 
-      id="home" 
-      className="home-section" 
-      ref={sectionRef}
-    >
-      <div className="home-container">
-        <div className="content-area">
-          <div className="title-area">
-            <h1 className="site-title">
-              <div className="heading-wrapper">
-                <span className="title-line first-line gradient-headline">FLAWLESS DIAMOND</span>
-                <span className="title-line second-line gradient-headline">SUBSTRATES</span>
-              </div>
+    <section className="home">
+      <div className="home__container">
+        <div className="home__content">
+          <div className="home__text">
+            <h1 className="home__title">
+              <span className="home__title-line gradient-headline">FLAWLESS DIAMOND</span>
+              <span className="home__title-line gradient-headline">SUBSTRATES</span>
             </h1>
-            
-            <p className="site-tagline">
+            <p className="home__description">
               Produced by Advanced HPHT technology<br />
               for cutting-edge applications
             </p>
-            
             <button 
-              className="action-button"
-              onClick={scrollToContacts}
+              className="home__button"
+              onClick={handleContactClick}
               aria-label="Contact us for more information"
             >
               GET IN TOUCH
             </button>
           </div>
           
-          <div className="image-area">
+          <div className="home__image">
             <img 
               src="/images/photo1.1.png" 
               alt="Diamond substrates visualization" 
-              className="feature-image"
+              className="home__image-content"
             />
           </div>
-        </div>
-        
-        {/* Spacer div to create distance */}
-        <div className="flex-spacer"></div>
-      </div>
-      
-      {/* Full-width gradient banner */}
-      <div className="gradient-banner">
-        <div className="banner-container">
-          <p className="banner-text">
-            Developed for excellence. Trusted for precision. Perfect for advanced applications.
-          </p>
         </div>
       </div>
     </section>

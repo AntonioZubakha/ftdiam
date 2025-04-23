@@ -359,6 +359,15 @@ const IntroSection: React.FC = () => {
             <p className="spec-description" style={specDescriptionStyle}>Exceptional polishing roughness</p>
           </div>
         </div>
+
+        {/* Gradient banner */}
+        <div className="gradient-banner" style={{ marginTop: 'auto' }}>
+          <div className="banner-container">
+            <p className="banner-text">
+              Developed for excellence. Trusted for precision. Perfect for advanced applications.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );

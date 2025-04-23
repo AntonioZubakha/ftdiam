@@ -13,8 +13,8 @@ const ClientsSection: React.FC = () => {
   // Client logos array
   const clientLogos = [
     { logo: '/images/client1.png', alt: 'Applied Diamond, Inc.' },
-//    { logo: '/images/client2.png', alt: 'Michigan State University' },
-//   { logo: '/images/client3.jpg', alt: 'Argonne National Laboratory' },
+    { logo: '/images/client2.png', alt: 'Michigan State University' },
+    { logo: '/images/client3.jpg', alt: 'Argonne National Laboratory' },
 //    { logo: '/images/client4.jpg', alt: 'ESRF' },
     { logo: '/images/client5.png', alt: 'HiQuTe Diamond' },
     { logo: '/images/client6.png', alt: 'LSPM-CNRS' },

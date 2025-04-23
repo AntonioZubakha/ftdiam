@@ -6,8 +6,6 @@
 /* ----- Main Section Styles ----- */
 section.blueprint-section {
   position: relative;
-  padding: var(--spacing-16) 0;
-  margin: var(--spacing-16) 0 var(--spacing-16) 0;
   overflow: hidden;
   background-color: var(--white);
   z-index: var(--z-normal);
@@ -15,8 +13,8 @@ section.blueprint-section {
 
 /* Удаляем избыточный отступ */
 section#blueprint {
-  margin-bottom: var(--spacing-16) !important;
-  padding-bottom: 0 !important;
+  padding-bottom: 80px !important;
+  padding-top: 0px !important;
 }
 
 section.blueprint-section::after {

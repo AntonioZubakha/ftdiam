@@ -297,7 +297,7 @@ const ApplicationsSection: React.FC = () => {
         <div style={{
           textAlign: 'center',
           marginTop: '40px',
-          marginBottom: isMobile ? '60px' : isTablet ? '80px' : '100px',
+          marginBottom: isMobile ? '50px' : isTablet ? '50px' : '50px',
         }}>
           <button 
             onClick={scrollToContacts}

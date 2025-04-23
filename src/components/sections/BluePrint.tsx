@@ -95,7 +95,7 @@ const BluePrint: React.FC = () => {
                   <h3 className="founder-name">Dmitry Semchenko</h3>
                   <div className="founder-title">CTO</div>
                   <p className="founder-bio">
-                  Serial entrepreneur with 8+ years in in diamond substrates business and R&D. Holder of AHPHT technology.
+                  Technical expert with 8+ years in in diamond substrates business and R&D. Holder of AHPHT technology.
                   </p>
                 </div>
               </div>

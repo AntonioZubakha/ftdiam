@@ -2,8 +2,8 @@
 
 /* Специфичный селектор для секции */
 section.clients-section {
-  padding: 5rem 0 !important;
-  margin: 2rem 0 !important;
+  padding: 2rem 0 2rem 0 !important; /* верх, справа, низ, слева */
+  margin: 2rem 0 2rem 0 !important; /* верх, справа, низ, слева */
   background-color: var(--white);
   position: relative;
   overflow: hidden;

@@ -28,7 +28,7 @@ const ProductsSection: React.FC = () => {
     {
       id: 1,
       title: "Advanced HPHT Diamond Substrates",
-      image: "/images/photo1.1.png",
+      image: "/images/photo1.11.png",
       specs: [
         "Type IIa single-crystal plates",
         "Sizes: 3x3 mm to 15x15 mm",

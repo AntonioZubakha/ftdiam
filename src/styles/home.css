@@ -1,469 +1,164 @@
-.home-section {
-  width: 100%;
-  background-color: var(--white);
-  overflow-x: visible !important; /* Force overflow to be visible */
-  max-width: 100%;
+/* Reset and base styles */
+.home {
   position: relative;
-  margin: 0;
-  padding: 0;
+  width: 100%;
+  height: 90vh;
+  min-height: 90vh;
   display: flex;
-  flex-direction: column;
-  min-height: 92vh; 
+  align-items: center;
+  background: var(--white);
 }
 
-.home-container {
+/* Container */
+.home__container {
   width: 100%;
   max-width: var(--container-max-width);
-  overflow: visible !important; /* Force overflow to be visible */
-  position: relative;
   margin: 0 auto;
-  padding: 0 var(--spacing-12);
+  padding: var(--spacing-4);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  flex: 1; /* Make container take available space */
-  padding-top: 160px; /* Reduced from 200px */
+  justify-content: center;
+  height: 100%;
 }
 
-.content-area {
+/* Content layout */
+.home__content {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  gap: var(--spacing-8);
-  padding: var(--spacing-6) 0;
-  margin-bottom: 40px;
-  overflow: visible !important; /* Force overflow to be visible */
+  gap: var(--spacing-12);
+  padding: var(--spacing-8) 0;
+  margin-top: calc(var(--header-height) * +1); /* Компенсация отступа шапки */
 }
 
-/* Flexible spacer to push content apart */
-.flex-spacer {
-  flex-grow: 1;
-  min-height: 50px; /* Minimum height for the spacer */
-}
-
-.title-area {
+/* Text content */
+.home__text {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  max-width: none !important; /* Remove max-width constraint */
-  overflow: visible !important; /* Force overflow to be visible */
-  width: auto !important; /* Allow natural width */
-  min-width: 550px; /* Ensure minimum width */
-}
-
-.heading-wrapper {
-  display: flex;
-  flex-direction: column;
-  overflow: visible !important; /* Force overflow to be visible */
-  width: auto !important; /* Allow natural width */
-}
-
-.title-line {
-  display: inline-block !important; /* Change to inline-block for better text handling */
-  margin-bottom: var(--spacing-2);
-  line-height: 1.1;
-  overflow: visible !important; /* Force overflow to be visible */
-  width: auto !important; /* Allow text to take needed width */
-  text-overflow: clip !important; /* Disable text clipping */
-  word-break: keep-all !important; /* Prevent word breaking */
-}
-
-.first-line {
-  font-size: var(--h1-desktop);
-  white-space: nowrap !important; /* Force no wrapping */
-  overflow: visible !important; /* Force overflow to be visible */
-  width: auto !important; /* Allow text to take needed width */
-  display: inline-block !important; /* Change to inline-block */
-  transform: translateZ(0); /* Force hardware acceleration */
-}
-
-.second-line {
-  font-size: var(--h1-desktop);
-}
-
-.site-tagline {
-  font-size: var(--text-xl);
-  line-height: 1.6;
-  color: var(--dark-gray);
-  margin-bottom: var(--spacing-5);
-  max-width: 90%;
-}
-
-/* Gradient text overrides */
-.gradient-headline {
-  background: var(--main-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block !important;
-  color: transparent;
-  max-width: none !important;
-  width: auto !important;
-  overflow: visible !important;
-}
-
-.action-button {
-  align-self: flex-start;
-  transition: var(--transition-normal);
-  background: linear-gradient(to right, var(--primary-teal), var(--primary-dark-blue));
-  color: var(--white);
-  border: none;
-  border-radius: var(--radius-lg);
-  padding: 12px 30px;
-  font-size: var(--text-base);
-  font-weight: var(--font-weight-semibold);
-  cursor: pointer;
-  position: relative;
-  z-index: 5;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.action-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
-}
-
-.action-button:not(:hover) {
-  transform: translateY(0);
-}
-
-.image-area {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
   max-width: 600px;
 }
 
-.feature-image {
+.home__title {
+  margin-bottom: var(--spacing-6);
+}
+
+.home__title-line {
+  display: block;
+  font-size: var(--h1-desktop);
+  line-height: 1.1;
+  font-weight: var(--font-weight-semibold);
+}
+
+.home__description {
+  font-size: var(--text-xl);
+  color: var(--dark-gray);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-8);
+}
+
+/* Image content */
+.home__image {
+  flex: 1;
+  max-width: 600px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.home__image-content {
   max-width: 100%;
   height: auto;
   object-fit: contain;
 }
 
-/* Новые стили для полноширинного баннера */
-.gradient-banner {
-  width: 100%;
-  background: linear-gradient(to right, var(--primary-teal), var(--primary-dark-blue));
-  padding: 30px 0;
-  position: relative;
-  margin-top: auto; /* Pushes the banner to the bottom of the container */
-}
-
-.banner-container {
-  width: 100%;
-  max-width: var(--container-max-width);
-  margin: 0 auto;
-  padding: 0 var(--spacing-12);
-}
-
-.banner-text {
+/* Button styles */
+.home__button {
+  display: inline-block;
+  background: var(--main-gradient);
   color: var(--white);
-  font-size: 1.8rem;
-  font-weight: 600;
-  text-align: center;
-  margin: 0;
-  line-height: 1.4;
+  padding: var(--spacing-3) var(--spacing-8);
+  border-radius: var(--radius-lg);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: transform var(--transition-normal);
+  box-shadow: var(--shadow-md);
 }
 
-/* Устаревшие стили, которые мы заменили */
-.desktop-gradient-banner {
-  display: none; /* Скрываем старый баннер */
+.home__button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
-.desktop-banner-text {
-  display: none; /* Скрываем старый текст баннера */
-}
-
-/* Адаптивные стили для больших экранов */
-@media (min-width: 1600px) {
-  .home-container {
-    max-width: 1600px;
-  }
-  
-  .banner-container {
-    max-width: 1600px;
-  }
-  
-  .first-line, .second-line {
-    font-size: var(--h1-desktop);
-  }
-  
-  .site-tagline {
-    font-size: calc(var(--text-xl) + 0.25rem);
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .home__title-line {
+    font-size: calc(var(--h1-desktop) - 0.5rem);
   }
 }
 
-/* Адаптивные стили для средних экранов - ноутбуки */
-@media (max-width: 1366px) {
-  .home-section {
-    min-height: 88vh; /* Слегка уменьшаем минимальную высоту */
-  }
-
-  .home-container {
-    padding-top: 120px;
-  }
-
-  .first-line, .second-line {
-    font-size: calc(var(--h1-desktop) - 1rem);
+@media (max-width: 992px) {
+  .home__container {
+    padding: var(--spacing-4);
   }
   
-  .content-area {
-    margin-bottom: 35px;
-    gap: var(--spacing-6);
+  .home__content {
+    gap: var(--spacing-8);
   }
-  
-  .site-tagline {
+}
+
+@media (max-width: 768px) {
+  .home {
+    margin-top: var(--mobile-header-height);
+  }
+
+  .home__content {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: var(--spacing-8);
+    margin-top: calc(var(--mobile-header-height) * -0.5); /* Компенсация для мобильной версии */
+  }
+
+  .home__text,
+  .home__image {
+    max-width: 100%;
+  }
+
+  .home__image {
+    justify-content: center;
+  }
+
+  .home__image-content {
+    max-width: 80%;
+  }
+
+  .home__title-line {
+    font-size: var(--h1-mobile);
+  }
+
+  .home__description {
     font-size: var(--text-lg);
   }
-  
-  .banner-text {
-    font-size: 1.5rem;
-  }
-  
-  .flex-spacer {
-    min-height: 45px; /* Уменьшаем минимальную высоту спейсера */
-  }
 }
 
-/* Адаптивные стили для малых ноутбуков */
-@media (max-width: 1200px) {
-  .home-section {
-    min-height: 85vh;
+@media (max-width: 480px) {
+  .home__container {
+    padding: var(--spacing-3);
   }
 
-  .home-container {
-    padding-top: 100px; /* Уменьшаем верхний отступ */
-    padding-left: var(--spacing-8);
-    padding-right: var(--spacing-8);
-  }
-  
-  .banner-container {
-    padding: 0 var(--spacing-8);
-  }
-  
-  .title-area, .image-area {
-    max-width: 48%;
-  }
-  
-  .first-line, .second-line {
-    font-size: calc(var(--h1-desktop) - 1.5rem);
-  }
-  
-  .content-area {
-    margin-bottom: 30px;
-    gap: var(--spacing-2);
-  }
-  
-  .banner-text {
-    font-size: 1.3rem;
-  }
-  
-  .flex-spacer {
-    min-height: 40px;
-  }
-}
-
-/* Адаптивные стили для планшетов */
-@media (max-width: 992px) {
-  .home-section {
-    min-height: 75vh; /* Значительно уменьшаем высоту на планшетах */
+  .home__content {
+    padding: var(--spacing-4) 0;
   }
 
-  .home-container {
-    padding-top: 90px; /* Увеличиваем отступ от верха, чтобы избежать наложения с хедером */
+  .home__image-content {
+    max-width: 90%;
   }
-  
-  .first-line, .second-line {
-    font-size: 1.8rem;
-  }
-  
-  .title-area {
-    min-width: 0; /* Reset min-width for smaller screens */
-  }
-  
-  .content-area {
-    margin-bottom: 25px;
-    gap: var(--spacing-3);
-  }
-  
-  .site-tagline {
+
+  .home__description {
     font-size: var(--text-base);
-    margin-bottom: var(--spacing-4);
   }
-  
-  .action-button {
-    padding: 10px 25px;
-    font-size: 0.9rem;
-  }
-  
-  .banner-text {
-    font-size: 1.2rem;
-  }
-  
-  .flex-spacer {
-    min-height: 20px; /* Уменьшаем до минимума на планшетах */
-  }
-  
-  .gradient-banner {
-    padding: 25px 0; /* Немного увеличиваем высоту баннера */
+
+  .home__button {
+    padding: var(--spacing-2) var(--spacing-6);
   }
 }
-
-/* Адаптивные стили для малых планшетов */
-@media (max-width: 768px) {
-  .home-section {
-    min-height: auto; /* Убираем ограничение по высоте для малых планшетов */
-  }
-  
-  .home-container {
-    padding-top: 80px;
-    padding-left: var(--spacing-4);
-    padding-right: var(--spacing-4);
-  }
-  
-  .content-area {
-    flex-direction: column;
-    gap: var(--spacing-6);
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .title-area, .image-area {
-    max-width: 100% !important;
-    align-items: center;
-    width: 100% !important;
-  }
-  
-  .title-area {
-    order: 1;
-    align-items: center;
-  }
-  
-  .image-area {
-    order: 0;
-    justify-content: center;
-    margin-bottom: var(--spacing-4);
-  }
-  
-  .first-line, .second-line {
-    font-size: 1.6rem;
-  }
-  
-  .site-tagline {
-    text-align: center;
-    max-width: 100%;
-    font-size: 0.95rem;
-  }
-  
-  .action-button {
-    align-self: center;
-    padding: 10px 22px;
-    font-size: 0.9rem;
-  }
-  
-  .banner-container {
-    padding: 0 var(--spacing-4);
-  }
-  
-  .banner-text {
-    font-size: 1.1rem;
-    line-height: 1.5;
-  }
-  
-  .gradient-banner {
-    padding: 20px 0;
-    margin-top: 0; /* Убираем автоматический margin-top */
-  }
-  
-  .flex-spacer {
-    min-height: 10px; /* Минимальный спейсер на малых планшетах */
-    display: none; /* Можно вообще убрать спейсер на малых экранах */
-  }
-}
-
-/* Адаптивные стили для мобильных устройств */
-@media (max-width: 576px) {
-  .home-container {
-    padding-top: 70px;
-  }
-  
-  .first-line, .second-line {
-    font-size: 1.4rem;
-    margin-bottom: 3px;
-    line-height: 1.2;
-  }
-  
-  .content-area {
-    margin-bottom: 15px;
-  }
-  
-  .site-tagline {
-    font-size: 0.9rem;
-    margin-bottom: 1.2rem;
-    line-height: 1.4;
-  }
-  
-  .action-button {
-    padding: 10px 20px;
-    font-size: 0.85rem;
-  }
-  
-  .feature-image {
-    max-width: 85%;
-    margin: 0 auto;
-  }
-  
-  .banner-text {
-    font-size: 0.95rem;
-    padding: 0 10px;
-  }
-  
-  .gradient-banner {
-    padding: 15px 0;
-  }
-  
-  .flex-spacer {
-    display: none; /* Удаляем спейсер на мобильных */
-  }
-}
-
-/* Адаптивные стили для очень маленьких мобильных устройств */
-@media (max-width: 375px) {
-  .home-container {
-    padding-top: 60px;
-    padding-left: var(--spacing-2);
-    padding-right: var(--spacing-2);
-  }
-  
-  .content-area {
-    gap: var(--spacing-4);
-    margin-bottom: 10px;
-  }
-  
-  .first-line, .second-line {
-    font-size: 1.2rem;
-  }
-  
-  .site-tagline {
-    font-size: 0.85rem;
-  }
-  
-  .action-button {
-    padding: 8px 18px;
-    font-size: 0.8rem;
-  }
-  
-  .banner-container {
-    padding: 0 var(--spacing-2);
-  }
-  
-  .banner-text {
-    font-size: 0.85rem;
-  }
-} 
