@@ -359,49 +359,6 @@ const IntroSection: React.FC = () => {
             <p className="spec-description" style={specDescriptionStyle}>Exceptional polishing roughness</p>
           </div>
         </div>
-        
-        {/* Новый блок с текстом на градиентном фоне */}
-        <div style={{
-          width: '100%',
-          height: isMobile ? '110px' : isTablet ? '100px' : '100px',
-          background: 'linear-gradient(to right, #00837f, #241e46)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: isMobile ? 'flex-start' : 'center',
-          marginTop: isMobile ? '20px' : isTablet ? '30px' : '40px',
-          marginBottom: isMobile ? '40px' : isTablet ? '70px' : '100px',
-          position: 'relative',
-          zIndex: 2
-        }}>
-          <div style={{
-            color: 'white',
-            fontSize: isMobile ? 'var(--text-xl)' : isTablet ? 'var(--text-2xl)' : 'var(--text-3xl)',
-            fontWeight: 'var(--font-weight-bold)',
-            textAlign: 'center',
-            padding: '0 20px',
-            maxWidth: isWideScreen ? '1600px' : '1400px',
-            margin: '0 auto',
-            letterSpacing: '0.5px',
-            lineHeight: '1.3',
-            width: '100%'
-          }}>
-            {isMobile || isTablet ? (
-              <div style={{ textAlign: 'center', width: '100%' }}>
-                <p style={{ 
-                  margin: '0', 
-                  textAlign: 'center', 
-                  color: 'white',
-                  whiteSpace: 'normal',
-                  overflow: 'hidden'
-                }}>Developed for excellence. Trusted for precision. Perfect for advanced applications.</p>
-              </div>
-            ) : (
-              <p style={{ margin: '0', color: 'white' }}>
-                Developed for excellence. Trusted for precision. Perfect for advanced applications.
-              </p>
-            )}
-          </div>
-        </div>
       </div>
     </section>
   );

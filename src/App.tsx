@@ -29,8 +29,7 @@ import './styles/footer.css'
 import './styles/home.css'
 import './styles/clients.css'
 import './styles/admin.css'
-import './styles/tablet-home.css'
-import './styles/mobile-home.css'
+
 
 // Declare Google Analytics gtag for TypeScript
 declare global {

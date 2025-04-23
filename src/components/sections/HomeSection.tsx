@@ -1,39 +1,10 @@
 import { useRef, useState, useEffect } from 'react';
 import '../../styles/home.css';
-import '../../styles/mobile-home.css';
-import '../../styles/tablet-home.css';
 import { trackButtonClick } from '../../utils/analytics';
-import MobileHomeSection from './MobileHomeSection';
-import TabletHomeSection from './TabletHomeSection';
-
-// Screen size breakpoints
-const SCREEN_SIZES = {
-  MOBILE: 568,
-  TABLET: 1520,
-};
 
 const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = ({ scrollToSection }) => {
   const sectionRef = useRef<HTMLElement>(null);
   const [screenSize, setScreenSize] = useState<'mobile' | 'tablet' | 'desktop'>('desktop');
-
-  // Check screen size and set appropriate view
-  useEffect(() => {
-    const checkScreenSize = () => {
-      const width = window.innerWidth;
-      if (width <= SCREEN_SIZES.MOBILE) {
-        setScreenSize('mobile');
-      } else if (width <= SCREEN_SIZES.TABLET) {
-        setScreenSize('tablet');
-      } else {
-        setScreenSize('desktop');
-      }
-    };
-    
-    checkScreenSize(); // Initial check
-    window.addEventListener('resize', checkScreenSize);
-    
-    return () => window.removeEventListener('resize', checkScreenSize);
-  }, []);
 
   // Функция для скролла к разделу контактов
   const scrollToContacts = (e: React.MouseEvent) => {
@@ -46,26 +17,19 @@ const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = 
     }
   };
 
-  // Для мобильных устройств используем мобильную версию компонента
-  if (screenSize === 'mobile') {
-    return <MobileHomeSection scrollToSection={scrollToSection} />;
-  }
-
-  // Для планшетов используем планшетную версию компонента
-  if (screenSize === 'tablet') {
-    return <TabletHomeSection scrollToSection={scrollToSection} />;
-  }
-
-  // Для десктопа используем стандартную версию
   return (
-    <section id="home" className="home-section" ref={sectionRef}>
+    <section 
+      id="home" 
+      className="home-section" 
+      ref={sectionRef}
+    >
       <div className="home-container">
         <div className="content-area">
           <div className="title-area">
             <h1 className="site-title">
               <div className="heading-wrapper">
-                <span className="title-line gradient-headline">FLAWLESS DIAMOND</span>
-                <span className="title-line gradient-headline">SUBSTRATES</span>
+                <span className="title-line first-line gradient-headline">FLAWLESS DIAMOND</span>
+                <span className="title-line second-line gradient-headline">SUBSTRATES</span>
               </div>
             </h1>
             
@@ -90,6 +54,18 @@ const HomeSection: React.FC<{ scrollToSection: (sectionId: string) => void }> = 
               className="feature-image"
             />
           </div>
+        </div>
+        
+        {/* Spacer div to create distance */}
+        <div className="flex-spacer"></div>
+      </div>
+      
+      {/* Full-width gradient banner */}
+      <div className="gradient-banner">
+        <div className="banner-container">
+          <p className="banner-text">
+            Developed for excellence. Trusted for precision. Perfect for advanced applications.
+          </p>
         </div>
       </div>
     </section>

@@ -60,12 +60,18 @@ body {
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  padding-top: var(--spacing-4); /* Выравнивание с заголовками других колонок */
+  padding-top: var(--spacing-4);
+  margin-right: 40px;
+  height: 100%;
+  margin-top: -20px;
 }
 
 .footer-logo {
   width: 180px;
   margin: 0;
+  height: auto;
+  object-fit: contain;
+  margin-top: 0;
 }
 
 .footer-about {
@@ -303,35 +309,45 @@ body {
 @media (max-width: 576px) {
   .footer {
     padding: var(--spacing-4) 0 var(--spacing-2);
+    text-align: center;
   }
   
   .footer-container {
-    padding: 0 var(--spacing-2);
+    padding: 0;
     align-items: center;
+    width: 100%;
+    text-align: center;
   }
   
   .footer-main {
     width: 100%;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 var(--spacing-2);
   }
   
   .footer-col {
     flex: 0 0 100%;
     min-width: 0;
-    margin-right: 0;
+    margin: 0 0 var(--spacing-4) 0;
+    padding: 0;
     align-items: center;
     text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
   
   .footer-info {
-    margin-bottom: var(--spacing-2);
+    margin: 0 0 var(--spacing-4) 0;
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-right: 0;
-    margin-top: 0;
     padding-top: 0;
+    height: auto;
+    align-items: center;
   }
   
   .footer-logo {
@@ -350,15 +366,64 @@ body {
     transform: translateX(-50%);
   }
   
+  .footer-links, .footer-contact {
+    width: 100%;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
   .footer-links li, .footer-contact li {
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    margin: 0 0 var(--spacing-3) 0;
+    padding: 0;
+    display: flex;
+    float: none;
+  }
+  
+  .footer-links li a, .footer-contact li a {
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0;
+    width: auto;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .footer-contact li a svg, .footer-links li a svg {
+    margin-right: var(--spacing-2);
+    width: 16px !important;
+    display: inline-block !important;
+    text-align: center !important;
+  }
+  
+  /* Fix for the LinkedIn icon alignment */
+  .footer-contact li:nth-child(3) a {
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
   }
   
-  .footer-contact li a {
-    justify-content: center;
+  .footer-contact li:nth-child(3) a svg {
+    margin-right: var(--spacing-2);
   }
   
   .footer-bottom {
     width: 100%;
+    text-align: center;
+    margin-top: var(--spacing-2);
+    padding: 0;
+  }
+  
+  .footer-bottom p {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
   }
 } 

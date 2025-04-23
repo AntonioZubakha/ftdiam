@@ -116,7 +116,7 @@
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   
   /* Размеры и отступы */
-  --container-max-width: 1200px;
+  --container-max-width: 1400px;
   --header-height: 80px;  /* Высота хедера */
   --mobile-header-height: 70px;  /* Высота хедера на мобильных */
   --sidebar-width: 280px;
@@ -165,10 +165,6 @@
 /* Базовые стили элементов */
 html {
   box-sizing: border-box;
-  scroll-behavior: smooth;
-  font-size: 16px;
-  width: 100%;
-  overflow-x: hidden;
 }
 
 body {
@@ -177,7 +173,6 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
   color: var(--dark-gray);
   background-color: var(--white);
   font-family: var(--primary-font), sans-serif;
@@ -185,33 +180,6 @@ body {
   font-weight: var(--font-weight-normal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-/* Стилизация скроллбара для всего проекта */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--primary-teal);
-  border-radius: 4px;
-  border: 2px solid #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-dark-blue);
-}
-
-/* Поддержка Firefox */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--primary-teal) #f1f1f1;
 }
 
 /* Типографика */
@@ -442,10 +410,6 @@ figure {
 }
 
 @media (max-width: 768px) {
-  html {
-    font-size: 14px;
-  }
-  
   .headline {
     font-size: var(--section-headline-mobile-size);
   }
@@ -522,14 +486,6 @@ figure {
 }
 
 /* Улучшенная доступность и фокус */
-a:focus,
-button:focus,
-input:focus,
-select:focus,
-textarea:focus {
-  outline: 2px solid var(--primary-teal);
-  outline-offset: 2px;
-}
 
 /* Оптимизация для пользователей с предпочтением уменьшенного движения */
 @media (prefers-reduced-motion: reduce) {
@@ -544,33 +500,8 @@ textarea:focus {
 }
 
 /* Стили для анимации элементов */
-.fade-in-section {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.fade-in-section.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Отключаем анимацию для десктопа и пользователей с предпочтением уменьшенного движения */
-@media (min-width: 769px), (prefers-reduced-motion: reduce) {
-  .fade-in-section {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
 
 /* Класс для блокировки скролла при открытом модальном окне или меню */
-body.modal-open {
-  overflow: hidden;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  touch-action: none;
-}
 
 /* Сетка */
 .grid {
