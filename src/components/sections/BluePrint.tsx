@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import '../../styles/bluePrint.css';
 
 const BluePrint: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -95,7 +94,7 @@ const BluePrint: React.FC = () => {
                   <h3 className="founder-name">Dmitry Semchenko</h3>
                   <div className="founder-title">CTO</div>
                   <p className="founder-bio">
-                  Technical expert with 8+ years in in diamond substrates business and R&D. Holder of AHPHT technology.
+                  Technical expert with 8+ years in diamond substrates business and R&D. Holder of AHPHT technology.
                   </p>
                 </div>
               </div>

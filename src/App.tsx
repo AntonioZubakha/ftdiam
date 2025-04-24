@@ -16,20 +16,7 @@ import AdminPage from './pages/AdminPage'
 import { trackVisitor } from './utils/analytics'
 
 // Import styles
-import './styles/app.css'
 import './styles/index.css'
-import './styles/base.css'
-import './styles/header.css'
-import './styles/intro.css'
-import './styles/technology.css'
-import './styles/quality.css'
-import './styles/bluePrint.css'
-import './styles/contacts.css'
-import './styles/footer.css'
-import './styles/home.css'
-import './styles/clients.css'
-import './styles/admin.css'
-
 
 // Declare Google Analytics gtag for TypeScript
 declare global {

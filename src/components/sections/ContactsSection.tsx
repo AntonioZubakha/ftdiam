@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faPhone, faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import '../../styles/contacts.css';
 
 const ContactsSection = () => {
   const [isMobile, setIsMobile] = useState(false);

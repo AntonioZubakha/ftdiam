@@ -344,7 +344,6 @@ div[class*="logo-wrapper"], .corner-logo {
     width: 100%;
     padding: var(--spacing-2) 0;
     font-size: var(--text-base);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     font-weight: var(--font-weight-medium);
     text-align: center;
     letter-spacing: 0.5px;
@@ -666,7 +665,6 @@ div[class*="logo-wrapper"], .corner-logo {
     -webkit-text-fill-color: var(--white) !important;
     font-size: var(--text-base);
     padding: var(--spacing-2) 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     display: block;
     width: 100%;
     text-align: center;

@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react';
-import '../../styles/clients.css';
 
 const ClientsSection: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);

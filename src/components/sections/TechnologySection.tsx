@@ -70,16 +70,16 @@ const TechnologySection: React.FC = () => {
                 margin: '0 auto 20px'
               }}>Advanced HPHT Technology</h2>
               <div style={{
-                marginBottom: '30px', 
-                paddingLeft: '4px',
-                position: 'relative'
+                marginBottom: '30px',
+                position: 'relative',
+                textAlign: 'center'
               }}>
                 <p style={{
                   fontSize: 'var(--text-xl)',
                   lineHeight: '1.6',
                   fontWeight: '400',
-                  margin: '0',
-                  textAlign: 'left',
+                  margin: '0 auto',
+                  textAlign: 'center',
                   color: 'var(--dark-gray)',
                   maxWidth: '90%',
                   padding: '0',
@@ -369,7 +369,7 @@ const TechnologySection: React.FC = () => {
                 border: '1px solid rgba(0, 131, 127, 0.1)',
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                 textAlign: 'center',
-                height: '170px', // Фиксированная высота
+                height: '140px', // Фиксированная высота
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -400,7 +400,7 @@ const TechnologySection: React.FC = () => {
                 border: '1px solid rgba(0, 131, 127, 0.1)',
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                 textAlign: 'center',
-                height: '170px',
+                height: '140px',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -431,7 +431,7 @@ const TechnologySection: React.FC = () => {
                 border: '1px solid rgba(0, 131, 127, 0.1)',
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                 textAlign: 'center',
-                height: '170px',
+                height: '140px',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -505,6 +505,18 @@ const TechnologySection: React.FC = () => {
                 textAlign: 'center',
                 marginBottom: '30px'
               }}>Advanced HPHT Technology</h2>
+              <p style={{
+                fontSize: 'var(--text-xl)',
+                lineHeight: '1.6',
+                fontWeight: '400',
+                margin: '0 auto',
+                textAlign: 'center',
+                color: 'var(--dark-gray)',
+                maxWidth: '800px',
+                position: 'relative'
+              }}>
+                AHPHT technology was developed through extensive R&D. We have established a unique HPHT growing methods.
+              </p>
             </div>
             
             {/* Содержимое ниже заголовка: список точек слева, карточки справа */}
@@ -519,25 +531,6 @@ const TechnologySection: React.FC = () => {
               <div style={{
                 flex: '0 0 48%',
               }}>
-                <div style={{
-                  marginBottom: '30px', 
-                  paddingLeft: '4px',
-                  position: 'relative'
-                }}>
-                  <p style={{
-                    fontSize: 'var(--text-xl)',
-                    lineHeight: '1.6',
-                    fontWeight: '400',
-                    margin: '0',
-                    textAlign: 'left',
-                    color: 'var(--dark-gray)',
-                    maxWidth: '90%',
-                    padding: '0',
-                    position: 'relative'
-                  }}>
-                    AHPHT technology was developed through extensive R&D. We have established a unique HPHT growing methods.
-                  </p>
-                </div>
                 <ul style={{
                   fontSize: 'var(--text-lg)',
                   lineHeight: '1.6',
@@ -817,7 +810,7 @@ const TechnologySection: React.FC = () => {
                   border: '2px solid rgba(0, 131, 127, 0.08)',
                   transition: 'all 0.4s ease',
                   width: '330px',
-                  height: '170px',
+                  height: '140px',
                   margin: '0 auto',
                   display: 'flex',
                   flexDirection: 'column',
@@ -862,7 +855,7 @@ const TechnologySection: React.FC = () => {
                   border: '2px solid rgba(0, 131, 127, 0.08)',
                   transition: 'all 0.4s ease',
                   width: '330px',
-                  height: '170px',
+                  height: '140px',
                   margin: '0 auto',
                   display: 'flex',
                   flexDirection: 'column',
@@ -907,7 +900,7 @@ const TechnologySection: React.FC = () => {
                   border: '2px solid rgba(0, 131, 127, 0.08)',
                   transition: 'all 0.4s ease',
                   width: '330px',
-                  height: '170px',
+                  height: '140px',
                   margin: '0 auto',
                   display: 'flex',
                   flexDirection: 'column',

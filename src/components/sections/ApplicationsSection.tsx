@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import '../../styles/intro.css';
 import { trackButtonClick } from '../../utils/analytics';
 
 const ApplicationsSection: React.FC = () => {

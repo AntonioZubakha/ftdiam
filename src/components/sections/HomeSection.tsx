@@ -1,14 +1,15 @@
+import React, { useState, useEffect, useRef } from 'react';
 import { FC } from 'react';
-import '../../styles/home.css';
 import { trackButtonClick } from '../../utils/analytics';
 
-const HomeSection: FC = () => {
+interface HomeSectionProps {
+  scrollToSection: (sectionId: string) => void;
+}
+
+const HomeSection: FC<HomeSectionProps> = ({ scrollToSection }) => {
   const handleContactClick = () => {
     trackButtonClick('home_get_in_touch');
-    const contactsSection = document.getElementById('contacts');
-    if (contactsSection) {
-      contactsSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    scrollToSection('contacts');
   };
 
   return (

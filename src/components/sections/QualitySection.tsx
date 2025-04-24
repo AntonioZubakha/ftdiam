@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import '../../styles/quality.css';
 import { trackButtonClick } from '../../utils/analytics';
 
 const QualitySection: React.FC = () => {
