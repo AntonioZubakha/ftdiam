@@ -268,12 +268,15 @@ section.blueprint-section + section {
   .blueprint-content-layout {
     grid-template-columns: 1fr;
     padding-left: 0;
+    margin-top: 0;
   }
   
   .founder-column {
     padding-right: 0;
-    margin-top: 0 !important;
+    margin-top: -10px !important;
     top: 0 !important;
+    margin-bottom: var(--spacing-12);
+    gap: var(--spacing-4);
   }
   
   .info-column {
@@ -295,7 +298,8 @@ section.blueprint-section + section {
   .founder-grid {
     justify-content: center;
     flex-wrap: wrap;
-    gap: 40px !important;
+    gap: var(--spacing-12) !important;
+    margin-top: 0;
   }
 }
 
@@ -307,7 +311,8 @@ section.blueprint-section + section {
   .founder-grid {
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-md) !important;
+    gap: var(--spacing-12) !important;
+    margin-top: 0;
   }
   
   .founder-photo {

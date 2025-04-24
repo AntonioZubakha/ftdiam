@@ -171,7 +171,13 @@ const ProductsSection: React.FC = () => {
       <div className="products-container">
         <div className="products-inner-container">
           <div className="products-headline-container">
-            <h2 className="gradient-headline">
+            <h2 className="gradient-headline" style={{ 
+              fontSize: isSmallMobile ? 'var(--section-headline-mobile-size)' : undefined,
+              textAlign: 'center',
+              marginBottom: isSmallMobile ? '20px' : undefined,
+              maxWidth: isSmallMobile ? '95%' : undefined,
+              margin: isSmallMobile ? '0 auto 20px' : undefined
+            }}>
               High Quality Diamond Products
             </h2>
           </div>

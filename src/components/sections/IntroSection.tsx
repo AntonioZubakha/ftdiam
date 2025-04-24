@@ -85,14 +85,7 @@ const IntroSection: React.FC = () => {
     }
   };
 
-  // Функция для прокрутки к секции продуктов с отслеживанием клика
-  const scrollToProducts = () => {
-    trackButtonClick('intro_explore_more');
-    const productsSection = document.getElementById('products');
-    if (productsSection) {
-      productsSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+
 
   // Card container styles - изменено для размещения карточек на разных экранах
   const cardContainerStyle: React.CSSProperties = {
@@ -240,7 +233,8 @@ const IntroSection: React.FC = () => {
             Top Quality IIa Diamond Substrates
           </h2>
           <p className="section-description" style={{ 
-            fontSize: isMobile ? 'var(--text-base)' : isTablet ? 'var(--text-base)' : 'var(--text-lg)',
+            fontSize: 'var(--text-xl)',
+            color: 'var(--dark-gray)',
             lineHeight: '1.6',
             maxWidth: '900px',
             margin: '0 auto 1.5rem'
@@ -250,7 +244,7 @@ const IntroSection: React.FC = () => {
           
           {/* Explore More button */}
           <button 
-            onClick={scrollToProducts}
+            onClick={scrollToContacts}
             style={{
               background: 'linear-gradient(to right, #00837f, #241e46)',
               color: 'white',
@@ -362,8 +356,16 @@ const IntroSection: React.FC = () => {
         {/* Gradient banner */}
         <div className="gradient-banner" style={{ marginTop: 'auto' }}>
           <div className="banner-container">
-            <p className="banner-text">
+            {/* Десктопная версия текста (без переносов) */}
+            <p className="banner-text banner-text-desktop">
               Developed for excellence. Trusted for precision. Perfect for advanced applications.
+            </p>
+            
+            {/* Мобильная версия текста (с переносами) */}
+            <p className="banner-text banner-text-mobile">
+              Developed for excellence.<br/>
+              Trusted for precision.<br/>
+              Perfect for advanced applications.
             </p>
           </div>
         </div>

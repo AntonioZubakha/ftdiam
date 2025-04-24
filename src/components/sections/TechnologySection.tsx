@@ -76,13 +76,12 @@ const TechnologySection: React.FC = () => {
               }}>
                 <p style={{
                   fontSize: 'var(--text-xl)',
+                  color: 'var(--dark-gray)',
                   lineHeight: '1.6',
                   fontWeight: '400',
                   margin: '0 auto',
                   textAlign: 'center',
-                  color: 'var(--dark-gray)',
-                  maxWidth: '90%',
-                  padding: '0',
+                  maxWidth: '800px',
                   position: 'relative'
                 }}>
                   AHPHT technology was developed through extensive R&D. We have established a unique HPHT growing methods.
@@ -92,7 +91,7 @@ const TechnologySection: React.FC = () => {
                 fontSize: 'var(--text-base)',
                 lineHeight: '1.6',
                 color: 'var(--dark-gray)',
-                paddingLeft: '20px',
+                paddingLeft: '5px',
                 marginBottom: '20px',
                 textAlign: 'left',
                 maxWidth: '300px',
@@ -106,7 +105,7 @@ const TechnologySection: React.FC = () => {
                   padding: '8px 0',
                   cursor: 'default',
                   position: 'relative',
-                  paddingLeft: '4px'
+                  paddingLeft: '0'
                 }}
                 onMouseOver={(e) => {
                   const target = e.currentTarget as HTMLLIElement;
@@ -118,18 +117,18 @@ const TechnologySection: React.FC = () => {
                 }}
                 >
                   <div style={{
-                    width: '12px',
-                    height: '12px',
-                    minWidth: '12px',
+                    width: isMobile ? '10px' : '12px',
+                    height: isMobile ? '10px' : '12px',
+                    minWidth: isMobile ? '10px' : '12px',
                     background: 'linear-gradient(135deg, #00837f, #241e46)',
                     transform: 'rotate(45deg)',
-                    marginRight: '15px',
+                    marginRight: isMobile ? '8px' : '15px',
                     marginLeft: '0',
                     marginTop: '6px',
                     flexShrink: 0,
                     display: 'block',
                     position: 'relative',
-                    borderRadius: '3px',
+                    borderRadius: isMobile ? '2px' : '3px',
                     boxShadow: '0 2px 8px rgba(0, 131, 127, 0.2)',
                     transition: 'all 0.3s ease'
                   }}></div>
@@ -142,7 +141,7 @@ const TechnologySection: React.FC = () => {
                   padding: '8px 0',
                   cursor: 'default',
                   position: 'relative',
-                  paddingLeft: '4px'
+                  paddingLeft: isMobile ? '0' : '4px'
                 }}
                 onMouseOver={(e) => {
                   const target = e.currentTarget as HTMLLIElement;
@@ -154,18 +153,18 @@ const TechnologySection: React.FC = () => {
                 }}
                 >
                   <div style={{
-                    width: '12px',
-                    height: '12px',
-                    minWidth: '12px',
+                    width: isMobile ? '10px' : '12px',
+                    height: isMobile ? '10px' : '12px',
+                    minWidth: isMobile ? '10px' : '12px',
                     background: 'linear-gradient(135deg, #00837f, #241e46)',
                     transform: 'rotate(45deg)',
-                    marginRight: '15px',
+                    marginRight: isMobile ? '8px' : '15px',
                     marginLeft: '0',
                     marginTop: '6px',
                     flexShrink: 0,
                     display: 'block',
                     position: 'relative',
-                    borderRadius: '3px',
+                    borderRadius: isMobile ? '2px' : '3px',
                     boxShadow: '0 2px 8px rgba(0, 131, 127, 0.2)',
                     transition: 'all 0.3s ease'
                   }}></div>
@@ -178,7 +177,7 @@ const TechnologySection: React.FC = () => {
                   padding: '8px 0',
                   cursor: 'default',
                   position: 'relative',
-                  paddingLeft: '4px'
+                  paddingLeft: isMobile ? '0' : '4px'
                 }}
                 onMouseOver={(e) => {
                   const target = e.currentTarget as HTMLLIElement;
@@ -190,18 +189,18 @@ const TechnologySection: React.FC = () => {
                 }}
                 >
                   <div style={{
-                    width: '12px',
-                    height: '12px',
-                    minWidth: '12px',
+                    width: isMobile ? '10px' : '12px',
+                    height: isMobile ? '10px' : '12px',
+                    minWidth: isMobile ? '10px' : '12px',
                     background: 'linear-gradient(135deg, #00837f, #241e46)',
                     transform: 'rotate(45deg)',
-                    marginRight: '15px',
+                    marginRight: isMobile ? '8px' : '15px',
                     marginLeft: '0',
                     marginTop: '6px',
                     flexShrink: 0,
                     display: 'block',
                     position: 'relative',
-                    borderRadius: '3px',
+                    borderRadius: isMobile ? '2px' : '3px',
                     boxShadow: '0 2px 8px rgba(0, 131, 127, 0.2)',
                     transition: 'all 0.3s ease'
                   }}></div>
@@ -214,7 +213,7 @@ const TechnologySection: React.FC = () => {
                   padding: '8px 0',
                   cursor: 'default',
                   position: 'relative',
-                  paddingLeft: '4px'
+                  paddingLeft: isMobile ? '0' : '4px'
                 }}
                 onMouseOver={(e) => {
                   const target = e.currentTarget as HTMLLIElement;
@@ -226,18 +225,18 @@ const TechnologySection: React.FC = () => {
                 }}
                 >
                   <div style={{
-                    width: '12px',
-                    height: '12px',
-                    minWidth: '12px',
+                    width: isMobile ? '10px' : '12px',
+                    height: isMobile ? '10px' : '12px',
+                    minWidth: isMobile ? '10px' : '12px',
                     background: 'linear-gradient(135deg, #00837f, #241e46)',
                     transform: 'rotate(45deg)',
-                    marginRight: '15px',
+                    marginRight: isMobile ? '8px' : '15px',
                     marginLeft: '0',
                     marginTop: '6px',
                     flexShrink: 0,
                     display: 'block',
                     position: 'relative',
-                    borderRadius: '3px',
+                    borderRadius: isMobile ? '2px' : '3px',
                     boxShadow: '0 2px 8px rgba(0, 131, 127, 0.2)',
                     transition: 'all 0.3s ease'
                   }}></div>
@@ -250,7 +249,7 @@ const TechnologySection: React.FC = () => {
                   padding: '8px 0',
                   cursor: 'default',
                   position: 'relative',
-                  paddingLeft: '4px'
+                  paddingLeft: isMobile ? '0' : '4px'
                 }}
                 onMouseOver={(e) => {
                   const target = e.currentTarget as HTMLLIElement;
@@ -262,18 +261,18 @@ const TechnologySection: React.FC = () => {
                 }}
                 >
                   <div style={{
-                    width: '12px',
-                    height: '12px',
-                    minWidth: '12px',
+                    width: isMobile ? '10px' : '12px',
+                    height: isMobile ? '10px' : '12px',
+                    minWidth: isMobile ? '10px' : '12px',
                     background: 'linear-gradient(135deg, #00837f, #241e46)',
                     transform: 'rotate(45deg)',
-                    marginRight: '15px',
+                    marginRight: isMobile ? '8px' : '15px',
                     marginLeft: '0',
                     marginTop: '6px',
                     flexShrink: 0,
                     display: 'block',
                     position: 'relative',
-                    borderRadius: '3px',
+                    borderRadius: isMobile ? '2px' : '3px',
                     boxShadow: '0 2px 8px rgba(0, 131, 127, 0.2)',
                     transition: 'all 0.3s ease'
                   }}></div>
@@ -286,7 +285,7 @@ const TechnologySection: React.FC = () => {
                   padding: '8px 0',
                   cursor: 'default',
                   position: 'relative',
-                  paddingLeft: '4px'
+                  paddingLeft: isMobile ? '0' : '4px'
                 }}
                 onMouseOver={(e) => {
                   const target = e.currentTarget as HTMLLIElement;
@@ -298,18 +297,18 @@ const TechnologySection: React.FC = () => {
                 }}
                 >
                   <div style={{
-                    width: '12px',
-                    height: '12px',
-                    minWidth: '12px',
+                    width: isMobile ? '10px' : '12px',
+                    height: isMobile ? '10px' : '12px',
+                    minWidth: isMobile ? '10px' : '12px',
                     background: 'linear-gradient(135deg, #00837f, #241e46)',
                     transform: 'rotate(45deg)',
-                    marginRight: '15px',
+                    marginRight: isMobile ? '8px' : '15px',
                     marginLeft: '0',
                     marginTop: '6px',
                     flexShrink: 0,
                     display: 'block',
                     position: 'relative',
-                    borderRadius: '3px',
+                    borderRadius: isMobile ? '2px' : '3px',
                     boxShadow: '0 2px 8px rgba(0, 131, 127, 0.2)',
                     transition: 'all 0.3s ease'
                   }}></div>
@@ -321,7 +320,7 @@ const TechnologySection: React.FC = () => {
                   padding: '8px 0',
                   cursor: 'default',
                   position: 'relative',
-                  paddingLeft: '4px'
+                  paddingLeft: isMobile ? '0' : '4px'
                 }}
                 onMouseOver={(e) => {
                   const target = e.currentTarget as HTMLLIElement;
@@ -333,18 +332,18 @@ const TechnologySection: React.FC = () => {
                 }}
                 >
                   <div style={{
-                    width: '12px',
-                    height: '12px',
-                    minWidth: '12px',
+                    width: isMobile ? '10px' : '12px',
+                    height: isMobile ? '10px' : '12px',
+                    minWidth: isMobile ? '10px' : '12px',
                     background: 'linear-gradient(135deg, #00837f, #241e46)',
                     transform: 'rotate(45deg)',
-                    marginRight: '15px',
+                    marginRight: isMobile ? '8px' : '15px',
                     marginLeft: '0',
                     marginTop: '6px',
                     flexShrink: 0,
                     display: 'block',
                     position: 'relative',
-                    borderRadius: '3px',
+                    borderRadius: isMobile ? '2px' : '3px',
                     boxShadow: '0 2px 8px rgba(0, 131, 127, 0.2)',
                     transition: 'all 0.3s ease'
                   }}></div>
@@ -507,11 +506,11 @@ const TechnologySection: React.FC = () => {
               }}>Advanced HPHT Technology</h2>
               <p style={{
                 fontSize: 'var(--text-xl)',
+                color: 'var(--dark-gray)',
                 lineHeight: '1.6',
                 fontWeight: '400',
                 margin: '0 auto',
                 textAlign: 'center',
-                color: 'var(--dark-gray)',
                 maxWidth: '800px',
                 position: 'relative'
               }}>
@@ -522,14 +521,17 @@ const TechnologySection: React.FC = () => {
             {/* Содержимое ниже заголовка: список точек слева, карточки справа */}
             <div style={{ 
               display: 'flex',
+              flexDirection: isMobile ? 'column' : 'row',
               alignItems: 'flex-start',
-              gap: '60px',
+              gap: isMobile ? '30px' : '60px',
               maxWidth: '1200px',
-              margin: '0 auto 60px'
+              margin: '0 auto 60px',
+              padding: isMobile ? '0 10px' : undefined
             }}>
               {/* Буллет-поинты слева */}
               <div style={{
                 flex: '0 0 48%',
+                paddingLeft: isMobile ? '0' : undefined
               }}>
                 <ul style={{
                   fontSize: 'var(--text-lg)',
@@ -548,7 +550,7 @@ const TechnologySection: React.FC = () => {
                     padding: '8px 0',
                     cursor: 'default',
                     position: 'relative',
-                    paddingLeft: '4px'
+                    paddingLeft: isMobile ? '0' : '4px'
                   }}
                   onMouseOver={(e) => {
                     const target = e.currentTarget as HTMLLIElement;
@@ -560,18 +562,18 @@ const TechnologySection: React.FC = () => {
                   }}
                   >
                     <div style={{
-                      width: '12px',
-                      height: '12px',
-                      minWidth: '12px',
+                      width: isMobile ? '10px' : '12px',
+                      height: isMobile ? '10px' : '12px',
+                      minWidth: isMobile ? '10px' : '12px',
                       background: 'linear-gradient(135deg, #00837f, #241e46)',
                       transform: 'rotate(45deg)',
-                      marginRight: '15px',
+                      marginRight: isMobile ? '8px' : '15px',
                       marginLeft: '0',
                       marginTop: '6px',
                       flexShrink: 0,
                       display: 'block',
                       position: 'relative',
-                      borderRadius: '3px',
+                      borderRadius: isMobile ? '2px' : '3px',
                       boxShadow: '0 2px 8px rgba(0, 131, 127, 0.2)',
                       transition: 'all 0.3s ease'
                     }}></div>
@@ -584,7 +586,7 @@ const TechnologySection: React.FC = () => {
                     padding: '8px 0',
                     cursor: 'default',
                     position: 'relative',
-                    paddingLeft: '4px'
+                    paddingLeft: isMobile ? '0' : '4px'
                   }}
                   onMouseOver={(e) => {
                     const target = e.currentTarget as HTMLLIElement;
@@ -596,18 +598,18 @@ const TechnologySection: React.FC = () => {
                   }}
                   >
                     <div style={{
-                      width: '12px',
-                      height: '12px',
-                      minWidth: '12px',
+                      width: isMobile ? '12px' : '12px',
+                      height: isMobile ? '12px' : '12px',
+                      minWidth: isMobile ? '12px' : '12px',
                       background: 'linear-gradient(135deg, #00837f, #241e46)',
                       transform: 'rotate(45deg)',
-                      marginRight: '15px',
+                      marginRight: isMobile ? '10px' : '15px',
                       marginLeft: '0',
                       marginTop: '6px',
                       flexShrink: 0,
                       display: 'block',
                       position: 'relative',
-                      borderRadius: '3px',
+                      borderRadius: isMobile ? '3px' : '3px',
                       boxShadow: '0 2px 8px rgba(0, 131, 127, 0.2)',
                       transition: 'all 0.3s ease'
                     }}></div>
@@ -620,7 +622,7 @@ const TechnologySection: React.FC = () => {
                     padding: '8px 0',
                     cursor: 'default',
                     position: 'relative',
-                    paddingLeft: '4px'
+                    paddingLeft: isMobile ? '0' : '4px'
                   }}
                   onMouseOver={(e) => {
                     const target = e.currentTarget as HTMLLIElement;
@@ -632,18 +634,18 @@ const TechnologySection: React.FC = () => {
                   }}
                   >
                     <div style={{
-                      width: '12px',
-                      height: '12px',
-                      minWidth: '12px',
+                      width: isMobile ? '12px' : '12px',
+                      height: isMobile ? '12px' : '12px',
+                      minWidth: isMobile ? '12px' : '12px',
                       background: 'linear-gradient(135deg, #00837f, #241e46)',
                       transform: 'rotate(45deg)',
-                      marginRight: '15px',
+                      marginRight: isMobile ? '10px' : '15px',
                       marginLeft: '0',
                       marginTop: '6px',
                       flexShrink: 0,
                       display: 'block',
                       position: 'relative',
-                      borderRadius: '3px',
+                      borderRadius: isMobile ? '3px' : '3px',
                       boxShadow: '0 2px 8px rgba(0, 131, 127, 0.2)',
                       transition: 'all 0.3s ease'
                     }}></div>
@@ -656,7 +658,7 @@ const TechnologySection: React.FC = () => {
                     padding: '8px 0',
                     cursor: 'default',
                     position: 'relative',
-                    paddingLeft: '4px'
+                    paddingLeft: isMobile ? '0' : '4px'
                   }}
                   onMouseOver={(e) => {
                     const target = e.currentTarget as HTMLLIElement;
@@ -668,18 +670,18 @@ const TechnologySection: React.FC = () => {
                   }}
                   >
                     <div style={{
-                      width: '12px',
-                      height: '12px',
-                      minWidth: '12px',
+                      width: isMobile ? '12px' : '12px',
+                      height: isMobile ? '12px' : '12px',
+                      minWidth: isMobile ? '12px' : '12px',
                       background: 'linear-gradient(135deg, #00837f, #241e46)',
                       transform: 'rotate(45deg)',
-                      marginRight: '15px',
+                      marginRight: isMobile ? '10px' : '15px',
                       marginLeft: '0',
                       marginTop: '6px',
                       flexShrink: 0,
                       display: 'block',
                       position: 'relative',
-                      borderRadius: '3px',
+                      borderRadius: isMobile ? '3px' : '3px',
                       boxShadow: '0 2px 8px rgba(0, 131, 127, 0.2)',
                       transition: 'all 0.3s ease'
                     }}></div>
@@ -692,7 +694,7 @@ const TechnologySection: React.FC = () => {
                     padding: '8px 0',
                     cursor: 'default',
                     position: 'relative',
-                    paddingLeft: '4px'
+                    paddingLeft: isMobile ? '0' : '4px'
                   }}
                   onMouseOver={(e) => {
                     const target = e.currentTarget as HTMLLIElement;
@@ -709,7 +711,7 @@ const TechnologySection: React.FC = () => {
                       minWidth: '12px',
                       background: 'linear-gradient(135deg, #00837f, #241e46)',
                       transform: 'rotate(45deg)',
-                      marginRight: '15px',
+                      marginRight: isMobile ? '10px' : '15px',
                       marginLeft: '0',
                       marginTop: '6px',
                       flexShrink: 0,
@@ -728,7 +730,7 @@ const TechnologySection: React.FC = () => {
                     padding: '8px 0',
                     cursor: 'default',
                     position: 'relative',
-                    paddingLeft: '4px'
+                    paddingLeft: isMobile ? '0' : '4px'
                   }}
                   onMouseOver={(e) => {
                     const target = e.currentTarget as HTMLLIElement;
@@ -745,7 +747,7 @@ const TechnologySection: React.FC = () => {
                       minWidth: '12px',
                       background: 'linear-gradient(135deg, #00837f, #241e46)',
                       transform: 'rotate(45deg)',
-                      marginRight: '15px',
+                      marginRight: isMobile ? '10px' : '15px',
                       marginLeft: '0',
                       marginTop: '6px',
                       flexShrink: 0,
@@ -763,7 +765,7 @@ const TechnologySection: React.FC = () => {
                     padding: '8px 0',
                     cursor: 'default',
                     position: 'relative',
-                    paddingLeft: '4px'
+                    paddingLeft: isMobile ? '0' : '4px'
                   }}
                   onMouseOver={(e) => {
                     const target = e.currentTarget as HTMLLIElement;
@@ -780,7 +782,7 @@ const TechnologySection: React.FC = () => {
                       minWidth: '12px',
                       background: 'linear-gradient(135deg, #00837f, #241e46)',
                       transform: 'rotate(45deg)',
-                      marginRight: '15px',
+                      marginRight: isMobile ? '10px' : '15px',
                       marginLeft: '0',
                       marginTop: '6px',
                       flexShrink: 0,

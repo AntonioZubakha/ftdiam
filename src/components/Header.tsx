@@ -7,6 +7,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrollToSection }) => {
   const [logoError, setLogoError] = useState(false);
+  const [whiteLogoError, setWhiteLogoError] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -106,6 +107,10 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
     setLogoError(true);
   };
 
+  const handleWhiteLogoError = () => {
+    setWhiteLogoError(true);
+  };
+
   // Toggle menu
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -126,8 +131,8 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
   // New header layout with simpler structure
   return (
     <header className="new-header">
-      {/* Logo in left corner with absolute positioning */}
-      <div className="corner-logo logo-wrapper">
+      {/* Logo in left corner with absolute positioning - скрываем при открытии меню */}
+      <div className={`corner-logo logo-wrapper ${menuOpen ? 'hide-on-mobile' : ''}`}>
         <a 
           href="#home" 
           onClick={(e) => handleSectionClick('home', e)} 
@@ -149,15 +154,48 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
       {/* Navigation centered in the header */}
       <div className="new-nav-container">
         <nav className={`new-menu ${menuOpen ? 'open' : ''}`}>
-          <ul
-            style={{
-              display: 'flex',
-              listStyle: 'none',
-              margin: 0,
-              padding: 0,
-              gap: 'clamp(1rem, 2vw, 2rem)'
-            }}
-          >
+          {/* Mobile menu content with mobile-first layout */}
+          <div className="mobile-menu-content">
+            {/* Белый логотип отдельным блоком сверху */}
+            <div className="mobile-menu-logo">
+              <a 
+                href="#home" 
+                onClick={(e) => handleSectionClick('home', e)} 
+                className="logo-link white-logo-link"
+              >
+                {!whiteLogoError ? (
+                  <img 
+                    src="/images/Logo_white.png" 
+                    alt="FTD Logo" 
+                    className="header-logo white-logo"
+                    onError={handleWhiteLogoError} 
+                  />
+                ) : (
+                  <span className="placeholder-logo white">FTD</span>
+                )}
+              </a>
+            </div>
+            
+            {/* Отдельный блок с пунктами меню */}
+            <div className="mobile-menu-items">
+              <ul>
+                {menuItems.map((item) => (
+                  <li key={item.id}>
+                    <a 
+                      href={`#${item.id}`}
+                      onClick={(e) => handleSectionClick(item.id, e)}
+                      className={activeSection === item.id ? 'active' : ''}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          
+          {/* Desktop menu - показывается только на десктопе */}
+          <ul className="desktop-menu-items">
             {menuItems.map((item) => (
               <li key={item.id}>
                 <a 
@@ -197,28 +235,29 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
           background: 'none',
           border: 'none',
           cursor: 'pointer',
-          zIndex: 2000
+          zIndex: 2000,
+          padding: '8px'
         }}
       >
         <span className={menuOpen ? "open" : ""} style={{
           display: 'block',
-          width: '20px',
+          width: '22px',
           height: '2px',
           background: '#00837f',
-          marginBottom: '4px',
+          marginBottom: '5px',
           transition: '0.3s ease'
         }}></span>
         <span className={menuOpen ? "open" : ""} style={{
           display: 'block',
-          width: '20px',
+          width: '22px',
           height: '2px',
           background: '#00837f',
-          marginBottom: '4px',
+          marginBottom: '5px',
           transition: '0.3s ease'
         }}></span>
         <span className={menuOpen ? "open" : ""} style={{
           display: 'block',
-          width: '20px',
+          width: '22px',
           height: '2px',
           background: '#00837f',
           transition: '0.3s ease'

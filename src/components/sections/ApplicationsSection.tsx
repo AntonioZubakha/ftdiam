@@ -242,7 +242,8 @@ const ApplicationsSection: React.FC = () => {
             Applications
           </h2>
           <p className="section-description" style={{ 
-            fontSize: isMobile ? 'var(--text-base)' : isTablet ? 'var(--text-base)' : 'var(--text-lg)',
+            fontSize: 'var(--text-xl)',
+            color: 'var(--dark-gray)',
             lineHeight: '1.6',
             maxWidth: '900px',
             margin: '0 auto 1.5rem'

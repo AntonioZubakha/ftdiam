@@ -7,6 +7,19 @@ interface HomeSectionProps {
 }
 
 const HomeSection: FC<HomeSectionProps> = ({ scrollToSection }) => {
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    handleResize(); // Проверяем размер экрана при загрузке
+    window.addEventListener('resize', handleResize);
+    
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const handleContactClick = () => {
     trackButtonClick('home_get_in_touch');
     scrollToSection('contacts');
@@ -34,13 +47,15 @@ const HomeSection: FC<HomeSectionProps> = ({ scrollToSection }) => {
             </button>
           </div>
           
-          <div className="home__image">
-            <img 
-              src="/images/photo1.1.png" 
-              alt="Diamond substrates visualization" 
-              className="home__image-content"
-            />
-          </div>
+          {!isMobile && (
+            <div className="home__image">
+              <img 
+                src="/images/photo1.1.png" 
+                alt="Diamond substrates visualization" 
+                className="home__image-content"
+              />
+            </div>
+          )}
         </div>
       </div>
     </section>

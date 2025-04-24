@@ -590,7 +590,8 @@ const QualitySection: React.FC = () => {
             </h3>
             <p className="quality-description" style={{ 
               textAlign: 'center',
-              fontSize: isMobile ? 'var(--text-base)' : isTablet ? 'var(--text-base)' : 'var(--text-lg)',
+              fontSize: 'var(--text-xl)',
+              color: 'var(--dark-gray)',
               lineHeight: '1.6',
               maxWidth: '800px',
               margin: '0 auto 2rem auto'

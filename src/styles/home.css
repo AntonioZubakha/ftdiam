@@ -110,26 +110,19 @@
 @media (max-width: 768px) {
   .home {
     margin-top: var(--mobile-header-height);
+    height: 70vh; /* Уменьшаем высоту секции для мобильных */
   }
 
   .home__content {
-    flex-direction: column-reverse;
+    flex-direction: column;
     text-align: center;
-    gap: var(--spacing-8);
-    margin-top: calc(var(--mobile-header-height) * -0.5); /* Компенсация для мобильной версии */
-  }
-
-  .home__text,
-  .home__image {
-    max-width: 100%;
-  }
-
-  .home__image {
     justify-content: center;
+    margin-top: 0; /* Убираем компенсацию */
   }
 
-  .home__image-content {
-    max-width: 80%;
+  .home__text {
+    max-width: 100%;
+    margin-top: -20px; /* Приподнимаем текстовый блок с заголовком */
   }
 
   .home__title-line {
@@ -138,10 +131,15 @@
 
   .home__description {
     font-size: var(--text-lg);
+    margin-bottom: var(--spacing-6);
   }
 }
 
 @media (max-width: 480px) {
+  .home {
+    height: 60vh; /* Еще больше уменьшаем высоту для маленьких экранов */
+  }
+  
   .home__container {
     padding: var(--spacing-3);
   }
@@ -150,12 +148,9 @@
     padding: var(--spacing-4) 0;
   }
 
-  .home__image-content {
-    max-width: 90%;
-  }
-
   .home__description {
     font-size: var(--text-base);
+    margin-bottom: var(--spacing-4);
   }
 
   .home__button {

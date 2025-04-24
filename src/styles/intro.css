@@ -409,24 +409,34 @@
   }
   
   .banner-text {
-    font-size: 1.1rem;
-    line-height: 1.5;
+    font-size: 1.25rem;
+    line-height: 1.8;
+  }
+  
+  /* Разделяем предложения на новые строки в мобильной версии */
+  .banner-text-mobile {
+    display: block;
+  }
+  
+  .banner-text-desktop {
+    display: none;
   }
   
   .gradient-banner {
-    padding: 20px 0;
+    padding: 25px 0;
     margin-top: 0;
   }
 }
 
 @media (max-width: 576px) {
   .banner-text {
-    font-size: 0.95rem;
+    font-size: 1.25rem;
     padding: 0 10px;
+    line-height: 1.9;
   }
   
   .gradient-banner {
-    padding: 15px 0;
+    padding: 20px 0;
   }
 }
 
@@ -436,6 +446,15 @@
   }
   
   .banner-text {
-    font-size: 0.85rem;
+    font-size: 1.25rem;
   }
+}
+
+/* По умолчанию показываем десктопную версию, скрываем мобильную */
+.banner-text-mobile {
+  display: none;
+}
+
+.banner-text-desktop {
+  display: block;
 } 
