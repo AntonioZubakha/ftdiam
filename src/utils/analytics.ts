@@ -3,6 +3,9 @@ import { ButtonClickCount, VisitorCount, AdminPageData } from '../interfaces/Ana
 const STORAGE_KEY = 'ftdiam_analytics';
 const VISITOR_ID_KEY = 'ftdiam_visitor_id';
 
+// Определяем, находимся ли мы в режиме разработки
+const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
 // Список отслеживаемых кнопок
 const TRACKED_BUTTONS = [
   { id: 'home_get_in_touch', name: 'Get in touch (Home)' },
@@ -17,6 +20,11 @@ const API_URL = '/api/analytics';
 
 // Функция для выполнения запроса к API
 const fetchAPI = async (endpoint: string, method: string = 'GET', data?: any) => {
+  // В режиме разработки просто возвращаем null без запроса к API
+  if (isDevelopment) {
+    return null;
+  }
+  
   try {
     const options: RequestInit = {
       method,
@@ -56,18 +64,21 @@ const getVisitorId = (): string => {
 
 // Инициализация хранилища аналитики
 const initializeAnalytics = async (): Promise<AdminPageData> => {
-  try {
-    // Пробуем получить данные с сервера
-    const apiData = await fetchAPI('');
-    
-    if (apiData) {
-      return apiData as AdminPageData;
+  // В режиме разработки используем только локальное хранилище
+  if (!isDevelopment) {
+    try {
+      // Пробуем получить данные с сервера
+      const apiData = await fetchAPI('');
+      
+      if (apiData) {
+        return apiData as AdminPageData;
+      }
+    } catch (error) {
+      console.error('Error fetching analytics data:', error);
     }
-  } catch (error) {
-    console.error('Error fetching analytics data:', error);
   }
   
-  // Если API не доступен, используем локальное хранилище
+  // Если API не доступен или мы в режиме разработки, используем локальное хранилище
   const existingData = localStorage.getItem(STORAGE_KEY);
   
   if (existingData) {
@@ -102,62 +113,79 @@ const saveAnalytics = (data: AdminPageData): void => {
 
 // Отслеживание нового посетителя
 export const trackVisitor = async (): Promise<void> => {
-  const visitorId = getVisitorId();
-  
-  // Проверяем, является ли посетитель новым
-  const isNewVisitor = visitorId.startsWith('v_') && 
-    localStorage.getItem('ftdiam_visit_recorded') !== 'true';
-  
-  // Отправляем данные на сервер через API
-  await fetchAPI('/visitor', 'POST', { 
-    visitorId, 
-    isUnique: isNewVisitor 
-  });
-  
-  if (isNewVisitor) {
-    localStorage.setItem('ftdiam_visit_recorded', 'true');
+  try {
+    const visitorId = getVisitorId();
+    
+    // Проверяем, является ли посетитель новым
+    const isNewVisitor = visitorId.startsWith('v_') && 
+      localStorage.getItem('ftdiam_visit_recorded') !== 'true';
+    
+    // Отправляем данные на сервер через API (не в режиме разработки)
+    if (!isDevelopment) {
+      await fetchAPI('/visitor', 'POST', { 
+        visitorId, 
+        isUnique: isNewVisitor 
+      });
+    }
+    
+    if (isNewVisitor) {
+      localStorage.setItem('ftdiam_visit_recorded', 'true');
+    }
+    
+    // Для локального кэша тоже обновляем
+    const analytics = await initializeAnalytics();
+    analytics.visitorStats.total += 1;
+    
+    if (isNewVisitor) {
+      analytics.visitorStats.unique += 1;
+    }
+    
+    saveAnalytics(analytics);
+  } catch (error) {
+    console.warn('Error tracking visitor:', error);
+    // Ошибки отслеживания не должны влиять на работу приложения
   }
-  
-  // Для локального кэша тоже обновляем
-  const analytics = await initializeAnalytics();
-  analytics.visitorStats.total += 1;
-  
-  if (isNewVisitor) {
-    analytics.visitorStats.unique += 1;
-  }
-  
-  saveAnalytics(analytics);
 };
 
 // Отслеживание клика по кнопке
 export const trackButtonClick = async (buttonId: string): Promise<void> => {
-  // Отправляем данные на сервер через API
-  await fetchAPI('/button', 'POST', { buttonId });
-  
-  // Для локального кэша тоже обновляем
-  const analytics = await initializeAnalytics();
-  
-  const buttonIndex = analytics.buttonClicks.findIndex(btn => btn.id === buttonId);
-  if (buttonIndex !== -1) {
-    analytics.buttonClicks[buttonIndex].clicks += 1;
-    saveAnalytics(analytics);
+  try {
+    // Отправляем данные на сервер через API (не в режиме разработки)
+    if (!isDevelopment) {
+      await fetchAPI('/button', 'POST', { buttonId });
+    }
+    
+    // Для локального кэша тоже обновляем
+    const analytics = await initializeAnalytics();
+    
+    const buttonIndex = analytics.buttonClicks.findIndex(btn => btn.id === buttonId);
+    if (buttonIndex !== -1) {
+      analytics.buttonClicks[buttonIndex].clicks += 1;
+      saveAnalytics(analytics);
+    }
+  } catch (error) {
+    console.warn('Error tracking button click:', error);
+    // Ошибки отслеживания не должны влиять на работу приложения
   }
 };
 
 // Получение данных аналитики
 export const getAnalyticsData = async (): Promise<AdminPageData> => {
-  try {
-    // Пробуем получить данные с сервера
-    const apiData = await fetchAPI('');
-    
-    if (apiData) {
-      return apiData as AdminPageData;
+  // В режиме разработки используем только локальное хранилище
+  if (!isDevelopment) {
+    try {
+      // Пробуем получить данные с сервера
+      const apiData = await fetchAPI('');
+      
+      if (apiData) {
+        return apiData as AdminPageData;
+      }
+    } catch (error) {
+      console.error('Error fetching analytics data:', error);
     }
-  } catch (error) {
-    console.error('Error fetching analytics data:', error);
   }
   
-  // Если API не доступен, используем локальное хранилище
+  // Если API не доступен или мы в режиме разработки, используем локальное хранилище
   return await initializeAnalytics();
 };
 
@@ -169,24 +197,27 @@ export const checkAdminAuth = (login: string, password: string): boolean => {
 // Очистка аналитики (только для тестирования)
 export const resetAnalytics = async (): Promise<void> => {
   try {
-    // Пробуем сбросить данные на сервере
-    await fetchAPI('/reset', 'POST', { 
-      login: 'Qwerty', 
-      password: 'MegaDanik' 
+    // Пробуем сбросить данные на сервере (не в режиме разработки)
+    if (!isDevelopment) {
+      await fetchAPI('/reset', 'POST', { 
+        login: 'Qwerty', 
+        password: 'MegaDanik' 
+      });
+    }
+    
+    // Для локального кэша тоже сбрасываем
+    const analytics = await initializeAnalytics();
+    
+    analytics.visitorStats.total = 0;
+    analytics.visitorStats.unique = 0;
+    
+    analytics.buttonClicks.forEach(button => {
+      button.clicks = 0;
     });
+    
+    saveAnalytics(analytics);
   } catch (error) {
-    console.error('Error resetting analytics data:', error);
+    console.warn('Error resetting analytics:', error);
+    // Ошибки сброса не должны влиять на работу приложения
   }
-  
-  // Для локального кэша тоже сбрасываем
-  const analytics = await initializeAnalytics();
-  
-  analytics.visitorStats.total = 0;
-  analytics.visitorStats.unique = 0;
-  
-  analytics.buttonClicks.forEach(button => {
-    button.clicks = 0;
-  });
-  
-  saveAnalytics(analytics);
 }; 

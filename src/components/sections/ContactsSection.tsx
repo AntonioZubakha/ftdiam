@@ -119,7 +119,7 @@ const ContactsSection = () => {
             </div>
           </div>
           
-          <div className="contact-form">
+          <div className="contact-form" id="contact-form">
             <div className="form-header">
               <h3 className="form-title">Get in touch</h3>
             </div>
@@ -128,17 +128,17 @@ const ContactsSection = () => {
               <div className="form-message form-success">
                 <p className="success-title">Thank you!</p>
                 <p>Your message has been sent successfully.</p>
-                <p className="success-note">
-                  <strong>Note:</strong> If this is your first time using the form, please check your email for a confirmation message from FormSubmit.
-                </p>
+                <p className="success-note">We'll get back to you as soon as possible.</p>
               </div>
             ) : (
-              <form action="https://formsubmit.co/info@ftdiam.com" method="POST">
+              <form action="https://formsubmit.co/el/confirm/76f56db086e0b0ec44a63e16e4fb4ef1" method="POST">
                 <input type="hidden" name="_subject" value="New message from FTDiam website" />
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_template" value="table" />
                 <input type="hidden" name="_next" value={`${window.location.href.split('?')[0]}?submitted=true`} />
                 <input type="text" name="_honey" style={{ display: 'none' }} />
+                
+                <input type="hidden" name="_autoresponse" value="Thank you for contacting FTDiam. We have received your message and will get back to you soon." />
                 
                 <div className="form-group">
                   <input 
@@ -167,7 +167,7 @@ const ContactsSection = () => {
                 </div>
                 
                 <p className="form-note">
-
+                  By submitting this form, you agree to our privacy policy. First-time users may receive a confirmation email from FormSubmit.
                 </p>
                 
                 <button type="submit" className="contact-submit-button">

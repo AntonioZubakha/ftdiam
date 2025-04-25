@@ -17,6 +17,14 @@ const IntroSection: React.FC = () => {
       // Добавляем небольшую задержку для гарантии загрузки стилей
       setTimeout(() => {
         setContentLoaded(true);
+        
+        // Проверка наличия формы и секции контактов
+        console.log('[IntroSection] Init check - Contact form found by ID:', 
+          document.getElementById('contact-form') !== null);
+        console.log('[IntroSection] Init check - Contacts section found by ID:', 
+          document.getElementById('contacts') !== null);
+        console.log('[IntroSection] Init check - Contact form found by class:', 
+          document.querySelector('.contact-form') !== null);
       }, 100);
     });
   }, []);
@@ -78,14 +86,69 @@ const IntroSection: React.FC = () => {
 
   // Функция для прокрутки к секции контактов с отслеживанием клика
   const scrollToContacts = () => {
-    trackButtonClick('intro_contact_us');
-    const contactsSection = document.getElementById('contacts');
-    if (contactsSection) {
-      contactsSection.scrollIntoView({ behavior: 'smooth' });
+    try {
+      trackButtonClick('intro_contact_us');
+      
+      // Отладочная информация о доступности элементов
+      console.log('Contact form found by ID:', document.getElementById('contact-form') !== null);
+      console.log('Contacts section found by ID:', document.getElementById('contacts') !== null);
+      console.log('Contact form found by class:', document.querySelector('.contact-form') !== null);
+      
+      if (isMobile) {
+        // На мобильных устройствах прокручиваем к форме обратной связи
+        // Пробуем несколько способов найти форму
+        const contactForm = document.getElementById('contact-form') || 
+                           document.querySelector('.contact-form');
+                           
+        if (contactForm) {
+          // Метод 1: Используем scrollIntoView
+          contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          
+          // Метод 2: Если первый не сработал, используем setTimeout и window.scrollTo
+          setTimeout(() => {
+            const rect = contactForm.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const targetY = rect.top + scrollTop - 100; // Отступ сверху 100px
+            
+            window.scrollTo({
+              top: targetY,
+              behavior: 'smooth'
+            });
+          }, 100);
+        } else {
+          // Если форму не нашли, ищем секцию контактов
+          const contactsSection = document.getElementById('contacts');
+          if (contactsSection) {
+            contactsSection.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            // Если ничего не нашли, прокручиваем в конец страницы
+            window.scrollTo({
+              top: document.body.scrollHeight,
+              behavior: 'smooth'
+            });
+          }
+        }
+      } else {
+        // На десктопе просто прокручиваем к началу секции контактов
+        const contactsSection = document.getElementById('contacts');
+        if (contactsSection) {
+          contactsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    } catch (error) {
+      console.warn("Error during scroll:", error);
+      // В случае ошибки используем запасной вариант
+      try {
+        window.scrollTo({
+          top: document.body.scrollHeight - window.innerHeight / 2,
+          behavior: 'smooth'
+        });
+      } catch (e) {
+        // Если и это не сработает, используем самый простой метод
+        window.scrollTo(0, document.body.scrollHeight);
+      }
     }
   };
-
-
 
   // Card container styles - изменено для размещения карточек на разных экранах
   const cardContainerStyle: React.CSSProperties = {
@@ -243,9 +306,14 @@ const IntroSection: React.FC = () => {
           </p>
           
           {/* Explore More button */}
-          <button 
-            onClick={scrollToContacts}
+          <a 
+            href={isMobile ? "#contact-form" : "#contacts"}
+            onClick={(e) => {
+              e.preventDefault(); // Предотвращаем стандартное поведение якоря
+              scrollToContacts();
+            }}
             style={{
+              display: 'inline-block',
               background: 'linear-gradient(to right, #00837f, #241e46)',
               color: 'white',
               border: 'none',
@@ -258,21 +326,23 @@ const IntroSection: React.FC = () => {
               transition: 'all 0.3s ease',
               marginBottom: '3rem',
               position: 'relative',
-              zIndex: 5
+              zIndex: 5,
+              textDecoration: 'none',
+              textAlign: 'center'
             }}
             onMouseOver={(e) => {
-              const target = e.currentTarget as HTMLButtonElement;
+              const target = e.currentTarget as HTMLElement;
               target.style.transform = 'translateY(-2px)';
               target.style.boxShadow = '0 6px 15px rgba(0, 0, 0, 0.25)';
             }}
             onMouseOut={(e) => {
-              const target = e.currentTarget as HTMLButtonElement;
+              const target = e.currentTarget as HTMLElement;
               target.style.transform = 'translateY(0)';
               target.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)';
             }}
           >
             EXPLORE MORE
-          </button>
+          </a>
         </div>
 
         {/* Карточки в одну строку */}
@@ -362,7 +432,7 @@ const IntroSection: React.FC = () => {
             </p>
             
             {/* Мобильная версия текста (с переносами) */}
-            <p className="banner-text banner-text-mobile">
+            <p className={`banner-text banner-text-mobile ${isMobile ? 'force-show' : ''}`} style={{ display: isMobile ? 'block' : 'none' }}>
               Developed for excellence.<br/>
               Trusted for precision.<br/>
               Perfect for advanced applications.

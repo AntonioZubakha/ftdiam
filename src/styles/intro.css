@@ -409,22 +409,24 @@
   }
   
   .banner-text {
-    font-size: 1.25rem;
-    line-height: 1.8;
-  }
-  
-  /* Разделяем предложения на новые строки в мобильной версии */
-  .banner-text-mobile {
-    display: block;
-  }
-  
-  .banner-text-desktop {
-    display: none;
+    font-size: 1.35rem;
+    line-height: 2;
+    padding: 0 10px;
   }
   
   .gradient-banner {
     padding: 25px 0;
     margin-top: 0;
+  }
+  
+  /* Показываем мобильную версию с переносами строк */
+  .banner-text-mobile {
+    display: block !important;
+  }
+  
+  /* Скрываем десктопную версию на мобильных */
+  .banner-text-desktop {
+    display: none !important;
   }
 }
 
@@ -450,11 +452,16 @@
   }
 }
 
-/* По умолчанию показываем десктопную версию, скрываем мобильную */
+/* Базовые стили для десктопного/мобильного отображения */
 .banner-text-mobile {
   display: none;
 }
 
 .banner-text-desktop {
   display: block;
+}
+
+/* Класс для принудительного отображения мобильной версии */
+.force-show {
+  display: block !important;
 } 

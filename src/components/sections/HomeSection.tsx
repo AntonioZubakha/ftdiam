@@ -22,7 +22,47 @@ const HomeSection: FC<HomeSectionProps> = ({ scrollToSection }) => {
 
   const handleContactClick = () => {
     trackButtonClick('home_get_in_touch');
-    scrollToSection('contacts');
+    
+    try {
+      if (isMobile) {
+        // На мобильных устройствах прокручиваем к форме обратной связи
+        const contactForm = document.getElementById('contact-form') || 
+                            document.querySelector('.contact-form');
+                            
+        if (contactForm) {
+          // Метод 1: Используем scrollIntoView
+          contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          
+          // Метод 2: Если первый не сработал, используем setTimeout и window.scrollTo
+          setTimeout(() => {
+            const rect = contactForm.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const targetY = rect.top + scrollTop - 100; // Отступ сверху 100px
+            
+            window.scrollTo({
+              top: targetY,
+              behavior: 'smooth'
+            });
+          }, 100);
+        } else {
+          // Если форму не нашли, ищем секцию контактов
+          const contactsSection = document.getElementById('contacts');
+          if (contactsSection) {
+            contactsSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      } else {
+        // На десктопе просто прокручиваем к началу секции контактов
+        const contactsSection = document.getElementById('contacts');
+        if (contactsSection) {
+          contactsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    } catch (error) {
+      console.warn("Error during scroll:", error);
+      // В случае ошибки используем запасной вариант
+      scrollToSection('contacts');
+    }
   };
 
   return (
@@ -38,13 +78,17 @@ const HomeSection: FC<HomeSectionProps> = ({ scrollToSection }) => {
               Produced by Advanced HPHT technology<br />
               for cutting-edge applications
             </p>
-            <button 
+            <a 
+              href={isMobile ? "#contact-form" : "#contacts"}
               className="home__button"
-              onClick={handleContactClick}
+              onClick={(e) => {
+                e.preventDefault();
+                handleContactClick();
+              }}
               aria-label="Contact us for more information"
             >
               GET IN TOUCH
-            </button>
+            </a>
           </div>
           
           {!isMobile && (

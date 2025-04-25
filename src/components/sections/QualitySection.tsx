@@ -15,11 +15,48 @@ const QualitySection: React.FC = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const scrollToContacts = () => {
-    const contactsSection = document.getElementById('contacts');
-    if (contactsSection) {
-      contactsSection.scrollIntoView({ behavior: 'smooth' });
-      // Отслеживаем клик по кнопке
-      trackButtonClick('product_contact_tailored');
+    // Отслеживаем клик по кнопке
+    trackButtonClick('request_analysis');
+    
+    try {
+      if (isMobile) {
+        // На мобильных устройствах прокручиваем к форме обратной связи
+        const contactForm = document.getElementById('contact-form') || 
+                           document.querySelector('.contact-form');
+                           
+        if (contactForm) {
+          // Метод 1: Используем scrollIntoView
+          contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          
+          // Метод 2: Если первый не сработал, используем setTimeout и window.scrollTo
+          setTimeout(() => {
+            const rect = contactForm.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const targetY = rect.top + scrollTop - 100; // Отступ сверху 100px
+            
+            window.scrollTo({
+              top: targetY,
+              behavior: 'smooth'
+            });
+          }, 100);
+        } else {
+          // Если форму не нашли, ищем секцию контактов
+          const contactsSection = document.getElementById('contacts');
+          if (contactsSection) {
+            contactsSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      } else {
+        // На десктопе просто прокручиваем к началу секции контактов
+        const contactsSection = document.getElementById('contacts');
+        if (contactsSection) {
+          contactsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    } catch (error) {
+      console.warn("Error during scroll:", error);
+      // В случае ошибки используем запасной вариант
+      window.location.href = '#contacts';
     }
   };
   
@@ -607,11 +644,16 @@ const QualitySection: React.FC = () => {
           </div>
           
           {/* Кнопка запроса документа */}
-          <button 
+          <a 
+            href={isMobile ? "#contact-form" : "#contacts"}
             className="request-document-button"
-            onClick={scrollToContacts}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToContacts();
+            }}
             aria-label="Request analysis documentation"
             style={{
+              display: 'inline-block',
               background: 'linear-gradient(to right, #00837f, #241e46)',
               color: 'white',
               border: 'none',
@@ -624,21 +666,22 @@ const QualitySection: React.FC = () => {
               transition: 'all 0.3s ease',
               position: 'relative',
               zIndex: 5,
-              marginTop: isMobile ? '20px' : isTablet ? '30px' : '40px'
+              marginTop: isMobile ? '20px' : isTablet ? '30px' : '40px',
+              textDecoration: 'none'
             }}
             onMouseOver={(e) => {
-              const target = e.currentTarget as HTMLButtonElement;
+              const target = e.currentTarget as HTMLElement;
               target.style.transform = 'translateY(-2px)';
               target.style.boxShadow = '0 6px 15px rgba(0, 0, 0, 0.25)';
             }}
             onMouseOut={(e) => {
-              const target = e.currentTarget as HTMLButtonElement;
+              const target = e.currentTarget as HTMLElement;
               target.style.transform = 'translateY(0)';
               target.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)';
             }}
           >
             REQUEST ANALYSIS DOCUMENTATION
-          </button>
+          </a>
         </div>
       </div>
 
