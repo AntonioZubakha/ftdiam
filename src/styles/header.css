@@ -45,7 +45,7 @@ img.header-logo {
 .logo-wrapper {
   position: absolute !important;
   top: 0 !important;
-  left: 15px !important; /* Добавляем отступ слева */
+  left: clamp(15px, 5vw, 15vw) !important; /* Responsive padding that increases with screen size */
   z-index: 2000 !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -72,7 +72,7 @@ img.header-logo {
 /* Corner logo positioning */
 .corner-logo {
   position: absolute !important;
-  left: 0 !important;
+  left: clamp(15px, 5vw, 15vw) !important; /* Responsive padding that increases with screen size */
   top: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -318,6 +318,11 @@ img.header-logo.white-logo,
   .desktop-menu-items a {
     font-size: clamp(var(--text-xs), 0.9vw, var(--text-sm));
     letter-spacing: 0.3px;
+  }
+  
+  /* Adjust logo position for medium screens */
+  .logo-wrapper, .corner-logo {
+    left: clamp(15px, 4vw, 10vw) !important;
   }
 }
 
