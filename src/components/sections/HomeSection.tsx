@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { FC } from 'react';
-import { trackButtonClick } from '../../utils/analytics';
+import React, { useState, useEffect, useRef, FC } from 'react';
+import '../../styles/home.css';
 
 interface HomeSectionProps {
   scrollToSection: (sectionId: string) => void;
@@ -8,6 +7,7 @@ interface HomeSectionProps {
 
 const HomeSection: FC<HomeSectionProps> = ({ scrollToSection }) => {
   const [isMobile, setIsMobile] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
   
   useEffect(() => {
     const handleResize = () => {
@@ -20,9 +20,16 @@ const HomeSection: FC<HomeSectionProps> = ({ scrollToSection }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(error => {
+        // Autoplay was prevented.
+        console.warn("Video autoplay was prevented:", error);
+      });
+    }
+  }, [isMobile]);
+
   const handleContactClick = () => {
-    trackButtonClick('home_get_in_touch');
-    
     try {
       if (isMobile) {
         // На мобильных устройствах прокручиваем к форме обратной связи
@@ -66,7 +73,20 @@ const HomeSection: FC<HomeSectionProps> = ({ scrollToSection }) => {
   };
 
   return (
-    <section className="home">
+    <section id="home" className="home">
+      <div className="home__video-container">
+        <video 
+          ref={videoRef}
+          autoPlay 
+          loop
+          muted 
+          playsInline 
+          className="home__background-video"
+          key={isMobile ? 'mobile' : 'desktop'}
+        >
+          <source src={isMobile ? "/video/mob.mp4" : "/video/V001.mp4"} type="video/mp4" />
+        </video>
+      </div>
       <div className="home__container">
         <div className="home__content">
           <div className="home__text">
@@ -89,17 +109,10 @@ const HomeSection: FC<HomeSectionProps> = ({ scrollToSection }) => {
             >
               GET IN TOUCH
             </a>
-          </div>
-          
-          {!isMobile && (
-            <div className="home__image">
-              <img 
-                src="/images/photo1.1.png" 
-                alt="Diamond substrates visualization" 
-                className="home__image-content"
-              />
+            <div className="home__subtitle">
+              Inspired by Nature. Engineered to Perfection.
             </div>
-          )}
+          </div>
         </div>
       </div>
     </section>

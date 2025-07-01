@@ -253,6 +253,7 @@ form {
   background-color: #fff;
   transition: all 0.3s ease;
   font-family: inherit;
+  caret-color: var(--primary-dark-blue);
 }
 
 .form-group textarea {
@@ -307,7 +308,18 @@ form {
 
 .success-note {
   font-size: 0.9rem;
-  margin-top: 15px;
+  color: #333;
+}
+
+.form-message.form-error {
+  padding: var(--spacing-4);
+  border: 1px solid var(--error-color);
+  background-color: rgba(231, 76, 60, 0.1);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  margin-bottom: var(--spacing-4);
+  color: var(--error-color);
+  font-weight: 500;
 }
 
 .form-note {
@@ -315,6 +327,7 @@ form {
   margin-bottom: 15px;
   color: #666;
   font-style: italic;
+  font-size: 0.8rem;
 }
 
 /* Адаптивные стили */

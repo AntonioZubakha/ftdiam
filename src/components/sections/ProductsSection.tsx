@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { trackButtonClick } from '../../utils/analytics';
+import '../../styles/products.css';
 
 const ProductsSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -8,6 +8,8 @@ const ProductsSection: React.FC = () => {
   const [isSmallMobile, setIsSmallMobile] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const imageLoadedArray = useRef<boolean[]>([]);
+  const video1Ref = useRef<HTMLVideoElement>(null);
+  const video2Ref = useRef<HTMLVideoElement>(null);
   
   // Check screen size
   useEffect(() => {
@@ -119,6 +121,22 @@ const ProductsSection: React.FC = () => {
     loadImages();
   }, []);
   
+  // Attempt to play videos programmatically for iOS
+  useEffect(() => {
+    const playVideo = async (videoRef: React.RefObject<HTMLVideoElement>) => {
+      if (videoRef.current) {
+        try {
+          await videoRef.current.play();
+        } catch (error) {
+          console.error("Video autoplay failed:", error);
+          // Autoplay was prevented.
+        }
+      }
+    };
+    playVideo(video1Ref);
+    playVideo(video2Ref);
+  }, []);
+  
   const handlePrevClick = () => {
     if (isTransitioning) return;
     setIsTransitioning(true);
@@ -146,50 +164,10 @@ const ProductsSection: React.FC = () => {
   const nextIndex = activeIndex === products.length - 1 ? 0 : activeIndex + 1;
   const prevIndex = activeIndex === 0 ? products.length - 1 : activeIndex - 1;
   
-  // Функция для прокрутки к секции контактов
   const scrollToContacts = () => {
-    // Отслеживаем клик по кнопке
-    trackButtonClick('product_contact_tailored');
-    
-    try {
-      if (isMobile) {
-        // На мобильных устройствах прокручиваем к форме обратной связи
-        const contactForm = document.getElementById('contact-form') || 
-                           document.querySelector('.contact-form');
-                           
-        if (contactForm) {
-          // Метод 1: Используем scrollIntoView
-          contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          
-          // Метод 2: Если первый не сработал, используем setTimeout и window.scrollTo
-          setTimeout(() => {
-            const rect = contactForm.getBoundingClientRect();
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const targetY = rect.top + scrollTop - 100; // Отступ сверху 100px
-            
-            window.scrollTo({
-              top: targetY,
-              behavior: 'smooth'
-            });
-          }, 100);
-        } else {
-          // Если форму не нашли, ищем секцию контактов
-          const contactsSection = document.getElementById('contacts');
-          if (contactsSection) {
-            contactsSection.scrollIntoView({ behavior: 'smooth' });
-          }
-        }
-      } else {
-        // На десктопе просто прокручиваем к началу секции контактов
-        const contactsSection = document.getElementById('contacts');
-        if (contactsSection) {
-          contactsSection.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    } catch (error) {
-      console.warn("Error during scroll:", error);
-      // В случае ошибки используем запасной вариант
-      window.location.href = '#contacts';
+    const contactsSection = document.getElementById('contacts');
+    if (contactsSection) {
+      contactsSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
   
@@ -223,13 +201,13 @@ const ProductsSection: React.FC = () => {
         <div className="products-content-wrapper">
           {/* Левая часть с видео и изображениями */}
           <div className="video-container">
-            <div className="media-item video-top-left">
-              <video autoPlay muted loop playsInline>
+            <div className="media-item">
+              <video ref={video1Ref} autoPlay muted loop playsInline>
                 <source src="/video/1.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
-            <div className="media-item image-top-right tailored-solutions-container">
+            <div className="media-item tailored-solutions-container">
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
                 <h3 className="tailored-solutions-title">
                   Tailored Solutions<br />
@@ -238,11 +216,11 @@ const ProductsSection: React.FC = () => {
                 </h3>
               </div>
             </div>
-            <div className="media-item image-bottom-left">
+            <div className="media-item">
               <img src="/images/6565.jpg" alt="Diamond quality control" />
             </div>
-            <div className="media-item video-bottom-right">
-              <video autoPlay muted loop playsInline>
+            <div className="media-item">
+              <video ref={video2Ref} autoPlay muted loop playsInline>
                 <source src="/video/2.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>

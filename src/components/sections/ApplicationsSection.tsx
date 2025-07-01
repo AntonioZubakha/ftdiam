@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { trackButtonClick } from '../../utils/analytics';
+import '../../styles/app.css';
 
 const ApplicationsSection: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -76,49 +76,10 @@ const ApplicationsSection: React.FC = () => {
     zIndex: 0
   };
 
-  // Функция для прокрутки к секции контактов с отслеживанием клика
-  const scrollToContacts = () => {
-    trackButtonClick('applications_contact_us');
-    
-    try {
-      if (isMobile) {
-        // На мобильных устройствах прокручиваем к форме обратной связи
-        const contactForm = document.getElementById('contact-form') || 
-                           document.querySelector('.contact-form');
-                           
-        if (contactForm) {
-          // Метод 1: Используем scrollIntoView
-          contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          
-          // Метод 2: Если первый не сработал, используем setTimeout и window.scrollTo
-          setTimeout(() => {
-            const rect = contactForm.getBoundingClientRect();
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const targetY = rect.top + scrollTop - 100; // Отступ сверху 100px
-            
-            window.scrollTo({
-              top: targetY,
-              behavior: 'smooth'
-            });
-          }, 100);
-        } else {
-          // Если форму не нашли, ищем секцию контактов
-          const contactsSection = document.getElementById('contacts');
-          if (contactsSection) {
-            contactsSection.scrollIntoView({ behavior: 'smooth' });
-          }
-        }
-      } else {
-        // На десктопе просто прокручиваем к началу секции контактов
-        const contactsSection = document.getElementById('contacts');
-        if (contactsSection) {
-          contactsSection.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    } catch (error) {
-      console.warn("Error during scroll:", error);
-      // В случае ошибки используем запасной вариант
-      window.location.href = '#contacts';
+  const handleContactClick = () => {
+    const contactSection = document.getElementById('contacts');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -336,12 +297,8 @@ const ApplicationsSection: React.FC = () => {
           marginTop: '40px',
           marginBottom: isMobile ? '50px' : isTablet ? '50px' : '50px',
         }}>
-          <a 
-            href={isMobile ? "#contact-form" : "#contacts"}
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToContacts();
-            }}
+          <button 
+            onClick={handleContactClick}
             style={{
               display: 'inline-block',
               background: 'linear-gradient(to right, #00837f, #241e46)',
@@ -370,7 +327,7 @@ const ApplicationsSection: React.FC = () => {
             }}
           >
             CONTACT US
-          </a>
+          </button>
         </div>
       </div>
     </section>

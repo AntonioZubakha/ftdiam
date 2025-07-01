@@ -6,6 +6,8 @@ import { faEnvelope, faPhone, faLocationDot } from '@fortawesome/free-solid-svg-
 const ContactsSection = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   
   useEffect(() => {
     const handleResize = () => {
@@ -18,14 +20,34 @@ const ContactsSection = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('submitted') === 'true') {
-      setFormSubmitted(true);
-      const newUrl = window.location.pathname + window.location.hash;
-      window.history.replaceState({}, document.title, newUrl);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    const form = e.target as HTMLFormElement;
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setFormSubmitted(true);
+      } else {
+        setSubmitError('An unexpected error occurred. Please try again.');
+      }
+    } catch (error) {
+      setSubmitError('Failed to send message. Please check your network connection.');
+    } finally {
+      setIsSubmitting(false);
     }
-  }, []);
+  };
 
   return (
     <section id="contacts" className="contacts-section">
@@ -131,11 +153,10 @@ const ContactsSection = () => {
                 <p className="success-note">We'll get back to you as soon as possible.</p>
               </div>
             ) : (
-              <form action="https://formsubmit.co/el/confirm/76f56db086e0b0ec44a63e16e4fb4ef1" method="POST">
+              <form action="https://formsubmit.co/info@ftdiam.com" method="POST" onSubmit={handleSubmit}>
                 <input type="hidden" name="_subject" value="New message from FTDiam website" />
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_next" value={`${window.location.href.split('?')[0]}?submitted=true`} />
                 <input type="text" name="_honey" style={{ display: 'none' }} />
                 
                 <input type="hidden" name="_autoresponse" value="Thank you for contacting FTDiam. We have received your message and will get back to you soon." />
@@ -146,6 +167,7 @@ const ContactsSection = () => {
                     name="name"
                     placeholder="Your name" 
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 
@@ -155,6 +177,7 @@ const ContactsSection = () => {
                     name="email"
                     placeholder="Your email" 
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 
@@ -163,15 +186,22 @@ const ContactsSection = () => {
                     name="message"
                     placeholder="Your message" 
                     required
+                    disabled={isSubmitting}
                   ></textarea>
                 </div>
+
+                {submitError && (
+                  <div className="form-message form-error">
+                    <p>{submitError}</p>
+                  </div>
+                )}
                 
                 <p className="form-note">
                   By submitting this form, you agree to our privacy policy. First-time users may receive a confirmation email from FormSubmit.
                 </p>
                 
-                <button type="submit" className="contact-submit-button">
-                  SEND MESSAGE
+                <button type="submit" className="contact-submit-button" disabled={isSubmitting}>
+                  {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
                 </button>
               </form>
             )}

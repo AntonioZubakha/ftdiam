@@ -1,5 +1,0 @@
-[33mcommit 585f18a82a3a9a99da25cf04ad6602f15b3b6472[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
-Author: AnonioZ <anton.zubaha@gmail.com>
-Date:   Tue Apr 1 18:58:23 2025 +0300
-
-    Remove loading screen and unused React import

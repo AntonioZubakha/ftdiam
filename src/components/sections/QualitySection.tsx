@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { trackButtonClick } from '../../utils/analytics';
+import '../../styles/quality.css';
 
 const QualitySection: React.FC = () => {
   const [modalImage, setModalImage] = useState<string | null>(null);
@@ -15,24 +15,18 @@ const QualitySection: React.FC = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const scrollToContacts = () => {
-    // Отслеживаем клик по кнопке
-    trackButtonClick('request_analysis');
-    
     try {
       if (isMobile) {
-        // На мобильных устройствах прокручиваем к форме обратной связи
         const contactForm = document.getElementById('contact-form') || 
                            document.querySelector('.contact-form');
                            
         if (contactForm) {
-          // Метод 1: Используем scrollIntoView
           contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
           
-          // Метод 2: Если первый не сработал, используем setTimeout и window.scrollTo
           setTimeout(() => {
             const rect = contactForm.getBoundingClientRect();
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const targetY = rect.top + scrollTop - 100; // Отступ сверху 100px
+            const targetY = rect.top + scrollTop - 100;
             
             window.scrollTo({
               top: targetY,
@@ -40,14 +34,12 @@ const QualitySection: React.FC = () => {
             });
           }, 100);
         } else {
-          // Если форму не нашли, ищем секцию контактов
           const contactsSection = document.getElementById('contacts');
           if (contactsSection) {
             contactsSection.scrollIntoView({ behavior: 'smooth' });
           }
         }
       } else {
-        // На десктопе просто прокручиваем к началу секции контактов
         const contactsSection = document.getElementById('contacts');
         if (contactsSection) {
           contactsSection.scrollIntoView({ behavior: 'smooth' });
@@ -55,12 +47,10 @@ const QualitySection: React.FC = () => {
       }
     } catch (error) {
       console.warn("Error during scroll:", error);
-      // В случае ошибки используем запасной вариант
       window.location.href = '#contacts';
     }
   };
   
-  // Массив путей к изображениям
   const imagePaths = [
     '/images/photo1.jpg',
     '/images/photo2.jpg',
@@ -69,7 +59,6 @@ const QualitySection: React.FC = () => {
     '/images/photo4.jpg'
   ];
 
-  // Массив данных карточек
   const cardData = [
     {
       image: '/images/photo1.jpg',
@@ -103,7 +92,6 @@ const QualitySection: React.FC = () => {
     }
   ];
 
-  // Предзагрузка изображений
   useEffect(() => {
     const loadImage = (src: string): Promise<void> => {
       return new Promise((resolve, reject) => {
@@ -120,12 +108,10 @@ const QualitySection: React.FC = () => {
       })
       .catch(error => {
         console.error('Error preloading images:', error);
-        // Даже если произошла ошибка, позволяем компоненту отрендериться
         setImagesLoaded(true);
       });
   }, []);
 
-  // Check if the screen is mobile-sized or tablet-sized
   useEffect(() => {
     const checkScreenSize = () => {
       const width = window.innerWidth;
@@ -133,13 +119,12 @@ const QualitySection: React.FC = () => {
       setIsTablet(width > 768 && width <= 992);
     };
     
-    checkScreenSize(); // Initial check
+    checkScreenSize();
     window.addEventListener('resize', checkScreenSize);
     
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  // Добавляем наблюдатель за каждой карточкой только после загрузки изображений
   useEffect(() => {
     if (!imagesLoaded) return;
 
@@ -168,7 +153,6 @@ const QualitySection: React.FC = () => {
     };
   }, [imagesLoaded]);
   
-  // Функция для перехода к определенному слайду
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
     if (sliderRef.current) {
@@ -176,19 +160,16 @@ const QualitySection: React.FC = () => {
     }
   };
 
-  // Функция для перехода к предыдущему слайду
   const prevSlide = () => {
     const newIndex = currentSlide === 0 ? cardData.length - 1 : currentSlide - 1;
     goToSlide(newIndex);
   };
 
-  // Функция для перехода к следующему слайду
   const nextSlide = () => {
     const newIndex = currentSlide === cardData.length - 1 ? 0 : currentSlide + 1;
     goToSlide(newIndex);
   };
   
-  // Обработчики для свайпа на мобильных устройствах и планшетах
   const handleTouchStart = (e: React.TouchEvent) => {
     setIsDragging(true);
     setStartX(e.touches[0].clientX);
@@ -202,7 +183,6 @@ const QualitySection: React.FC = () => {
     const containerWidth = sliderRef.current.clientWidth;
     const percentMoved = (diff / containerWidth) * 100;
     
-    // Ограничиваем движение слайдера
     const newOffset = Math.max(
       Math.min(percentMoved, currentSlide === 0 ? 20 : 0),
       currentSlide === cardData.length - 1 ? -20 : -100
@@ -217,20 +197,17 @@ const QualitySection: React.FC = () => {
     
     setIsDragging(false);
     
-    // Если сдвиг был достаточно большим, переходим к следующему/предыдущему слайду
     if (slideOffset > 20) {
       prevSlide();
     } else if (slideOffset < -20) {
       nextSlide();
     } else {
-      // Возвращаем слайдер в исходное положение
       sliderRef.current.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
     
     setSlideOffset(0);
   };
   
-  // Обработчики для мыши (для планшета)
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true);
     setStartX(e.clientX);
@@ -239,7 +216,6 @@ const QualitySection: React.FC = () => {
       sliderRef.current.style.cursor = 'grabbing';
     }
     
-    // Предотвращаем выделение текста при перетаскивании
     e.preventDefault();
   };
   
@@ -251,7 +227,6 @@ const QualitySection: React.FC = () => {
     const containerWidth = sliderRef.current.clientWidth;
     const percentMoved = (diff / containerWidth) * 100;
     
-    // Ограничиваем движение слайдера
     const newOffset = Math.max(
       Math.min(percentMoved, currentSlide === 0 ? 20 : 0),
       currentSlide === cardData.length - 1 ? -20 : -100
@@ -270,46 +245,37 @@ const QualitySection: React.FC = () => {
       sliderRef.current.style.cursor = 'grab';
     }
     
-    // Если сдвиг был достаточно большим, переходим к следующему/предыдущему слайду
     if (slideOffset > 20) {
       prevSlide();
     } else if (slideOffset < -20) {
       nextSlide();
     } else {
-      // Возвращаем слайдер в исходное положение
       sliderRef.current.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
     
     setSlideOffset(0);
   };
   
-  // Обработчик выхода мыши за пределы слайдера
   const handleMouseLeave = () => {
     if (isDragging) {
       handleMouseUp();
     }
   };
   
-  // Открытие изображения в модальном окне
   const openModal = (imageSrc: string) => {
     setModalImage(imageSrc);
     document.body.style.overflow = 'hidden';
   };
 
-  // Закрытие модального окна
   const closeModal = () => {
     setModalImage(null);
     document.body.style.overflow = '';
   };
 
-  // Обработчик клика по кнопке запроса документации с отслеживанием
-  const handleRequestDocumentation = () => {
-    trackButtonClick('request_analysis');
-    // Здесь можно добавить открытие формы или модального окна
-    console.log('Запрос документа');
+  const handleRequestAnalysis = () => {
+    window.location.href = '#contacts';
   };
 
-  // Определяем стиль с фоновым изображением
   const backgroundStyle = {
     backgroundImage: 'url(/images/gpt.png)',
     backgroundPosition: 'center',
@@ -356,7 +322,6 @@ const QualitySection: React.FC = () => {
     transition: 'transform 0.3s ease'
   };
 
-  // Новый стиль для заголовка (без липкости)
   const titleStyle = {
     position: 'static' as const,
     minWidth: '300px',
@@ -366,7 +331,6 @@ const QualitySection: React.FC = () => {
     width: '100%'
   };
 
-  // Рендер карточек для десктопной версии
   const renderDesktopCards = () => {
     return cardData.map((card, index) => (
       <div 
@@ -432,9 +396,7 @@ const QualitySection: React.FC = () => {
     ));
   };
 
-  // Рендер слайдера для мобильных и планшетов
   const renderSlider = () => {
-    // Определяем стиль для карточек в зависимости от типа устройства
     const cardStyle = isMobile ? {
       padding: '15px'
     } : {
@@ -556,7 +518,6 @@ const QualitySection: React.FC = () => {
           ))}
         </div>
         
-        {/* Индикаторы слайдов для планшетов */}
         {isTablet && (
           <div className="slider-indicators">
             {cardData.map((_, index) => (
@@ -583,7 +544,7 @@ const QualitySection: React.FC = () => {
         paddingBottom: isMobile ? '40px' : isTablet ? '50px' : '50px',
         position: 'relative',
         minHeight: isMobile ? 'auto' : '80vh',
-        visibility: imagesLoaded ? 'visible' : 'hidden' // Скрываем секцию до загрузки изображений
+        visibility: imagesLoaded ? 'visible' : 'hidden'
       }}
     >
       <div style={backgroundStyle}></div>
@@ -604,7 +565,6 @@ const QualitySection: React.FC = () => {
           margin: '0 auto',
           padding: '0 20px'
         }}>
-          {/* Заголовок и подзаголовок */}
           <div style={titleStyle}>
             <h2 className="quality-headline gradient-headline" style={{ 
               fontSize: isMobile ? 'var(--section-headline-mobile-size)' : isTablet ? 'var(--section-headline-tablet-size)' : 'var(--section-headline-size)',
@@ -638,12 +598,10 @@ const QualitySection: React.FC = () => {
             </p>
           </div>
           
-          {/* Карточки в одном ряду с мобильным слайдером */}
           <div className={`quality-cards-row ${isMobile ? 'slider-container' : ''}`}>
             {isMobile ? renderSlider() : renderDesktopCards()}
           </div>
           
-          {/* Кнопка запроса документа */}
           <a 
             href={isMobile ? "#contact-form" : "#contacts"}
             className="request-document-button"
@@ -685,7 +643,6 @@ const QualitySection: React.FC = () => {
         </div>
       </div>
 
-      {/* Модальное окно для увеличенного изображения */}
       {modalImage && (
         <div style={{
           position: 'fixed' as const,

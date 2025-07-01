@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { trackButtonClick } from '../../utils/analytics';
+import '../../styles/technology.css';
 
 const TechnologySection: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -20,9 +20,6 @@ const TechnologySection: React.FC = () => {
 
   // Обновленная функция для скролла к секции контактов по аналогии с ProductsSection
   const scrollToContacts = () => {
-    // Отслеживаем клик по кнопке
-    trackButtonClick('tech_request_quotation');
-    
     try {
       if (isMobile) {
         // На мобильных устройствах прокручиваем к форме обратной связи
@@ -67,7 +64,6 @@ const TechnologySection: React.FC = () => {
 
   // Функция открытия модального окна (оставлена для обратной совместимости)
   const openModal = () => {
-    trackButtonClick('tech_request_quotation');
     setModalOpen(true);
   };
 

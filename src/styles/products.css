@@ -126,84 +126,60 @@ html, body {
 /* Контейнер для контента */
 .products-content-wrapper {
   display: flex;
+  gap: var(--spacing-12);
+  align-items: stretch;
   width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-  overflow: hidden;
-  box-sizing: border-box;
 }
 
 /* Media Components
 ----------------------------------------------- */
 .video-container {
-  width: 50%;
-  aspect-ratio: 1/1;
-  position: relative;
-  box-sizing: border-box;
+  flex: 1 1 50%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
-  font-size: 0;
 }
 
 .media-item {
-  position: absolute;
+  position: relative;
   overflow: hidden;
-  margin: 0;
-  padding: 0;
-  border: none;
-  font-size: 0;
-  line-height: 0;
-  will-change: transform; /* Оптимизация производительности */
+  background: var(--light-gray);
+  width: 100%;
+  height: 100%;
 }
 
-.media-item.video-top-left {
-  top: 0;
-  left: 0;
-  width: calc(50% + 1px);
-  height: calc(50% + 1px);
-  z-index: var(--z-normal);
-}
-
-.media-item.video-bottom-right {
-  bottom: 0;
-  right: 0;
-  width: calc(50% + 1px);
-  height: calc(50% + 1px);
-  z-index: var(--z-normal);
-}
-
-.media-item.image-top-right {
-  top: 0;
-  right: 0;
-  width: calc(50% + 1px);
-  height: calc(50% + 1px);
-  z-index: var(--z-normal);
-}
-
-.media-item.image-bottom-left {
-  bottom: 0;
-  left: 0;
-  width: calc(50% + 1px);
-  height: calc(50% + 1px);
-  z-index: var(--z-normal);
+.media-item.tailored-solutions-container {
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .media-item video,
 .media-item img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-  margin: 0;
-  padding: 0;
-  will-change: transform; /* Помогает предотвратить артефакты */
+  transition: transform 0.4s ease;
+}
+
+.media-item:hover video,
+.media-item:hover img {
+  transform: scale(1.05);
 }
 
 /* Product Content Styles
 ----------------------------------------------- */
 .product-content {
+  flex: 1 1 50%;
   display: flex;
   flex-direction: column;
-  width: 50%;
   padding: 0 var(--spacing-10);
   position: relative;
   box-sizing: border-box;
@@ -563,25 +539,24 @@ html, body {
 ----------------------------------------------- */
 @media screen and (max-width: 992px) {
   .products-section {
-    padding: var(--spacing-20) 0 var(--spacing-20) 0;
+    padding-top: var(--spacing-12);
   }
-  
   .products-headline-container {
-    margin: var(--spacing-16) 0 var(--spacing-16) 0;
+    margin-bottom: var(--spacing-8);
   }
-  
   .products-content-wrapper {
     flex-direction: column;
     align-items: center;
+    gap: var(--spacing-10);
   }
-  
   .video-container,
   .product-content {
+    flex: none;
     width: 100%;
+    max-width: 600px;
   }
   
   .video-container {
-    aspect-ratio: 16/9;
     margin-bottom: var(--spacing-8);
   }
   

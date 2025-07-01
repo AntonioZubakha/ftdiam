@@ -11,9 +11,7 @@ import ApplicationsSection from './components/sections/ApplicationsSection'
 import ContactsSection from './components/sections/ContactsSection'
 import BluePrint from './components/sections/BluePrint'
 import ClientsSection from './components/sections/ClientsSection'
-import LoginPage from './pages/LoginPage'
-import AdminPage from './pages/AdminPage'
-import { trackVisitor } from './utils/analytics'
+
 
 // Import styles
 import './styles/index.css'
@@ -24,17 +22,6 @@ declare global {
     gtag?: (command: string, action: string, params: object) => void;
   }
 }
-
-// Component for protected routes
-const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const isAuthenticated = sessionStorage.getItem('ftdiam_admin_auth') === 'true';
-  
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
-  
-  return <>{children}</>;
-};
 
 // Main site component
 const MainSite: React.FC = () => {
@@ -119,11 +106,6 @@ const MainSite: React.FC = () => {
     };
   }, [activeSection]);
   
-  // Track site visits
-  useEffect(() => {
-    trackVisitor();
-  }, []);
-  
   // Check URL hash on initial load for direct section navigation
   useEffect(() => {
     const hash = window.location.hash.replace('#', '');
@@ -180,12 +162,6 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<MainSite />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/admin" element={
-          <ProtectedRoute>
-            <AdminPage />
-          </ProtectedRoute>
-        } />
       </Routes>
     </Router>
   );

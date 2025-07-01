@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { trackButtonClick } from '../../utils/analytics';
+import '../../styles/intro.css';
 
 const IntroSection: React.FC = () => {
-  const [isMobile, setIsMobile] = useState(false);
-  const [isTablet, setIsTablet] = useState(false);
-  const [isWideScreen, setIsWideScreen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isTablet, setIsTablet] = useState(window.innerWidth > 768 && window.innerWidth <= 992);
+  const [isWideScreen, setIsWideScreen] = useState(window.innerWidth >= 1600);
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
   const [contentLoaded, setContentLoaded] = useState(false);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -87,13 +87,6 @@ const IntroSection: React.FC = () => {
   // Функция для прокрутки к секции контактов с отслеживанием клика
   const scrollToContacts = () => {
     try {
-      trackButtonClick('intro_contact_us');
-      
-      // Отладочная информация о доступности элементов
-      console.log('Contact form found by ID:', document.getElementById('contact-form') !== null);
-      console.log('Contacts section found by ID:', document.getElementById('contacts') !== null);
-      console.log('Contact form found by class:', document.querySelector('.contact-form') !== null);
-      
       if (isMobile) {
         // На мобильных устройствах прокручиваем к форме обратной связи
         // Пробуем несколько способов найти форму
@@ -120,12 +113,6 @@ const IntroSection: React.FC = () => {
           const contactsSection = document.getElementById('contacts');
           if (contactsSection) {
             contactsSection.scrollIntoView({ behavior: 'smooth' });
-          } else {
-            // Если ничего не нашли, прокручиваем в конец страницы
-            window.scrollTo({
-              top: document.body.scrollHeight,
-              behavior: 'smooth'
-            });
           }
         }
       } else {
@@ -138,15 +125,7 @@ const IntroSection: React.FC = () => {
     } catch (error) {
       console.warn("Error during scroll:", error);
       // В случае ошибки используем запасной вариант
-      try {
-        window.scrollTo({
-          top: document.body.scrollHeight - window.innerHeight / 2,
-          behavior: 'smooth'
-        });
-      } catch (e) {
-        // Если и это не сработает, используем самый простой метод
-        window.scrollTo(0, document.body.scrollHeight);
-      }
+      window.location.href = '#contacts';
     }
   };
 

@@ -180,6 +180,7 @@ body {
   font-weight: var(--font-weight-normal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  caret-color: transparent;
 }
 
 /* Типографика */
