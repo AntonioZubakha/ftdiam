@@ -114,4 +114,6 @@ Invoke-SshCommand "chmod 666 $REMOTE_PATH/data/analytics.json"
 
 # 7. Удаление локального архива
 Remove-Item $ARCHIVE_NAME
-Write-Host "Done!" -ForegroundColor Green 
+Write-Host "Done!" -ForegroundColor Green
+
+# deploy.ps1 has been added to .gitignore 
