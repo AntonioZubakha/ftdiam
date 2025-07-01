@@ -89,14 +89,11 @@ const HomeSection: FC<HomeSectionProps> = ({ scrollToSection }) => {
       </div>
       <div className="home__container">
         <div className="home__content">
-          <div className="home__text">
             <h1 className="home__title">
-              <span className="home__title-line gradient-headline">FLAWLESS DIAMOND</span>
-              <span className="home__title-line gradient-headline">SUBSTRATES</span>
+              FLAWLESS DIAMOND SUBSTRATES
             </h1>
             <p className="home__description">
-              Produced by Advanced HPHT technology<br />
-              for cutting-edge applications
+              Produced by Advanced HPHT technology for cutting-edge applications
             </p>
             <a 
               href={isMobile ? "#contact-form" : "#contacts"}
@@ -109,10 +106,10 @@ const HomeSection: FC<HomeSectionProps> = ({ scrollToSection }) => {
             >
               GET IN TOUCH
             </a>
-            <div className="home__subtitle">
-              Inspired by Nature. Engineered to Perfection.
-            </div>
-          </div>
+        </div>
+        <div className="home__slogan">
+          <div className="home__slogan-left">Inspired by Nature</div>
+          <div className="home__slogan-right">Engineered to Perfection</div>
         </div>
       </div>
     </section>

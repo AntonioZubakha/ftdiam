@@ -41,6 +41,7 @@
   --text-3xl: 1.7rem;   /* 30px */
   --text-4xl: 2.25rem;  /* 36px */
   --text-5xl: 3rem;     /* 48px */
+  --hero-title-size: 3.2rem; /* 51.2px */
 
   /* Размеры заголовков */
   --h1-desktop: var(--text-5xl);     /* 3rem / 48px */
