@@ -106,7 +106,7 @@ const HomeSection: FC<HomeSectionProps> = ({ scrollToSection }) => {
             >
               GET IN TOUCH
             </a>
-        </div>
+            </div>
         <div className="home__slogan">
           <div className="home__slogan-left">Inspired by Nature</div>
           <div className="home__slogan-right">Engineered to Perfection</div>

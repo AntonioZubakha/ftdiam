@@ -54,16 +54,17 @@ const ApplicationsSection: React.FC = () => {
       rootMargin: '0px'
     });
 
-    cardRefs.current.forEach(card => {
+    const currentCardRefs = cardRefs.current;
+    currentCardRefs.forEach(card => {
       if (card) observer.observe(card);
     });
 
     return () => {
-      cardRefs.current.forEach(card => {
+      currentCardRefs.forEach(card => {
         if (card) observer.unobserve(card);
       });
     };
-  }, [contentLoaded]);
+  }, [contentLoaded, visibleCards]);
 
   // Определяем стиль с фоновым изображением
   const backgroundStyle = {

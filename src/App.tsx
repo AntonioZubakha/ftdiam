@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import HomeSection from './components/sections/HomeSection'
@@ -27,20 +27,6 @@ declare global {
 const MainSite: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isLoading, setIsLoading] = useState(true);
-  
-  const sectionsRef = useRef<{
-    [key: string]: HTMLElement | null;
-  }>({
-    home: null,
-    intro: null,
-    technology: null,
-    products: null,
-    quality: null,
-    applications: null,
-    clients: null,
-    blueprint: null,
-    contacts: null,
-  });
   
   // Function to scroll to section
   const scrollToSection = (sectionId: string) => {

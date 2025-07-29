@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const ClientsSection: React.FC = () => {
-  const [isMobile, setIsMobile] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
@@ -25,14 +24,6 @@ const ClientsSection: React.FC = () => {
   const tripleLogos = [...clientLogos, ...clientLogos, ...clientLogos];
   
   useEffect(() => {
-    // Check if the screen is mobile-sized
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    
-    checkMobile(); // Initial check
-    window.addEventListener('resize', checkMobile);
-    
     const slider = sliderRef.current;
     const track = trackRef.current;
     
@@ -90,7 +81,7 @@ const ClientsSection: React.FC = () => {
       // Stop the animation
       track.style.animation = 'none';
       // Force reflow
-      track.offsetHeight;
+      void track.offsetHeight;
       
       // Apply the current transform position as an inline style
       track.style.transform = `translateX(${currentTranslateX}px)`;
@@ -218,8 +209,6 @@ const ClientsSection: React.FC = () => {
     
     // Clean up event listeners
     return () => {
-      window.removeEventListener('resize', checkMobile);
-      
       slider.removeEventListener('mousedown', handleMouseDown);
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);

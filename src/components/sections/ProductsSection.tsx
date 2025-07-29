@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import '../../styles/products.css';
 
 const ProductsSection: React.FC = () => {
@@ -25,19 +25,20 @@ const ProductsSection: React.FC = () => {
   }, []);
   
   // Данные о продуктах точно по ТЗ
-  const products = [
+  const products = useMemo(() => [
     {
       id: 1,
       title: "Advanced HPHT Diamond Substrates",
       image: "/images/photo1.11.png",
       specs: [
-        "Type IIa single-crystal plates",
-        "Sizes: 3x3 mm to 15x15 mm",
-        "Thickness: 0.1-10 mm",
-        "Purity: ≤5 ppb Nitrogen",
-        "Dislocations: As low as 10¹ cm⁻²",
+        "Single-crystal CVD plates",
+        "Sizes: 3x3 mm to 30x30 mm",
+        "Thickness: 0.3-10 mm",
+        "Boron Concentration ≈ 0 ppb",
+        "Nitrogen Concentration ≈ 100 ppb",
+        "Dislocations density ≈ 10⁵⁻⁷cm⁻²",
         "Surface: Polished up to 0.5 nm Ra",
-        "Customization: Shapes, sizes, doping, orientation, miscut, polishing, etc."
+        "Customization: Shapes, sizes, orientation, miscut, polishing, etc."
       ]
     },
     {
@@ -78,7 +79,7 @@ const ProductsSection: React.FC = () => {
         "Customization: Shapes, sizes, orientation, miscut, polishing, etc."
       ]
     }
-  ];
+  ], []);
   
   // Предзагрузка изображений с улучшенной версией
   useEffect(() => {
@@ -119,7 +120,7 @@ const ProductsSection: React.FC = () => {
     };
     
     loadImages();
-  }, []);
+  }, [products]);
   
   // Attempt to play videos programmatically for iOS
   useEffect(() => {

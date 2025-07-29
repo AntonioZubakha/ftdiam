@@ -3,7 +3,6 @@ import '../../styles/technology.css';
 
 const TechnologySection: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   // Check if the screen is mobile-sized
@@ -60,16 +59,6 @@ const TechnologySection: React.FC = () => {
       // В случае ошибки используем запасной вариант
       window.location.href = '#contacts';
     }
-  };
-
-  // Функция открытия модального окна (оставлена для обратной совместимости)
-  const openModal = () => {
-    setModalOpen(true);
-  };
-
-  // Функция закрытия модального окна
-  const closeModal = () => {
-    setModalOpen(false);
   };
 
   return (

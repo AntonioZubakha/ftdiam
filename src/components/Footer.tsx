@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
           <div className="footer-col">
             <ul className="footer-contact">
               <li><a href="mailto:info@ftdiam.com"><FontAwesomeIcon icon={faEnvelope} style={iconStyle} /> info@ftdiam.com</a></li>
-              <li><a href="tel:+16172752599"><FontAwesomeIcon icon={faPhone} style={iconStyle} /> +1 617 275 2599</a></li>
+              <li><a href="tel:+19298224798"><FontAwesomeIcon icon={faPhone} style={iconStyle} /> +1 929 822 4798</a></li>
               <li><a href="https://www.linkedin.com/company/ftdiam" target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faLinkedin} style={iconStyle} />
                 LinkedIn

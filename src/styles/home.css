@@ -27,7 +27,6 @@
 
 /* Content layout */
 .home__content {
-  max-width: 800px;
   animation: fadeIn 1s ease-in-out;
   text-align: center;
 }
@@ -70,7 +69,7 @@
 /* Button styles */
 .home__button {
   display: inline-block;
-  background: linear-gradient(100deg, rgba(0, 131, 127, 0.8), rgba(36, 30, 70, 0.8));
+  background: linear-gradient(100deg, rgba(0, 131, 127, 0.4), rgba(36, 30, 70, 0.4));
   background-size: 200% 200%;
   background-position: center;
   color: var(--white);
@@ -82,7 +81,7 @@
   text-transform: uppercase;
   letter-spacing: 1.5px;
   cursor: pointer;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
   transition: all var(--transition-normal);
   position: relative;
   z-index: 1;
@@ -96,7 +95,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(100deg, rgba(36, 30, 70, 0.9), rgba(0, 131, 127, 0.9));
+  background: linear-gradient(100deg, rgba(36, 30, 70, 0.4), rgba(0, 131, 127, 0.4));
   background-size: 200% 200%;
   background-position: center;
   opacity: 0;
@@ -107,6 +106,7 @@
 .home__button:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  color: var(--white);
 }
 
 .home__button:hover::before {
@@ -116,12 +116,10 @@
 .home__slogan {
   position: absolute;
   bottom: 5%;
-  left: 0;
-  right: 0;
-  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
   display: flex;
-  justify-content: space-between;
-  padding: 0 5%;
   font-size: clamp(0.8rem, 2vw, 1rem);
   font-weight: var(--font-weight-medium);
   text-transform: uppercase;
@@ -130,12 +128,10 @@
   text-shadow: 0 1px 5px rgba(0,0,0,0.2);
 }
 
-.home__slogan-left {
-  text-align: left;
-}
-
+.home__slogan-left,
 .home__slogan-right {
-  text-align: right;
+  width: 50%;
+  text-align: center;
 }
 
 /* Responsive styles */
@@ -147,18 +143,20 @@
 
 @media (max-width: 768px) {
   .home {
-    height: calc(100vh - var(--mobile-header-height));
+    height: 100vh;
+    padding-top: var(--mobile-header-height);
   }
-  
+
   .home__container {
     gap: 2rem;
+    padding-top: 0;
   }
-  
+
   .home__title {
     white-space: normal;
     font-size: var(--h1-tablet); /* 2.5rem */
   }
-  
+
   .home__description {
     margin: 1rem auto 2rem;
   }
@@ -173,10 +171,14 @@
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
+    width: 100%;
+    transform: none;
+    left: auto;
   }
   
   .home__slogan-left,
   .home__slogan-right {
+    width: 100%;
     text-align: center;
   }
 }
@@ -204,7 +206,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(10, 18, 35, 0.5); /* Overlay */
+    background-color: rgba(10, 18, 35, 0.45); /* Overlay */
     z-index: 1;
 }
 

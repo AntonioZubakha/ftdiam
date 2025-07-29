@@ -1,25 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faPhone, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 const ContactsSection = () => {
-  const [isMobile, setIsMobile] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -42,7 +30,7 @@ const ContactsSection = () => {
       } else {
         setSubmitError('An unexpected error occurred. Please try again.');
       }
-    } catch (error) {
+    } catch {
       setSubmitError('Failed to send message. Please check your network connection.');
     } finally {
       setIsSubmitting(false);
@@ -77,15 +65,15 @@ const ContactsSection = () => {
               </div>
               
               <div className="contact-info-item">
-                <a href="tel:+16172752599" className="contact-icon">
+                <a href="tel:+19298224798" className="contact-icon">
                   <FontAwesomeIcon icon={faPhone} />
                 </a>
                 <div className="contact-text">
                   <div className="contact-label-row">
                     <span className="contact-label">Phone</span>
                   </div>
-                  <a href="tel:+16172752599" className="contact-value">
-                    +1 617 275 2599
+                  <a href="tel:+19298224798" className="contact-value">
+                    +1 929 822 4798
                   </a>
                 </div>
               </div>

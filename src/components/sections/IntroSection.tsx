@@ -17,14 +17,6 @@ const IntroSection: React.FC = () => {
       // Добавляем небольшую задержку для гарантии загрузки стилей
       setTimeout(() => {
         setContentLoaded(true);
-        
-        // Проверка наличия формы и секции контактов
-        console.log('[IntroSection] Init check - Contact form found by ID:', 
-          document.getElementById('contact-form') !== null);
-        console.log('[IntroSection] Init check - Contacts section found by ID:', 
-          document.getElementById('contacts') !== null);
-        console.log('[IntroSection] Init check - Contact form found by class:', 
-          document.querySelector('.contact-form') !== null);
       }, 100);
     });
   }, []);
@@ -62,16 +54,17 @@ const IntroSection: React.FC = () => {
       rootMargin: '0px'
     });
 
-    cardRefs.current.forEach(card => {
+    const currentCardRefs = cardRefs.current;
+    currentCardRefs.forEach(card => {
       if (card) observer.observe(card);
     });
 
     return () => {
-      cardRefs.current.forEach(card => {
+      currentCardRefs.forEach(card => {
         if (card) observer.unobserve(card);
       });
     };
-  }, [contentLoaded]);
+  }, [contentLoaded, visibleCards]);
 
   // Определяем стиль с фоновым изображением
   const backgroundStyle = {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import '../../styles/quality.css';
 
 const QualitySection: React.FC = () => {
@@ -51,13 +51,13 @@ const QualitySection: React.FC = () => {
     }
   };
   
-  const imagePaths = [
+  const imagePaths = useMemo(() => [
     '/images/photo1.jpg',
     '/images/photo2.jpg',
     '/images/photo5.jpg',
     '/images/photo3.jpg',
     '/images/photo4.jpg'
-  ];
+  ], []);
 
   const cardData = [
     {
@@ -110,7 +110,7 @@ const QualitySection: React.FC = () => {
         console.error('Error preloading images:', error);
         setImagesLoaded(true);
       });
-  }, []);
+  }, [imagePaths]);
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -125,6 +125,7 @@ const QualitySection: React.FC = () => {
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
+  // Добавляем наблюдатель за каждой карточкой только после полной загрузки контента
   useEffect(() => {
     if (!imagesLoaded) return;
 
@@ -142,16 +143,17 @@ const QualitySection: React.FC = () => {
       rootMargin: '0px'
     });
 
-    cardRefs.current.forEach(card => {
+    const currentCardRefs = cardRefs.current;
+    currentCardRefs.forEach(card => {
       if (card) observer.observe(card);
     });
 
     return () => {
-      cardRefs.current.forEach(card => {
+      currentCardRefs.forEach(card => {
         if (card) observer.unobserve(card);
       });
     };
-  }, [imagesLoaded]);
+  }, [imagesLoaded, visibleCards]);
   
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
@@ -270,10 +272,6 @@ const QualitySection: React.FC = () => {
   const closeModal = () => {
     setModalImage(null);
     document.body.style.overflow = '';
-  };
-
-  const handleRequestAnalysis = () => {
-    window.location.href = '#contacts';
   };
 
   const backgroundStyle = {

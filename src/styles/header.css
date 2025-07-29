@@ -451,4 +451,12 @@ img.header-logo.white-logo,
 /* Блокировка прокрутки при открытом меню */
 body.modal-open {
   overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  header.new-header {
+    position: absolute !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
 } 
