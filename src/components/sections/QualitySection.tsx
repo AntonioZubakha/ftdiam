@@ -359,29 +359,8 @@ const QualitySection: React.FC = () => {
             />
           )}
         </div>
-        <h3 className="spec-name" style={{ 
-          fontSize: '1.1rem',
-          textAlign: 'center',
-          margin: '0 0 0.5rem 0',
-          fontWeight: '600',
-          minHeight: '2.2rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}>{card.title}</h3>
-        <div style={{
-          fontSize: '1.3rem',
-          background: 'linear-gradient(to right, #00837f, #241e46)',
-          WebkitBackgroundClip: 'text',
-          backgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          margin: '0.5rem 0',
-          fontWeight: 'bold',
-          letterSpacing: '0.5px',
-          display: 'block',
-          textAlign: 'center',
-          minHeight: '1.6rem'
-        }}>{card.highlight}</div>
+        <h3 className="spec-name">{card.title}</h3>
+        <div className="spec-highlight">{card.highlight}</div>
         <p className="spec-description" style={{ 
           fontSize: '0.9rem',
           textAlign: 'center',
@@ -399,22 +378,6 @@ const QualitySection: React.FC = () => {
       padding: '15px'
     } : {
       padding: '18px'
-    };
-    
-    const titleStyle = isMobile ? {
-      fontSize: '0.9rem',
-      minHeight: 'auto'
-    } : {
-      fontSize: '1rem',
-      minHeight: '40px'
-    };
-    
-    const highlightStyle = isMobile ? {
-      fontSize: '1.1rem',
-      minHeight: 'auto'
-    } : {
-      fontSize: '1.2rem',
-      minHeight: '34px'
     };
     
     const descriptionStyle = isMobile ? {
@@ -484,27 +447,8 @@ const QualitySection: React.FC = () => {
                   />
                 )}
               </div>
-              <h3 className="spec-name" style={{ 
-                ...titleStyle,
-                textAlign: 'center',
-                margin: '0 0 0.5rem 0',
-                fontWeight: '600',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}>{card.title}</h3>
-              <div style={{
-                ...highlightStyle,
-                background: 'linear-gradient(to right, #00837f, #241e46)',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                margin: '0.5rem 0',
-                fontWeight: 'bold',
-                letterSpacing: '0.5px',
-                display: 'block',
-                textAlign: 'center'
-              }}>{card.highlight}</div>
+              <h3 className="spec-name">{card.title}</h3>
+              <div className="spec-highlight">{card.highlight}</div>
               <p className="spec-description" style={{ 
                 ...descriptionStyle,
                 textAlign: 'center',
