@@ -1,0 +1,429 @@
+/* Стили для футера */
+/* Fix for white space below footer and double scroll */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  position: relative;
+}
+
+/* Глобальные стили для всех секций */
+
+.footer {
+  background: var(--main-gradient);
+  color: var(--white);
+  padding: var(--spacing-8) 0 var(--spacing-4);
+  position: relative;
+  z-index: var(--z-normal);
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.footer-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-8);
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-main {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+  align-items: flex-start;
+}
+
+/* Новый подход к расположению колонок */
+.footer-col {
+  flex: 1;
+  min-width: 160px;
+  margin-bottom: var(--spacing-1);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.footer-info {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: var(--spacing-4);
+  margin-right: 40px;
+  height: 100%;
+  margin-top: -20px;
+}
+
+.footer-logo {
+  width: 180px;
+  margin: 0;
+  height: auto;
+  object-fit: contain;
+  margin-top: 0;
+}
+
+.footer-about {
+  margin-top: var(--spacing-4);
+  line-height: 1.5;
+  color: var(--light-gray);
+  font-size: var(--text-sm);
+  margin-bottom: var(--spacing-2);
+  opacity: 0.9;
+  max-width: 250px;
+}
+
+.footer-heading {
+  color: var(--white);
+  font-size: var(--text-lg);
+  margin-bottom: var(--spacing-4);
+  font-weight: var(--font-weight-semibold);
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  padding-top: 0;
+  line-height: 1.2;
+  height: auto;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footer-heading:after {
+  content: none;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.footer-links li {
+  margin-bottom: var(--spacing-3);
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+
+.footer-links li:last-child {
+  margin-bottom: 0;
+}
+
+.footer-links a {
+  color: var(--white);
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity var(--transition-normal);
+  font-size: var(--text-sm);
+  display: inline-block;
+  line-height: 1.2;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+  transform: none;
+}
+
+.footer-contact {
+  line-height: 1.2;
+  font-size: var(--text-sm);
+  opacity: 0.8;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-contact li {
+  margin-bottom: var(--spacing-3);
+  display: flex;
+  align-items: center;
+  height: auto;
+}
+
+.footer-contact li:last-child {
+  margin-bottom: 0;
+}
+
+.footer-contact li a {
+  color: var(--white);
+  text-decoration: none;
+  transition: opacity var(--transition-normal);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  line-height: 1.2;
+}
+
+.footer-contact li a:hover {
+  opacity: 1;
+}
+
+.footer-contact i {
+  margin-right: var(--spacing-2);
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.7);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  min-width: 16px;
+  text-align: center;
+}
+
+/* Добавляем отступ справа для иконок FontAwesome */
+.footer-contact svg {
+  margin-right: var(--spacing-2);
+}
+
+.footer-bottom {
+  margin-top: var(--spacing-6);
+  padding-top: var(--spacing-2);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: var(--text-xs);
+  opacity: 0.7;
+  width: 100%;
+}
+
+/* Стили для пустого элемента в контактном столбике */
+.empty-space {
+  visibility: hidden;
+  height: 16px;
+}
+
+/* Фиксированная высота для обоих типов столбиков */
+.footer-links, .footer-contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100px;
+}
+
+/* Ensure consistent styling between navigation and contact links */
+.footer-links a, .footer-contact li a {
+  color: var(--white);
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity var(--transition-normal);
+  font-size: var(--text-sm);
+}
+
+.footer-links a:hover, .footer-contact li a:hover {
+  opacity: 1;
+  text-decoration: none;
+  transform: none;
+}
+
+@media (max-width: 992px) {
+  .footer-main {
+    flex-wrap: wrap;
+  }
+  
+  .footer-col {
+    flex: 1 1 40%;
+    min-width: 200px;
+    margin-bottom: var(--spacing-5);
+  }
+  
+  .footer-info {
+    flex: 1 1 100%;
+    max-width: 100%;
+    align-items: center;
+    margin-bottom: var(--spacing-8);
+    padding-top: 0;
+  }
+  
+  .footer-logo {
+    width: 160px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: var(--spacing-5) 0 var(--spacing-2);
+  }
+  
+  .footer-container {
+    padding: 0 var(--spacing-4);
+    align-items: center;
+  }
+  
+  .footer-main {
+    width: 100%;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+  
+  .footer-col {
+    flex: 0 1 45%;
+    min-width: 140px;
+    margin-right: 0;
+    margin-bottom: var(--spacing-4);
+  }
+  
+  .footer-info {
+    flex: 0 0 100%;
+    max-width: none;
+    margin-right: 0;
+    margin-bottom: var(--spacing-4);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .footer-logo {
+    width: 140px;
+  }
+  
+  .footer-heading {
+    margin-top: 0;
+    margin-bottom: var(--spacing-4);
+  }
+  
+  .footer-about {
+    text-align: center;
+    margin-bottom: var(--spacing-2);
+    max-width: 100%;
+  }
+  
+  .footer-bottom {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer {
+    padding: var(--spacing-4) 0 var(--spacing-2);
+    text-align: center;
+  }
+  
+  .footer-container {
+    padding: 0;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .footer-main {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 var(--spacing-2);
+  }
+  
+  .footer-col {
+    flex: 0 0 100%;
+    min-width: 0;
+    margin: 0 0 var(--spacing-4) 0;
+    padding: 0;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .footer-info {
+    margin: 0 0 var(--spacing-4) 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 0;
+    height: auto;
+    align-items: center;
+  }
+  
+  .footer-logo {
+    width: 120px;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .footer-heading {
+    text-align: center;
+    width: auto;
+  }
+  
+  .footer-heading::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .footer-links, .footer-contact {
+    width: 100%;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .footer-links li, .footer-contact li {
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    margin: 0 0 var(--spacing-3) 0;
+    padding: 0;
+    display: flex;
+    float: none;
+  }
+  
+  .footer-links li a, .footer-contact li a {
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0;
+    width: auto;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .footer-contact li a svg, .footer-links li a svg {
+    margin-right: var(--spacing-2);
+    width: 16px !important;
+    display: inline-block !important;
+    text-align: center !important;
+  }
+  
+  /* Fix for the LinkedIn icon alignment */
+  .footer-contact li:nth-child(3) a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .footer-contact li:nth-child(3) a svg {
+    margin-right: var(--spacing-2);
+  }
+  
+  .footer-bottom {
+    width: 100%;
+    text-align: center;
+    margin-top: var(--spacing-2);
+    padding: 0;
+  }
+  
+  .footer-bottom p {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+} 

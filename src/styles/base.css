@@ -1,0 +1,674 @@
+/* Базовые стили для сайта */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* CSS Variables */
+:root {
+  /* Брендовые цвета согласно брендбуку */
+  --primary-dark-blue: #241e46;  /* CMYK: 100 100 40 40 | RGB: 36, 30, 70 | Pantone: 275 C */
+  --primary-teal: #00837f;       /* CMYK: 85 25 50 10 | RGB: 0, 131, 127 | Pantone: 7717 C */
+  --dark-gray: #545352;          /* CMYK: 60 50 50 45 | RGB: 84, 83, 82 | Pantone: P 179-13 C */
+  
+  /* Цветовая схема */
+  --primary-color: var(--primary-dark-blue);
+  --secondary-color: var(--primary-teal);
+  --accent-color: #009fe3;
+  --light-color: #ffffff;
+  --dark-color: #0a1223;
+  --gray-color: #f0f4f8;
+  --light-gray: #e0e0e0;
+  --error-color: #e74c3c;
+  --success-color: #00d4a0;
+  --white: #ffffff;
+  --black: #000000;
+  --text-color: #333333;
+  
+  /* Glass UI */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  
+  /* Шрифты */
+  --primary-font: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --secondary-font: 'Montserrat', sans-serif;
+  --heading-font: 'Montserrat', sans-serif;
+  
+  /* Размеры шрифтов */
+  --text-xs: 0.75rem;   /* 12px */
+  --text-sm: 0.875rem;  /* 14px */
+  --text-base: 1rem;    /* 16px */
+  --text-lg: 1.125rem;  /* 18px */
+  --text-xl: 1.25rem;   /* 20px */
+  --text-2xl: 1.5rem;   /* 24px */
+  --text-3xl: 1.7rem;   /* 30px */
+  --text-4xl: 2.25rem;  /* 36px */
+  --text-5xl: 3rem;     /* 48px */
+  --hero-title-size: 3.2rem; /* 51.2px */
+
+  /* Размеры заголовков */
+  --h1-desktop: var(--text-5xl);     /* 3rem / 48px */
+  --h2-desktop: var(--text-4xl);     /* 2.25rem / 36px */
+  --h3-desktop: var(--text-3xl);     /* 1.875rem / 30px */
+  --h4-desktop: var(--text-2xl);     /* 1.5rem / 24px */
+  --h5-desktop: var(--text-xl);      /* 1.25rem / 20px */
+  --h6-desktop: var(--text-lg);      /* 1.125rem / 18px */
+
+  --h1-tablet: 2.5rem;               /* 40px */
+  --h2-tablet: 2rem;                 /* 32px */
+  --h3-tablet: 1.75rem;              /* 28px */
+  --h4-tablet: 1.5rem;               /* 24px */
+  --h5-tablet: 1.25rem;              /* 20px */
+  --h6-tablet: 1.125rem;             /* 18px */
+
+  --h1-mobile: 2rem;                 /* 32px */
+  --h2-mobile: 1.75rem;              /* 28px */
+  --h3-mobile: 1.5rem;               /* 24px */
+  --h4-mobile: 1.25rem;              /* 20px */
+  --h5-mobile: 1.125rem;             /* 18px */
+  --h6-mobile: 1rem;                 /* 16px */
+
+  /* Унифицированные размеры заголовков для секций */
+  --section-headline-size: var(--h1-desktop);           /* размер главных заголовков секций */
+  --section-headline-tablet-size: var(--h1-tablet);     /* размер главных заголовков на планшетах */
+  --section-headline-mobile-size: var(--h1-mobile);     /* размер главных заголовков на мобильных */
+  --section-subheadline-size: var(--h2-desktop);        /* размер подзаголовков секций */
+  --section-headline-letter-spacing: 0.5px;             /* межбуквенное расстояние для заголовков */
+  --section-headline-after-width: 50px;                 /* ширина подчеркивания заголовков */
+  --section-headline-after-height: 3px;                 /* высота подчеркивания заголовков */
+  --section-headline-margin: 3rem;                      /* отступ снизу для заголовков */
+  
+  /* Градиент для текста и элементов */
+  --main-gradient: linear-gradient(to right, var(--primary-teal), var(--primary-dark-blue));
+  --main-gradient-hover: linear-gradient(to right, var(--primary-dark-blue), var(--primary-teal));
+  
+  /* Spacing */
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;  /* 4px */
+  --spacing-2: 0.5rem;   /* 8px */
+  --spacing-3: 0.75rem;  /* 12px */
+  --spacing-4: 1rem;     /* 16px */
+  --spacing-5: 1.25rem;  /* 20px */
+  --spacing-6: 1.5rem;   /* 24px */
+  --spacing-8: 2rem;     /* 32px */
+  --spacing-10: 2.5rem;  /* 40px */
+  --spacing-12: 3rem;    /* 48px */
+  --spacing-16: 4rem;    /* 64px */
+  --spacing-20: 5rem;    /* 80px */
+  --spacing-24: 6rem;    /* 96px */
+  --spacing-32: 8rem;    /* 128px */
+  
+  /* Альтернативные названия для spacing, используемые в проекте */
+  --spacing-xs: 0.5rem;  /* Аналог spacing-2 */
+  --spacing-sm: 1rem;    /* Аналог spacing-4 */
+  --spacing-md: 1.5rem;  /* Аналог spacing-6 */
+  --spacing-lg: 2rem;    /* Аналог spacing-8 */
+  --spacing-xl: 3rem;    /* Аналог spacing-12 */
+  
+  /* Вес шрифтов - унифицировано */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Тени */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Размеры и отступы */
+  --container-max-width: 1400px;
+  --header-height: 80px;  /* Высота хедера */
+  --mobile-header-height: 70px;  /* Высота хедера на мобильных */
+  --sidebar-width: 280px;
+  
+  /* Border Radius - унифицировано */
+  --radius-sm: 0.125rem;  /* 2px */
+  --radius-md: 0.25rem;   /* 4px */
+  --radius-lg: 0.5rem;    /* 8px */
+  --radius-xl: 1rem;      /* 16px */
+  --radius-round: 50%;
+  
+  /* Временные параметры для анимаций - унифицировано */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  /* Z-index */
+  --z-back: -1;       /* Фоновые элементы */
+  --z-normal: 1;      /* Обычные элементы */
+  --z-menu: 900;      /* Меню и навигация */
+  --z-fixed: 1000;    /* Фиксированные элементы, в том числе хедер */
+  --z-modal: 2000;    /* Модальные окна */
+  --z-popover: 3000;  /* Всплывающие подсказки, выпадающие меню */
+  --z-tooltip: 4000;  /* Тултипы - элементы самого верхнего уровня */
+  
+  /* Animations */
+  --float-animation: float 5s infinite ease-in-out;
+  --pulse-animation: pulse 3s infinite ease-in-out;
+  --fade-animation: fadeIn 0.5s ease-in-out;
+  --slide-animation: slideIn 0.5s ease-in-out;
+  
+  /* Breakpoints для медиа-запросов */
+  --breakpoint-xs: 375px;   /* Очень маленькие мобильные */
+  --breakpoint-sm: 480px;   /* Малые мобильные */
+  --breakpoint-md: 576px;   /* Мобильные */
+  --breakpoint-lg: 768px;   /* Планшеты */
+  --breakpoint-xl: 992px;   /* Малые ноутбуки */
+  --breakpoint-xxl: 1200px; /* Ноутбуки */
+  --breakpoint-xxxl: 1440px; /* Большие экраны */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Базовые стили элементов */
+html {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  color: var(--dark-gray);
+  background-color: var(--white);
+  font-family: var(--primary-font), sans-serif;
+  line-height: 1.5;
+  font-weight: var(--font-weight-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  caret-color: transparent;
+}
+
+/* Типографика */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  color: var(--primary-dark-blue);
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: var(--h1-desktop);
+  font-weight: var(--font-weight-semibold);
+}
+
+h2 {
+  font-size: var(--h2-desktop);
+  font-weight: var(--font-weight-semibold);
+}
+
+h3 {
+  font-size: var(--h3-desktop);
+  font-weight: var(--font-weight-medium);
+}
+
+h4 {
+  font-size: var(--h4-desktop);
+  font-weight: var(--font-weight-medium);
+}
+
+h5 {
+  font-size: var(--h5-desktop);
+  font-weight: var(--font-weight-medium);
+}
+
+h6 {
+  font-size: var(--h6-desktop);
+  font-weight: var(--font-weight-medium);
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--primary-teal);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+a:hover {
+  color: var(--primary-dark-blue);
+}
+
+button {
+  font-family: var(--primary-font);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style-position: inside;
+}
+
+figure {
+  margin: 0;
+}
+
+/* Базовые стили заголовков */
+.headline {
+  font-size: var(--section-headline-size);
+  margin-bottom: var(--section-headline-margin);
+  text-align: center;
+  color: var(--primary-color);
+  letter-spacing: var(--section-headline-letter-spacing);
+  font-weight: var(--font-weight-semibold);
+  position: relative;
+}
+
+/* Основной класс для градиентных заголовков */
+.gradient-headline {
+  background: var(--main-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Убираем подчеркивание для всех градиентных заголовков */
+.gradient-headline::after {
+  content: none !important;
+}
+
+/* Класс для подзаголовков с градиентом */
+.gradient-subheadline {
+  background: var(--main-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Класс для элементов с градиентом */
+.gradient-text {
+  background: var(--main-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Стиль для описаний секций */
+.section-description {
+  font-size: 1.1rem;
+  color: var(--dark-gray);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Стили для контейнера контента */
+.content-wrapper {
+  position: relative;
+  z-index: var(--z-normal);
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-8);
+  text-align: center;
+}
+
+/* Стиль для центрирования заголовков внутри content-wrapper */
+.content-wrapper > h2.headline {
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+}
+
+/* Стиль для секций с описанием */
+.content-wrapper > .section-description {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Контейнер для страниц */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-4);
+}
+
+/* Контейнер без отступов между секциями */
+.no-gap-container {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Делаем, чтобы секции в контейнере не накладывались друг на друга */
+.no-gap-container > section {
+  position: relative;
+  display: block;
+  width: 100%;
+  z-index: var(--z-normal);
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+}
+
+/* Для стандартных секций */
+.section {
+  padding: 5rem 0;
+  position: relative;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .headline {
+    font-size: var(--section-headline-tablet-size);
+  }
+  
+  h1 {
+    font-size: var(--h1-tablet);
+  }
+  
+  h2 {
+    font-size: var(--h2-tablet);
+  }
+
+  h3 {
+    font-size: var(--h3-tablet);
+  }
+
+  h4 {
+    font-size: var(--h4-tablet);
+  }
+
+  h5 {
+    font-size: var(--h5-tablet);
+  }
+
+  h6 {
+    font-size: var(--h6-tablet);
+  }
+  
+  .content-wrapper {
+    padding: 0 var(--spacing-6);
+  }
+}
+
+@media (max-width: 768px) {
+  .headline {
+    font-size: var(--section-headline-mobile-size);
+  }
+  
+  h1 {
+    font-size: var(--h1-mobile);
+  }
+  
+  h2 {
+    font-size: var(--h2-mobile);
+  }
+  
+  h3 {
+    font-size: var(--h3-mobile);
+  }
+
+  h4 {
+    font-size: var(--h4-mobile);
+  }
+
+  h5 {
+    font-size: var(--h5-mobile);
+  }
+
+  h6 {
+    font-size: var(--h6-mobile);
+  }
+  
+  .section-description {
+    font-size: var(--text-base);
+  }
+  
+  .content-wrapper {
+    padding: 0 var(--spacing-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .headline {
+    font-size: var(--section-headline-mobile-size);
+  }
+  
+  .section {
+    padding: 3rem 0;
+  }
+  
+  h1 {
+    font-size: var(--h1-mobile);
+  }
+  
+  h2 {
+    font-size: var(--h2-mobile);
+  }
+  
+  h3 {
+    font-size: var(--h3-mobile);
+  }
+
+  h4 {
+    font-size: var(--h4-mobile);
+  }
+
+  h5 {
+    font-size: var(--h5-mobile);
+  }
+
+  h6 {
+    font-size: var(--h6-mobile);
+  }
+  
+  .content-wrapper {
+    padding: 0 var(--spacing-2);
+  }
+}
+
+/* Улучшенная доступность и фокус */
+
+/* Оптимизация для пользователей с предпочтением уменьшенного движения */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Стили для анимации элементов */
+
+/* Класс для блокировки скролла при открытом модальном окне или меню */
+
+/* Сетка */
+.grid {
+  display: grid;
+}
+
+.grid-2-cols {
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-8);
+}
+
+.grid-3-cols {
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-8);
+}
+
+.grid-4-cols {
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-8);
+}
+
+/* Медиа-запросы для сетки */
+@media (max-width: 1200px) {
+  .grid-4-cols {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-6);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-2-cols,
+  .grid-3-cols {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-4-cols {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+  }
+  
+  .grid-2-cols,
+  .grid-3-cols {
+    gap: var(--spacing-4);
+  }
+}
+
+/* Утилитарные классы */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-row { flex-direction: row; }
+.flex-wrap { flex-wrap: wrap; }
+.flex-nowrap { flex-wrap: nowrap; }
+.flex-1 { flex: 1; }
+
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+.justify-start { justify-content: flex-start; }
+.justify-end { justify-content: flex-end; }
+
+.gap-xs { gap: var(--spacing-xs); }
+.gap-sm { gap: var(--spacing-sm); }
+.gap-md { gap: var(--spacing-md); }
+.gap-lg { gap: var(--spacing-lg); }
+.gap-xl { gap: var(--spacing-xl); }
+
+.w-full { width: 100%; }
+.w-half { width: 50%; }
+.w-auto { width: auto; }
+
+.h-full { height: 100%; }
+.h-screen { height: 100vh; }
+.h-auto { height: auto; }
+
+.overflow-hidden { overflow: hidden; }
+.overflow-auto { overflow: auto; }
+.overflow-visible { overflow: visible; }
+.overflow-scroll { overflow: scroll; }
+
+.hidden { display: none; }
+.block { display: block; }
+.inline-block { display: inline-block; }
+.inline { display: inline; }
+
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+
+/* Отступы */
+.m-0 { margin: 0; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: var(--spacing-1); }
+.mt-2 { margin-top: var(--spacing-2); }
+.mt-3 { margin-top: var(--spacing-3); }
+.mt-4 { margin-top: var(--spacing-4); }
+.mt-5 { margin-top: var(--spacing-5); }
+.mt-8 { margin-top: var(--spacing-8); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: var(--spacing-1); }
+.mb-2 { margin-bottom: var(--spacing-2); }
+.mb-3 { margin-bottom: var(--spacing-3); }
+.mb-4 { margin-bottom: var(--spacing-4); }
+.mb-5 { margin-bottom: var(--spacing-5); }
+.mb-8 { margin-bottom: var(--spacing-8); }
+
+.ml-1 { margin-left: var(--spacing-1); }
+.ml-2 { margin-left: var(--spacing-2); }
+.mr-1 { margin-right: var(--spacing-1); }
+.mr-2 { margin-right: var(--spacing-2); }
+
+.p-0 { padding: 0; }
+.p-1 { padding: var(--spacing-1); }
+.p-2 { padding: var(--spacing-2); }
+.p-3 { padding: var(--spacing-3); }
+.p-4 { padding: var(--spacing-4); }
+.p-5 { padding: var(--spacing-5); }
+.p-8 { padding: var(--spacing-8); }
+
+/* Границы */
+.border { border: 1px solid var(--light-gray); }
+.border-t { border-top: 1px solid var(--light-gray); }
+.border-r { border-right: 1px solid var(--light-gray); }
+.border-b { border-bottom: 1px solid var(--light-gray); }
+.border-l { border-left: 1px solid var(--light-gray); }
+
+.rounded { border-radius: var(--radius-md); }
+.rounded-sm { border-radius: var(--radius-sm); }
+.rounded-lg { border-radius: var(--radius-lg); }
+.rounded-xl { border-radius: var(--radius-xl); }
+.rounded-full { border-radius: 9999px; }
+
+/* Тени */
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow { box-shadow: var(--shadow); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-xl { box-shadow: var(--shadow-xl); }
+
+/* Шрифты */
+.font-light { font-weight: var(--font-weight-light); }
+.font-normal { font-weight: var(--font-weight-normal); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-bold { font-weight: var(--font-weight-bold); }
+
+/* Текст */
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.capitalize { text-transform: capitalize; }
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+} 

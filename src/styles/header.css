@@ -1,0 +1,462 @@
+/* Header styles */
+.static-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: var(--header-height);
+  background-color: var(--white);
+  z-index: var(--z-fixed);
+  box-shadow: none;
+  border-bottom: 1px solid rgba(0, 131, 127, 0.1);
+  min-width: 320px;
+  overflow: visible;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.header-container {
+  display: block !important;
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Стили для основного логотипа */
+.header-logo {
+  height: 35px;
+  width: auto;
+  object-fit: contain;
+  max-width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block;
+  vertical-align: middle;
+}
+
+/* Add a specific class to target only the header logo img */
+img.header-logo {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* Логотип слева */
+.logo-wrapper {
+  position: absolute !important;
+  top: 0 !important;
+  left: clamp(15px, 5vw, 15vw) !important; /* Responsive padding that increases with screen size */
+  z-index: 2000 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+  min-width: auto !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Placeholder logo styling */
+.placeholder-logo {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-dark-blue);
+  background: var(--main-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: var(--spacing-1) var(--spacing-2);
+  letter-spacing: 1px;
+}
+
+/* Corner logo positioning */
+.corner-logo {
+  position: absolute !important;
+  left: clamp(15px, 5vw, 15vw) !important; /* Responsive padding that increases with screen size */
+  top: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.logo-link {
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Новые стили для переработанного хедера */
+.new-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  background-color: var(--white);
+  z-index: var(--z-fixed);
+  box-shadow: none;
+  border-bottom: 1px solid rgba(0, 131, 127, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 0 !important;
+}
+
+/* Navigation container centered */
+.new-nav-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 150px;
+}
+
+/* Menu structure */
+.new-menu {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Стили для мобильной кнопки меню */
+.new-menu-toggle {
+  display: none;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 2000;
+  padding: 8px;
+}
+
+.new-menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #00837f;
+  margin-bottom: 5px;
+  transition: 0.3s ease;
+}
+
+.new-menu-toggle span:last-child {
+  margin-bottom: 0;
+}
+
+/* Стили для кнопки в открытом состоянии */
+.new-menu-toggle span.open:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.new-menu-toggle span.open:nth-child(2) {
+  opacity: 0;
+}
+
+.new-menu-toggle span.open:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Menu overlay */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: calc(var(--z-menu) - 1);
+}
+
+/* Стили для белого логотипа в мобильном меню */
+.header-logo.white-logo {
+  height: 65px !important;
+  width: auto !important;
+  max-width: none !important;
+  min-height: 65px !important;
+  display: block;
+  margin: 0 auto !important;
+}
+
+/* Белый текстовый логотип для мобильного меню */
+.placeholder-logo.white {
+  color: var(--white);
+  -webkit-text-fill-color: var(--white);
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  font-size: 36px;
+}
+
+/* Desktop menu items - показываем только на десктоп */
+.desktop-menu-items {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: clamp(1rem, 2vw, 2rem);
+  height: 100%;
+  align-items: center;
+}
+
+.desktop-menu-items li {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.desktop-menu-items a {
+  font-size: clamp(var(--text-xs), 1vw, var(--text-lg));
+  transition: font-size 0.2s ease;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 4px;
+}
+
+/* Структура мобильного меню */
+.mobile-menu-content {
+  display: none; /* По умолчанию скрыто */
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+/* Показываем мобильное меню только на мобильных устройствах и когда оно открыто */
+.new-menu.open .mobile-menu-content {
+  display: flex;
+}
+
+/* Белый логотип в мобильном меню - верхний блок */
+.mobile-menu-logo {
+  width: 100%;
+  padding: 20px 0;
+  margin-bottom: 30px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.mobile-menu-logo .white-logo-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-menu-logo img,
+img.header-logo.white-logo,
+.header-logo.white-logo {
+  height: 65px !important;
+  width: auto !important;
+  margin: 0 auto !important;
+  display: block;
+}
+
+/* Пункты мобильного меню - нижний блок */
+.mobile-menu-items {
+  width: 100%;
+  padding: 0;
+  margin-top: 0;
+}
+
+.mobile-menu-items ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+  align-items: center;
+}
+
+.mobile-menu-items li {
+  width: 100%;
+  text-align: center;
+}
+
+.mobile-menu-items a {
+  color: var(--white) !important;
+  font-size: var(--text-base);
+  text-decoration: none;
+  padding: var(--spacing-2) 0;
+  display: block;
+  text-transform: uppercase;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.5px;
+}
+
+.mobile-menu-items a.active {
+  position: relative;
+  font-weight: var(--font-weight-semibold);
+}
+
+.mobile-menu-items a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 2px;
+  background: var(--white);
+}
+
+/* Media queries */
+@media (max-width: 1024px) {
+  .new-nav-container {
+    padding-left: 120px;
+  }
+  
+  .desktop-menu-items {
+    gap: clamp(var(--spacing-2), 1vw, var(--spacing-4));
+  }
+  
+  .desktop-menu-items a {
+    font-size: clamp(var(--text-xs), 0.9vw, var(--text-sm));
+    letter-spacing: 0.3px;
+  }
+  
+  /* Adjust logo position for medium screens */
+  .logo-wrapper, .corner-logo {
+    left: clamp(15px, 4vw, 10vw) !important;
+  }
+}
+
+@media (max-width: 920px) {
+  .static-header {
+    min-width: 280px;
+    height: var(--mobile-header-height);
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none;
+    border-bottom: 1px solid rgba(0, 131, 127, 0.1);
+  }
+  
+  /* Скрываем основной логотип при открытии меню */
+  .hide-on-mobile {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  /* Стили хедера на мобильных */
+  .new-header {
+    height: var(--mobile-header-height);
+    position: relative;
+  }
+  
+  .new-nav-container {
+    padding-left: 0;
+  }
+  
+  /* На мобильных скрываем десктопное меню и показываем только мобильное */
+  .desktop-menu-items {
+    display: none !important;
+  }
+  
+  /* Мобильное меню занимает всю высоту */
+  .new-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: min(75%, 280px);
+    height: 100vh;
+    background: var(--main-gradient);
+    padding: var(--spacing-4) var(--spacing-5) var(--spacing-8);
+    transition: right var(--transition-normal);
+    z-index: var(--z-menu);
+    box-shadow: -1px 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    display: block;
+  }
+  
+  .new-menu.open {
+    right: 0;
+  }
+  
+  /* Позиционирование элементов в мобильном меню */
+  .mobile-menu-content {
+    margin-top: 20px;
+  }
+  
+  .mobile-menu-logo {
+    margin-bottom: 40px;
+  }
+
+  /* Позиционирование логотипа в левом углу на мобильных */
+  .corner-logo,
+  .logo-wrapper {
+    position: absolute !important;
+    left: 16px !important; 
+    top: 0 !important;
+    height: 100% !important;
+    transform: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 1900;
+    display: flex !important;
+    align-items: center !important;
+  }
+  
+  /* Показываем кнопку мобильного меню */
+  .new-menu-toggle {
+    display: block !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Уменьшаем размеры на маленьком экране */
+  .new-header {
+    height: 55px;
+  }
+  
+  .header-logo {
+    height: 28px;
+  }
+  
+  .header-logo.white-logo {
+    height: 55px !important;
+    min-height: 55px !important;
+  }
+  
+  .placeholder-logo.white {
+    font-size: 30px;
+  }
+  
+  /* Уменьшенные размеры для маленьких экранов */
+  .mobile-menu-logo {
+    padding: 15px 0;
+    margin-bottom: 25px;
+  }
+  
+  .mobile-menu-items a {
+    font-size: var(--text-sm);
+  }
+}
+
+/* Prefers reduced motion - соблюдаем доступность */
+@media (prefers-reduced-motion: reduce) {
+  .static-header,
+  .header-container,
+  .fade-in {
+    transition: none;
+    animation: none;
+  }
+}
+
+/* Блокировка прокрутки при открытом меню */
+body.modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  header.new-header {
+    position: absolute !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+} 

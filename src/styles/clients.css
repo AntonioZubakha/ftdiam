@@ -1,0 +1,209 @@
+/* Стили для секции клиентов */
+
+/* Специфичный селектор для секции */
+section.clients-section {
+  padding: 2rem 0 2rem 0 !important; /* верх, справа, низ, слева */
+  margin: 2rem 0 2rem 0 !important; /* верх, справа, низ, слева */
+  background-color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Контейнер для содержимого */
+.section-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Заголовок секции */
+.section-title {
+  font-size: var(--section-headline-size);
+  text-align: center;
+  margin-bottom: 4rem;
+  background: var(--main-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: var(--font-weight-semibold);
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Logo Slider */
+.logo-slider {
+  width: 100%; 
+  height: 165px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto 3rem;
+  cursor: grab;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.logo-slider.active {
+  cursor: grabbing !important;
+}
+
+.logo-slide-track {
+  display: flex;
+  width: calc(250px * 24); /* Width * slides count * 3 */
+  animation: scroll 30s linear infinite;
+}
+
+/* Остановка анимации при перетаскивании */
+.logo-slide-track.grabbing {
+  cursor: grabbing !important;
+}
+
+.logo-slide {
+  width: 250px;
+  height: 165px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 25px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.logo-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: grayscale(40%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+.logo-slide:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+/* Базовая анимация прокрутки */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 8));
+  }
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+  .logo-slide {
+    width: 225px;
+  }
+  
+  .logo-slide-track {
+    width: calc(225px * 24);
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-225px * 8));
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .section-title {
+    font-size: var(--section-headline-tablet-size);
+    margin-bottom: 3rem;
+  }
+  
+  .logo-slide {
+    width: 200px;
+    padding: 0 20px;
+  }
+  
+  .logo-slide-track {
+    width: calc(200px * 24);
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-200px * 8));
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .clients-section {
+    padding: 4rem 0;
+    overflow: hidden;
+  }
+
+  .section-title {
+    font-size: var(--section-headline-mobile-size);
+    margin-bottom: 2.5rem;
+  }
+  
+  .logo-slide {
+    width: 180px;
+    padding: 0 15px;
+  }
+  
+  .logo-slide-track {
+    width: calc(180px * 24);
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-180px * 8));
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .section-container {
+    padding: 0 1.5rem;
+    overflow: hidden;
+  }
+
+  .section-title {
+    font-size: var(--h2-mobile);
+  }
+  
+  .logo-slide {
+    width: 160px;
+    padding: 0 10px;
+  }
+  
+  .logo-slide-track {
+    width: calc(160px * 24);
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-160px * 8));
+    }
+  }
+}
+
+/* Предпочтения для пользователей с ограниченным движением */
+@media (prefers-reduced-motion) {
+  .logo-slide-track {
+    animation: none !important;
+  }
+} 

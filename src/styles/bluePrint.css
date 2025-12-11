@@ -1,0 +1,353 @@
+/* 
+ * BluePrint Page Styles
+ * Standardized according to base.css variables and styling conventions
+ */
+
+/* ----- Main Section Styles ----- */
+section.blueprint-section {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--white);
+  z-index: var(--z-normal);
+}
+
+/* Удаляем избыточный отступ */
+section#blueprint {
+  padding-bottom: 80px !important;
+  padding-top: 0px !important;
+}
+
+section.blueprint-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-back);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+section.blueprint-section + section {
+  margin-top: 0;
+}
+
+/* ----- Blueprint Container ----- */
+#blueprint {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-4);
+}
+
+/* ----- Blueprint Container ----- */
+.blueprint-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-4);
+  position: relative;
+  z-index: var(--z-normal);
+  text-align: center;
+}
+
+.blueprint-section .headline {
+  font-size: var(--section-headline-size);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary-dark-blue);
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+  position: relative;
+}
+
+.blueprint-section .headline::after {
+  content: '';
+  display: block;
+  width: var(--section-headline-after-width);
+  height: var(--section-headline-after-height);
+  background: var(--main-gradient);
+  margin: var(--spacing-4) auto 0;
+}
+
+/* ----- Content Layout ----- */
+.blueprint-content-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-8);
+  margin-top: var(--spacing-8);
+  padding-left: 0;
+  text-align: left;
+}
+
+/* ----- Founder Column ----- */
+.founder-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  padding-right: var(--spacing-8);
+  position: relative;
+  width: 100%;
+  margin-top: -20px;
+}
+
+.founder-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+  flex-wrap: nowrap;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.founder-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 220px;
+  flex-shrink: 0;
+}
+
+.founder-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: var(--radius-round);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: var(--spacing-4);
+  position: relative;
+}
+
+.founder-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+
+.founder-photo:hover img {
+  transform: scale(1.05);
+}
+
+.founder-details {
+  padding: var(--spacing-2) 0;
+}
+
+.founder-name {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-lg);
+  background: var(--main-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+}
+
+.founder-title {
+  background: var(--main-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--text-base);
+  margin: var(--spacing-2) 0;
+  display: block;
+}
+
+.founder-bio {
+  color: var(--dark-gray);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ----- Info Column ----- */
+.info-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+  padding-left: var(--spacing-4);
+  padding-top: var(--spacing-12) !important;
+}
+
+.info-block {
+  width: 100%;
+}
+
+/* ----- Block Titles and Content ----- */
+.block-title {
+  font-size: var(--h3-desktop);
+  margin: 0 0 var(--spacing-4) 0;
+  font-weight: var(--font-weight-semibold);
+  background: var(--main-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  position: relative;
+}
+
+.info-block .block-title::after {
+  content: none;
+}
+
+.block-content {
+  color: var(--dark-gray);
+  font-size: var(--text-base);
+  line-height: 1.7;
+}
+
+.block-content p {
+  margin-bottom: var(--spacing-2);
+}
+
+.block-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* ----- History Block ----- */
+.history-block .block-content p {
+  margin-bottom: var(--spacing-4);
+  position: relative;
+  padding-left: 0;
+}
+
+.history-block .block-content p strong {
+  background: var(--main-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: var(--font-weight-bold);
+  display: inline-block;
+  margin-right: var(--spacing-1);
+}
+
+/* ----- About Block ----- */
+.about-block {
+  margin-bottom: var(--spacing-8);
+}
+
+/* ----- Responsive Styles ----- */
+@media (max-width: 992px) {
+  .blueprint-section {
+    padding: var(--spacing-16) 0;
+    margin: var(--spacing-16) 0 var(--spacing-24) 0;
+  }
+  
+  .blueprint-content-layout {
+    gap: var(--spacing-4);
+    margin-top: var(--spacing-4);
+  }
+  
+  .founder-column {
+    padding-right: var(--spacing-4);
+    top: 0 !important;
+  }
+  
+  .founder-grid {
+    gap: 20px;
+  }
+  
+  .info-column {
+    padding-left: var(--spacing-2);
+  }
+  
+  .block-title {
+    font-size: var(--h3-tablet);
+  }
+}
+
+@media (max-width: 768px) {
+  .blueprint-section {
+    padding: var(--spacing-12) 0;
+    margin: var(--spacing-12) 0 var(--spacing-20) 0;
+  }
+  
+  .blueprint-content-layout {
+    grid-template-columns: 1fr;
+    padding-left: 0;
+    margin-top: 0;
+  }
+  
+  .founder-column {
+    padding-right: 0;
+    margin-top: -10px !important;
+    top: 0 !important;
+    margin-bottom: var(--spacing-12);
+    gap: var(--spacing-4);
+  }
+  
+  .info-column {
+    padding-left: 0;
+    padding-top: 0 !important;
+    text-align: center;
+  }
+  
+  .block-title {
+    font-size: var(--h3-mobile);
+    text-align: center;
+    width: 100%;
+  }
+  
+  .block-content {
+    text-align: center;
+  }
+  
+  .founder-grid {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-12) !important;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .blueprint-section {
+    padding: var(--spacing-12) 0;
+  }
+  
+  .founder-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-12) !important;
+    margin-top: 0;
+  }
+  
+  .founder-photo {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .block-title {
+    font-size: var(--h4-mobile);
+  }
+}
+
+/* ----- Typography Helpers ----- */
+.blueprint-headline {
+  font-size: var(--section-headline-size);
+  margin-bottom: var(--spacing-lg);
+}
+
+.blueprint-description {
+  font-size: var(--text-lg);
+  line-height: 1.6;
+}
+
+.blueprint-text {
+  font-size: var(--text-base);
+  line-height: 1.6;
+}
+
+.blueprint-subheading {
+  font-size: var(--text-xl);
+  margin-bottom: var(--spacing-md);
+}
+
+@media (max-width: 480px) {
+  .blueprint-headline {
+    font-size: var(--section-headline-mobile-size);
+  }
+} 

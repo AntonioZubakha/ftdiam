@@ -1,0 +1,374 @@
+/* Основные стили для секции Technology */
+.technology-section {
+  padding: var(--spacing-40) 0 var(--spacing-36) 0;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--white);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.technology-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-5);
+  position: relative;
+  z-index: 1;
+}
+
+/* Стили для заголовков */
+.technology-headline-container {
+  text-align: center;
+  margin-bottom: var(--spacing-16);
+}
+
+.technology-headline {
+  font-size: var(--section-headline-size);
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-8);
+  position: relative;
+  display: inline-block;
+  letter-spacing: var(--section-headline-letter-spacing);
+  font-weight: var(--font-weight-semibold);
+}
+
+.technology-subheading {
+  font-size: var(--h3-desktop);
+  margin-bottom: var(--spacing-4);
+}
+
+.technology-subtitle {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-medium);
+  color: var(--gray);
+  margin-bottom: 0;
+}
+
+/* Технологический обзор */
+.technology-overview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-10);
+  margin-bottom: var(--spacing-16);
+  align-items: center;
+}
+
+.technology-image-container {
+  flex: 1;
+  min-width: 300px;
+  position: relative;
+}
+
+.technology-image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease-in-out;
+}
+
+.technology-image:hover {
+  transform: scale(1.02);
+}
+
+.technology-description {
+  flex: 1;
+  min-width: 300px;
+  font-size: var(--text-lg);
+  line-height: 1.6;
+}
+
+.technology-description h3 {
+  font-size: var(--h3-desktop);
+  margin-bottom: var(--spacing-5);
+  font-weight: var(--font-weight-semibold);
+}
+
+.technology-text {
+  font-size: var(--text-base);
+  line-height: 1.6;
+}
+
+.technology-description p:last-child {
+  margin-bottom: 0;
+}
+
+/* Секция преимуществ */
+.technology-advantages {
+  margin-top: var(--spacing-10);
+}
+
+.advantages-title {
+  font-size: var(--h3-desktop);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-8);
+  text-align: center;
+}
+
+.advantages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-8);
+}
+
+.advantage-card {
+  background: var(--white);
+  padding: var(--spacing-6);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.advantage-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(0, 131, 127, 0.1);
+}
+
+.advantage-icon {
+  height: 60px;
+  margin-bottom: var(--spacing-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.advantage-icon img {
+  height: 100%;
+  object-fit: contain;
+}
+
+.advantage-title {
+  font-size: var(--h4-desktop);
+  font-weight: var(--font-weight-semibold);
+  color: var(--dark-blue);
+  margin-bottom: var(--spacing-3);
+}
+
+.advantage-card p {
+  color: var(--gray);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Класс для градиентного текста */
+.gradient-text {
+  background: var(--main-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Адаптивные стили */
+@media (max-width: 992px) {
+  .technology-section {
+    padding: var(--spacing-20) 0;
+  }
+  
+  .technology-headline {
+    font-size: var(--section-headline-tablet-size);
+  }
+  
+  .technology-subheading {
+    font-size: var(--h3-tablet);
+  }
+  
+  .technology-description h3 {
+    font-size: var(--h3-tablet);
+  }
+  
+  .advantages-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .technology-content {
+    flex-direction: column;
+  }
+  
+  .technology-image-container,
+  .technology-description {
+    flex: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .technology-section {
+    padding: var(--spacing-16) 0;
+  }
+  
+  .technology-headline {
+    font-size: var(--section-headline-tablet-size);
+  }
+  
+  .technology-subheading {
+    font-size: var(--h3-tablet);
+  }
+  
+  .technology-overview {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-8);
+  }
+  
+  .technology-description {
+    padding: 0;
+  }
+  
+  .technology-description h3 {
+    font-size: var(--h3-tablet);
+  }
+  
+  .technology-description p {
+    font-size: var(--text-base);
+  }
+  
+  .advantages-title {
+    font-size: var(--h3-tablet);
+  }
+  
+  .tech-point h3 {
+    font-size: var(--h4-tablet);
+  }
+  
+  .tech-point p {
+    font-size: var(--text-base);
+  }
+
+  .advantage-title {
+    font-size: var(--h4-tablet);
+  }
+}
+
+@media (max-width: 576px) {
+  .technology-section {
+    padding: var(--spacing-12) 0;
+  }
+  
+  .technology-subheading {
+    font-size: var(--h3-mobile);
+  }
+  
+  .advantages-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+  }
+  
+  .advantage-card {
+    padding: var(--spacing-5);
+  }
+  
+  .tech-highlight {
+    padding: var(--spacing-5);
+  }
+
+  .technology-description h3 {
+    font-size: var(--h3-mobile);
+  }
+  
+  .technology-description p {
+    font-size: var(--text-sm);
+  }
+  
+  .advantages-title {
+    font-size: var(--h3-mobile);
+  }
+  
+  .tech-point h3 {
+    font-size: var(--h4-mobile);
+  }
+  
+  .tech-point p {
+    font-size: var(--text-sm);
+  }
+
+  .advantage-title {
+    font-size: var(--h4-mobile);
+  }
+}
+
+.tech-section-separator {
+  height: var(--spacing-16);
+  margin: var(--spacing-10) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Дополнительные элементы для технологической секции */
+.tech-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-6);
+}
+
+.tech-highlight {
+  background: var(--white);
+  padding: var(--spacing-6);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.tech-highlight:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.tech-highlight i {
+  font-size: var(--icon-size-lg);
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-3);
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.tech-highlight h4 {
+  font-size: var(--h4-desktop);
+  margin-bottom: var(--spacing-2);
+  color: var(--dark-blue);
+}
+
+.tech-highlight p {
+  font-size: var(--text-sm);
+  color: var(--gray);
+  margin: 0;
+}
+
+/* Ключевые моменты технологии */
+.tech-points {
+  margin-top: var(--spacing-10);
+}
+
+.tech-point {
+  margin-bottom: var(--spacing-6);
+  padding-left: var(--spacing-4);
+  border-left: 3px solid var(--primary-color);
+}
+
+.tech-point:last-child {
+  margin-bottom: 0;
+}
+
+.tech-point h3 {
+  font-size: var(--h4-desktop);
+  color: var(--dark-blue);
+  margin-bottom: var(--spacing-2);
+  font-weight: var(--font-weight-semibold);
+}
+
+.tech-point p {
+  font-size: var(--text-base);
+  color: var(--gray);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.section-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-5);
+} 
