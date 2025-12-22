@@ -11,6 +11,7 @@ import ApplicationsSection from './components/sections/ApplicationsSection'
 import ContactsSection from './components/sections/ContactsSection'
 import BluePrint from './components/sections/BluePrint'
 import ClientsSection from './components/sections/ClientsSection'
+import MerryChristmas from './components/MerryChristmas'
 
 
 // Import styles
@@ -148,6 +149,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<MainSite />} />
+        <Route path="/merry-christmas" element={<MerryChristmas />} />
       </Routes>
     </Router>
   );
