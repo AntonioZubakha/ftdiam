@@ -123,7 +123,7 @@
   box-sizing: border-box;
 }
 
-.spec-block {
+#quality .spec-block {
   background: var(--white);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
@@ -145,8 +145,8 @@
 }
 
 /* Стили для заголовков карточек - адаптивные */
-.spec-name {
-  font-size: 1.3rem;
+#quality .spec-name {
+  font-size: var(--h4-desktop);
   text-align: center;
   margin: 0 0 0.5rem 0;
   font-weight: 600;
@@ -163,8 +163,8 @@
 }
 
 /* Стили для highlight текста - адаптивные */
-.spec-highlight {
-  font-size: 1.3rem;
+#quality .spec-highlight {
+  font-size: var(--h3-desktop);
   background: linear-gradient(to right, #00837f, #241e46);
   -webkit-background-clip: text;
   background-clip: text;
@@ -183,7 +183,7 @@
   box-sizing: border-box;
 }
 
-.spec-block:hover {
+#quality .spec-block:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-lg);
 }
@@ -367,24 +367,24 @@
 
 /* Дополнительные стили для масштабирования */
 @media screen and (min-resolution: 2dppx) {
-  .spec-name {
+  #quality .spec-name {
     font-size: 1.1rem;
     min-height: 1.8rem;
   }
   
-  .spec-highlight {
+  #quality .spec-highlight {
     font-size: 1.1rem;
     min-height: 1.2rem;
   }
 }
 
 @media screen and (min-resolution: 3dppx) {
-  .spec-name {
+  #quality .spec-name {
     font-size: 1rem;
     min-height: 1.6rem;
   }
   
-  .spec-highlight {
+  #quality .spec-highlight {
     font-size: 1rem;
     min-height: 1.3rem;
   }
@@ -392,50 +392,50 @@
 
 /* Стили для высоких разрешений */
 @media screen and (min-width: 1920px) {
-  .spec-name {
+  #quality .spec-name {
     font-size: 1.4rem;
     min-height: 2.4rem;
   }
   
-  .spec-highlight {
+  #quality .spec-highlight {
     font-size: 1.2rem;
     min-height: 1.8rem;
   }
 }
 
 @media screen and (max-width: 1440px) {
-  .spec-block {
+  #quality .spec-block {
     width: 220px;
     height: 340px;
     min-width: 180px;
   }
   
-  .spec-name {
+  #quality .spec-name {
     font-size: 1.2rem;
     min-height: 2rem;
   }
   
-  .spec-highlight {
+  #quality .spec-highlight {
     font-size: 1rem;
     min-height: 1.5rem;
   }
 }
 
 @media screen and (max-width: 1200px) {
-  .spec-block {
+  #quality .spec-block {
     width: 200px;
     height: 330px;
     min-width: 160px;
     padding: var(--spacing-3);
   }
   
-  .spec-name {
+  #quality .spec-name {
     font-size: 1.1rem;
     min-height: 1.8rem;
     padding: 0 2px;
   }
   
-  .spec-highlight {
+  #quality .spec-highlight {
     font-size: 0.8rem;
     min-height: 1.2rem;
     padding: 0 2px;
@@ -473,7 +473,7 @@
     gap: var(--spacing-3);
   }
   
-  .spec-block {
+  #quality .spec-block {
     width: 170px;
     height: 310px;
     min-width: 150px;
@@ -482,13 +482,13 @@
     font-size: var(--text-sm);
   }
   
-  .spec-name {
+  #quality .spec-name {
     font-size: 1rem;
     min-height: 1.6rem;
     padding: 0 1px;
   }
   
-  .spec-highlight {
+  #quality .spec-highlight {
     font-size: 1rem;
     min-height: 1.3rem;
     padding: 0 1px;
@@ -536,7 +536,7 @@
     position: relative;
   }
   
-  .spec-block {
+  #quality .spec-block {
     flex: 0 0 100%;
     max-width: 100%;
     min-width: 100%;
@@ -547,13 +547,13 @@
     padding: var(--spacing-3);
   }
   
-  .spec-name {
+  #quality .spec-name {
     font-size: 0.95rem;
     min-height: 1.5rem;
     padding: 0 1px;
   }
   
-  .spec-highlight {
+  #quality .spec-highlight {
     font-size: 0.95rem;
     min-height: 1.2rem;
     padding: 0 1px;
@@ -679,13 +679,13 @@
     top: 170px;
   }
   
-  .spec-name {
+  #quality .spec-name {
     font-size: 0.9rem;
     min-height: 1.4rem;
     padding: 0 1px;
   }
   
-  .spec-highlight {
+  #quality .spec-highlight {
     font-size: 0.9rem;
     min-height: 0.8rem;
     padding: 0 1px;
@@ -758,25 +758,19 @@
 }
 
 #quality .quality-headline {
-  font-size: var(--section-headline-size);
   text-align: center;
-  margin-bottom: 2rem;
   position: relative;
-  line-height: 1.3;
 }
 
 #quality .quality-subheadline {
   text-align: center;
   margin-bottom: 1rem;
-  font-size: var(--h3-desktop);
   display: inline-block;
   width: 100%;
-  line-height: 1.3;
 }
 
 #quality .quality-description {
   text-align: center;
-  font-size: var(--text-xl);
   color: var(--dark-gray);
   line-height: 1.6;
   max-width: 800px;
@@ -861,7 +855,6 @@
   border: none;
   border-radius: 8px;
   padding: 12px 30px;
-  font-size: var(--text-md);
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -927,17 +920,7 @@
 }
 
 @media (max-width: 992px) {
-  #quality .quality-headline {
-    font-size: var(--section-headline-tablet-size);
-    margin-bottom: 1.5rem;
-  }
-
-  #quality .quality-subheadline {
-    font-size: var(--h3-tablet);
-  }
-
   #quality .request-document-button {
-    font-size: var(--text-base);
     margin-top: 30px;
   }
 }
@@ -949,18 +932,7 @@
     min-height: auto;
   }
 
-  #quality .quality-headline {
-    font-size: var(--section-headline-mobile-size);
-    margin-bottom: 1rem;
-    line-height: 1.2;
-  }
-
-  #quality .quality-subheadline {
-    font-size: var(--h3-mobile);
-  }
-
   #quality .request-document-button {
     margin-top: 20px;
-    font-size: var(--text-base);
   }
 }

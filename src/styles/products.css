@@ -94,7 +94,6 @@ html, body {
   border: none;
   border-radius: 8px;
   padding: 12px 30px;
-  font-size: var(--text-md);
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);

@@ -35,6 +35,7 @@
   --text-xs: 0.75rem;   /* 12px */
   --text-sm: 0.875rem;  /* 14px */
   --text-base: 1rem;    /* 16px */
+  --text-md: 1.125rem;  /* 18px — кнопки CTA на desktop */
   --text-lg: 1.125rem;  /* 18px */
   --text-xl: 1.25rem;   /* 20px */
   --text-2xl: 1.5rem;   /* 24px */
@@ -267,12 +268,61 @@ figure {
 /* Базовые стили заголовков */
 .headline {
   font-size: var(--section-headline-size);
-  margin-bottom: var(--section-headline-margin);
+  margin-bottom: 1.5rem;
   text-align: center;
   color: var(--primary-color);
   letter-spacing: var(--section-headline-letter-spacing);
   font-weight: var(--font-weight-semibold);
   position: relative;
+  line-height: 1.3;
+}
+
+/* Унифицированные заголовки секций (h2) */
+:is(
+  h2.headline,
+  h2.products-headline,
+  h2.technology-headline,
+  h2.quality-headline,
+  h2.contacts-headline,
+  h2.blueprint-headline--section,
+  .clients-section h2.section-title
+) {
+  font-size: var(--section-headline-size);
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+/* Унифицированные подзаголовки секций (h3) */
+:is(
+  h3.quality-subheadline,
+  h3.tailored-solutions-title
+) {
+  font-size: var(--h3-desktop);
+  line-height: 1.3;
+}
+
+/* Унифицированные названия карточек (h3) */
+:is(
+  #intro .spec-name,
+  #applications .spec-name,
+  #quality .spec-name
+) {
+  font-size: var(--h4-desktop);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Унифицированные CTA-кнопки секций */
+:is(
+  #intro .intro-cta-button,
+  #applications .applications-cta-button,
+  #products .product-request-button,
+  #quality .request-document-button
+) {
+  font-size: var(--text-md);
+}
+
+#technology .tech-cta-button {
+  font-size: var(--text-lg);
 }
 
 /* Основной класс для градиентных заголовков */
@@ -308,11 +358,12 @@ figure {
 }
 
 /* Стиль для описаний секций */
-.section-description {
-  font-size: 1.1rem;
+.section-description,
+.quality-description {
+  font-size: var(--text-xl);
   color: var(--dark-gray);
   line-height: 1.6;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   text-align: center;
   max-width: 800px;
   margin-left: auto;
@@ -378,8 +429,43 @@ figure {
 
 /* Адаптивность */
 @media (max-width: 1024px) {
-  .headline {
+  .headline,
+  :is(
+    h2.headline,
+    h2.products-headline,
+    h2.technology-headline,
+    h2.quality-headline,
+    h2.contacts-headline,
+    h2.blueprint-headline--section,
+    .clients-section h2.section-title
+  ) {
     font-size: var(--section-headline-tablet-size);
+    margin-bottom: 1.2rem;
+  }
+
+  :is(
+    h3.quality-subheadline,
+    h3.tailored-solutions-title
+  ) {
+    font-size: var(--h3-tablet);
+  }
+
+  :is(
+    #intro .spec-name,
+    #applications .spec-name,
+    #quality .spec-name
+  ) {
+    font-size: var(--h4-tablet);
+  }
+
+  :is(
+    #intro .intro-cta-button,
+    #applications .applications-cta-button,
+    #products .product-request-button,
+    #quality .request-document-button,
+    #technology .tech-cta-button
+  ) {
+    font-size: var(--text-base);
   }
   
   h1 {
@@ -412,8 +498,38 @@ figure {
 }
 
 @media (max-width: 768px) {
-  .headline {
+  .headline,
+  :is(
+    h2.headline,
+    h2.products-headline,
+    h2.technology-headline,
+    h2.quality-headline,
+    h2.contacts-headline,
+    h2.blueprint-headline--section,
+    .clients-section h2.section-title
+  ) {
     font-size: var(--section-headline-mobile-size);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  :is(
+    h3.quality-subheadline,
+    h3.tailored-solutions-title
+  ) {
+    font-size: var(--h3-mobile);
+  }
+
+  :is(
+    #intro .spec-name,
+    #applications .spec-name,
+    #quality .spec-name
+  ) {
+    font-size: var(--h4-mobile);
+  }
+
+  .section-description {
+    font-size: var(--text-base);
   }
   
   h1 {

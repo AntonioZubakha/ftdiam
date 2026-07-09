@@ -52,18 +52,12 @@
 }
 
 #intro .headline {
-  font-size: var(--section-headline-size);
-  margin-bottom: 1.5rem;
   position: relative;
   color: var(--primary-dark-blue);
 }
 
 #intro .section-description {
-  font-size: var(--text-xl);
-  color: var(--dark-gray);
-  line-height: 1.6;
   max-width: 900px;
-  margin: 0 auto 1.5rem;
 }
 
 #intro .intro-cta-button {
@@ -73,7 +67,6 @@
   border: none;
   border-radius: 8px;
   padding: 12px 30px;
-  font-size: var(--text-md);
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -170,7 +163,6 @@
 }
 
 #intro .spec-name {
-  font-size: var(--h4-desktop);
   height: 50px;
   display: flex;
   align-items: center;
@@ -305,15 +297,6 @@
 
 /* --- Tablet 769–992px --- */
 @media (min-width: 769px) and (max-width: 992px) {
-  #intro .headline {
-    font-size: var(--section-headline-tablet-size);
-    margin-bottom: 1.2rem;
-  }
-
-  #intro .intro-cta-button {
-    font-size: var(--text-base);
-  }
-
   #intro .specs-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
@@ -332,7 +315,6 @@
   }
 
   #intro .spec-name {
-    font-size: var(--h4-tablet);
     height: 45px;
   }
 
@@ -358,15 +340,6 @@
     margin-top: 40px;
     padding-top: 40px;
     min-height: auto;
-  }
-
-  #intro .headline {
-    font-size: var(--section-headline-mobile-size);
-    margin-bottom: 1rem;
-  }
-
-  #intro .intro-cta-button {
-    font-size: var(--text-base);
   }
 
   #intro .specs-grid {
