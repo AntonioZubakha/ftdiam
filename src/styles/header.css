@@ -216,6 +216,13 @@ img.header-logo {
   align-items: center;
   height: 100%;
   padding: 0 4px;
+  background: linear-gradient(to right, #00837f, #241e46);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 /* Структура мобильного меню */

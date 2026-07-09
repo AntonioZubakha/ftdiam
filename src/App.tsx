@@ -12,6 +12,7 @@ import ContactsSection from './components/sections/ContactsSection'
 import BluePrint from './components/sections/BluePrint'
 import ClientsSection from './components/sections/ClientsSection'
 import MerryChristmas from './components/MerryChristmas'
+import DiscountPage from './components/DiscountPage'
 
 
 // Import styles
@@ -125,7 +126,7 @@ const MainSite: React.FC = () => {
         <>
           <Header activeSection={activeSection} scrollToSection={scrollToSection} />
           
-          <main className="no-gap-container" style={{ position: 'relative' }}>
+          <main className="no-gap-container main-container">
             <HomeSection scrollToSection={scrollToSection} />
             <IntroSection />
             <TechnologySection />
@@ -150,6 +151,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainSite />} />
         <Route path="/merry-christmas" element={<MerryChristmas />} />
+        <Route path="/discount" element={<DiscountPage />} />
       </Routes>
     </Router>
   );

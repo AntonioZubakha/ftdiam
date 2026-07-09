@@ -1,94 +1,137 @@
-/* IntroSection Styles */
+/* IntroSection — значения перенесены из inline-стилей компонента */
 
-.intro-section {
-  padding-top: var(--spacing-12);
+/* --- Секция --- */
+#intro.intro-section {
+  background-color: transparent;
+  margin-top: 60px;
+  padding-top: 60px;
   padding-bottom: 0;
+  min-height: 80vh;
   position: relative;
   overflow: visible;
-  min-height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: var(--text-color);
-  background-color: var(--white);
 }
 
-.intro-section .content-wrapper {
+#intro.intro-section--loading {
+  visibility: hidden;
+  opacity: 0;
+}
+
+#intro.intro-section--ready {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease-in;
+}
+
+#intro .intro-bg-layer {
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+#intro .content-wrapper {
   position: relative;
   z-index: var(--z-normal);
-  max-width: var(--container-max-width);
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 var(--spacing-5);
+  padding: 0;
   text-align: center;
   overflow: visible;
 }
 
-.intro-section .headline {
-  margin-bottom: var(--spacing-8);
+#intro .intro-header {
+  text-align: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+#intro .headline {
+  font-size: var(--section-headline-size);
+  margin-bottom: 1.5rem;
+  position: relative;
   color: var(--primary-dark-blue);
 }
 
-.section-description {
-  max-width: 800px;
-  margin: 0 auto var(--spacing-8);
-  font-size: var(--text-lg);
-  color: var(--text-color);
+#intro .section-description {
+  font-size: var(--text-xl);
+  color: var(--dark-gray);
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto 1.5rem;
 }
 
-/* Стили для сетки спецификаций в интро */
-.intro-section .specs-grid {
+#intro .intro-cta-button {
+  display: inline-block;
+  background: linear-gradient(to right, #00837f, #241e46);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 30px;
+  font-size: var(--text-md);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 5;
+  text-decoration: none;
+  text-align: center;
+}
+
+#intro .intro-cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* --- Сетка карточек (desktop 993–1599) --- */
+#intro .specs-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--spacing-6);
-  margin: var(--spacing-12) auto;
+  gap: 24px;
   max-width: 1450px;
-  padding: 0 var(--spacing-4);
-}
-
-/* Анимация для появления карточек */
-@keyframes introSlideIn {
-  0% {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Базовые стили для анимации карточек в интро */
-.intro-section .spec-block-animate {
-  opacity: 0;
-  transform: translateY(20px);
-  will-change: transform, opacity;
-}
-
-.intro-section .spec-block-animate.visible {
-  animation: introSlideIn 0.6s ease-out forwards;
-}
-
-/* Задержки для анимации */
-.intro-section .spec-block-animate:nth-child(1) { animation-delay: 0.1s; }
-.intro-section .spec-block-animate:nth-child(2) { animation-delay: 0.2s; }
-.intro-section .spec-block-animate:nth-child(3) { animation-delay: 0.3s; }
-.intro-section .spec-block-animate:nth-child(4) { animation-delay: 0.4s; }
-
-/* Добавляем декоративный светящийся элемент в углу */
-.intro-section .spec-block {
-  position: relative;
-  overflow: hidden;
-  min-height: 350px;
-  padding: var(--spacing-6) var(--spacing-5);
+  text-align: center;
+  margin: 3rem auto 4rem;
+  padding: 0 15px;
+  width: 100%;
   box-sizing: border-box;
+}
+
+/* --- Карточка (desktop 993–1599) --- */
+#intro .spec-block {
+  background-color: white;
+  color: #333;
+  border-radius: 6px;
+  padding: 24px 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  aspect-ratio: 1/1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  min-width: 0;
+  min-height: 350px;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  margin: 0 auto;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
-.intro-section .spec-block::after {
+#intro .spec-block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+#intro .spec-block::after {
   content: '';
   position: absolute;
   top: -30px;
@@ -102,254 +145,266 @@
   z-index: 0;
 }
 
-.intro-section .spec-block:hover::after {
+#intro .spec-block:hover::after {
   opacity: 1;
 }
 
-/* Specific styles for spec blocks in the intro section */
-.intro-section .spec-icon {
+#intro .spec-icon {
   width: auto;
-  height: 70px;
-  font-size: var(--h1-desktop);
-  margin-bottom: var(--spacing-5);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.intro-section .spec-name {
-  margin-bottom: var(--spacing-2);
-  text-align: center;
+#intro .spec-icon i {
+  font-size: 50px;
+  margin-bottom: 16px;
+  background: linear-gradient(to right, #00837f, #241e46);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#intro .spec-name {
   font-size: var(--h4-desktop);
-  font-weight: var(--font-weight-semibold);
-  min-height: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
+  color: var(--primary-dark-blue);
+}
+
+#intro .spec-value {
+  font-size: var(--h3-desktop);
+  background: linear-gradient(to right, #00837f, #241e46);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0.5rem 0 0.7rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  height: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
 }
 
-.intro-section .spec-description {
+#intro .spec-description {
+  color: #555;
   text-align: center;
+  margin-bottom: var(--spacing-3);
+  font-weight: 400;
+  opacity: 0.95;
   font-size: calc(var(--text-base) - 1px);
-  margin-top: var(--spacing-2);
+  transition: all 0.3s ease;
+  height: auto;
   min-height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   line-height: 1.4;
+  margin-top: 0;
 }
 
-.intro-section .spec-block:nth-child(3) .spec-description {
-  min-height: 80px;
-  font-size: calc(var(--text-base) - 1px);
+#intro .spec-description--long {
+  opacity: 0.9;
+  min-height: 75px;
   line-height: 1.5;
 }
 
-.intro-section h3 {
-  color: var(--primary-dark-blue);
-  margin-bottom: var(--spacing-2);
-  font-size: var(--h4-desktop);
+/* --- Анимация карточек --- */
+@keyframes introSlideIn {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-.intro-section p {
-  color: var(--dark-gray);
+#intro .spec-block-animate {
+  opacity: 0;
+  transform: translateY(20px);
+  will-change: transform, opacity;
 }
 
-/* Широкоэкранные дисплеи */
+#intro .spec-block-animate.visible {
+  animation: introSlideIn 0.6s ease-out forwards;
+}
+
+#intro .spec-block-animate:nth-child(1) { animation-delay: 0.1s; }
+#intro .spec-block-animate:nth-child(2) { animation-delay: 0.2s; }
+#intro .spec-block-animate:nth-child(3) { animation-delay: 0.3s; }
+#intro .spec-block-animate:nth-child(4) { animation-delay: 0.4s; }
+
+/* --- Wide screen ≥1600px --- */
 @media (min-width: 1600px) {
-  .intro-section .specs-grid {
+  #intro .intro-header {
     max-width: 1600px;
-    gap: var(--spacing-8);
   }
-  
-  .intro-section .spec-block {
+
+  #intro .specs-grid {
+    max-width: 1600px;
+    gap: 30px;
+  }
+
+  #intro .spec-block {
+    padding: 30px 24px;
     min-height: 380px;
-    padding: var(--spacing-8) var(--spacing-6);
+    aspect-ratio: 1 / 1;
   }
-  
-  .intro-section .spec-icon {
+
+  #intro .spec-icon i {
+    font-size: 55px;
+    margin-bottom: 20px;
     height: 80px;
-    font-size: var(--h1-desktop);
   }
-}
 
-/* Media Queries */
-@media (max-width: 1400px) {
-  .intro-section .specs-grid {
-    gap: var(--spacing-5);
-  }
-  
-  .intro-section .spec-block {
-    min-height: 340px;
-  }
-}
-
-@media (max-width: 1200px) {
-  .intro-section .specs-grid {
-    gap: var(--spacing-4);
-  }
-  
-  .intro-section .spec-block {
-    min-height: 330px;
-    padding: var(--spacing-5) var(--spacing-4);
-  }
-  
-  .intro-section .spec-icon {
-    height: 65px;
-    margin-bottom: var(--spacing-4);
-    font-size: var(--h1-desktop);
-  }
-}
-
-@media (max-width: 992px) {
-  .intro-section {
-    padding-top: var(--spacing-8);
-  }
-  
-  .intro-section .specs-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-4);
-  }
-  
-  .intro-section .spec-icon {
+  #intro .spec-name {
     height: 60px;
-    font-size: var(--h2-desktop);
-    margin-bottom: var(--spacing-3);
   }
-  
-  .intro-section .spec-name {
+
+  #intro .spec-value {
+    height: 60px;
+  }
+
+  #intro .spec-description {
+    min-height: 70px;
+  }
+
+  #intro .spec-description--long {
+    min-height: 80px;
+  }
+}
+
+/* --- Narrow desktop 993–1200px: 2 колонки, чтобы карточки не ломали layout --- */
+@media (min-width: 993px) and (max-width: 1200px) {
+  #intro .specs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 900px;
+  }
+
+  #intro .spec-block {
+    min-height: 300px;
+    aspect-ratio: 1 / 1.05;
+  }
+}
+
+/* --- Tablet 769–992px --- */
+@media (min-width: 769px) and (max-width: 992px) {
+  #intro .headline {
+    font-size: var(--section-headline-tablet-size);
+    margin-bottom: 1.2rem;
+  }
+
+  #intro .intro-cta-button {
+    font-size: var(--text-base);
+  }
+
+  #intro .specs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  #intro .spec-block {
+    padding: 16px 16px;
+    min-height: 280px;
+    aspect-ratio: 1 / 1.1;
+  }
+
+  #intro .spec-icon i {
+    font-size: 45px;
+    margin-bottom: 12px;
+    height: 60px;
+  }
+
+  #intro .spec-name {
     font-size: var(--h4-tablet);
-    min-height: 45px;
+    height: 45px;
   }
-  
-  .intro-section .spec-description {
-    font-size: var(--text-sm);
+
+  #intro .spec-value {
+    font-size: var(--h3-tablet);
+    height: 50px;
+  }
+
+  #intro .spec-description {
+    font-size: var(--text-base);
     min-height: 55px;
   }
-  
-  .intro-section .spec-block {
-    min-height: 280px;
-    padding: var(--spacing-4) var(--spacing-3);
-    aspect-ratio: 1/1.1;
-  }
-  
-  .intro-section .spec-block:nth-child(3) .spec-description {
+
+  #intro .spec-description--long {
+    font-size: calc(var(--text-base) - 1px);
     min-height: 70px;
   }
 }
 
+/* --- Mobile ≤768px --- */
 @media (max-width: 768px) {
-  .intro-section {
-    padding-top: var(--spacing-6);
+  #intro.intro-section {
+    margin-top: 40px;
+    padding-top: 40px;
+    min-height: auto;
   }
-  
-  .intro-section .specs-grid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-3);
+
+  #intro .headline {
+    font-size: var(--section-headline-mobile-size);
+    margin-bottom: 1rem;
   }
-  
-  .section-description {
+
+  #intro .intro-cta-button {
     font-size: var(--text-base);
   }
-  
-  .intro-section .spec-icon {
-    height: 55px;
-    font-size: var(--h2-tablet);
-    margin-bottom: var(--spacing-3);
-  }
-  
-  .intro-section .spec-name {
-    min-height: unset;
-  }
-  
-  .intro-section .spec-description {
-    min-height: unset;
-  }
-  
-  .intro-section h3 {
-    font-size: var(--h4-tablet);
-  }
 
-  .intro-section .spec-block {
-    aspect-ratio: auto;
-    min-height: 250px;
-  }
-}
-
-@media (max-width: 576px) {
-  .intro-section {
-    padding-top: var(--spacing-5);
-  }
-  
-  .intro-section .specs-grid {
+  #intro .specs-grid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-3);
-    margin: var(--spacing-5) auto;
+    gap: 10px;
   }
-  
-  .intro-section .spec-icon {
+
+  #intro .spec-block {
+    padding: 20px 16px;
+    min-height: 240px;
+    aspect-ratio: auto;
+  }
+
+  #intro .spec-icon i {
+    font-size: 40px;
+    margin-bottom: 12px;
+    height: 55px;
+  }
+
+  #intro .spec-name {
+    font-size: calc(var(--h4-mobile) + 2px);
+    height: 40px;
+  }
+
+  #intro .spec-value {
+    font-size: calc(var(--h3-mobile) + 2px);
     height: 45px;
-    font-size: var(--h2-mobile);
-    margin-bottom: var(--spacing-2);
-  }
-  
-  .intro-section .spec-name {
-    font-size: var(--h4-mobile);
-  }
-  
-  .intro-section h3 {
-    font-size: var(--h4-mobile);
-    margin-bottom: var(--spacing-1);
   }
 
-  .intro-section .spec-block {
-    min-height: 220px;
+  #intro .spec-description,
+  #intro .spec-description--long {
+    font-size: var(--text-base);
+    min-height: auto;
   }
 }
 
-@media (min-resolution: 120dpi) {
-  .intro-section .spec-block {
-    min-height: 310px;
-    padding: var(--spacing-4) var(--spacing-3);
-  }
-  
-  .intro-section .spec-description {
-    font-size: calc(var(--text-sm) + 1px);
-  }
-  
-  .intro-section .spec-block:nth-child(3) .spec-description {
-    font-size: calc(var(--text-sm) + 1px);
-  }
-  
-  .intro-section .spec-name {
-    font-size: var(--h4-tablet);
-  }
-  
-  .intro-section .spec-icon {
-    height: 60px;
-    font-size: var(--h2-desktop);
-    margin-bottom: var(--spacing-3);
-  }
-}
-
-.intro-content {
-  position: relative;
-  z-index: var(--z-normal);
-}
-
-.background-animation {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: var(--z-back);
-}
-
-/* Gradient Banner Styles */
-.gradient-banner {
+/* --- Gradient Banner --- */
+#intro .gradient-banner {
   width: 100%;
   background: linear-gradient(to right, var(--primary-teal), var(--primary-dark-blue));
   padding: 30px 0;
@@ -357,14 +412,14 @@
   margin-top: auto;
 }
 
-.banner-container {
+#intro .banner-container {
   width: 100%;
   max-width: var(--container-max-width);
   margin: 0 auto;
   padding: 0 var(--spacing-12);
 }
 
-.banner-text {
+#intro .banner-text {
   color: #FFFFFF !important;
   font-size: 1.8rem;
   font-weight: 600;
@@ -377,91 +432,83 @@
   background-clip: unset;
 }
 
+#intro .banner-text-mobile {
+  display: none;
+}
+
+#intro .banner-text-desktop {
+  display: block;
+}
+
 @media (max-width: 1366px) {
-  .banner-text {
+  #intro .banner-text {
     font-size: 1.5rem;
   }
 }
 
 @media (max-width: 1200px) {
-  .banner-container {
+  #intro .banner-container {
     padding: 0 var(--spacing-8);
   }
-  
-  .banner-text {
+
+  #intro .banner-text {
     font-size: 1.3rem;
   }
 }
 
 @media (max-width: 992px) {
-  .banner-text {
+  #intro .banner-text {
     font-size: 1.2rem;
   }
-  
-  .gradient-banner {
+
+  #intro .gradient-banner {
     padding: 25px 0;
   }
 }
 
 @media (max-width: 768px) {
-  .banner-container {
+  #intro .banner-container {
     padding: 0 var(--spacing-4);
   }
-  
-  .banner-text {
+
+  #intro .banner-text {
     font-size: 1.35rem;
     line-height: 2;
     padding: 0 10px;
   }
-  
-  .gradient-banner {
+
+  #intro .gradient-banner {
     padding: 25px 0;
     margin-top: 0;
   }
-  
-  /* Показываем мобильную версию с переносами строк */
-  .banner-text-mobile {
+
+  #intro .banner-text-mobile {
     display: block !important;
   }
-  
-  /* Скрываем десктопную версию на мобильных */
-  .banner-text-desktop {
+
+  #intro .banner-text-desktop {
     display: none !important;
   }
 }
 
 @media (max-width: 576px) {
-  .banner-text {
+  #intro .banner-text {
     font-size: 1.25rem;
     padding: 0 10px;
     line-height: 1.9;
   }
-  
-  .gradient-banner {
+
+  #intro .gradient-banner {
     padding: 20px 0;
   }
 }
 
 @media (max-width: 375px) {
-  .banner-container {
+  #intro .banner-container {
     padding: 0 var(--spacing-2);
   }
-  
-  .banner-text {
+
+  #intro .banner-text {
     font-size: 1.25rem;
   }
 }
-
-/* Базовые стили для десктопного/мобильного отображения */
-.banner-text-mobile {
-  display: none;
-}
-
-.banner-text-desktop {
-  display: block;
-}
-
-/* Класс для принудительного отображения мобильной версии */
-.force-show {
-  display: block !important;
-} 

@@ -1,0 +1,16 @@
+.merry-christmas-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.merry-christmas-page__image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}

@@ -202,15 +202,6 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
                   href={`#${item.id}`}
                   onClick={(e) => handleSectionClick(item.id, e)}
                   className={activeSection === item.id ? 'active' : ''}
-                  style={{
-                    background: 'linear-gradient(to right, #00837f, #241e46)',
-                    WebkitBackgroundClip: 'text',
-                    backgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    fontWeight: 600,
-                    textDecoration: 'none',
-                    whiteSpace: 'nowrap'
-                  }}
                 >
                   {item.label}
                 </a>
@@ -226,42 +217,10 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
         onClick={toggleMenu}
         aria-expanded={menuOpen}
         aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}
-        style={{
-          display: 'none', // Hide by default, show on mobile via CSS
-          position: 'absolute',
-          right: '16px',
-          top: '50%',
-          transform: 'translateY(-50%)',
-          background: 'none',
-          border: 'none',
-          cursor: 'pointer',
-          zIndex: 2000,
-          padding: '8px'
-        }}
       >
-        <span className={menuOpen ? "open" : ""} style={{
-          display: 'block',
-          width: '22px',
-          height: '2px',
-          background: '#00837f',
-          marginBottom: '5px',
-          transition: '0.3s ease'
-        }}></span>
-        <span className={menuOpen ? "open" : ""} style={{
-          display: 'block',
-          width: '22px',
-          height: '2px',
-          background: '#00837f',
-          marginBottom: '5px',
-          transition: '0.3s ease'
-        }}></span>
-        <span className={menuOpen ? "open" : ""} style={{
-          display: 'block',
-          width: '22px',
-          height: '2px',
-          background: '#00837f',
-          transition: '0.3s ease'
-        }}></span>
+        <span className={menuOpen ? "open" : ""}></span>
+        <span className={menuOpen ? "open" : ""}></span>
+        <span className={menuOpen ? "open" : ""}></span>
       </button>
       
       {/* Mobile menu overlay */}
@@ -270,15 +229,6 @@ const Header: React.FC<HeaderProps> = ({ activeSection: propActiveSection, scrol
           className="menu-overlay" 
           onClick={() => setMenuOpen(false)}
           aria-hidden="true"
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'rgba(0, 0, 0, 0.3)',
-            zIndex: 899
-          }}
         ></div>
       )}
     </header>

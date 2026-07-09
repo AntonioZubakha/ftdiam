@@ -1,3 +1,7 @@
+.honeypot-field {
+  display: none;
+}
+
 /* Основные стили для секции Contacts */
 .contacts-section {
   background-color: #fff;

@@ -73,6 +73,58 @@ html, body {
   letter-spacing: var(--section-headline-letter-spacing);
   display: inline-block;
   position: relative;
+  text-align: center;
+}
+
+#products .products-headline {
+  text-align: center;
+}
+
+.tailored-solutions-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+#products .product-request-button {
+  display: inline-block;
+  background: linear-gradient(to right, #00837f, #241e46);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 30px;
+  font-size: var(--text-md);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 5;
+  width: auto;
+  margin-top: 20px;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+#products .product-request-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 768px) {
+  #products .product-request-button {
+    font-size: var(--text-base);
+  }
+}
+
+@media (max-width: 576px) {
+  #products .products-headline {
+    font-size: var(--section-headline-mobile-size);
+    max-width: 95%;
+    margin: 0 auto 20px;
+  }
 }
 
 .products-section .gradient-headline::after {

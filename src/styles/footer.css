@@ -186,8 +186,10 @@ body {
 }
 
 /* Добавляем отступ справа для иконок FontAwesome */
-.footer-contact svg {
+.footer-contact svg,
+.footer-contact-icon {
   margin-right: var(--spacing-2);
+  width: 16px;
 }
 
 .footer-bottom {

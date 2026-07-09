@@ -5,7 +5,6 @@ const ProductsSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [isSmallMobile, setIsSmallMobile] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const imageLoadedArray = useRef<boolean[]>([]);
   const video1Ref = useRef<HTMLVideoElement>(null);
@@ -15,7 +14,6 @@ const ProductsSection: React.FC = () => {
   useEffect(() => {
     const checkScreenSize = () => {
       setIsMobile(window.innerWidth <= 768);
-      setIsSmallMobile(window.innerWidth <= 576);
     };
     
     checkScreenSize(); // Initial check
@@ -187,13 +185,7 @@ const ProductsSection: React.FC = () => {
       <div className="products-container">
         <div className="products-inner-container">
           <div className="products-headline-container">
-            <h2 className="gradient-headline" style={{ 
-              fontSize: isSmallMobile ? 'var(--section-headline-mobile-size)' : undefined,
-              textAlign: 'center',
-              marginBottom: isSmallMobile ? '20px' : undefined,
-              maxWidth: isSmallMobile ? '95%' : undefined,
-              margin: isSmallMobile ? '0 auto 20px' : undefined
-            }}>
+            <h2 className="gradient-headline products-headline">
               High Quality Diamond Products
             </h2>
           </div>
@@ -209,7 +201,7 @@ const ProductsSection: React.FC = () => {
               </video>
             </div>
             <div className="media-item tailored-solutions-container">
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+              <div className="tailored-solutions-content">
                 <h3 className="tailored-solutions-title">
                   Tailored Solutions<br />
                   For Cutting-Edge<br />
@@ -291,34 +283,6 @@ const ProductsSection: React.FC = () => {
                   }}
                   className="product-request-button"
                   aria-label="Request FTDiam products"
-                  style={{
-                    display: 'inline-block',
-                    background: 'linear-gradient(to right, #00837f, #241e46)',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '8px',
-                    padding: '12px 30px',
-                    fontSize: isMobile ? 'var(--text-base)' : isSmallMobile ? 'var(--text-base)' : 'var(--text-md)',
-                    fontWeight: '600',
-                    cursor: 'pointer',
-                    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
-                    transition: 'all 0.3s ease',
-                    position: 'relative',
-                    zIndex: 5,
-                    width: 'auto',
-                    marginTop: '20px',
-                    textDecoration: 'none'
-                  }}
-                  onMouseOver={(e) => {
-                    const target = e.currentTarget as HTMLElement;
-                    target.style.transform = 'translateY(-2px)';
-                    target.style.boxShadow = '0 6px 15px rgba(0, 0, 0, 0.25)';
-                  }}
-                  onMouseOut={(e) => {
-                    const target = e.currentTarget as HTMLElement;
-                    target.style.transform = 'translateY(0)';
-                    target.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.2)';
-                  }}
                 >
                   Request FTDiam Products
                 </a>

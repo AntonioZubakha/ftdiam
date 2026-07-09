@@ -4,11 +4,6 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Footer: React.FC = () => {
-  const iconStyle = {
-    marginRight: '8px',
-    width: '16px'
-  };
-
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -39,13 +34,13 @@ const Footer: React.FC = () => {
           
           <div className="footer-col">
             <ul className="footer-contact">
-              <li><a href="mailto:info@ftdiam.com"><FontAwesomeIcon icon={faEnvelope} style={iconStyle} /> info@ftdiam.com</a></li>
-              <li><a href="tel:+19298224798"><FontAwesomeIcon icon={faPhone} style={iconStyle} /> +1 929 822 4798</a></li>
+              <li><a href="mailto:info@ftdiam.com"><FontAwesomeIcon icon={faEnvelope} className="footer-contact-icon" /> info@ftdiam.com</a></li>
+              <li><a href="tel:+19298224798"><FontAwesomeIcon icon={faPhone} className="footer-contact-icon" /> +1 929 822 4798</a></li>
               <li><a href="https://www.linkedin.com/company/ftdiam" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faLinkedin} style={iconStyle} />
+                <FontAwesomeIcon icon={faLinkedin} className="footer-contact-icon" />
                 LinkedIn
               </a></li>
-              <li><a href="#address"><FontAwesomeIcon icon={faMapMarkerAlt} style={iconStyle} /> 220 Park Ave PMB 83131, NY 10003</a></li>
+              <li><a href="#address"><FontAwesomeIcon icon={faMapMarkerAlt} className="footer-contact-icon" /> 220 Park Ave PMB 83131, NY 10003</a></li>
             </ul>
           </div>
         </div>

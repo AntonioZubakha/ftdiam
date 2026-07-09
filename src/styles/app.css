@@ -1,5 +1,9 @@
 /* Стили для App компонента */
 
+.main-container {
+  position: relative;
+}
+
 .app-loaded {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;

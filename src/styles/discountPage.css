@@ -1,0 +1,63 @@
+/* Скрытая страница с промо-предложением */
+.discount-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.discount-page__content {
+  max-width: 42rem;
+  text-align: center;
+}
+
+.discount-page__logo {
+  width: 12rem;
+  height: auto;
+  margin-bottom: 2.5rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.discount-page__text {
+  font-family: var(--primary-font, 'Raleway', sans-serif);
+  font-size: clamp(1.25rem, 4vw, 1.75rem);
+  line-height: 1.6;
+  color: var(--primary-dark-blue, #241e46);
+  margin: 0 0 2.5rem;
+  font-weight: 500;
+}
+
+.discount-page__email {
+  color: var(--primary-teal, #00837f);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.discount-page__email:hover {
+  text-decoration: underline;
+}
+
+.discount-page__link {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, var(--primary-dark-blue, #241e46) 0%, var(--primary-teal, #00837f) 100%);
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--primary-font, 'Raleway', sans-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  box-shadow: 0 4px 15px rgba(36, 30, 70, 0.35);
+  transition: box-shadow 0.2s, transform 0.2s, filter 0.2s;
+}
+
+.discount-page__link:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 6px 20px rgba(0, 131, 127, 0.4);
+  transform: translateY(-2px);
+}
